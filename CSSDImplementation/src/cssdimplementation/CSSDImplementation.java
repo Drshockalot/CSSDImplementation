@@ -16,6 +16,7 @@ public class CSSDImplementation {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        String test = "test commit with git toolbar";
     }
     
 }
