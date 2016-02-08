@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cssdimplementation;
+package PublicTransportationSystem;
 
 /**
  *
- * @author Drshockalotz
+ * @author Drpoopalotz
  */
-public class CSSDImplementation {
+public class AppSwitchboard {
 
     /**
      * @param args the command line arguments
@@ -17,6 +17,7 @@ public class CSSDImplementation {
     public static void main(String[] args) {
         // TODO code application logic here
         String test = "testy commit with git toolbar";
+        System.out.println(test);
     }
     
 }
