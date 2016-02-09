@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PublicTransportationSystem;
+package PublicTransportationSystem.GUIs;
 
-import static PublicTransportationSystem.AppSwitchboard.mainUI;
+import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 
 /**
  *

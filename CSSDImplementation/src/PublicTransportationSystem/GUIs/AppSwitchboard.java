@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PublicTransportationSystem;
+package PublicTransportationSystem.GUIs;
 
 import java.io.IOException;
 import java.net.URI;
@@ -214,7 +214,10 @@ public class AppSwitchboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_switchScannerUIActionPerformed
 
     private void btn_switchScannerUI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUI1ActionPerformed
-        // TODO add your handling code here:
+        JFrame loginUI = new LoginUI();
+        loginUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mainUI.setEnabled(false);
+        loginUI.setVisible(true);
     }//GEN-LAST:event_btn_switchScannerUI1ActionPerformed
 
     /**
