@@ -5,6 +5,9 @@
  */
 package PublicTransportationSystem;
 
+import java.awt.Frame;
+import javax.swing.JFrame;
+
 /**
  *
  * @author jonathondickson
@@ -31,6 +34,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
         btn_switchAdminUI = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Switchboard UI");
 
         btn_switchWebsiteUI.setText("Website UI");
         btn_switchWebsiteUI.setToolTipText("");
@@ -73,12 +77,16 @@ public class AppSwitchboard extends javax.swing.JFrame {
 
     private void btn_switchWebsiteUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchWebsiteUIActionPerformed
         // Opens the website ui
-        new WebsiteUI().setVisible(true);
+        JFrame websiteUI = new WebsiteUI();
+        websiteUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        websiteUI.setVisible(true);
     }//GEN-LAST:event_btn_switchWebsiteUIActionPerformed
 
     private void btn_switchAdminUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchAdminUIActionPerformed
         // Opens the admin ui
-        new AdminUI().setVisible(true);
+        JFrame adminUI = new AdminUI();
+        adminUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        adminUI.setVisible(true);
     }//GEN-LAST:event_btn_switchAdminUIActionPerformed
 
     /**

@@ -12,3 +12,8 @@
 hs_err_pid*
 /CSSDImplementation/dist/
 /CSSDImplementation/build/
+.idea/compiler.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/Subtask 3.iml
+.idea/workspace.xml

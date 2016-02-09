@@ -29,7 +29,8 @@ public class AdminUI extends javax.swing.JFrame {
 
         lbl_adminUITitle = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Management UI");
 
         lbl_adminUITitle.setText("Management GUI");
 
