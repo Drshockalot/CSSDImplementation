@@ -39,6 +39,9 @@ public class AppSwitchboard extends javax.swing.JFrame {
         btn_switchWebsiteUI = new javax.swing.JButton();
         btn_switchAdminUI = new javax.swing.JButton();
         btn_buttonTemplate = new javax.swing.JButton();
+        btn_switchInspectorUI = new javax.swing.JButton();
+        btn_switchScannerUI = new javax.swing.JButton();
+        btn_switchScannerUI1 = new javax.swing.JButton();
         lbl_mainSwitchTitle = new javax.swing.JLabel();
         lbl_mainSwitchAuthors = new javax.swing.JLabel();
 
@@ -64,10 +67,33 @@ public class AppSwitchboard extends javax.swing.JFrame {
             }
         });
 
-        btn_buttonTemplate.setText("Don't Press Me");
+        btn_buttonTemplate.setBackground(new java.awt.Color(255, 0, 0));
+        btn_buttonTemplate.setText("Press Me");
+        btn_buttonTemplate.setOpaque(true);
         btn_buttonTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buttonTemplateActionPerformed(evt);
+            }
+        });
+
+        btn_switchInspectorUI.setText("Inspector UI");
+        btn_switchInspectorUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_switchInspectorUIActionPerformed(evt);
+            }
+        });
+
+        btn_switchScannerUI.setText("Scanner UI");
+        btn_switchScannerUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_switchScannerUIActionPerformed(evt);
+            }
+        });
+
+        btn_switchScannerUI1.setText("Log in UI");
+        btn_switchScannerUI1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_switchScannerUI1ActionPerformed(evt);
             }
         });
 
@@ -77,22 +103,38 @@ public class AppSwitchboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_switchWebsiteUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_switchAdminUI, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                    .addComponent(btn_buttonTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_buttonTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_switchScannerUI1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btn_switchWebsiteUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_switchAdminUI, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(btn_switchInspectorUI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_switchScannerUI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(157, 157, 157))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(btn_switchScannerUI1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_switchWebsiteUI)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_switchAdminUI)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_switchInspectorUI)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_switchScannerUI)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(btn_buttonTemplate)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         lbl_mainSwitchTitle.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
@@ -112,11 +154,11 @@ public class AppSwitchboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_mainSwitchTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(120, 120, 120)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 133, Short.MAX_VALUE)))))
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lbl_mainSwitchTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -124,9 +166,9 @@ public class AppSwitchboard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(lbl_mainSwitchTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(lbl_mainSwitchAuthors)
                 .addContainerGap())
         );
@@ -163,6 +205,18 @@ public class AppSwitchboard extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_btn_buttonTemplateActionPerformed
 
+    private void btn_switchInspectorUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchInspectorUIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_switchInspectorUIActionPerformed
+
+    private void btn_switchScannerUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_switchScannerUIActionPerformed
+
+    private void btn_switchScannerUI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUI1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_switchScannerUI1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -178,6 +232,9 @@ public class AppSwitchboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buttonTemplate;
     private javax.swing.JButton btn_switchAdminUI;
+    private javax.swing.JButton btn_switchInspectorUI;
+    private javax.swing.JButton btn_switchScannerUI;
+    private javax.swing.JButton btn_switchScannerUI1;
     private javax.swing.JButton btn_switchWebsiteUI;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_mainSwitchAuthors;
