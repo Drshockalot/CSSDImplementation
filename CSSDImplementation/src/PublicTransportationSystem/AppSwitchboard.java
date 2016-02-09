@@ -100,7 +100,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
         lbl_mainSwitchTitle.setText("Public Management System");
 
         lbl_mainSwitchAuthors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_mainSwitchAuthors.setText("By 3 Snakes & a Bootlace (c)");
+        lbl_mainSwitchAuthors.setText("3 Snakes & a Bootlace 2016 (c)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

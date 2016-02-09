@@ -136,7 +136,7 @@
     <Component class="javax.swing.JLabel" name="lbl_mainSwitchAuthors">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="By 3 Snakes &amp; a Bootlace (c)"/>
+        <Property name="text" type="java.lang.String" value="3 Snakes &amp; a Bootlace 2016 (c)"/>
       </Properties>
     </Component>
   </SubComponents>
