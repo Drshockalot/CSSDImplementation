@@ -5,6 +5,8 @@
  */
 package PublicTransportationSystem;
 
+import static PublicTransportationSystem.AppSwitchboard.mainUI;
+
 /**
  *
  * @author jonathondickson
@@ -32,6 +34,11 @@ public class AdminUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Management UI");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lbl_managementUITitle.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         lbl_managementUITitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -70,6 +77,10 @@ public class AdminUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        mainUI.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

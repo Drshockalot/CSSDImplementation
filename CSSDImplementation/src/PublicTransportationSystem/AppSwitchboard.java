@@ -5,7 +5,11 @@
  */
 package PublicTransportationSystem;
 
-import java.awt.Frame;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -60,7 +64,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
             }
         });
 
-        btn_buttonTemplate.setText("Next Button...?");
+        btn_buttonTemplate.setText("Don't Press Me");
         btn_buttonTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buttonTemplateActionPerformed(evt);
@@ -149,7 +153,14 @@ public class AppSwitchboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_switchAdminUIActionPerformed
 
     private void btn_buttonTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buttonTemplateActionPerformed
-        // TODO add your handling code here:
+        try {
+            URI test = new URI("https://www.nobrain.dk/");
+            java.awt.Desktop.getDesktop().browse(test);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }//GEN-LAST:event_btn_buttonTemplateActionPerformed
 
     /**
