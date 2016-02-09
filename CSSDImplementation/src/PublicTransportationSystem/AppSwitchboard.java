@@ -10,7 +10,7 @@ package PublicTransportationSystem;
  * @author jonathondickson
  */
 public class AppSwitchboard extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form AppSwitchboard
      */
@@ -27,21 +27,59 @@ public class AppSwitchboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_switchWebsiteUI = new javax.swing.JButton();
+        btn_switchAdminUI = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btn_switchWebsiteUI.setText("Website UI");
+        btn_switchWebsiteUI.setToolTipText("");
+        btn_switchWebsiteUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_switchWebsiteUIActionPerformed(evt);
+            }
+        });
+
+        btn_switchAdminUI.setText("Management UI");
+        btn_switchAdminUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_switchAdminUIActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_switchAdminUI)
+                    .addComponent(btn_switchWebsiteUI))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btn_switchWebsiteUI)
+                .addGap(18, 18, 18)
+                .addComponent(btn_switchAdminUI)
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_switchWebsiteUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchWebsiteUIActionPerformed
+        // Opens the website ui
+        new WebsiteUI().setVisible(true);
+    }//GEN-LAST:event_btn_switchWebsiteUIActionPerformed
+
+    private void btn_switchAdminUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchAdminUIActionPerformed
+        // Opens the admin ui
+        new AdminUI().setVisible(true);
+    }//GEN-LAST:event_btn_switchAdminUIActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +117,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_switchAdminUI;
+    private javax.swing.JButton btn_switchWebsiteUI;
     // End of variables declaration//GEN-END:variables
 }
