@@ -5,10 +5,20 @@
  */
 package PublicTransportationSystem;
 
+import java.util.Date;
 /**
  *
  * @author JoBa
  */
-public class Ticket {
+public class Ticket
+{
+    private int ticketID;
+    private String ticketType;
+    private Journey journey;
+    private boolean paid;
+    private Date purchaseTime;
     
+    public Journey GetJourney() {
+        return this.journey;
+    }
 }

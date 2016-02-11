@@ -9,6 +9,12 @@ package PublicTransportationSystem;
  *
  * @author JoBa
  */
-public class Journey {
+public class Journey
+{
+    private float price;
     
+    public float GetPrice()
+    {
+        return this.price;
+    }
 }

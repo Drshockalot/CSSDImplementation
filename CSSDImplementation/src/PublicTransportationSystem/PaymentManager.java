@@ -9,16 +9,19 @@ package PublicTransportationSystem;
  *
  * @author Drshockalotz
  */
-public class PaymentManager {
+public class PaymentManager
+{
     
 // Methods Begin    
 // <editor-fold>
     
-    public float CalculatePrice(Ticket currentTicket, float discount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public float CalculatePrice(Ticket currentTicket, float discount)
+    {
+        return currentTicket.GetJourney().GetPrice();
     }
 
-    public float calculateRefund(float dailyCap, float todaysTotal) {
+    public float calculateRefund(float dailyCap, float todaysTotal)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
