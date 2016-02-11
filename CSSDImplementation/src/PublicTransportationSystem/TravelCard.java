@@ -11,7 +11,8 @@ import java.util.Date;
  *
  * @author JoBa
  */
-public class TravelCard {
+public class TravelCard 
+{
     private int travelCardID;
     private User user;
     private float balance;
@@ -23,6 +24,7 @@ public class TravelCard {
     private Pass pass;
     private StationSystem lastDepartedStation;
     private Date lastDepartedTime;
+    private float dailyCap;
     
 // Methods Begin    
 // <editor-fold>
@@ -41,28 +43,38 @@ public class TravelCard {
         return hasPass;
     }
 
-    public float GetDiscount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public float GetDiscount()
+    {
+        // Return the value of 'discount'
+        return this.discount;
     }
 
-    public float GetBalance() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public float GetBalance()
+    {
+        // Return the value of 'balance'
+        return this.balance;
     }
 
-    public float GetDailyCap() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public float GetDailyCap()
+    {
+        // Return the value of 'dailyCap'
+        return this.dailyCap;
     }
 
-    public void SubtractFromBalance(float discountedPrice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void SubtractFromBalance(float cost)
+    {
+        // Subtract the cost from the balance
+        this.balance = this.balance - cost;
     }
 
-    public void SetPass(Pass newPass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void SetPass(Pass newPass)
+    {
+        this.pass = newPass;
     }
 
-    public void AddFunds(float refundAmount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void AddFunds(float refundAmount)
+    {
+        this.balance = refundAmount;
     }
     
 // </editor-fold>
