@@ -10,5 +10,20 @@ package PublicTransportationSystem;
  * @author JoBa
  */
 public class GateController {
+    private boolean open;
     
+    public boolean isOpen()
+    {
+        return this.open;
+    }
+    
+    public void close()
+    {
+        this.open = false;
+    }
+    
+    public void open()
+    {
+        this.open = true;
+    }
 }

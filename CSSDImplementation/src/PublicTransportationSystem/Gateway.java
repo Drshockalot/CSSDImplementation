@@ -7,11 +7,17 @@ package PublicTransportationSystem;
 
 /**
  *
- * @author JoBa
+ * @author Drshockalotz
  */
-public class Scanner {
-    public String read()
+public class Gateway {
+    private Scanner scanner;
+    private GateController gateController;
+    private String stationID;
+    
+    public void DetectCard()
     {
-        return "Some card ID";
+        String cardID = scanner.read();
+        
+        
     }
 }

@@ -16,5 +16,5 @@ public class StationSystem {
     private String location;
     private GPSCoordinates gps;
     private Zone zone;
-    private ArrayList<Scanner> scanners;
+    private ArrayList<Gateway> scanners;
 }
