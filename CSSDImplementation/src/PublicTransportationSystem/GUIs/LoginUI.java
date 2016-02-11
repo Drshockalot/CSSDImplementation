@@ -29,6 +29,14 @@ public class LoginUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_Password = new javax.swing.JPanel();
+        txtfield_Username = new javax.swing.JTextField();
+        lbl_Username = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        passfield_password = new javax.swing.JPasswordField();
+        btn_login = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login UI");
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -37,15 +45,63 @@ public class LoginUI extends javax.swing.JFrame {
             }
         });
 
+        lbl_Username.setText("Username");
+
+        jLabel1.setText("Password");
+
+        btn_login.setText("Login");
+
+        jButton1.setText("Register");
+
+        javax.swing.GroupLayout lbl_PasswordLayout = new javax.swing.GroupLayout(lbl_Password);
+        lbl_Password.setLayout(lbl_PasswordLayout);
+        lbl_PasswordLayout.setHorizontalGroup(
+            lbl_PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lbl_PasswordLayout.createSequentialGroup()
+                .addContainerGap(129, Short.MAX_VALUE)
+                .addGroup(lbl_PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbl_PasswordLayout.createSequentialGroup()
+                        .addGroup(lbl_PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addComponent(txtfield_Username)
+                            .addGroup(lbl_PasswordLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(lbl_Username))
+                            .addComponent(passfield_password, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(119, 119, 119))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbl_PasswordLayout.createSequentialGroup()
+                        .addGroup(lbl_PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btn_login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(164, 164, 164))))
+        );
+        lbl_PasswordLayout.setVerticalGroup(
+            lbl_PasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lbl_PasswordLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lbl_Username)
+                .addGap(8, 8, 8)
+                .addComponent(txtfield_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passfield_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(btn_login)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(lbl_Password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(lbl_Password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -91,5 +147,12 @@ public class LoginUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_login;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel lbl_Password;
+    private javax.swing.JLabel lbl_Username;
+    private javax.swing.JPasswordField passfield_password;
+    private javax.swing.JTextField txtfield_Username;
     // End of variables declaration//GEN-END:variables
 }

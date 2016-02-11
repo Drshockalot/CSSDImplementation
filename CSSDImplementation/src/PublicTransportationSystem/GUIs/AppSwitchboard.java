@@ -196,7 +196,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
 
     private void btn_buttonTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buttonTemplateActionPerformed
         try {
-            URI test = new URI("https://www.nobrain.dk/");
+            URI test = new URI("https://www.pornhub.com/");
             java.awt.Desktop.getDesktop().browse(test);
         } catch (URISyntaxException ex) {
             Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
@@ -215,7 +215,6 @@ public class AppSwitchboard extends javax.swing.JFrame {
 
     private void btn_switchScannerUI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUI1ActionPerformed
         JFrame loginUI = new LoginUI();
-        loginUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainUI.setEnabled(false);
         loginUI.setVisible(true);
     }//GEN-LAST:event_btn_switchScannerUI1ActionPerformed
