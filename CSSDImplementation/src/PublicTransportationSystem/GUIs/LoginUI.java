@@ -6,6 +6,7 @@
 package PublicTransportationSystem.GUIs;
 
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
+import javax.swing.JFrame;
 
 /**
  *
@@ -52,6 +53,11 @@ public class LoginUI extends javax.swing.JFrame {
         btn_login.setText("Login");
 
         jButton1.setText("Register");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout lbl_PasswordLayout = new javax.swing.GroupLayout(lbl_Password);
         lbl_Password.setLayout(lbl_PasswordLayout);
@@ -110,6 +116,12 @@ public class LoginUI extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         mainUI.setEnabled(true);
     }//GEN-LAST:event_formWindowClosed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFrame registerUI = new RegisterUI();
+        this.setEnabled(false);
+        registerUI.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
