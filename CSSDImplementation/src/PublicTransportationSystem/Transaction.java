@@ -9,6 +9,6 @@ package PublicTransportationSystem;
  *
  * @author JoBa
  */
-public class Payment {
+public class Transaction {
     
 }
