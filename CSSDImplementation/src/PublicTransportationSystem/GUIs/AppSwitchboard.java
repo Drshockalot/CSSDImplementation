@@ -216,6 +216,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
         JFrame loginUI = new LoginUI();
         mainUI.setEnabled(false);
         loginUI.setVisible(true);
+        loginUI.setResizable(false);
     }//GEN-LAST:event_btn_switchScannerUI1ActionPerformed
 
     /**
