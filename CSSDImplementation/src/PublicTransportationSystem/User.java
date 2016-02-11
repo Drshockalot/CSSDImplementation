@@ -21,13 +21,23 @@ public class User {
     {
         fullName = newFullName;
         username = newUsername;
-        password = newFullName;
-        userId = GenerateUserId();
+        password = newPassword;
+        userId = generateUserId();
     }
 
-    private int GenerateUserId() 
+    private int generateUserId() 
     {
         // When serializing we need to get the last id and increment onto it
         return 1;
+    }
+    
+    public boolean authenticateUser(String password)
+    {      
+        return this.password.equals(password);            
+    }
+    
+    public String getUsername()
+    {
+        return this.username;
     }
 }

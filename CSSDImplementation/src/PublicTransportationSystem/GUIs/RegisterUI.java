@@ -5,6 +5,8 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import static PublicTransportationSystem.GUIs.LoginUI.loginUI;
+
 /**
  *
  * @author jonathondickson
@@ -38,6 +40,11 @@ public class RegisterUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registration");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         lbl_fullname.setText("Full Name");
 
@@ -46,6 +53,11 @@ public class RegisterUI extends javax.swing.JFrame {
         txt_Password.setText("Password");
 
         btn_Register.setText("Register");
+        btn_Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,6 +109,14 @@ public class RegisterUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+         loginUI.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosed
+
+    private void btn_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterActionPerformed
+        
+    }//GEN-LAST:event_btn_RegisterActionPerformed
 
     /**
      * @param args the command line arguments

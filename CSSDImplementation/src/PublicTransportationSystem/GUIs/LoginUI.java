@@ -6,6 +6,8 @@
 package PublicTransportationSystem.GUIs;
 
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
+import static PublicTransportationSystem.GUIs.AppSwitchboard.travelSystem;
+import PublicTransportationSystem.User;
 import javax.swing.JFrame;
 
 /**
@@ -13,6 +15,7 @@ import javax.swing.JFrame;
  * @author jonathondickson
  */
 public class LoginUI extends javax.swing.JFrame {
+    static JFrame loginUI = new LoginUI();    
 
     /**
      * Creates new form LoginUI
@@ -39,7 +42,7 @@ public class LoginUI extends javax.swing.JFrame {
         passfield_password = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         btn_login = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btn_register = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,11 +75,16 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel2.setText("Login");
 
         btn_login.setText("Login");
-
-        jButton1.setText("Register");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_loginActionPerformed(evt);
+            }
+        });
+
+        btn_register.setText("Register");
+        btn_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registerActionPerformed(evt);
             }
         });
 
@@ -96,7 +104,7 @@ public class LoginUI extends javax.swing.JFrame {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 111, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_login))
         );
@@ -116,7 +124,7 @@ public class LoginUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_login)
-                    .addComponent(jButton1))
+                    .addComponent(btn_register))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -160,10 +168,31 @@ public class LoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFrame registerUI = new RegisterUI();
-        this.setEnabled(false);
-        registerUI.setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
+        JFrame registerUI = new RegisterUI();
+        loginUI.setEnabled(false);
+        registerUI.setVisible(true);
+    }//GEN-LAST:event_btn_registerActionPerformed
+
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        String username = txtfield_Username.getText();
+        String password = new String(passfield_password.getPassword());
+        
+        User user = travelSystem.getUsers().getUserByUsername(username);
+        
+        if (user.authenticateUser(password))
+        {
+            System.out.println(user);
+            this.dispose();            
+        }
+        else 
+        {
+            System.out.println("Turds");
+        }
+    }//GEN-LAST:event_btn_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,7 +231,7 @@ public class LoginUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_register;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

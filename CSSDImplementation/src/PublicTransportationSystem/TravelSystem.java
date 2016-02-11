@@ -10,5 +10,16 @@ package PublicTransportationSystem;
  * @author JoBa
  */
 public class TravelSystem {
+    private SetOfUsers systemUsers = new SetOfUsers();
     
+    public TravelSystem() 
+    {
+        User user = new User("Bill Cosby", "Test", "password");
+        systemUsers.add(user);
+    }
+
+    public SetOfUsers getUsers()
+    {
+        return systemUsers;
+    }
 }
