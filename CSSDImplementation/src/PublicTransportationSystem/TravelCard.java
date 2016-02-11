@@ -24,6 +24,9 @@ public class TravelCard {
     private StationSystem lastDepartedStation;
     private Date lastDepartedTime;
     
+// Methods Begin    
+// <editor-fold>
+    
     public StationSystem GetDepartureDetails()
     {
         // Return departure StationSystem
@@ -37,4 +40,31 @@ public class TravelCard {
         
         return hasPass;
     }
+
+    public float GetDiscount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public float GetBalance() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public float GetDailyCap() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void SubtractFromBalance(float discountedPrice) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void SetPass(Pass newPass) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void AddFunds(float refundAmount) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+// </editor-fold>
+// Methods End
 }
