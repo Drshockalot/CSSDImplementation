@@ -4,11 +4,17 @@
  * and open the template in the editor.
  */
 package PublicTransportationSystem;
-
+import java.util.ArrayList;
 /**
  *
  * @author JoBa
  */
 public class StationSystem {
-    
+    private int stationID;
+    private String name;
+    private String stationType;
+    private String location;
+    private GPSCoordinates gps;
+    private Zone zone;
+    private ArrayList<Scanner> scanners;
 }

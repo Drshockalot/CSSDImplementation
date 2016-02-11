@@ -7,18 +7,9 @@ package PublicTransportationSystem;
 
 /**
  *
- * @author JoBa
+ * @author Drshockalotz
  */
-public class Zone {
-    private String name;
-    
-    public void SetName(String name)
-    {
-        this.name = name;
-    }
-    
-    public String GetName()
-    {
-        return this.name;
-    }
+public class GPSCoordinates {
+    public float longitude;
+    public float latitude;
 }
