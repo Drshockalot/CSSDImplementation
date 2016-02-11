@@ -11,4 +11,13 @@ package PublicTransportationSystem;
  */
 public class PassManager {
     
+// Methods Begin    
+// <editor-fold>
+    
+    public Pass GeneratePass() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+// </editor-fold>
+// Methods End
 }
