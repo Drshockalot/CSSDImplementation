@@ -5,8 +5,6 @@
  */
 package PublicTransportationSystem;
 
-import java.util.Random;
-
 /**
  *
  * @author JoBa
@@ -17,8 +15,16 @@ public class User {
     private String username;
     private String password;
     
-    public User(String newFullName, String newUsername, String newPassword)
+    public User(Integer newUserId, String newFullName, String newUsername, String newPassword)
     {
+        if(newUserId == null)
+        {
+            userId = generateUserId();
+        }
+        else
+        {
+            userId = newUserId;
+        }
         fullName = newFullName;
         username = newUsername;
         password = newPassword;
@@ -28,7 +34,7 @@ public class User {
     private int generateUserId() 
     {
         // When serializing we need to get the last id and increment onto it
-        return 1;
+        return 5;
     }
     
     public boolean authenticateUser(String password)
@@ -39,5 +45,15 @@ public class User {
     public String getUsername()
     {
         return this.username;
+    }
+    
+    public String setUsername(String newUsername)
+    {
+        return this.username = newUsername;
+    }
+    
+    public String setPassword(String newPassword)
+    {
+        return this.password = newPassword;
     }
 }

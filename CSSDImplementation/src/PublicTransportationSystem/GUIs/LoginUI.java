@@ -173,8 +173,9 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         JFrame registerUI = new RegisterUI();
-        loginUI.setEnabled(false);
+        this.setEnabled(false);
         registerUI.setVisible(true);
+        registerUI.setAlwaysOnTop(true);
     }//GEN-LAST:event_btn_registerActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
@@ -186,7 +187,8 @@ public class LoginUI extends javax.swing.JFrame {
         if (user.authenticateUser(password))
         {
             System.out.println(user);
-            this.dispose();            
+            this.dispose(); 
+            
         }
         else 
         {

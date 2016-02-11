@@ -183,7 +183,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
         websiteUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainUI.setEnabled(false);
         websiteUI.setVisible(true);
-        
+        websiteUI.setAlwaysOnTop(true);
     }//GEN-LAST:event_btn_switchWebsiteUIActionPerformed
 
     private void btn_switchAdminUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchAdminUIActionPerformed
@@ -192,7 +192,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
         adminUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainUI.setEnabled(false);
         adminUI.setVisible(true);
-        
+        adminUI.setAlwaysOnTop(true);
     }//GEN-LAST:event_btn_switchAdminUIActionPerformed
 
     private void btn_buttonTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buttonTemplateActionPerformed
@@ -218,7 +218,9 @@ public class AppSwitchboard extends javax.swing.JFrame {
         JFrame loginUI = new LoginUI();
         mainUI.setEnabled(false);
         loginUI.setVisible(true);
+        loginUI.setAlwaysOnTop(true);
         loginUI.setResizable(false);
+
     }//GEN-LAST:event_btn_switchScannerUI1ActionPerformed
 
     /**

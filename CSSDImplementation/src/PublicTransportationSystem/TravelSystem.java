@@ -14,7 +14,13 @@ public class TravelSystem {
     
     public TravelSystem() 
     {
-        User user = new User("Bill Cosby", "Test", "password");
+        User user = new User(0,"Chadwick Skimspoon", "Freedom", "FromAmericaWithLove");
+        systemUsers.add(user);      
+        user = new User(1,"Jonathon LoveTheDickSon", "JD912", "LiverpoolFCTopSupporter");
+        systemUsers.add(user);
+        user = new User(2,"Jack McGlone Cosby", "billCosbySavedMe", "WhenIGetThatFeeling");
+        systemUsers.add(user);
+        user = new User(3,"Joshua Bates", "JoBa", "iDontKnowAboutYou");
         systemUsers.add(user);
     }
 
