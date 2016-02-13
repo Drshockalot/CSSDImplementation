@@ -8,15 +8,15 @@ package PublicTransportationSystem.GUIs;
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.User;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
  *
  * @author jonathondickson
  */
-public class LoginUI extends javax.swing.JFrame {
-
-    static JFrame loginUI = new LoginUI();
+public final class LoginUI extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginUI
@@ -174,29 +174,40 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         JFrame registerUI = new RegisterUI();
-        this.setEnabled(false);
         registerUI.setVisible(true);
         registerUI.setAlwaysOnTop(true);
     }//GEN-LAST:event_btn_registerActionPerformed
 
+    @SuppressWarnings("static-access")
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         String username = txtfield_Username.getText();
         String password = new String(passfield_password.getPassword());
 
-        User user = TravelSystem.getUsers().getUserByUsername(username);
+        try {
+            User user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
+            if (user != null) {
+                if (user.authenticateUser(password)) {
+                    openWebsiteUI();
+                    this.dispose();
 
-        if (user != null) {
-            if (user.authenticateUser(password)) {
-                System.out.println(user);
-                this.dispose();
-
+                } else {
+                    System.out.println("Turds");
+                }
             } else {
-                System.out.println("Turds");
+                System.out.println("Turd 2");
             }
-        } else {
-            System.out.println("Turds");
+        } catch (Throwable ex) {
+            Logger.getLogger(LoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void openWebsiteUI() {
+        JFrame websiteUI = new WebsiteUI();
+        websiteUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mainUI.setEnabled(false);
+        websiteUI.setVisible(true);
+        websiteUI.setAlwaysOnTop(true);
+    }
 
     /**
      * @param args the command line arguments

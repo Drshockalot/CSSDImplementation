@@ -5,6 +5,7 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.TravelSystem;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -17,14 +18,21 @@ import javax.swing.JFrame;
  * @author jonathondickson
  */
 public class AppSwitchboard extends javax.swing.JFrame {
+
     static JFrame mainUI = new AppSwitchboard();
-    
+
     /**
      * Creates new form AppSwitchboard
      */
+    @SuppressWarnings("static-access")
     public AppSwitchboard() {
         initComponents();
-                
+
+        try {
+            TravelSystem.getInstance().initUsers();
+        } catch (Throwable ex) {
+            Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -202,7 +210,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
             Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
     }//GEN-LAST:event_btn_buttonTemplateActionPerformed
 
     private void btn_switchInspectorUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchInspectorUIActionPerformed

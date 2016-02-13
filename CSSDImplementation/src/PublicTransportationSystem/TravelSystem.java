@@ -5,19 +5,32 @@
  */
 package PublicTransportationSystem;
 
+import Interfaces.SetOfUsersInterface;
+
 /**
  *
  * @author JoBa
  */
-public class TravelSystem {
+public class TravelSystem implements SetOfUsersInterface {
 
     private static SetOfUsers systemUsers = new SetOfUsers();
-    private static TravelSystem travelSystem = null;
+    private static TravelSystem INSTANCE;
 
     /**
      *
      */
     private TravelSystem() {
+    }
+
+    public static TravelSystem getInstance() throws Throwable {
+        if (INSTANCE == null) {
+            INSTANCE = new TravelSystem();
+        }
+
+        return INSTANCE;
+    }
+
+    public static void initUsers() {
         User user = new User(0, "Chadwick Skimspoon", "Freedom", "FromAmericaWithLove");
         systemUsers.add(user);
         user = new User(1, "Jonathon LoveTheDickSon", "JD912", "password");
@@ -28,22 +41,15 @@ public class TravelSystem {
         systemUsers.add(user);
     }
 
-    public static TravelSystem getInstance() {
-        if (travelSystem == null) {
-            travelSystem = new TravelSystem();
-        }
-
-        return travelSystem;
-    }
-
     /**
      *
+     * @param userId
      * @param fullname
      * @param username
      * @param password
      */
-    public static void registerUser(String fullname, String username, String password) {
-        User newUser = new User(5, fullname, username, password);
+    public static void registerUser(int userId, String fullname, String username, String password) {
+        User newUser = new User(userId, fullname, username, password);
 
         systemUsers.add(newUser);
     }
@@ -52,7 +58,7 @@ public class TravelSystem {
      *
      * @return List of Users
      */
-    public static SetOfUsers getUsers() {
+    public SetOfUsers getUsers() {
         return systemUsers;
     }
 }

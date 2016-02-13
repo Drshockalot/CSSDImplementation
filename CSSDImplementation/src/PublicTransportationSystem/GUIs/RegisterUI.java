@@ -5,8 +5,11 @@
  */
 package PublicTransportationSystem.GUIs;
 
-import static PublicTransportationSystem.GUIs.LoginUI.loginUI;
+import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.TravelSystem;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -112,16 +115,32 @@ public class RegisterUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        loginUI.setEnabled(true);
+
     }//GEN-LAST:event_formWindowClosed
 
+    @SuppressWarnings("static-access")
     private void btn_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterActionPerformed
         String fullname = txt_Fullname.getText();
         String username = txt_Username.getText();
         String password = new String(txtPass_Password.getPassword());
 
-        TravelSystem.registerUser(fullname, username, password);
+        try {
+            TravelSystem.getInstance()
+                    .registerUser(TravelSystem.getInstance().getUsers().getNextId(), fullname, username, password);
+        } catch (Throwable ex) {
+            Logger.getLogger(RegisterUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        openWebsiteUI();
+        this.dispose();
     }//GEN-LAST:event_btn_RegisterActionPerformed
+
+    private void openWebsiteUI() {
+        JFrame websiteUI = new WebsiteUI();
+        websiteUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mainUI.setEnabled(false);
+        websiteUI.setVisible(true);
+        websiteUI.setAlwaysOnTop(true);
+    }
 
     /**
      * @param args the command line arguments

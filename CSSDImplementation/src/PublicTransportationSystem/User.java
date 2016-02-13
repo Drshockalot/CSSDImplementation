@@ -17,24 +17,14 @@ public class User {
     private String password;
 
     public User(Integer newUserId, String newFullName, String newUsername, String newPassword) {
-        if (newUserId == null) {
-            userId = generateUserId();
-        } else {
-            userId = newUserId;
-        }
         fullName = newFullName;
         username = newUsername;
         password = newPassword;
-        userId = generateUserId();
+        userId = newUserId;
     }
 
     User() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private int generateUserId() {
-        // When serializing we need to get the last id and increment onto it
-        return 5;
     }
 
     public boolean authenticateUser(String password) {
@@ -43,6 +33,10 @@ public class User {
 
     public String getUsername() {
         return this.username;
+    }
+
+    public int getId() {
+        return this.userId;
     }
 
     public String setUsername(String newUsername) {

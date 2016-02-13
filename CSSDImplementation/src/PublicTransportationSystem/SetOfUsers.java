@@ -5,29 +5,39 @@
  */
 package PublicTransportationSystem;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  *
  * @author JoBa
  */
-public final class SetOfUsers extends ArrayList<User> {
-    
-    void addUser(User user)
-    {
+public final class SetOfUsers extends Vector<User> {
+
+    void addUser(User user) {
         super.add(user);
     }
-    
-    public User getUserByUsername(String username)
-    {
-        for(int i = 0; i < super.size(); i++)
-        {
-            if (super.get(i).getUsername().equals(username))
-            {
+
+    public User getUserByUsername(String username) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getUsername().equals(username)) {
                 return super.get(i);
             }
         }
-        
+
         return null;
+    }
+
+    public User getUserById(int id) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getId() == id) {
+                return super.get(i);
+            }
+        }
+
+        return null;
+    }
+
+    public int getNextId() {
+        return super.lastElement().getId() + 1;
     }
 }
