@@ -9,17 +9,17 @@ package PublicTransportationSystem;
  *
  * @author Drshockalotz
  */
-public class PassManager
-{
-    
-// Methods Begin    
-// <editor-fold>
-    
-    public Pass GeneratePass()
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+public final class PassManager {
+
+    private PassManager() {
     }
-    
+
+// Methods Begin
+// <editor-fold>
+    static public Pass GeneratePass(TypeEnums.PassType type) {
+        return new Pass(type);
+    }
+
 // </editor-fold>
 // Methods End
 }

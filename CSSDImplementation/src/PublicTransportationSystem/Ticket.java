@@ -5,20 +5,35 @@
  */
 package PublicTransportationSystem;
 
-import java.util.Date;
 /**
  *
  * @author JoBa
  */
-public class Ticket
-{
+public class Ticket {
+
+    private final TypeEnums.TicketType ticketType;
     private int ticketID;
-    private String ticketType;
-    private Journey journey;
+    private final Journey theJourney;
     private boolean paid;
-    private Date purchaseTime;
-    
+    private final String purchaseTime;
+
+    /**
+     *
+     * @param ticketTypeEnum
+     * @param journey
+     */
+    public Ticket(TypeEnums.TicketType ticketTypeEnum, Journey journey) {
+        // this.ticketID = ticketID;  TODO: Needs to be generated
+        this.theJourney = journey;
+        this.purchaseTime = CurrentDateTime.get();
+        this.ticketType = ticketTypeEnum;
+    }
+
     public Journey GetJourney() {
-        return this.journey;
+        return this.theJourney;
+    }
+
+    public TypeEnums.TicketType GetTicketType() {
+        return this.ticketType;
     }
 }
