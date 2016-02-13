@@ -5,7 +5,6 @@
  */
 package PublicTransportationSystem.GUIs;
 
-import PublicTransportationSystem.TravelSystem;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -19,7 +18,7 @@ import javax.swing.JFrame;
  */
 public class AppSwitchboard extends javax.swing.JFrame {
     static JFrame mainUI = new AppSwitchboard();
-    static TravelSystem travelSystem = new TravelSystem();
+    
     /**
      * Creates new form AppSwitchboard
      */

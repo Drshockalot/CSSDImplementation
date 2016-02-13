@@ -6,7 +6,7 @@
 package PublicTransportationSystem.GUIs;
 
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
-import static PublicTransportationSystem.GUIs.AppSwitchboard.travelSystem;
+import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.User;
 import javax.swing.JFrame;
 
@@ -15,7 +15,8 @@ import javax.swing.JFrame;
  * @author jonathondickson
  */
 public class LoginUI extends javax.swing.JFrame {
-    static JFrame loginUI = new LoginUI();    
+
+    static JFrame loginUI = new LoginUI();
 
     /**
      * Creates new form LoginUI
@@ -181,17 +182,18 @@ public class LoginUI extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         String username = txtfield_Username.getText();
         String password = new String(passfield_password.getPassword());
-        
-        User user = travelSystem.getUsers().getUserByUsername(username);
-        
-        if (user.authenticateUser(password))
-        {
-            System.out.println(user);
-            this.dispose(); 
-            
-        }
-        else 
-        {
+
+        User user = TravelSystem.getUsers().getUserByUsername(username);
+
+        if (user != null) {
+            if (user.authenticateUser(password)) {
+                System.out.println(user);
+                this.dispose();
+
+            } else {
+                System.out.println("Turds");
+            }
+        } else {
             System.out.println("Turds");
         }
     }//GEN-LAST:event_btn_loginActionPerformed
@@ -203,7 +205,7 @@ public class LoginUI extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

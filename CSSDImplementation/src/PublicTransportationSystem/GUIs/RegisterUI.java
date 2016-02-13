@@ -6,6 +6,7 @@
 package PublicTransportationSystem.GUIs;
 
 import static PublicTransportationSystem.GUIs.LoginUI.loginUI;
+import PublicTransportationSystem.TravelSystem;
 
 /**
  *
@@ -111,11 +112,15 @@ public class RegisterUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-         loginUI.setEnabled(true);
+        loginUI.setEnabled(true);
     }//GEN-LAST:event_formWindowClosed
 
     private void btn_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterActionPerformed
-        
+        String fullname = txt_Fullname.getText();
+        String username = txt_Username.getText();
+        String password = new String(txtPass_Password.getPassword());
+
+        TravelSystem.registerUser(fullname, username, password);
     }//GEN-LAST:event_btn_RegisterActionPerformed
 
     /**
@@ -125,7 +130,7 @@ public class RegisterUI extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

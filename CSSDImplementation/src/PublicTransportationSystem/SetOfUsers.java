@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author JoBa
  */
-public class SetOfUsers extends ArrayList<User> {
+public final class SetOfUsers extends ArrayList<User> {
     
     void addUser(User user)
     {

@@ -10,22 +10,49 @@ package PublicTransportationSystem;
  * @author JoBa
  */
 public class TravelSystem {
-    private SetOfUsers systemUsers = new SetOfUsers();
-    
-    public TravelSystem() 
-    {
-        User user = new User(0,"Chadwick Skimspoon", "Freedom", "FromAmericaWithLove");
-        systemUsers.add(user);      
-        user = new User(1,"Jonathon LoveTheDickSon", "JD912", "LiverpoolFCTopSupporter");
+
+    private static SetOfUsers systemUsers = new SetOfUsers();
+    private static TravelSystem travelSystem = null;
+
+    /**
+     *
+     */
+    private TravelSystem() {
+        User user = new User(0, "Chadwick Skimspoon", "Freedom", "FromAmericaWithLove");
         systemUsers.add(user);
-        user = new User(2,"Jack McGlone Cosby", "billCosbySavedMe", "WhenIGetThatFeeling");
+        user = new User(1, "Jonathon LoveTheDickSon", "JD912", "password");
         systemUsers.add(user);
-        user = new User(3,"Joshua Bates", "JoBa", "iDontKnowAboutYou");
+        user = new User(2, "lil' Jack", "snapback", "ch ch ch checkin' it out");
+        systemUsers.add(user);
+        user = new User(3, "Joshua Bates", "JoBa", "iDontKnowAboutYou");
         systemUsers.add(user);
     }
 
-    public SetOfUsers getUsers()
-    {
+    public static TravelSystem getInstance() {
+        if (travelSystem == null) {
+            travelSystem = new TravelSystem();
+        }
+
+        return travelSystem;
+    }
+
+    /**
+     *
+     * @param fullname
+     * @param username
+     * @param password
+     */
+    public static void registerUser(String fullname, String username, String password) {
+        User newUser = new User(5, fullname, username, password);
+
+        systemUsers.add(newUser);
+    }
+
+    /**
+     *
+     * @return List of Users
+     */
+    public static SetOfUsers getUsers() {
         return systemUsers;
     }
 }
