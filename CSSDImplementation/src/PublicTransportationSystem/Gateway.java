@@ -15,8 +15,9 @@ public class Gateway {
     private GateController gateController;
     private String stationID;
 
-    public void DetectCard() {
+    public void DetectCard() throws Throwable {
         int cardID = scanner.read();
-        //TravelSystem ts = TravelSystem.getInstance();
+        TravelSystem sys = TravelSystem.getInstance();
+        sys.GetTravelCard(cardID);
     }
 }
