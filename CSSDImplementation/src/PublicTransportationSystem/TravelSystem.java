@@ -14,6 +14,7 @@ import Interfaces.SetOfUsersInterface;
 public class TravelSystem implements SetOfUsersInterface {
 
     private static SetOfUsers systemUsers = new SetOfUsers();
+    private static SetOfTravelCards travelCards = new SetOfTravelCards();
     private static TravelSystem INSTANCE;
 
     /**
@@ -31,14 +32,10 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public static void initUsers() {
-        User user = new User(0, "Chadwick Skimspoon", "Freedom", "FromAmericaWithLove");
-        systemUsers.add(user);
-        user = new User(1, "Jonathon LoveTheDickSon", "JD912", "password");
-        systemUsers.add(user);
-        user = new User(2, "lil' Jack", "snapback", "ch ch ch checkin' it out");
-        systemUsers.add(user);
-        user = new User(3, "Joshua Bates", "JoBa", "iDontKnowAboutYou");
-        systemUsers.add(user);
+        registerUser("Chadwick Skimspoon", "Freedom", "FromAmericaWithLove");
+        registerUser("Jonathon LoveTheDickSon", "JD912", "password");
+        registerUser("lil' Jack", "snapback", "ch ch ch checkin' it out");
+        registerUser("Joshua Bates", "JoBa", "iDontKnowAboutYou");
     }
 
     /**
@@ -48,8 +45,8 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param username
      * @param password
      */
-    public static void registerUser(int userId, String fullname, String username, String password) {
-        User newUser = new User(userId, fullname, username, password);
+    public static void registerUser(String fullname, String username, String password) {
+        User newUser = new User(systemUsers.getNextId(), fullname, username, password);
 
         systemUsers.add(newUser);
     }
@@ -60,5 +57,13 @@ public class TravelSystem implements SetOfUsersInterface {
      */
     public SetOfUsers getUsers() {
         return systemUsers;
+    }
+
+    public SetOfTravelCards getTravelCards() {
+        return travelCards;
+    }
+
+    public TravelCard GetTravelCard(int id) {
+        return travelCards.getTravelCardById(id);
     }
 }

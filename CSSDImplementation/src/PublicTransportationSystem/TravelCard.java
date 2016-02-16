@@ -11,8 +11,8 @@ import java.util.Date;
  *
  * @author JoBa
  */
-public class TravelCard 
-{
+public class TravelCard {
+
     private int travelCardID;
     private User user;
     private float balance;
@@ -25,58 +25,53 @@ public class TravelCard
     private StationSystem lastDepartedStation;
     private Date lastDepartedTime;
     private float dailyCap;
-    
-// Methods Begin    
+
+// Methods Begin
 // <editor-fold>
-    
-    public StationSystem GetDepartureDetails()
-    {
+    public int getId() {
+        return this.travelCardID;
+    }
+
+    public StationSystem GetDepartureDetails() {
         // Return departure StationSystem
         // Giving access to data such as the Station peak status, and location
         return lastDepartedStation;
     }
-    
-    public boolean CheckForPass(Zone zone)
-    {
+
+    public boolean CheckForPass(Zone zone) {
         boolean hasPass = false;
-        
+
         return hasPass;
     }
 
-    public float GetDiscount()
-    {
+    public float GetDiscount() {
         // Return the value of 'discount'
         return this.discount;
     }
 
-    public float GetBalance()
-    {
+    public float GetBalance() {
         // Return the value of 'balance'
         return this.balance;
     }
 
-    public float GetDailyCap()
-    {
+    public float GetDailyCap() {
         // Return the value of 'dailyCap'
         return this.dailyCap;
     }
 
-    public void SubtractFromBalance(float cost)
-    {
+    public void SubtractFromBalance(float cost) {
         // Subtract the cost from the balance
         this.balance = this.balance - cost;
     }
 
-    public void SetPass(Pass newPass)
-    {
+    public void SetPass(Pass newPass) {
         this.pass = newPass;
     }
 
-    public void AddFunds(float refundAmount)
-    {
+    public void AddFunds(float refundAmount) {
         this.balance = refundAmount;
     }
-    
+
 // </editor-fold>
 // Methods End
 }

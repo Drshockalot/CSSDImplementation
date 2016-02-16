@@ -126,7 +126,7 @@ public class RegisterUI extends javax.swing.JFrame {
 
         try {
             TravelSystem.getInstance()
-                    .registerUser(TravelSystem.getInstance().getUsers().getNextId(), fullname, username, password);
+                    .registerUser(fullname, username, password);
         } catch (Throwable ex) {
             Logger.getLogger(RegisterUI.class.getName()).log(Level.SEVERE, null, ex);
         }

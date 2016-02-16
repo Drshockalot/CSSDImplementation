@@ -38,6 +38,6 @@ public final class SetOfUsers extends Vector<User> {
     }
 
     public int getNextId() {
-        return super.lastElement().getId() + 1;
+        return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 }
