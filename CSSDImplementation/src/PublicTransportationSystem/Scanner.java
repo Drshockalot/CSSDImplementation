@@ -10,8 +10,8 @@ package PublicTransportationSystem;
  * @author JoBa
  */
 public class Scanner {
-    public String read()
-    {
-        return "Some card ID";
+
+    public int read() {
+        return 1;
     }
 }

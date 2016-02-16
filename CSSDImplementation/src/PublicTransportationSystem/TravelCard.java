@@ -5,6 +5,7 @@
  */
 package PublicTransportationSystem;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -28,6 +29,24 @@ public class TravelCard {
 
 // Methods Begin
 // <editor-fold>
+    TravelCard(int travelCardID, User user, String cardType, float discount, float dailyCap) {
+        Date now = new Date();
+        Calendar expiry = Calendar.getInstance();
+        expiry.add(Calendar.DATE, 1095);
+        this.travelCardID = travelCardID;
+        this.user = user;
+        this.balance = 0.0f;
+        this.myTickets = new TicketList();
+        this.startDate = now;
+        this.expiryDate = expiry.getTime();
+        this.cardType = cardType;
+        this.discount = discount;
+        this.pass = null;
+        this.lastDepartedStation = null;
+        this.lastDepartedTime = null;
+        this.dailyCap = dailyCap;
+    }
+
     public int getId() {
         return this.travelCardID;
     }
@@ -61,7 +80,7 @@ public class TravelCard {
 
     public void SubtractFromBalance(float cost) {
         // Subtract the cost from the balance
-        this.balance = this.balance - cost;
+        this.balance -= cost;
     }
 
     public void SetPass(Pass newPass) {

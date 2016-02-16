@@ -10,14 +10,13 @@ package PublicTransportationSystem;
  * @author Drshockalotz
  */
 public class Gateway {
+
     private Scanner scanner;
     private GateController gateController;
     private String stationID;
-    
-    public void DetectCard()
-    {
-        String cardID = scanner.read();
-        
-        
+
+    public void DetectCard() {
+        int cardID = scanner.read();
+        //TravelSystem ts = TravelSystem.getInstance();
     }
 }
