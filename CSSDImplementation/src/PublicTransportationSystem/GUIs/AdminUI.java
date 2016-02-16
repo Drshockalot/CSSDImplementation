@@ -6,6 +6,10 @@
 package PublicTransportationSystem.GUIs;
 
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
+import PublicTransportationSystem.TravelSystem;
+import PublicTransportationSystem.User;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +22,7 @@ public class AdminUI extends javax.swing.JFrame {
      */
     public AdminUI() {
         initComponents();
+
     }
 
     /**
@@ -29,6 +34,14 @@ public class AdminUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        adminLoginPopup = new javax.swing.JDialog();
+        jLabel7 = new javax.swing.JLabel();
+        lbl_Username1 = new javax.swing.JLabel();
+        txt_Username = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        pass_Password = new javax.swing.JPasswordField();
+        btn_loginPopup = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lbl_managementUITitle = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -42,11 +55,74 @@ public class AdminUI extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
+        adminLoginPopup.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        adminLoginPopup.setTitle("Login");
+
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Login");
+
+        lbl_Username1.setText("Username");
+
+        jLabel8.setText("Password");
+
+        btn_loginPopup.setText("Login");
+        btn_loginPopup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_loginPopupActionPerformed(evt);
+            }
+        });
+
+        btn_cancel.setText("Cancel");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout adminLoginPopupLayout = new javax.swing.GroupLayout(adminLoginPopup.getContentPane());
+        adminLoginPopup.getContentPane().setLayout(adminLoginPopupLayout);
+        adminLoginPopupLayout.setHorizontalGroup(
+            adminLoginPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminLoginPopupLayout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addGroup(adminLoginPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(adminLoginPopupLayout.createSequentialGroup()
+                        .addComponent(btn_loginPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, Short.MAX_VALUE))
+                    .addComponent(pass_Password)
+                    .addComponent(txt_Username)
+                    .addComponent(lbl_Username1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        adminLoginPopupLayout.setVerticalGroup(
+            adminLoginPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminLoginPopupLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_Username1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pass_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(adminLoginPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_loginPopup)
+                    .addComponent(btn_cancel))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Management UI");
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -188,9 +264,44 @@ public class AdminUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    private void btn_loginPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginPopupActionPerformed
+        String username = txt_Username.getText();
+        String password = new String(pass_Password.getPassword());
+
+        try {
+            User user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
+            if (user != null) {
+                if (user.authenticateUser(password)) {
+                    openAdminUI();
+                } else {
+                    System.out.println("Turds");
+                }
+            } else {
+                System.out.println("Turd 2");
+            }
+        } catch (Throwable ex) {
+            Logger.getLogger(LoginUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_loginPopupActionPerformed
+
+    private void openAdminUI() {
+        adminLoginPopup.dispose();
+        this.setEnabled(true);
+        this.setAlwaysOnTop(true);
+    }
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        adminLoginPopup.pack();
+        adminLoginPopup.setVisible(true);
+        adminLoginPopup.setAlwaysOnTop(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        adminLoginPopup.dispose();
+        this.dispose();
         mainUI.setEnabled(true);
-    }//GEN-LAST:event_formWindowClosing
+    }//GEN-LAST:event_btn_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +310,7 @@ public class AdminUI extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -228,17 +339,25 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog adminLoginPopup;
+    private javax.swing.JButton btn_cancel;
+    private javax.swing.JButton btn_loginPopup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lbl_Username1;
     private javax.swing.JLabel lbl_managementUITitle;
+    private javax.swing.JPasswordField pass_Password;
     private javax.swing.JTabbedPane tab_Management;
+    private javax.swing.JTextField txt_Username;
     // End of variables declaration//GEN-END:variables
 }
