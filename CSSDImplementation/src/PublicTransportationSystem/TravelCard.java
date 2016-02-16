@@ -47,6 +47,7 @@ public class TravelCard {
     public final Date getExpiryDate() {
         Date now = new Date();
         Calendar expiry = Calendar.getInstance();
+        expiry.setTime(now);
         expiry.add(Calendar.DATE, 1095);
         return expiry.getTime();
     }
