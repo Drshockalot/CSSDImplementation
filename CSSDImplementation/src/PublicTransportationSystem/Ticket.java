@@ -35,31 +35,31 @@ public class Ticket {
         this.peak = peak;
     }
 
-    public Journey GetJourney() {
+    public Journey getJourney() {
         return this.theJourney;
     }
 
-    public TypeEnums.TicketType GetTicketType() {
+    public TypeEnums.TicketType getTicketType() {
         return this.ticketType;
     }
 
-    public int GetTicketId() {
+    public int getTicketId() {
         return this.ticketID;
     }
 
-    public Date GetPurchasedTime() {
+    public Date getPurchasedTime() {
         return this.purchaseTime;
     }
 
-    public boolean GetIsPaid() {
+    public boolean getIsPaid() {
         return this.paid;
     }
 
-    public void SetPaid(boolean isPaid) {
+    public void setPaid(boolean isPaid) {
         this.paid = isPaid;
     }
 
-    public boolean IsPeakTicket(boolean isPaid) {
+    public boolean isPeakTicket(boolean isPaid) {
         return this.peak;
     }
 }

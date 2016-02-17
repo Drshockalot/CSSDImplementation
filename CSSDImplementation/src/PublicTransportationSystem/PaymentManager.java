@@ -9,23 +9,18 @@ package PublicTransportationSystem;
  *
  * @author Drshockalotz
  */
-public class PaymentManager
-{
-    
-// Methods Begin    
+public class PaymentManager {
+
+// Methods Begin
 // <editor-fold>
-    
-    public float CalculatePrice(Ticket currentTicket, float discount)
-    {
-        return currentTicket.GetJourney().GetPrice();
+    public float calculatePrice(Ticket currentTicket, float discount) {
+        return currentTicket.getJourney().getPrice();
     }
 
-    public float calculateRefund(float dailyCap, float todaysTotal)
-    {
+    public float calculateRefund(float dailyCap, float todaysTotal) {
         return todaysTotal - dailyCap;
     }
-    
+
 // </editor-fold>
 // Methods End
-    
 }

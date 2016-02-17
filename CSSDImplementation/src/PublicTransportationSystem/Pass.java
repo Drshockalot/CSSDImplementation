@@ -20,10 +20,10 @@ public class Pass {
     private Zone arrivalZone;
 
     public Pass(TypeEnums.PassType passTypeEnum) {
-        this.expiryDate = SetExpiryDate();
+        this.expiryDate = setExpiryDate();
     }
 
-    private Date SetExpiryDate() {
+    private Date setExpiryDate() {
         // Sets the expiry to the end of the day
         Date expiry = new Date();
         Calendar calendar = Calendar.getInstance();
@@ -37,11 +37,11 @@ public class Pass {
         return expiry;
     }
 
-    private void SetPassType(TypeEnums.PassType ticketTypeEnum) {
+    private void setPassType(TypeEnums.PassType ticketTypeEnum) {
         this.passType = ticketTypeEnum;
     }
 
-    private Date GetExpiryDate() {
+    private Date getExpiryDate() {
         return this.expiryDate;
     }
 

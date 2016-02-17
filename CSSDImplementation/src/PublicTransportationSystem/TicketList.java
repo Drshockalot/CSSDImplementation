@@ -13,11 +13,11 @@ import java.util.Vector;
  */
 public class TicketList extends Vector<Ticket> {
 
-    float CalculateTodaysTotal() {
+    float calculateTodaysTotal() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int nextId() {
-        return super.isEmpty() ? 1 : super.lastElement().GetTicketId() + 1;
+        return super.isEmpty() ? 1 : super.lastElement().getTicketId() + 1;
     }
 }

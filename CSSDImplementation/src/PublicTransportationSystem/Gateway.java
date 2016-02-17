@@ -18,9 +18,9 @@ public class Gateway {
     public void DetectCard() throws Throwable {
         int cardID = scanner.read();
         TravelSystem sys = TravelSystem.getInstance();
-        TravelCard currCard = sys.GetTravelCard(cardID);
-        Zone zone = sys.GetStationSystem(this.stationID).getZone();
-        Zone departureZone = currCard.GetDepartureDetails().getZone();
+        TravelCard currCard = sys.getTravelCard(cardID);
+        Zone zone = sys.getStationSystem(this.stationID).getZone();
+        Zone departureZone = currCard.getDepartureDetails().getZone();
         boolean hasPass = currCard.checkForPass(zone, departureZone);
 
         if (hasPass) {
@@ -36,7 +36,7 @@ public class Gateway {
 
             Ticket currentTicket = new Ticket(userTickets.nextId(), TypeEnums.TicketType.TRAIN, journey, false);
             Transaction trans = new Transaction();
-            trans.PayForTicket(userTickets, currentTicket, currCard);
+            trans.payForTicket(userTickets, currentTicket, currCard);
 
             if (hasPaid) {
                 this.approve();

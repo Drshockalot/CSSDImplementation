@@ -12,17 +12,14 @@ package PublicTransportationSystem;
 public class SystemRole {
 
     String name;
-    PermissionList permissionList;
+    //PermissionList permissionList;
 
     public SystemRole(String name) {
         this.name = name;
 //        this.permissionList = permissionList;
     }
 
-//    public SystemRole getSystemRole() {
-//        return user.getUserRole();
-//    }
-    public boolean CheckForPermissions(Permission permission) {
+    public boolean checkForPermissions(Permission permission) {
         return true;
     }
 

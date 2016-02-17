@@ -56,49 +56,49 @@ public class TravelCard {
         return this.travelCardID;
     }
 
-    public StationSystem GetDepartureDetails() {
+    public StationSystem getDepartureDetails() {
         // Return departure StationSystem
         // Giving access to data such as the Station peak status, and location
         return lastDepartedStation;
     }
 
-    public boolean CheckForPass(Zone zone) {
+    public boolean checkForPass(Zone zone) {
         boolean hasPass = false;
 
         return hasPass;
     }
 
-    public float GetDiscount() {
+    public float getDiscount() {
         // Return the value of 'discount'
         return this.discount;
     }
 
-    public float GetBalance() {
+    public float getBalance() {
         // Return the value of 'balance'
         return this.balance;
     }
 
-    public float GetDailyCap() {
+    public float getDailyCap() {
         // Return the value of 'dailyCap'
         return this.dailyCap;
     }
 
-    public void SubtractFromBalance(float cost) {
+    public void subtractFromBalance(float cost) {
         // Subtract the cost from the balance
         this.balance -= cost;
     }
 
-    public void SetPass(Pass newPass) {
+    public void setPass(Pass newPass) {
         this.pass = newPass;
     }
 
-    public void AddFunds(float refundAmount) {
+    public void addFunds(float refundAmount) {
         this.balance = refundAmount;
     }
 
     public boolean checkForPass(Zone arrivingZone, Zone departureZone) {
-        return (departureZone.GetName() == null ? this.pass.departureZone().GetName() == null : departureZone.GetName().equals(this.pass.departureZone().GetName()))
-                && (this.pass.arrivalZone().GetName() == null ? arrivingZone.GetName() == null : this.pass.arrivalZone().GetName().equals(arrivingZone.GetName()));
+        return (departureZone.getName() == null ? this.pass.departureZone().getName() == null : departureZone.getName().equals(this.pass.departureZone().getName()))
+                && (this.pass.arrivalZone().getName() == null ? arrivingZone.getName() == null : this.pass.arrivalZone().getName().equals(arrivingZone.getName()));
     }
 
     public TicketList userTickets() {

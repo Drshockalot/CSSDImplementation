@@ -16,7 +16,7 @@ public final class PassManager {
 
 // Methods Begin
 // <editor-fold>
-    static public Pass GeneratePass(TypeEnums.PassType type) {
+    static public Pass generatePass(TypeEnums.PassType type) {
         return new Pass(type);
     }
 

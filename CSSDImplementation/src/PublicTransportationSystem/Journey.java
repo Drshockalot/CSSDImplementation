@@ -17,7 +17,7 @@ public class Journey {
         this.price = price;
     }
 
-    public float GetPrice() {
+    public float getPrice() {
         return this.price;
     }
 

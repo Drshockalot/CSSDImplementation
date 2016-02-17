@@ -73,11 +73,11 @@ public class TravelSystem implements SetOfUsersInterface {
         return systemTravelCards;
     }
 
-    public TravelCard GetTravelCard(int id) {
+    public TravelCard getTravelCard(int id) {
         return systemTravelCards.getTravelCardById(id);
     }
 
-    public StationSystem GetStationSystem(int id) {
+    public StationSystem getStationSystem(int id) {
         return systemStationSystems.getStationSystemById(id);
     }
 
