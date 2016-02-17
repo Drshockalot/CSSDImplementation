@@ -14,7 +14,8 @@ import Interfaces.SetOfUsersInterface;
 public class TravelSystem implements SetOfUsersInterface {
 
     private static SetOfUsers systemUsers = new SetOfUsers();
-    private static SetOfTravelCards travelCards = new SetOfTravelCards();
+    private static SetOfTravelCards systemTravelCards = new SetOfTravelCards();
+    private static SetOfStationSystems systemStationSystems = new SetOfStationSystems();
     private static TravelSystem INSTANCE;
 
     /**
@@ -54,6 +55,12 @@ public class TravelSystem implements SetOfUsersInterface {
         systemUsers.add(newUser);
     }
 
+    public static void registerTravelCard(User user, String cardType, float discount, float dailyCap) {
+        TravelCard newTravelCard = new TravelCard(systemTravelCards.nextId(), user, cardType, discount, dailyCap);
+
+        systemTravelCards.add(newTravelCard);
+    }
+
     /**
      *
      * @return List of Users
@@ -63,11 +70,15 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public SetOfTravelCards getTravelCards() {
-        return travelCards;
+        return systemTravelCards;
     }
 
     public TravelCard GetTravelCard(int id) {
-        return travelCards.getTravelCardById(id);
+        return systemTravelCards.getTravelCardById(id);
+    }
+
+    public StationSystem GetStationSystem(int id) {
+        return systemStationSystems.getStationSystemById(id);
     }
 
     public User getUser(String username, String password) {

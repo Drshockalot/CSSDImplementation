@@ -18,8 +18,22 @@ public final class CurrentDateTime {
     private CurrentDateTime() {
     }
 
-    public static String get() {
+    public static String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+
+        return dateFormat.format(date);
+    }
+
+    public static String getDate() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+
+        return dateFormat.format(date);
+    }
+
+    public static String getTime() {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();
 
         return dateFormat.format(date);

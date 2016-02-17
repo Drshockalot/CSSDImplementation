@@ -5,6 +5,8 @@
  */
 package PublicTransportationSystem;
 
+import java.util.Date;
+
 /**
  *
  * @author JoBa
@@ -12,21 +14,25 @@ package PublicTransportationSystem;
 public class Ticket {
 
     private final TypeEnums.TicketType ticketType;
-    private int ticketID;
+    private final int ticketID;
     private final Journey theJourney;
     private boolean paid;
-    private final String purchaseTime;
+    private final Date purchaseTime;
+    private final boolean peak;
 
     /**
      *
+     * @param ticketID
      * @param ticketTypeEnum
      * @param journey
+     * @param peak
      */
-    public Ticket(TypeEnums.TicketType ticketTypeEnum, Journey journey) {
-        // this.ticketID = ticketID;  TODO: Needs to be generated
+    public Ticket(int ticketID, TypeEnums.TicketType ticketTypeEnum, Journey journey, boolean peak) {
+        this.ticketID = ticketID;
         this.theJourney = journey;
-        this.purchaseTime = CurrentDateTime.get();
+        this.purchaseTime = new Date();
         this.ticketType = ticketTypeEnum;
+        this.peak = peak;
     }
 
     public Journey GetJourney() {
@@ -35,5 +41,25 @@ public class Ticket {
 
     public TypeEnums.TicketType GetTicketType() {
         return this.ticketType;
+    }
+
+    public int GetTicketId() {
+        return this.ticketID;
+    }
+
+    public Date GetPurchasedTime() {
+        return this.purchaseTime;
+    }
+
+    public boolean GetIsPaid() {
+        return this.paid;
+    }
+
+    public void SetPaid(boolean isPaid) {
+        this.paid = isPaid;
+    }
+
+    public boolean IsPeakTicket(boolean isPaid) {
+        return this.peak;
     }
 }

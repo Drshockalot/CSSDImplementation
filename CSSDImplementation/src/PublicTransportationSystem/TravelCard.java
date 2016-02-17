@@ -5,6 +5,7 @@
  */
 package PublicTransportationSystem;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -28,6 +29,29 @@ public class TravelCard {
 
 // Methods Begin
 // <editor-fold>
+    TravelCard(int travelCardID, User user, String cardType, float discount, float dailyCap) {
+        this.travelCardID = travelCardID;
+        this.user = user;
+        this.balance = 0.0f;
+        this.myTickets = new TicketList();
+        this.startDate = new Date();
+        this.expiryDate = getExpiryDate();
+        this.cardType = cardType;
+        this.discount = discount;
+        this.pass = null;
+        this.lastDepartedStation = null;
+        this.lastDepartedTime = null;
+        this.dailyCap = dailyCap;
+    }
+
+    public final Date getExpiryDate() {
+        Date now = new Date();
+        Calendar expiry = Calendar.getInstance();
+        expiry.setTime(now);
+        expiry.add(Calendar.DATE, 1095);
+        return expiry.getTime();
+    }
+
     public int getId() {
         return this.travelCardID;
     }
@@ -61,7 +85,7 @@ public class TravelCard {
 
     public void SubtractFromBalance(float cost) {
         // Subtract the cost from the balance
-        this.balance = this.balance - cost;
+        this.balance -= cost;
     }
 
     public void SetPass(Pass newPass) {
@@ -70,6 +94,15 @@ public class TravelCard {
 
     public void AddFunds(float refundAmount) {
         this.balance = refundAmount;
+    }
+
+    public boolean checkForPass(Zone arrivingZone, Zone departureZone) {
+        return (departureZone.GetName() == null ? this.pass.departureZone().GetName() == null : departureZone.GetName().equals(this.pass.departureZone().GetName()))
+                && (this.pass.arrivalZone().GetName() == null ? arrivingZone.GetName() == null : this.pass.arrivalZone().GetName().equals(arrivingZone.GetName()));
+    }
+
+    public TicketList userTickets() {
+        return this.myTickets;
     }
 
 // </editor-fold>
