@@ -20,8 +20,17 @@ public class StationSystem {
     private GPSCoordinates gps;
     private Zone zone;
     private ArrayList<Gateway> scanners;
+    private boolean peak;
 
     public int getId() {
         return this.stationID;
+    }
+
+    public Zone getZone() {
+        return this.zone;
+    }
+
+    public boolean getPeak() {
+        return this.peak;
     }
 }

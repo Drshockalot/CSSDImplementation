@@ -96,6 +96,15 @@ public class TravelCard {
         this.balance = refundAmount;
     }
 
+    public boolean checkForPass(Zone arrivingZone, Zone departureZone) {
+        return (departureZone.GetName() == null ? this.pass.departureZone().GetName() == null : departureZone.GetName().equals(this.pass.departureZone().GetName()))
+                && (this.pass.arrivalZone().GetName() == null ? arrivingZone.GetName() == null : this.pass.arrivalZone().GetName().equals(arrivingZone.GetName()));
+    }
+
+    public TicketList userTickets() {
+        return this.myTickets;
+    }
+
 // </editor-fold>
 // Methods End
 }

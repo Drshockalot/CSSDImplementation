@@ -44,4 +44,12 @@ public class Pass {
     private Date GetExpiryDate() {
         return this.expiryDate;
     }
+
+    public Zone arrivalZone() {
+        return this.arrivalZone;
+    }
+
+    public Zone departureZone() {
+        return this.departureZone;
+    }
 }

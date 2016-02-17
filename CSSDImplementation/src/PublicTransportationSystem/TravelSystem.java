@@ -15,6 +15,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
     private static SetOfUsers systemUsers = new SetOfUsers();
     private static SetOfTravelCards systemTravelCards = new SetOfTravelCards();
+    private static SetOfStationSystems systemStationSystems = new SetOfStationSystems();
     private static TravelSystem INSTANCE;
 
     /**
@@ -71,5 +72,9 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public TravelCard GetTravelCard(int id) {
         return systemTravelCards.getTravelCardById(id);
+    }
+
+    public StationSystem GetStationSystem(int id) {
+        return systemStationSystems.getStationSystemById(id);
     }
 }
