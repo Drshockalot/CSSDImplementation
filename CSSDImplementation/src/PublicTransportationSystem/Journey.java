@@ -9,12 +9,19 @@ package PublicTransportationSystem;
  *
  * @author JoBa
  */
-public class Journey
-{
+public class Journey {
+
     private float price;
-    
-    public float GetPrice()
-    {
+
+    public Journey(float price) {
+        this.price = price;
+    }
+
+    public float GetPrice() {
         return this.price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

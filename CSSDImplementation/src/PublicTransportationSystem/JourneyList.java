@@ -10,5 +10,15 @@ package PublicTransportationSystem;
  * @author JoBa
  */
 public class JourneyList {
-    
+
+    public JourneyList() {
+
+    }
+
+    public Journey getJourneyAndPriceFromZones(Zone departureZone, Zone arrivalZone) {
+        //  Add price for corresponding zones
+        float price = 4.20f;
+        Journey ret = new Journey(price);
+        return ret;
+    }
 }

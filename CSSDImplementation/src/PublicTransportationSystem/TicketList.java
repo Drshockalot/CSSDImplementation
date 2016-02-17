@@ -5,14 +5,19 @@
  */
 package PublicTransportationSystem;
 
+import java.util.Vector;
+
 /**
  *
  * @author JoBa
  */
-public class TicketList {
+public class TicketList extends Vector<Ticket> {
 
     float CalculateTodaysTotal() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    public int nextId() {
+        return super.isEmpty() ? 1 : super.lastElement().GetTicketId() + 1;
+    }
 }
