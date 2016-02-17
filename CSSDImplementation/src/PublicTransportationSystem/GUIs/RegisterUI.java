@@ -6,6 +6,7 @@
 package PublicTransportationSystem.GUIs;
 
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
+import PublicTransportationSystem.SystemRole;
 import PublicTransportationSystem.TravelSystem;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,12 +36,16 @@ public class RegisterUI extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbl_fullname = new javax.swing.JLabel();
-        txt_Fullname = new javax.swing.JTextField();
+        txt_Firstname = new javax.swing.JTextField();
         lbl_Username = new javax.swing.JLabel();
         txt_Username = new javax.swing.JTextField();
         txt_Password = new javax.swing.JLabel();
         txtPass_Password = new javax.swing.JPasswordField();
         btn_Register = new javax.swing.JButton();
+        txt_Surname = new javax.swing.JTextField();
+        lbl_fullname1 = new javax.swing.JLabel();
+        txt_Email = new javax.swing.JTextField();
+        lbl_Username1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registration");
@@ -50,7 +55,13 @@ public class RegisterUI extends javax.swing.JFrame {
             }
         });
 
-        lbl_fullname.setText("Full Name");
+        lbl_fullname.setText("First Name");
+
+        txt_Firstname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_FirstnameActionPerformed(evt);
+            }
+        });
 
         lbl_Username.setText("Username");
 
@@ -63,6 +74,10 @@ public class RegisterUI extends javax.swing.JFrame {
             }
         });
 
+        lbl_fullname1.setText("Surname");
+
+        lbl_Username1.setText("Email");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -71,33 +86,50 @@ public class RegisterUI extends javax.swing.JFrame {
                 .addGap(162, 162, 162)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_Register)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txt_Password)
-                        .addComponent(lbl_Username)
-                        .addComponent(lbl_fullname)
-                        .addComponent(txt_Fullname)
-                        .addComponent(txt_Username, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                        .addComponent(txtPass_Password)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_Password)
+                            .addComponent(lbl_Username)
+                            .addComponent(lbl_fullname)
+                            .addComponent(txt_Firstname)
+                            .addComponent(txt_Username, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                            .addComponent(txtPass_Password)
+                            .addComponent(lbl_fullname1)
+                            .addComponent(txt_Surname))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_Email, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_Username1)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap()
                 .addComponent(lbl_fullname)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Fullname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_Username)
+                .addComponent(txt_Firstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txt_Password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_fullname1)
+                .addGap(10, 10, 10)
+                .addComponent(txt_Surname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Username)
+                    .addComponent(lbl_Username1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_Password, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPass_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Register)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,19 +152,26 @@ public class RegisterUI extends javax.swing.JFrame {
 
     @SuppressWarnings("static-access")
     private void btn_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterActionPerformed
-        String fullname = txt_Fullname.getText();
+        String firstName = txt_Firstname.getText();
+        String surname = txt_Surname.getText();
         String username = txt_Username.getText();
+        String email = txt_Email.getText();
         String password = new String(txtPass_Password.getPassword());
+        SystemRole newSysRole = new SystemRole("USER");
 
         try {
             TravelSystem.getInstance()
-                    .registerUser(fullname, username, password);
+                    .registerUser(firstName, surname, username, email, password, newSysRole);
         } catch (Throwable ex) {
             Logger.getLogger(RegisterUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         openWebsiteUI();
         this.dispose();
     }//GEN-LAST:event_btn_RegisterActionPerformed
+
+    private void txt_FirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FirstnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_FirstnameActionPerformed
 
     private void openWebsiteUI() {
         JFrame websiteUI = new WebsiteUI();
@@ -181,10 +220,14 @@ public class RegisterUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_Register;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_Username;
+    private javax.swing.JLabel lbl_Username1;
     private javax.swing.JLabel lbl_fullname;
+    private javax.swing.JLabel lbl_fullname1;
     private javax.swing.JPasswordField txtPass_Password;
-    private javax.swing.JTextField txt_Fullname;
+    private javax.swing.JTextField txt_Email;
+    private javax.swing.JTextField txt_Firstname;
     private javax.swing.JLabel txt_Password;
+    private javax.swing.JTextField txt_Surname;
     private javax.swing.JTextField txt_Username;
     // End of variables declaration//GEN-END:variables
 }

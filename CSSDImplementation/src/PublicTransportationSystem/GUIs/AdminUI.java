@@ -269,12 +269,10 @@ public class AdminUI extends javax.swing.JFrame {
         String password = new String(pass_Password.getPassword());
 
         try {
-            User user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
+            User user = TravelSystem.getInstance().getUser(username, password);
             if (user != null) {
-                if (user.authenticateUser(password)) {
+                if (user.getSystemRole().isAdmin()) {
                     openAdminUI();
-                } else {
-                    System.out.println("Turds");
                 }
             } else {
                 System.out.println("Turd 2");

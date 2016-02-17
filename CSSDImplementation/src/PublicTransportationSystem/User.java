@@ -11,16 +11,24 @@ package PublicTransportationSystem;
  */
 public class User {
 
-    private String fullName;
+    private String forename;
+    private String surname;
     private int userId;
     private String username;
     private String password;
+    private SystemRole userRole;
+    private int travelCard;
+    private String email;
 
-    public User(Integer newUserId, String newFullName, String newUsername, String newPassword) {
-        fullName = newFullName;
+    public User(Integer newUserId, String newForename, String newSurname, String newUsername, String newEmail, String newPassword, SystemRole newUserRole) {
+        forename = newForename;
+        surname = newSurname;
         username = newUsername;
         password = newPassword;
         userId = newUserId;
+        userRole = newUserRole;
+        travelCard = 1;
+        email = newEmail;
     }
 
     User() {
@@ -29,6 +37,10 @@ public class User {
 
     public boolean authenticateUser(String password) {
         return this.password.equals(password);
+    }
+
+    public SystemRole getSystemRole() {
+        return this.userRole;
     }
 
     public String getUsername() {

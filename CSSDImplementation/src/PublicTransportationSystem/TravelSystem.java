@@ -32,21 +32,24 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public static void initUsers() {
-        registerUser("Chadwick Skimspoon", "Freedom", "FromAmericaWithLove");
-        registerUser("Jonathon LoveTheDickSon", "JD912", "password");
-        registerUser("lil' Jack", "snapback", "ch ch ch checkin' it out");
-        registerUser("Joshua Bates", "JoBa", "iDontKnowAboutYou");
+        SystemRole newSysRole = new SystemRole("ADMIN");
+        registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", "FromAmericaWithLove", newSysRole);
+        registerUser("Jonathon", "LoveTheDickSon", "JD912", "test@test.co.uk", "password", newSysRole);
+        registerUser("lil'", "Jack", "snapback", "test@test.org", "ch ch ch checkin' it out", newSysRole);
+        registerUser("Joshua", "Bates", "JoBa", "test@test.fr", "iDontKnowAboutYou", newSysRole);
     }
 
     /**
      *
-     * @param userId
-     * @param fullname
+     * @param forename
+     * @param surname
      * @param username
+     * @param email
      * @param password
+     * @param newSysRole
      */
-    public static void registerUser(String fullname, String username, String password) {
-        User newUser = new User(systemUsers.getNextId(), fullname, username, password);
+    public static void registerUser(String forename, String surname, String username, String email, String password, SystemRole newSysRole) {
+        User newUser = new User(systemUsers.getNextId(), forename, surname, username, email, password, newSysRole);
 
         systemUsers.add(newUser);
     }
@@ -65,5 +68,18 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public TravelCard GetTravelCard(int id) {
         return travelCards.getTravelCardById(id);
+    }
+
+    public User getUser(String username, String password) {
+        User user = systemUsers.getUserByUsername(username);
+
+        if (user != null) {
+            if (user.authenticateUser(password)) {
+                return user;
+            }
+            return null;
+        }
+
+        return null;
     }
 }

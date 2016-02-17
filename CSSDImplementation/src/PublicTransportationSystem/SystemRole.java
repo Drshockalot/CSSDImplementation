@@ -10,5 +10,28 @@ package PublicTransportationSystem;
  * @author JoBa
  */
 public class SystemRole {
-    
+
+    String name;
+    PermissionList permissionList;
+
+    public SystemRole(String name) {
+        this.name = name;
+//        this.permissionList = permissionList;
+    }
+
+//    public SystemRole getSystemRole() {
+//        return user.getUserRole();
+//    }
+    public boolean CheckForPermissions(Permission permission) {
+        return true;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public boolean isAdmin() {
+        return this.name.equals("ADMIN");
+    }
+
 }

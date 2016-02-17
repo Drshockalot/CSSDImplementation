@@ -5,10 +5,29 @@
  */
 package PublicTransportationSystem;
 
+import java.util.Vector;
+
 /**
  *
  * @author JoBa
  */
-public class PermissionList {
-    
+public class PermissionList extends Vector<Permission> {
+
+    void addPermission(Permission permission) {
+        super.add(permission);
+    }
+
+    void removePermission(Permission permission) {
+        super.remove(permission);
+    }
+
+    public boolean searchPermissionList(int permissionId) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getId() == permissionId) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
