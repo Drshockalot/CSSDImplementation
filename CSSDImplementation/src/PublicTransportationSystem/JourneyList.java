@@ -20,11 +20,20 @@ public class JourneyList extends Vector<Journey> {
     public Journey getJourneyAndPriceFromZones(Zone departureZone, Zone arrivalZone) {
         //  Add price for corresponding zones - Is this right??
         float price = 4.20f;
-        Journey ret = new Journey(price);
+        float onPeak = 4.20f;
+        Journey ret = new Journey(price, onPeak, departureZone, arrivalZone);
         return ret;
     }
 
-//    public Journey getJourney(Zone startZone, Zone endZone) {
-//
-//    }
+    public Journey getJourney(Zone startZone, Zone endZone) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getStartZone().getId() == startZone.getId()) {
+                if (super.get(i).getEndZone().getId() == endZone.getId()) {
+                    return super.get(i);
+                }
+            }
+        }
+
+        return null;
+    }
 }

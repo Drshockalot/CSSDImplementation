@@ -18,8 +18,8 @@ public class Gateway {
     public void DetectCard() throws Throwable {
         int cardID = scanner.read();
         TravelSystem sys = TravelSystem.getInstance();
-        TravelCard currCard = sys.getTravelCard(cardID);
-        Zone zone = sys.getStationSystem(this.stationID).getZone();
+        TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
+        Zone zone = sys.getStationSystems().getStationSystemById(this.stationID).getZone();
         Zone departureZone = currCard.getDepartureDetails().getZone();
         boolean hasPass = currCard.checkForPass(zone, departureZone);
 
