@@ -39,7 +39,7 @@ public class TravelSystem implements SetOfUsersInterface {
         registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", "FromAmericaWithLove", newSysRole);
         registerUser("Jonathon", "LoveTheDickSon", "JD912", "test@test.co.uk", "password", newSysRole);
         registerUser("lil'", "Jack", "snapback", "test@test.org", "ch ch ch checkin' it out", newSysRole);
-        registerUser("Joshua", "Bates", "JoBa", "test@test.fr", "iDontKnowAboutYou", newSysRole);
+        registerUser("Joshua", "Bates", "JoBa", "test@test.fr", "password", newSysRole);
     }
 
     public static void initZones() {
