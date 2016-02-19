@@ -11,24 +11,32 @@ package PublicTransportationSystem;
  */
 public class Journey {
 
-    private float price;
+    private float offPeakPrice;
     private float onPeakPrice;
     private Zone startZone;
     private Zone endZone;
 
-    public Journey(float price, float onPeakPrice, Zone startZone, Zone endZone) {
-        this.price = price;
+    public Journey(float offPeakPrice, float onPeakPrice, Zone startZone, Zone endZone) {
+        this.offPeakPrice = offPeakPrice;
         this.onPeakPrice = onPeakPrice;
         this.startZone = startZone;
         this.endZone = endZone;
     }
 
-    public float getPrice() {
-        return this.price;
+    public float getOffPeakPrice() {
+        return this.offPeakPrice;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public float getOnPeakPrice() {
+        return this.onPeakPrice;
+    }
+
+    public void setOffPeakPrice(float price) {
+        this.offPeakPrice = price;
+    }
+
+    public void setOnPeakPrice(float price) {
+        this.onPeakPrice = price;
     }
 
     public Zone getStartZone() {

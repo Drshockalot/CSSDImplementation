@@ -27,6 +27,8 @@ public class AppSwitchboard extends javax.swing.JFrame {
 
         try {
             TravelSystem.getInstance().initUsers();
+            TravelSystem.getInstance().initZones();
+            TravelSystem.getInstance().initJourneyList();
         } catch (Throwable ex) {
             Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
         }
