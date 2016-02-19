@@ -8,6 +8,7 @@ package PublicTransportationSystem.GUIs;
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.User;
+import PublicTransportationSystem.Zone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -300,6 +301,10 @@ public class AdminUI extends javax.swing.JFrame {
         this.dispose();
         mainUI.setEnabled(true);
     }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void editJourney(float newPrice, Zone startZone, Zone endZone) {
+
+    }
 
     /**
      * @param args the command line arguments
