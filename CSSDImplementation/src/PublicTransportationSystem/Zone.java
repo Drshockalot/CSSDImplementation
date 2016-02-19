@@ -10,15 +10,24 @@ package PublicTransportationSystem;
  * @author JoBa
  */
 public class Zone {
+
     private String name;
-    
-    public void setName(String name)
-    {
+    private int id;
+
+    public Zone(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
-    
-    public String getName()
-    {
+
+    public String getName() {
         return this.name;
+    }
+
+    public int getId() {
+        return this.id;
     }
 }

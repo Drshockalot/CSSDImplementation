@@ -18,13 +18,13 @@ public class Gateway {
     public void PerformScanOut() throws Throwable {
         int cardID = scanner.read();
         TravelSystem sys = TravelSystem.getInstance();
-        TravelCard currCard = sys.getTravelCard(cardID);
+        TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
+        Zone zone = sys.getStationSystems().getStationSystemById(this.stationID).getZone();
 
         if (currCard == null) {
             this.reject();
         }
 
-        Zone zone = sys.getStationSystem(this.stationID).getZone();
         Zone departureZone = currCard.getDepartureDetails().getZone();
         boolean hasPass = currCard.checkForPass(zone, departureZone);
 
@@ -54,7 +54,7 @@ public class Gateway {
     public void PerformScanIn() throws Throwable {
         int cardID = scanner.read();
         TravelSystem sys = TravelSystem.getInstance();
-        TravelCard currCard = sys.getTravelCard(cardID);
+        TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
 
         if (currCard != null) {
             if (currCard.getBalance() > 0) {

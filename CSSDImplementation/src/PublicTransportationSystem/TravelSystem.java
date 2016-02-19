@@ -16,6 +16,8 @@ public class TravelSystem implements SetOfUsersInterface {
     private static SetOfUsers systemUsers = new SetOfUsers();
     private static SetOfTravelCards systemTravelCards = new SetOfTravelCards();
     private static SetOfStationSystems systemStationSystems = new SetOfStationSystems();
+    private static JourneyList systemJourneys = new JourneyList();
+    private static ZoneList systemZones = new ZoneList();
     private static TravelSystem INSTANCE;
 
     /**
@@ -40,6 +42,43 @@ public class TravelSystem implements SetOfUsersInterface {
         registerUser("Joshua", "Bates", "JoBa", "test@test.fr", "iDontKnowAboutYou", newSysRole);
     }
 
+    public static void initZones() {
+        registerZone("Zone A", 1);
+        registerZone("Zone B", 2);
+        registerZone("Zone C", 3);
+        registerZone("Zone D", 4);
+        registerZone("Zone E", 5);
+    }
+
+    public static void initJourneyList() {
+        registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(1), systemZones.getZoneById(1));
+        registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(1), systemZones.getZoneById(2));
+        registerJourney((float) 3.99, (float) 4.46, systemZones.getZoneById(1), systemZones.getZoneById(3));
+        registerJourney((float) 4.99, (float) 5.46, systemZones.getZoneById(1), systemZones.getZoneById(4));
+        registerJourney((float) 5.99, (float) 6.46, systemZones.getZoneById(1), systemZones.getZoneById(5));
+        registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(2), systemZones.getZoneById(1));
+        registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(2), systemZones.getZoneById(2));
+        registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(2), systemZones.getZoneById(3));
+        registerJourney((float) 3.99, (float) 4.46, systemZones.getZoneById(2), systemZones.getZoneById(4));
+        registerJourney((float) 4.99, (float) 5.46, systemZones.getZoneById(2), systemZones.getZoneById(5));
+        registerJourney((float) 3.99, (float) 4.46, systemZones.getZoneById(3), systemZones.getZoneById(1));
+        registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(3), systemZones.getZoneById(2));
+        registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(3), systemZones.getZoneById(3));
+        registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(3), systemZones.getZoneById(4));
+        registerJourney((float) 3.99, (float) 4.46, systemZones.getZoneById(3), systemZones.getZoneById(5));
+        registerJourney((float) 4.99, (float) 5.46, systemZones.getZoneById(4), systemZones.getZoneById(1));
+        registerJourney((float) 3.99, (float) 4.46, systemZones.getZoneById(4), systemZones.getZoneById(2));
+        registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(4), systemZones.getZoneById(3));
+        registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(4), systemZones.getZoneById(4));
+        registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(4), systemZones.getZoneById(5));
+        registerJourney((float) 5.99, (float) 6.46, systemZones.getZoneById(5), systemZones.getZoneById(1));
+        registerJourney((float) 4.99, (float) 5.46, systemZones.getZoneById(5), systemZones.getZoneById(2));
+        registerJourney((float) 3.99, (float) 4.46, systemZones.getZoneById(5), systemZones.getZoneById(3));
+        registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(5), systemZones.getZoneById(4));
+        registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(5), systemZones.getZoneById(5));
+
+    }
+
     /**
      *
      * @param forename
@@ -53,6 +92,18 @@ public class TravelSystem implements SetOfUsersInterface {
         User newUser = new User(systemUsers.getNextId(), forename, surname, username, email, password, newSysRole);
 
         systemUsers.add(newUser);
+    }
+
+    public static void registerZone(String name, int id) {
+        Zone newZone = new Zone(name, id);
+
+        systemZones.add(newZone);
+    }
+
+    public static void registerJourney(float price, float onPeakPrice, Zone startZone, Zone endZone) {
+        Journey newJourney = new Journey(price, onPeakPrice, startZone, endZone);
+
+        systemJourneys.add(newJourney);
     }
 
     public static void registerTravelCard(User user, String cardType, float discount, float dailyCap) {
@@ -73,24 +124,11 @@ public class TravelSystem implements SetOfUsersInterface {
         return systemTravelCards;
     }
 
-    public TravelCard getTravelCard(int id) {
-        return systemTravelCards.getTravelCardById(id);
+    public SetOfStationSystems getStationSystems() {
+        return systemStationSystems;
     }
 
-    public StationSystem getStationSystem(int id) {
-        return systemStationSystems.getStationSystemById(id);
-    }
-
-    public User getUser(String username, String password) {
-        User user = systemUsers.getUserByUsername(username);
-
-        if (user != null) {
-            if (user.authenticateUser(password)) {
-                return user;
-            }
-            return null;
-        }
-
-        return null;
+    public JourneyList getJourneys() {
+        return systemJourneys;
     }
 }

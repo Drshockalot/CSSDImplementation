@@ -294,16 +294,22 @@ public class AdminUI extends javax.swing.JFrame {
         String password = new String(pass_Password.getPassword());
 
         try {
-            User user = TravelSystem.getInstance().getUser(username, password);
+            User user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
             if (user != null) {
-                if (user.getSystemRole().isAdmin()) {
-                    openAdminUI();
+                if (user.authenticateUser(password)) {
+                    if (user.getSystemRole().isAdmin()) {
+                        openAdminUI();
+                    } else {
+                        System.out.println("Turd 1");
+                    }
+                } else {
+                    System.out.println("Turd 2");
                 }
             } else {
-                System.out.println("Turd 2");
+                System.out.println("Turd 3");
             }
         } catch (Throwable ex) {
-            System.out.println("yolo");
+            System.out.println("yolo" + ex);
         }
     }//GEN-LAST:event_btn_loginPopupActionPerformed
 
@@ -326,8 +332,8 @@ public class AdminUI extends javax.swing.JFrame {
         mainUI.setEnabled(true);
     }//GEN-LAST:event_btn_cancelActionPerformed
 
-    private void editJourney(float newPrice, Zone startZone, Zone endZone) {
-
+    private void editJourney(float newPrice, Zone startZone, Zone endZone) throws Throwable {
+        TravelSystem.getInstance().getJourneys().getJourney(startZone, endZone).setPrice(newPrice);
     }
 
     /**

@@ -12,9 +12,15 @@ package PublicTransportationSystem;
 public class Journey {
 
     private float price;
+    private float onPeakPrice;
+    private Zone startZone;
+    private Zone endZone;
 
-    public Journey(float price) {
+    public Journey(float price, float onPeakPrice, Zone startZone, Zone endZone) {
         this.price = price;
+        this.onPeakPrice = onPeakPrice;
+        this.startZone = startZone;
+        this.endZone = endZone;
     }
 
     public float getPrice() {
@@ -23,5 +29,13 @@ public class Journey {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public Zone getStartZone() {
+        return this.startZone;
+    }
+
+    public Zone getEndZone() {
+        return this.endZone;
     }
 }
