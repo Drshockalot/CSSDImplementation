@@ -15,11 +15,16 @@ public class Gateway {
     private GateController gateController;
     private int stationID;
 
-    public void DetectCard() throws Throwable {
+    public void PerformScanOut() throws Throwable {
         int cardID = scanner.read();
         TravelSystem sys = TravelSystem.getInstance();
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
         Zone zone = sys.getStationSystems().getStationSystemById(this.stationID).getZone();
+
+        if (currCard == null) {
+            this.reject();
+        }
+
         Zone departureZone = currCard.getDepartureDetails().getZone();
         boolean hasPass = currCard.checkForPass(zone, departureZone);
 
@@ -39,6 +44,20 @@ public class Gateway {
             trans.payForTicket(userTickets, currentTicket, currCard);
 
             if (hasPaid) {
+                this.approve();
+            } else {
+                this.reject();
+            }
+        }
+    }
+
+    public void PerformScanIn() throws Throwable {
+        int cardID = scanner.read();
+        TravelSystem sys = TravelSystem.getInstance();
+        TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
+
+        if (currCard != null) {
+            if (currCard.getBalance() > 0) {
                 this.approve();
             } else {
                 this.reject();
