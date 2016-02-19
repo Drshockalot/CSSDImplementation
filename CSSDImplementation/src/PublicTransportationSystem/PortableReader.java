@@ -16,7 +16,7 @@ public class PortableReader {
     public void readCard() throws Throwable {
         int cardID = scanner.read();
         TravelSystem sys = TravelSystem.getInstance();
-        TravelCard currCard = sys.getTravelCard(cardID);
+        TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
 
         if (currCard.checkForActivePass()) {
 
