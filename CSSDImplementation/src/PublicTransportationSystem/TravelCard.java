@@ -62,6 +62,10 @@ public class TravelCard {
         return lastDepartedStation;
     }
 
+    public boolean checkForActivePass() {
+        return this.pass == null;
+    }
+
     public boolean checkForPass(Zone zone) {
         boolean hasPass = false;
 
