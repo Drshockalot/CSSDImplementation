@@ -5,9 +5,6 @@
  */
 package PublicTransportationSystem.GUIs;
 
-import PublicTransportationSystem.TravelSystem;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -25,13 +22,13 @@ public class AppSwitchboard extends javax.swing.JFrame {
     public AppSwitchboard() {
         initComponents();
 
-        try {
-            TravelSystem.getInstance().initUsers();
-            TravelSystem.getInstance().initZones();
-            TravelSystem.getInstance().initJourneyList();
-        } catch (Throwable ex) {
-            Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            TravelSystem.getInstance().initUsers();
+//            TravelSystem.getInstance().initZones();
+//            TravelSystem.getInstance().initJourneyList();
+//        } catch (Throwable ex) {
+//            Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     /**

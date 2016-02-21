@@ -67,6 +67,7 @@ public class AdminUI extends javax.swing.JFrame {
         tab_admin = new javax.swing.JTabbedPane();
         pnl_adminHome = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btn_saveuserstmp = new javax.swing.JButton();
         pnl_adminTT = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         pnl_adminStats = new javax.swing.JPanel();
@@ -316,6 +317,13 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Useful statistics ");
 
+        btn_saveuserstmp.setText("Save Users");
+        btn_saveuserstmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_saveuserstmpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnl_adminHomeLayout = new javax.swing.GroupLayout(pnl_adminHome);
         pnl_adminHome.setLayout(pnl_adminHomeLayout);
         pnl_adminHomeLayout.setHorizontalGroup(
@@ -324,13 +332,19 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminHomeLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_saveuserstmp)
+                .addGap(230, 230, 230))
         );
         pnl_adminHomeLayout.setVerticalGroup(
             pnl_adminHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_adminHomeLayout.createSequentialGroup()
                 .addGap(113, 113, 113)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(btn_saveuserstmp)
+                .addGap(80, 80, 80))
         );
 
         tab_admin.addTab("Home", pnl_adminHome);
@@ -587,6 +601,14 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_savePriceChangesActionPerformed
 
+    private void btn_saveuserstmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveuserstmpActionPerformed
+        try {
+            TravelSystem.getInstance().serialiseUsers();
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_saveuserstmpActionPerformed
+
     private void displayPrices() {
         Object departure = cmb_departure.getSelectedItem();
         Zone departureZone = ((Zone) departure);
@@ -650,6 +672,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_closeEditJourney;
     private javax.swing.JButton btn_loginPopup;
     private javax.swing.JButton btn_savePriceChanges;
+    private javax.swing.JButton btn_saveuserstmp;
     private javax.swing.JComboBox<String> cmb_arrival;
     private javax.swing.JComboBox<String> cmb_departure;
     private javax.swing.JDialog dlg_adminJourneyEdit;

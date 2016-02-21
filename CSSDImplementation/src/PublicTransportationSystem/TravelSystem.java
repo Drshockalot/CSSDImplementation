@@ -13,17 +13,20 @@ import Interfaces.SetOfUsersInterface;
  */
 public class TravelSystem implements SetOfUsersInterface {
 
-    private static SetOfUsers systemUsers = new SetOfUsers();
-    private static SetOfTravelCards systemTravelCards = new SetOfTravelCards();
-    private static SetOfStationSystems systemStationSystems = new SetOfStationSystems();
-    private static JourneyList systemJourneys = new JourneyList();
-    private static ZoneList systemZones = new ZoneList();
+    private SetOfUsers systemUsers = new SetOfUsers();
+    private SetOfTravelCards systemTravelCards = new SetOfTravelCards();
+    private SetOfStationSystems systemStationSystems = new SetOfStationSystems();
+    private JourneyList systemJourneys = new JourneyList();
+    private ZoneList systemZones = new ZoneList();
     private static TravelSystem INSTANCE;
 
     /**
      *
      */
     private TravelSystem() {
+        initUsers();
+        initZones();
+        initJourneyList();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -34,15 +37,16 @@ public class TravelSystem implements SetOfUsersInterface {
         return INSTANCE;
     }
 
-    public static void initUsers() {
+    public void initUsers() {
         SystemRole newSysRole = new SystemRole("ADMIN");
+        registerUser("Test", "Loser", "User", "test@test.com", "password", newSysRole);
         registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", "FromAmericaWithLove", newSysRole);
-        registerUser("Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", "password", newSysRole);
+        registerUser("Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", "p", newSysRole);
         registerUser("lil'", "Jack", "snapback", "test@test.org", "ch ch ch checkin' it out", newSysRole);
-        registerUser("Joshua", "Bates", "JoBa", "test@test.fr", "password", newSysRole);
+        registerUser("Joshua", "Bates", "JoBa", "test@test.fr", "p", newSysRole);
     }
 
-    public static void initZones() {
+    public void initZones() {
         registerZone("Zone A", 1);
         registerZone("Zone B", 2);
         registerZone("Zone C", 3);
@@ -50,7 +54,7 @@ public class TravelSystem implements SetOfUsersInterface {
         registerZone("Zone E", 5);
     }
 
-    public static void initJourneyList() {
+    public void initJourneyList() {
         registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(1), systemZones.getZoneById(1));
         registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(1), systemZones.getZoneById(2));
         registerJourney((float) 3.99, (float) 4.46, systemZones.getZoneById(1), systemZones.getZoneById(3));
@@ -88,25 +92,25 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param password
      * @param newSysRole
      */
-    public static void registerUser(String forename, String surname, String username, String email, String password, SystemRole newSysRole) {
+    public void registerUser(String forename, String surname, String username, String email, String password, SystemRole newSysRole) {
         User newUser = new User(systemUsers.getNextId(), forename, surname, username, email, password, newSysRole);
 
         systemUsers.add(newUser);
     }
 
-    public static void registerZone(String name, int id) {
+    public void registerZone(String name, int id) {
         Zone newZone = new Zone(name, id);
 
         systemZones.add(newZone);
     }
 
-    public static void registerJourney(float price, float onPeakPrice, Zone startZone, Zone endZone) {
+    public void registerJourney(float price, float onPeakPrice, Zone startZone, Zone endZone) {
         Journey newJourney = new Journey(price, onPeakPrice, startZone, endZone);
 
         systemJourneys.add(newJourney);
     }
 
-    public static void registerTravelCard(User user, String cardType, float discount, float dailyCap) {
+    public void registerTravelCard(User user, String cardType, float discount, float dailyCap) {
         TravelCard newTravelCard = new TravelCard(systemTravelCards.nextId(), user, cardType, discount, dailyCap);
 
         systemTravelCards.add(newTravelCard);
@@ -134,5 +138,9 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public ZoneList getZones() {
         return systemZones;
+    }
+
+    public void serialiseUsers() {
+        systemUsers.serializeUsers();
     }
 }

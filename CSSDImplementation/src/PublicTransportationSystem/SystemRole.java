@@ -5,11 +5,13 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JoBa
  */
-public class SystemRole {
+public class SystemRole implements Serializable {
 
     String name;
     //PermissionList permissionList;
