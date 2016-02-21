@@ -8,6 +8,7 @@ package PublicTransportationSystem.GUIs;
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.SystemRole;
 import PublicTransportationSystem.TravelSystem;
+import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -389,7 +390,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         String username = txt_Username.getText();
         String email = txt_Email.getText();
         String password = new String(txtPass_Password.getPassword());
-        SystemRole newSysRole = new SystemRole("USER");
+        SystemRole newSysRole = new SystemRole(TypeEnums.UserType.USER);
 
         if (firstName.isEmpty() || surname.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             System.out.println("Idiots");

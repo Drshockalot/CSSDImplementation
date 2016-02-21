@@ -31,6 +31,8 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeJourneys();
         deserializeZones();
         initTravelCard();
+
+        getSystemRoles();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -42,6 +44,9 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void resetData() {
+        systemZones.removeAllElements();
+        systemUsers.removeAllElements();
+        systemJourneys.removeAllElements();
         initUsers();
         initTravelCard();
         serializeUsers();
@@ -52,7 +57,7 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initUsers() {
-        SystemRole newSysRole = new SystemRole("ADMIN");
+        SystemRole newSysRole = new SystemRole(TypeEnums.UserType.ADMIN);
         registerUser("Test", "Loser", "User", "test@test.com", "password", newSysRole);
         registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", "FromAmericaWithLove", newSysRole);
         registerUser("Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", "p", newSysRole);
@@ -83,6 +88,7 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initJourneyList() {
+        systemJourneys.removeAllElements();
         registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(1), systemZones.getZoneById(1));
         registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(1), systemZones.getZoneById(2));
         registerJourney((float) 3.99, (float) 4.46, systemZones.getZoneById(1), systemZones.getZoneById(3));
@@ -166,6 +172,10 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public ZoneList getZones() {
         return systemZones;
+    }
+
+    public TypeEnums.UserType[] getSystemRoles() {
+        return TypeEnums.UserType.values();
     }
 
     public void serializeUsers() {

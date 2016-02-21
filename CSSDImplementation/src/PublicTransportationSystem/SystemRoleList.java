@@ -10,5 +10,5 @@ package PublicTransportationSystem;
  * @author JoBa
  */
 public class SystemRoleList {
-    
+
 }
