@@ -44,7 +44,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" pref="155" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -69,18 +69,16 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btn_switchScannerUI1" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="btn_switchWebsiteUI" min="-2" pref="145" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="btn_switchScannerUI" pref="143" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btn_switchInspectorUI" pref="143" max="32767" attributes="0"/>
+                          <Component id="btn_loginUI" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="btn_switchInspectorUI" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btn_switchScannerUI" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,28 +86,17 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_switchScannerUI1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_switchWebsiteUI" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_loginUI" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btn_switchInspectorUI" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btn_switchScannerUI" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="78" max="32767" attributes="0"/>
+                  <EmptySpace pref="113" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btn_switchWebsiteUI">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Website UI"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_switchWebsiteUIActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="btn_switchInspectorUI">
           <Properties>
             <Property name="text" type="java.lang.String" value="Inspector UI"/>
@@ -126,12 +113,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_switchScannerUIActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btn_switchScannerUI1">
+        <Component class="javax.swing.JButton" name="btn_loginUI">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Admin UI"/>
+            <Property name="text" type="java.lang.String" value="Login"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_switchScannerUI1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_loginUIActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

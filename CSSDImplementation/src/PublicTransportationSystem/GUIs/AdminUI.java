@@ -8,7 +8,6 @@ package PublicTransportationSystem.GUIs;
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.Journey;
 import PublicTransportationSystem.TravelSystem;
-import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
 import PublicTransportationSystem.ZoneList;
 import java.util.logging.Level;
@@ -38,15 +37,6 @@ public class AdminUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        adminLoginPopup = new javax.swing.JDialog();
-        pnl_loginCont = new javax.swing.JPanel();
-        lbl_username = new javax.swing.JLabel();
-        txt_username = new javax.swing.JTextField();
-        lbl_password = new javax.swing.JLabel();
-        pass_Password = new javax.swing.JPasswordField();
-        lbl_loginTitle = new javax.swing.JLabel();
-        btn_cancel = new javax.swing.JButton();
-        btn_loginPopup = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         dlg_adminJourneyEdit = new javax.swing.JDialog();
         lbl_adminJourneyEditTitle = new javax.swing.JLabel();
@@ -77,94 +67,6 @@ public class AdminUI extends javax.swing.JFrame {
         pnl_adminJourney = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-
-        adminLoginPopup.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        adminLoginPopup.setTitle("Login");
-        adminLoginPopup.setResizable(false);
-
-        pnl_loginCont.setBackground(new java.awt.Color(204, 204, 204));
-
-        lbl_username.setText("Username");
-
-        lbl_password.setText("Password");
-
-        lbl_loginTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        lbl_loginTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_loginTitle.setText("Login");
-
-        btn_cancel.setText("Cancel");
-        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelActionPerformed(evt);
-            }
-        });
-
-        btn_loginPopup.setText("Login");
-        btn_loginPopup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_loginPopupActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnl_loginContLayout = new javax.swing.GroupLayout(pnl_loginCont);
-        pnl_loginCont.setLayout(pnl_loginContLayout);
-        pnl_loginContLayout.setHorizontalGroup(
-            pnl_loginContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_loginContLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_loginContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_loginContLayout.createSequentialGroup()
-                        .addGroup(pnl_loginContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_username, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_username, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                            .addComponent(pass_Password))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lbl_loginTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(pnl_loginContLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_loginPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
-        pnl_loginContLayout.setVerticalGroup(
-            pnl_loginContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_loginContLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lbl_loginTitle)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_username)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pass_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnl_loginContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_cancel)
-                    .addComponent(btn_loginPopup))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout adminLoginPopupLayout = new javax.swing.GroupLayout(adminLoginPopup.getContentPane());
-        adminLoginPopup.getContentPane().setLayout(adminLoginPopupLayout);
-        adminLoginPopupLayout.setHorizontalGroup(
-            adminLoginPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminLoginPopupLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(pnl_loginCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(170, Short.MAX_VALUE))
-        );
-        adminLoginPopupLayout.setVerticalGroup(
-            adminLoginPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminLoginPopupLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(pnl_loginCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
 
         dlg_adminJourneyEdit.setResizable(false);
         dlg_adminJourneyEdit.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -293,6 +195,9 @@ public class AdminUI extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -490,48 +395,18 @@ public class AdminUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_loginPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginPopupActionPerformed
-        String username = txt_username.getText();
-        String password = new String(pass_Password.getPassword());
-
-        try {
-            User user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
-            if (user != null) {
-                if (user.authenticateUser(password)) {
-                    if (user.getSystemRole().isAdmin()) {
-                        openAdminUI();
-                    } else {
-                        System.out.println("Turd 1");
-                    }
-                } else {
-                    System.out.println("Turd 2");
-                }
-            } else {
-                System.out.println("Turd 3");
-            }
-        } catch (Throwable ex) {
-            System.out.println("yolo" + ex);
-        }
-    }//GEN-LAST:event_btn_loginPopupActionPerformed
-
     private void openAdminUI() {
-        adminLoginPopup.dispose();
+//        adminLoginPopup.dispose();
         this.setEnabled(true);
         this.setAlwaysOnTop(true);
     }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        adminLoginPopup.pack();
-        adminLoginPopup.setVisible(true);
-        adminLoginPopup.setAlwaysOnTop(true);
-        this.setEnabled(false);
+//        adminLoginPopup.pack();
+//        adminLoginPopup.setVisible(true);
+//        adminLoginPopup.setAlwaysOnTop(true);
+//        this.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
-
-    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        adminLoginPopup.dispose();
-        this.dispose();
-        mainUI.setEnabled(true);
-    }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void dlg_adminJourneyEditWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneyEditWindowOpened
         lbl_error.setVisible(false);
@@ -609,6 +484,11 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_saveuserstmpActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        mainUI.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
+
     private void displayPrices() {
         Object departure = cmb_departure.getSelectedItem();
         Zone departureZone = ((Zone) departure);
@@ -667,10 +547,7 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog adminLoginPopup;
-    private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_closeEditJourney;
-    private javax.swing.JButton btn_loginPopup;
     private javax.swing.JButton btn_savePriceChanges;
     private javax.swing.JButton btn_saveuserstmp;
     private javax.swing.JComboBox<String> cmb_arrival;
@@ -689,11 +566,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbl_adminJourneyEditTitle;
     private javax.swing.JLabel lbl_error;
-    private javax.swing.JLabel lbl_loginTitle;
     private javax.swing.JLabel lbl_managementUITitle;
-    private javax.swing.JLabel lbl_password;
-    private javax.swing.JLabel lbl_username;
-    private javax.swing.JPasswordField pass_Password;
     private javax.swing.JPanel pnl_adminAdmin;
     private javax.swing.JPanel pnl_adminGUITabs;
     private javax.swing.JPanel pnl_adminGUITitle;
@@ -701,10 +574,8 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_adminJourney;
     private javax.swing.JPanel pnl_adminStats;
     private javax.swing.JPanel pnl_adminTT;
-    private javax.swing.JPanel pnl_loginCont;
     private javax.swing.JTabbedPane tab_admin;
     private javax.swing.JTextField txt_offPeakPrice;
     private javax.swing.JTextField txt_onPeakPrice;
-    private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 }

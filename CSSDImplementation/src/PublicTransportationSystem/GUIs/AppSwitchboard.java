@@ -21,14 +21,6 @@ public class AppSwitchboard extends javax.swing.JFrame {
     @SuppressWarnings("static-access")
     public AppSwitchboard() {
         initComponents();
-
-//        try {
-//            TravelSystem.getInstance().initUsers();
-//            TravelSystem.getInstance().initZones();
-//            TravelSystem.getInstance().initJourneyList();
-//        } catch (Throwable ex) {
-//            Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     /**
@@ -41,10 +33,9 @@ public class AppSwitchboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btn_switchWebsiteUI = new javax.swing.JButton();
         btn_switchInspectorUI = new javax.swing.JButton();
         btn_switchScannerUI = new javax.swing.JButton();
-        btn_switchScannerUI1 = new javax.swing.JButton();
+        btn_loginUI = new javax.swing.JButton();
         lbl_mainSwitchTitle = new javax.swing.JLabel();
         lbl_mainSwitchAuthors = new javax.swing.JLabel();
 
@@ -54,14 +45,6 @@ public class AppSwitchboard extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("jFrame_Switchboard"); // NOI18N
         setResizable(false);
-
-        btn_switchWebsiteUI.setText("Website UI");
-        btn_switchWebsiteUI.setToolTipText("");
-        btn_switchWebsiteUI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_switchWebsiteUIActionPerformed(evt);
-            }
-        });
 
         btn_switchInspectorUI.setText("Inspector UI");
         btn_switchInspectorUI.addActionListener(new java.awt.event.ActionListener() {
@@ -77,10 +60,10 @@ public class AppSwitchboard extends javax.swing.JFrame {
             }
         });
 
-        btn_switchScannerUI1.setText("Admin UI");
-        btn_switchScannerUI1.addActionListener(new java.awt.event.ActionListener() {
+        btn_loginUI.setText("Login");
+        btn_loginUI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_switchScannerUI1ActionPerformed(evt);
+                btn_loginUIActionPerformed(evt);
             }
         });
 
@@ -90,27 +73,23 @@ public class AppSwitchboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_switchScannerUI1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_switchWebsiteUI, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btn_switchInspectorUI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_switchScannerUI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(157, 157, 157))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btn_switchScannerUI, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btn_switchInspectorUI, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                        .addComponent(btn_loginUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_switchScannerUI1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_switchWebsiteUI)
+                .addComponent(btn_loginUI)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_switchInspectorUI)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_switchScannerUI)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         lbl_mainSwitchTitle.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
@@ -133,7 +112,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(143, 143, 143)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -151,15 +130,6 @@ public class AppSwitchboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_switchWebsiteUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchWebsiteUIActionPerformed
-        // Opens the website ui
-        JFrame websiteUI = new WebsiteUI();
-        websiteUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        mainUI.setEnabled(false);
-        websiteUI.setVisible(true);
-        websiteUI.setAlwaysOnTop(true);
-    }//GEN-LAST:event_btn_switchWebsiteUIActionPerformed
-
     private void btn_switchInspectorUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchInspectorUIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_switchInspectorUIActionPerformed
@@ -168,14 +138,13 @@ public class AppSwitchboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_switchScannerUIActionPerformed
 
-    private void btn_switchScannerUI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUI1ActionPerformed
-        JFrame adminUI = new AdminUI();
+    private void btn_loginUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginUIActionPerformed
+        // Opens the website ui
+        JFrame websiteUI = new WebsiteUI();
         mainUI.setEnabled(false);
-        adminUI.setVisible(true);
-        adminUI.setAlwaysOnTop(true);
-        adminUI.setResizable(false);
-
-    }//GEN-LAST:event_btn_switchScannerUI1ActionPerformed
+        websiteUI.setVisible(true);
+        websiteUI.setAlwaysOnTop(true);
+    }//GEN-LAST:event_btn_loginUIActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,10 +159,9 @@ public class AppSwitchboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_loginUI;
     private javax.swing.JButton btn_switchInspectorUI;
     private javax.swing.JButton btn_switchScannerUI;
-    private javax.swing.JButton btn_switchScannerUI1;
-    private javax.swing.JButton btn_switchWebsiteUI;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_mainSwitchAuthors;
     private javax.swing.JLabel lbl_mainSwitchTitle;
