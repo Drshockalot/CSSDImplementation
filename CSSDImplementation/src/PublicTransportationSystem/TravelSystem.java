@@ -24,12 +24,9 @@ public class TravelSystem implements SetOfUsersInterface {
      *
      */
     private TravelSystem() throws ClassNotFoundException {
-        //initUsers();
         deserializeUsers();
         deserializeJourneys();
         deserializeZones();
-        //initZones();
-        //initJourneyList();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -38,6 +35,15 @@ public class TravelSystem implements SetOfUsersInterface {
         }
 
         return INSTANCE;
+    }
+
+    public void resetData() {
+        initUsers();
+        serializeUsers();
+        initZones();
+        serializeZones();
+        initJourneyList();
+        serializeJourneys();
     }
 
     public void initUsers() {
