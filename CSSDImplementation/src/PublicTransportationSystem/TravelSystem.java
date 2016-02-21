@@ -23,8 +23,9 @@ public class TravelSystem implements SetOfUsersInterface {
     /**
      *
      */
-    private TravelSystem() {
-        initUsers();
+    private TravelSystem() throws ClassNotFoundException {
+        //initUsers();
+        deserializeUsers();
         initZones();
         initJourneyList();
     }
@@ -140,7 +141,11 @@ public class TravelSystem implements SetOfUsersInterface {
         return systemZones;
     }
 
-    public void serialiseUsers() {
+    public void serializeUsers() {
         systemUsers.serializeUsers();
+    }
+
+    public void deserializeUsers() throws ClassNotFoundException {
+        systemUsers = systemUsers.deserializeUsers();
     }
 }

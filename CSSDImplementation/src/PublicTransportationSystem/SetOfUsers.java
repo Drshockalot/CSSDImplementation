@@ -5,8 +5,10 @@
  */
 package PublicTransportationSystem;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Vector;
@@ -16,6 +18,8 @@ import java.util.Vector;
  * @author JoBa
  */
 public class SetOfUsers extends Vector<User> implements Serializable {
+
+    private static final long serialVersionUID = 7292246324314723921L;
 
     void addUser(User user) {
         super.add(user);
@@ -45,15 +49,27 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 
+    public SetOfUsers deserializeUsers() throws ClassNotFoundException {
+        try {
+            FileInputStream fileIn = new FileInputStream("files/users.ser");
+            ObjectInputStream objIn = new ObjectInputStream(fileIn);
+
+            SetOfUsers obj = (SetOfUsers) objIn.readObject();
+
+            fileIn.close();
+            objIn.close();
+            return obj;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public void serializeUsers() {
         try {
             FileOutputStream fileOut = new FileOutputStream("files/users.ser");
             ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
             objOut.writeObject(this);
-
-            for (User user : this) {
-                System.out.println(user.getUsername());
-            }
 
             objOut.close();
             fileOut.close();

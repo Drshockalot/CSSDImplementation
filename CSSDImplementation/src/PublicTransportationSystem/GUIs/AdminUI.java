@@ -603,7 +603,7 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_saveuserstmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveuserstmpActionPerformed
         try {
-            TravelSystem.getInstance().serialiseUsers();
+            TravelSystem.getInstance().deserializeUsers();
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
