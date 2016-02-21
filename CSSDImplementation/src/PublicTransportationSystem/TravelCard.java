@@ -122,6 +122,9 @@ public class TravelCard {
         this.lastDepartedTime = null;
     }
 
+    public User getUser() {
+        return this.user;
+    }
 // </editor-fold>
 // Methods End
 }
