@@ -11,7 +11,7 @@ package PublicTransportationSystem;
  */
 public class PortableReader {
 
-    public Scanner scanner;
+    public Scanner scanner = new Scanner();
 
     public TravelCard readTravelCard() throws Throwable {
         int cardID = scanner.read();

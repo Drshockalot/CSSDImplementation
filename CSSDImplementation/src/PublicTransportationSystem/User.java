@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
@@ -21,8 +22,9 @@ public class User implements Serializable {
     private SystemRole userRole;
     private int travelCard;
     private String email;
+    private Date dateOfBirth;
 
-    public User(Integer newUserId, String newForename, String newSurname, String newUsername, String newEmail, String newPassword, SystemRole newUserRole) {
+    public User(Integer newUserId, String newForename, String newSurname, String newUsername, String newEmail, String newPassword, SystemRole newUserRole, Date dob) {
         forename = newForename;
         surname = newSurname;
         username = newUsername;
@@ -31,10 +33,11 @@ public class User implements Serializable {
         userRole = newUserRole;
         travelCard = 1;
         email = newEmail;
+        dateOfBirth = dob;
     }
 
-    User() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Date getDateOfBirth() {
+        return this.dateOfBirth;
     }
 
     public boolean authenticateUser(String password) {
