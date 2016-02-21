@@ -33,7 +33,7 @@ public class Gateway {
         } else {
             boolean hasPaid = false;
 
-            TicketList userTickets = currCard.userTickets();
+            SetOfTickets userTickets = currCard.userTickets();
 
             //Get journey price
             JourneyList list = new JourneyList();

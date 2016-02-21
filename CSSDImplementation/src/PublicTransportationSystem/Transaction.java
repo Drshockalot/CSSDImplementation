@@ -14,7 +14,7 @@ public class Transaction {
 // Methods Begin
 // <editor-fold>
     // This method will handle the payment of a ticket
-    public void payForTicket(TicketList ticketHistory, Ticket currentTicket, TravelCard currentTravelCard) {
+    public void payForTicket(SetOfTickets ticketHistory, Ticket currentTicket, TravelCard currentTravelCard) {
         // Create a new instance of 'PaymentManager', this will handle payment calculations
         PaymentManager payManager = new PaymentManager();
 

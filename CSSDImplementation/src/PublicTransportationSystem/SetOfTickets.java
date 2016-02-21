@@ -11,7 +11,7 @@ import java.util.Vector;
  *
  * @author JoBa
  */
-public class TicketList extends Vector<Ticket> {
+public class SetOfTickets extends Vector<Ticket> {
 
     float calculateTodaysTotal() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
