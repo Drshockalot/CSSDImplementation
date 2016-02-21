@@ -17,7 +17,7 @@ public class TravelCard {
     private int travelCardID;
     private User user;
     private float balance;
-    private TicketList myTickets;
+    private SetOfTickets myTickets;
     private Date startDate;
     private Date expiryDate;
     private String cardType;
@@ -33,7 +33,7 @@ public class TravelCard {
         this.travelCardID = travelCardID;
         this.user = user;
         this.balance = 0.0f;
-        this.myTickets = new TicketList();
+        this.myTickets = new SetOfTickets();
         this.startDate = new Date();
         this.expiryDate = getExpiryDate();
         this.cardType = cardType;
@@ -105,7 +105,7 @@ public class TravelCard {
                 && (this.pass.arrivalZone().getName() == null ? arrivingZone.getName() == null : this.pass.arrivalZone().getName().equals(arrivingZone.getName()));
     }
 
-    public TicketList userTickets() {
+    public SetOfTickets userTickets() {
         return this.myTickets;
     }
 

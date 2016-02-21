@@ -14,7 +14,7 @@ public class PaymentManager {
 // Methods Begin
 // <editor-fold>
     public float calculatePrice(Ticket currentTicket, float discount) {
-        return currentTicket.getJourney().getPrice();
+        return currentTicket.getJourney().getOffPeakPrice();
     }
 
     public float calculateRefund(float dailyCap, float todaysTotal) {
