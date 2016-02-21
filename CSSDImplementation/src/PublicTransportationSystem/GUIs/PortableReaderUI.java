@@ -352,6 +352,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private void scanCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanCardButtonActionPerformed
         // TODO add your handling code here:
         this.scanPanel.setVisible(false);
+
         TravelCard currentCard = null;
 
         try {
@@ -438,7 +439,12 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private void setUpUserDetails(User user, TravelCard card) {
         this.passUserName.setText(user.getUsername());
         this.passUserBalance.setText(Float.toString(card.getBalance()));
-        //this.passUserDob.setText();
+        this.passUserDob.setText(user.getDateOfBirth().toString());
         this.passUserID.setText(Integer.toString(user.getId()));
+
+        this.paymentUserName.setText(user.getUsername());
+        this.paymentUserBalance.setText(Float.toString(card.getBalance()));
+        this.paymentUserDob.setText(user.getDateOfBirth().toString());
+        this.paymentUserID.setText(Integer.toString(user.getId()));
     }
 }

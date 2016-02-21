@@ -146,6 +146,10 @@ public class AppSwitchboard extends javax.swing.JFrame {
 
     private void btn_switchInspectorUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchInspectorUIActionPerformed
         // TODO add your handling code here:
+        JFrame portableReader = new PortableReaderUI();
+        mainUI.setEnabled(false);
+        portableReader.setVisible(true);
+        portableReader.setAlwaysOnTop(true);
     }//GEN-LAST:event_btn_switchInspectorUIActionPerformed
 
     private void btn_switchScannerUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUIActionPerformed

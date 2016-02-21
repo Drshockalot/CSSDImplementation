@@ -6,6 +6,9 @@
 package PublicTransportationSystem;
 
 import Interfaces.SetOfUsersInterface;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,6 +30,7 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeUsers();
         deserializeJourneys();
         deserializeZones();
+        initTravelCard();
 
         getSystemRoles();
     }
@@ -44,6 +48,7 @@ public class TravelSystem implements SetOfUsersInterface {
         systemUsers.removeAllElements();
         systemJourneys.removeAllElements();
         initUsers();
+        initTravelCard();
         serializeUsers();
         initZones();
         serializeZones();
@@ -58,6 +63,20 @@ public class TravelSystem implements SetOfUsersInterface {
         registerUser("Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", "p", newSysRole);
         registerUser("lil'", "Jack", "snapback", "test@test.org", "ch ch ch checkin' it out", newSysRole);
         registerUser("Joshua", "Bates", "JoBa", "test@test.fr", "p", newSysRole);
+    }
+
+    public void initTravelCard() {
+        User user = null;
+        float discount = 1.00f;
+        float dailyCap = 9.00f;
+
+        try {
+            user = TravelSystem.getInstance().systemUsers.getUserById(1);
+        } catch (Throwable ex) {
+            Logger.getLogger(TravelSystem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        registerTravelCard(user, "test", discount, dailyCap);
     }
 
     public void initZones() {
@@ -108,7 +127,7 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param newSysRole
      */
     public void registerUser(String forename, String surname, String username, String email, String password, SystemRole newSysRole) {
-        User newUser = new User(systemUsers.getNextId(), forename, surname, username, email, password, newSysRole);
+        User newUser = new User(systemUsers.getNextId(), forename, surname, username, email, password, newSysRole, new Date());
 
         systemUsers.add(newUser);
     }
