@@ -263,6 +263,10 @@ public class AdminUI extends javax.swing.JFrame {
         jlist_adminGUIUserList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jlist_adminGUIUserList);
 
+        jTextField1.setEnabled(false);
+
+        jTextField2.setEnabled(false);
+
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -280,6 +284,9 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel10.setText("User Role");
 
         jLabel11.setText("ID");
+
+        jTextField6.setText("userid");
+        jTextField6.setEnabled(false);
 
         jLabel12.setText("Email");
 
@@ -406,17 +413,17 @@ public class AdminUI extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(276, 276, 276)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(560, Short.MAX_VALUE)
                 .addComponent(btn_editJourneys)
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(167, 167, 167)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(368, Short.MAX_VALUE)
                 .addComponent(btn_editJourneys)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tab_admin.addTab("Journeys", jPanel2);
