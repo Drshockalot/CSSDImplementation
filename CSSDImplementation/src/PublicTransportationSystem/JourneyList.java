@@ -5,13 +5,19 @@
  */
 package PublicTransportationSystem;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
  *
  * @author JoBa
  */
-public class JourneyList extends Vector<Journey> {
+public class JourneyList extends Vector<Journey> implements Serializable {
 
     public JourneyList() {
 
@@ -35,5 +41,36 @@ public class JourneyList extends Vector<Journey> {
         }
 
         return null;
+    }
+
+    public JourneyList deserializeJourneys() throws ClassNotFoundException {
+        try {
+            FileInputStream fileIn = new FileInputStream("files/journeys.ser");
+            ObjectInputStream objIn = new ObjectInputStream(fileIn);
+
+            JourneyList obj = (JourneyList) objIn.readObject();
+
+            fileIn.close();
+            objIn.close();
+            return obj;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void serializeJourneys() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("files/journeys.ser");
+            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+            objOut.writeObject(this);
+
+            objOut.close();
+            fileOut.close();
+            System.out.println("Serialised journeys");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

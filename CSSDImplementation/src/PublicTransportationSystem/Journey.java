@@ -5,11 +5,13 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JoBa
  */
-public class Journey {
+public class Journey implements Serializable {
 
     private float offPeakPrice;
     private float onPeakPrice;

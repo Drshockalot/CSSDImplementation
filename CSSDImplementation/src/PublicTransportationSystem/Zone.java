@@ -5,11 +5,13 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JoBa
  */
-public class Zone {
+public class Zone implements Serializable {
 
     private String name;
     private int id;
