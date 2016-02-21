@@ -24,9 +24,7 @@ public class TravelSystem implements SetOfUsersInterface {
      *
      */
     private TravelSystem() throws ClassNotFoundException {
-        initUsers();
-        serializeUsers();
-//        deserializeUsers();
+        deserializeUsers();
         deserializeJourneys();
         deserializeZones();
     }

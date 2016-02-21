@@ -5,11 +5,19 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.PortableReader;
+import PublicTransportationSystem.TravelCard;
+import PublicTransportationSystem.User;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author JackMcGlone
  */
 public class PortableReaderUI extends javax.swing.JFrame {
+
+    private PortableReader portableReader = new PortableReader();
 
     /**
      * Creates new form PortableReaderUI
@@ -27,149 +35,335 @@ public class PortableReaderUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        titleLabel = new javax.swing.JLabel();
-        userImage = new javax.swing.JPanel();
-        nameLabel = new javax.swing.JLabel();
-        dobLabel = new javax.swing.JLabel();
-        idLabel = new javax.swing.JLabel();
-        creditLabel = new javax.swing.JLabel();
-        mainPanel = new javax.swing.JPanel();
-        inspectionStatus = new javax.swing.JLabel();
-        zoneFromCombo = new javax.swing.JComboBox();
-        zoneToCombo = new javax.swing.JComboBox();
-        zoneFromLabel = new javax.swing.JLabel();
-        zoneToLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        scanPanel = new javax.swing.JPanel();
+        scanCardButton = new javax.swing.JButton();
+        validPassPanel = new javax.swing.JPanel();
+        passUserImage = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        passUserName = new javax.swing.JLabel();
+        passUserDob = new javax.swing.JLabel();
+        passUserID = new javax.swing.JLabel();
+        passUserBalance = new javax.swing.JLabel();
+        passConfirmInspection = new javax.swing.JButton();
+        payForTicket = new javax.swing.JPanel();
+        paymentUserImage = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        paymentUserName = new javax.swing.JLabel();
+        paymentUserDob = new javax.swing.JLabel();
+        paymentUserID = new javax.swing.JLabel();
+        paymentUserBalance = new javax.swing.JLabel();
+        paymentConfirmInspection = new javax.swing.JButton();
+        fromZone = new javax.swing.JComboBox();
+        toZone = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        titleLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Portable Reader");
+        jLayeredPane1.setLayout(new javax.swing.OverlayLayout(jLayeredPane1));
 
-        userImage.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        javax.swing.GroupLayout userImageLayout = new javax.swing.GroupLayout(userImage);
-        userImage.setLayout(userImageLayout);
-        userImageLayout.setHorizontalGroup(
-            userImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        userImageLayout.setVerticalGroup(
-            userImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        nameLabel.setText("Name:");
-
-        dobLabel.setText("DoB:");
-
-        idLabel.setText("ID:");
-
-        creditLabel.setText("Credit:");
-
-        inspectionStatus.setText("placeholder");
-
-        zoneFromCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        zoneToCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        zoneFromLabel.setText("From:");
-
-        zoneToLabel.setText("To:");
-
-        jButton1.setText("Confirm Inspection");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        scanCardButton.setText("Scan Card");
+        scanCardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                scanCardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
-        mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(zoneToCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(zoneFromCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(zoneFromLabel)
-                            .addComponent(zoneToLabel)))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jButton1))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(inspectionStatus)))
-                .addContainerGap(135, Short.MAX_VALUE))
+        javax.swing.GroupLayout scanPanelLayout = new javax.swing.GroupLayout(scanPanel);
+        scanPanel.setLayout(scanPanelLayout);
+        scanPanelLayout.setHorizontalGroup(
+            scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(scanPanelLayout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(scanCardButton)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
-        mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
+        scanPanelLayout.setVerticalGroup(
+            scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(scanPanelLayout.createSequentialGroup()
+                .addContainerGap(237, Short.MAX_VALUE)
+                .addComponent(scanCardButton)
+                .addGap(249, 249, 249))
+        );
+
+        jLayeredPane1.add(scanPanel);
+
+        passUserImage.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        javax.swing.GroupLayout passUserImageLayout = new javax.swing.GroupLayout(passUserImage);
+        passUserImage.setLayout(passUserImageLayout);
+        passUserImageLayout.setHorizontalGroup(
+            passUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        passUserImageLayout.setVerticalGroup(
+            passUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jLabel2.setText("User Details");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Valid Pass");
+
+        jLabel3.setText("Name: ");
+
+        jLabel4.setText("DoB: ");
+
+        jLabel5.setText("ID: ");
+
+        jLabel6.setText("Balance: ");
+
+        passUserName.setText("placeholder");
+
+        passUserDob.setText("placeholder");
+
+        passUserID.setText("placeholder");
+
+        passUserBalance.setText("placeholder");
+
+        passConfirmInspection.setText("Confirm Inspection");
+
+        javax.swing.GroupLayout validPassPanelLayout = new javax.swing.GroupLayout(validPassPanel);
+        validPassPanel.setLayout(validPassPanelLayout);
+        validPassPanelLayout.setHorizontalGroup(
+            validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(validPassPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(inspectionStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(zoneFromLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(zoneFromCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(zoneToLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(zoneToCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(29, 29, 29))
+                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(validPassPanelLayout.createSequentialGroup()
+                        .addComponent(passUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(validPassPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(passUserID))
+                            .addGroup(validPassPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(passUserBalance))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, validPassPanelLayout.createSequentialGroup()
+                                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))
+                                .addGap(31, 38, Short.MAX_VALUE)
+                                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(passUserName)
+                                    .addComponent(passUserDob)))))
+                    .addGroup(validPassPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(25, 25, 25)))
+                .addGap(168, 168, 168))
+            .addGroup(validPassPanelLayout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(passConfirmInspection)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(validPassPanelLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        validPassPanelLayout.setVerticalGroup(
+            validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(validPassPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(validPassPanelLayout.createSequentialGroup()
+                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(passUserName))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(passUserDob))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(passUserID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(passUserBalance))))
+                .addGap(109, 109, 109)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addComponent(passConfirmInspection)
+                .addGap(52, 52, 52))
+        );
+
+        jLayeredPane1.add(validPassPanel);
+
+        paymentUserImage.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        javax.swing.GroupLayout paymentUserImageLayout = new javax.swing.GroupLayout(paymentUserImage);
+        paymentUserImage.setLayout(paymentUserImageLayout);
+        paymentUserImageLayout.setHorizontalGroup(
+            paymentUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        paymentUserImageLayout.setVerticalGroup(
+            paymentUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jLabel7.setText("User Details");
+
+        jLabel9.setText("Name: ");
+
+        jLabel10.setText("DoB: ");
+
+        jLabel11.setText("ID: ");
+
+        jLabel12.setText("Balance: ");
+
+        paymentUserName.setText("placeholder");
+
+        paymentUserDob.setText("placeholder");
+
+        paymentUserID.setText("placeholder");
+
+        paymentUserBalance.setText("placeholder");
+
+        paymentConfirmInspection.setText("Confirm Inspection");
+
+        fromZone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        toZone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel8.setText("From:");
+
+        jLabel13.setText("To:");
+
+        javax.swing.GroupLayout payForTicketLayout = new javax.swing.GroupLayout(payForTicket);
+        payForTicket.setLayout(payForTicketLayout);
+        payForTicketLayout.setHorizontalGroup(
+            payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(payForTicketLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(payForTicketLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addGap(25, 25, 25))
+                    .addGroup(payForTicketLayout.createSequentialGroup()
+                        .addComponent(paymentUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(payForTicketLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(paymentUserID))
+                            .addGroup(payForTicketLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(paymentUserBalance))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payForTicketLayout.createSequentialGroup()
+                                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel9))
+                                .addGap(31, 38, Short.MAX_VALUE)
+                                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(paymentUserName)
+                                    .addComponent(paymentUserDob))))))
+                .addGap(168, 168, 168))
+            .addGroup(payForTicketLayout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(paymentConfirmInspection)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(payForTicketLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel8)
+                    .addComponent(toZone, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fromZone, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        payForTicketLayout.setVerticalGroup(
+            payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(payForTicketLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paymentUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(payForTicketLayout.createSequentialGroup()
+                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(paymentUserName))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(paymentUserDob))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(paymentUserID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(paymentUserBalance))))
+                .addGap(76, 76, 76)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fromZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(toZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addComponent(paymentConfirmInspection)
+                .addGap(52, 52, 52))
+        );
+
+        jLayeredPane1.add(payForTicket);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(userImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameLabel)
-                            .addComponent(dobLabel)
-                            .addComponent(idLabel)
-                            .addComponent(creditLabel))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLayeredPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dobLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(creditLabel)))
-                .addGap(26, 26, 26)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+            .addComponent(jLayeredPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void scanCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanCardButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.scanPanel.setVisible(false);
+        TravelCard currentCard = null;
+
+        try {
+            currentCard = this.portableReader.readTravelCard();
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        User currentUser = currentCard.getUser();
+
+        setUpUserDetails(currentUser, currentCard);
+    }//GEN-LAST:event_scanCardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,18 +401,44 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel creditLabel;
-    private javax.swing.JLabel dobLabel;
-    private javax.swing.JLabel idLabel;
-    private javax.swing.JLabel inspectionStatus;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel mainPanel;
-    private javax.swing.JLabel nameLabel;
-    private javax.swing.JLabel titleLabel;
-    private javax.swing.JPanel userImage;
-    private javax.swing.JComboBox zoneFromCombo;
-    private javax.swing.JLabel zoneFromLabel;
-    private javax.swing.JComboBox zoneToCombo;
-    private javax.swing.JLabel zoneToLabel;
+    private javax.swing.JComboBox fromZone;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JButton passConfirmInspection;
+    private javax.swing.JLabel passUserBalance;
+    private javax.swing.JLabel passUserDob;
+    private javax.swing.JLabel passUserID;
+    private javax.swing.JPanel passUserImage;
+    private javax.swing.JLabel passUserName;
+    private javax.swing.JPanel payForTicket;
+    private javax.swing.JButton paymentConfirmInspection;
+    private javax.swing.JLabel paymentUserBalance;
+    private javax.swing.JLabel paymentUserDob;
+    private javax.swing.JLabel paymentUserID;
+    private javax.swing.JPanel paymentUserImage;
+    private javax.swing.JLabel paymentUserName;
+    private javax.swing.JButton scanCardButton;
+    private javax.swing.JPanel scanPanel;
+    private javax.swing.JComboBox toZone;
+    private javax.swing.JPanel validPassPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void setUpUserDetails(User user, TravelCard card) {
+        this.passUserName.setText(user.getUsername());
+        this.passUserBalance.setText(Float.toString(card.getBalance()));
+        //this.passUserDob.setText();
+        this.passUserID.setText(Integer.toString(user.getId()));
+    }
 }
