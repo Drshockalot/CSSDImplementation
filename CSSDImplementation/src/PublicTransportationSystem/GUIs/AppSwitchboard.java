@@ -5,6 +5,9 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.TravelSystem;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -38,6 +41,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
         btn_loginUI = new javax.swing.JButton();
         lbl_mainSwitchTitle = new javax.swing.JLabel();
         lbl_mainSwitchAuthors = new javax.swing.JLabel();
+        btn_resetData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Switchboard UI");
@@ -75,9 +79,8 @@ public class AppSwitchboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btn_switchScannerUI, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btn_switchInspectorUI, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                        .addComponent(btn_loginUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btn_switchInspectorUI, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                    .addComponent(btn_loginUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,7 +92,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
                 .addComponent(btn_switchInspectorUI)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_switchScannerUI)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         lbl_mainSwitchTitle.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
@@ -98,6 +101,13 @@ public class AppSwitchboard extends javax.swing.JFrame {
 
         lbl_mainSwitchAuthors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_mainSwitchAuthors.setText("3 Snakes & a Bootlace 2016 (c)");
+
+        btn_resetData.setText("Booton");
+        btn_resetData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetDataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,8 +118,9 @@ public class AppSwitchboard extends javax.swing.JFrame {
                     .addComponent(lbl_mainSwitchAuthors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbl_mainSwitchTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(lbl_mainSwitchTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_resetData))
             .addGroup(layout.createSequentialGroup()
                 .addGap(143, 143, 143)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,7 +134,9 @@ public class AppSwitchboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(lbl_mainSwitchAuthors)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_mainSwitchAuthors)
+                    .addComponent(btn_resetData))
                 .addContainerGap())
         );
 
@@ -146,6 +159,14 @@ public class AppSwitchboard extends javax.swing.JFrame {
         websiteUI.setAlwaysOnTop(true);
     }//GEN-LAST:event_btn_loginUIActionPerformed
 
+    private void btn_resetDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetDataActionPerformed
+        try {
+            TravelSystem.getInstance().resetData();
+        } catch (Throwable ex) {
+            Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_resetDataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -160,6 +181,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_loginUI;
+    private javax.swing.JButton btn_resetData;
     private javax.swing.JButton btn_switchInspectorUI;
     private javax.swing.JButton btn_switchScannerUI;
     private javax.swing.JPanel jPanel1;
