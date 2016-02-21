@@ -27,6 +27,8 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeUsers();
         deserializeJourneys();
         deserializeZones();
+
+        getSystemRoles();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -151,6 +153,10 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public ZoneList getZones() {
         return systemZones;
+    }
+
+    public TypeEnums.UserType[] getSystemRoles() {
+        return TypeEnums.UserType.values();
     }
 
     public void serializeUsers() {
