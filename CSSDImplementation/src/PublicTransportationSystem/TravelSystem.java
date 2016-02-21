@@ -49,7 +49,7 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initUsers() {
-        SystemRole newSysRole = new SystemRole("ADMIN");
+        SystemRole newSysRole = new SystemRole(TypeEnums.UserType.ADMIN);
         registerUser("Test", "Loser", "User", "test@test.com", "password", newSysRole);
         registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", "FromAmericaWithLove", newSysRole);
         registerUser("Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", "p", newSysRole);

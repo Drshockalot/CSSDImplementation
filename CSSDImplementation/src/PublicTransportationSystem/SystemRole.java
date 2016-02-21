@@ -13,10 +13,11 @@ import java.io.Serializable;
  */
 public class SystemRole implements Serializable {
 
-    String name;
+//    String name;
+    TypeEnums.UserType name;
     //PermissionList permissionList;
 
-    public SystemRole(String name) {
+    public SystemRole(TypeEnums.UserType name) {
         this.name = name;
 //        this.permissionList = permissionList;
     }
@@ -25,12 +26,19 @@ public class SystemRole implements Serializable {
         return true;
     }
 
-    public String getName() {
+    public TypeEnums.UserType getName() {
         return this.name;
     }
 
     public boolean isAdmin() {
-        return this.name.equals("ADMIN");
+        return this.name == TypeEnums.UserType.ADMIN;
     }
 
+    public boolean isTravelInspector() {
+        return this.name == TypeEnums.UserType.TRAVELINSPECTOR;
+    }
+
+    public boolean isUser() {
+        return this.name == TypeEnums.UserType.USER;
+    }
 }
