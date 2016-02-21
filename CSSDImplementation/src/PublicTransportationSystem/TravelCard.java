@@ -72,6 +72,10 @@ public class TravelCard {
         return hasPass;
     }
 
+    public TypeEnums.PassType getPassType() {
+        return this.pass.passType();
+    }
+
     public float getDiscount() {
         // Return the value of 'discount'
         return this.discount;
