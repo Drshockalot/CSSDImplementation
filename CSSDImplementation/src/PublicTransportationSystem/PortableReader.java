@@ -13,15 +13,8 @@ public class PortableReader {
 
     public Scanner scanner;
 
-    public void readCard() throws Throwable {
+    public TravelCard readTravelCard() throws Throwable {
         int cardID = scanner.read();
-        TravelSystem sys = TravelSystem.getInstance();
-        TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
-
-        if (!currCard.checkForActivePass() && !currCard.checkForScannedStation()) {
-            sys.getStationSystems();
-        }
-
+        return TravelSystem.getInstance().getTravelCards().getTravelCardById(cardID);
     }
-
 }

@@ -41,6 +41,10 @@ public class Pass {
         this.passType = ticketTypeEnum;
     }
 
+    public TypeEnums.PassType passType() {
+        return this.passType;
+    }
+
     private Date getExpiryDate() {
         return this.expiryDate;
     }
