@@ -164,6 +164,12 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
+        registerPopup.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                registerPopupWindowClosing(evt);
+            }
+        });
+
         lbl_fullname.setText("First Name");
 
         txt_Firstname.addActionListener(new java.awt.event.ActionListener() {
@@ -385,15 +391,24 @@ public class WebsiteUI extends javax.swing.JFrame {
         String password = new String(txtPass_Password.getPassword());
         SystemRole newSysRole = new SystemRole("USER");
 
-        try {
-            TravelSystem.getInstance()
-                    .registerUser(firstName, surname, username, email, password, newSysRole);
-        } catch (Throwable ex) {
-            Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+        if (firstName.isEmpty() || surname.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            System.out.println("Idiots");
+        } else {
+            try {
+                TravelSystem.getInstance()
+                        .registerUser(firstName, surname, username, email, password, newSysRole);
+            } catch (Throwable ex) {
+                Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            openWebsiteUI();
+            this.dispose();
         }
-        openWebsiteUI();
-        this.dispose();
     }//GEN-LAST:event_btn_RegisterActionPerformed
+
+    private void registerPopupWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_registerPopupWindowClosing
+        loginPopup.setEnabled(true);
+        loginPopup.setAlwaysOnTop(true);
+    }//GEN-LAST:event_registerPopupWindowClosing
 
     private void openAdminUI() {
         loginPopup.dispose();

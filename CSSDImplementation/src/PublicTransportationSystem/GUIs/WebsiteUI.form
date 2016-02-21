@@ -148,6 +148,9 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="registerPopup">
+      <Events>
+        <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="registerPopupWindowClosing"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">

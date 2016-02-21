@@ -57,7 +57,6 @@ public class AdminUI extends javax.swing.JFrame {
         tab_admin = new javax.swing.JTabbedPane();
         pnl_adminHome = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btn_saveuserstmp = new javax.swing.JButton();
         pnl_adminTT = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         pnl_adminStats = new javax.swing.JPanel();
@@ -66,7 +65,7 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         pnl_adminJourney = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_editJourneys = new javax.swing.JButton();
 
         dlg_adminJourneyEdit.setResizable(false);
         dlg_adminJourneyEdit.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -222,13 +221,6 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Useful statistics ");
 
-        btn_saveuserstmp.setText("Save Users");
-        btn_saveuserstmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_saveuserstmpActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnl_adminHomeLayout = new javax.swing.GroupLayout(pnl_adminHome);
         pnl_adminHome.setLayout(pnl_adminHomeLayout);
         pnl_adminHomeLayout.setHorizontalGroup(
@@ -237,19 +229,13 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminHomeLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_saveuserstmp)
-                .addGap(230, 230, 230))
         );
         pnl_adminHomeLayout.setVerticalGroup(
             pnl_adminHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_adminHomeLayout.createSequentialGroup()
                 .addGap(113, 113, 113)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                .addComponent(btn_saveuserstmp)
-                .addGap(80, 80, 80))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
 
         tab_admin.addTab("Home", pnl_adminHome);
@@ -317,10 +303,10 @@ public class AdminUI extends javax.swing.JFrame {
 
         tab_admin.addTab("Admin", pnl_adminAdmin);
 
-        jButton1.setText("Edit Journeys");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_editJourneys.setText("Edit Journeys");
+        btn_editJourneys.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_editJourneysActionPerformed(evt);
             }
         });
 
@@ -330,14 +316,14 @@ public class AdminUI extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(276, 276, 276)
-                .addComponent(jButton1)
+                .addComponent(btn_editJourneys)
                 .addContainerGap(278, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(167, 167, 167)
-                .addComponent(jButton1)
+                .addComponent(btn_editJourneys)
                 .addContainerGap(195, Short.MAX_VALUE))
         );
 
@@ -412,7 +398,7 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_error.setVisible(false);
     }//GEN-LAST:event_dlg_adminJourneyEditWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_editJourneysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editJourneysActionPerformed
         try {
             ZoneList zones = TravelSystem.getInstance().getZones();
             cmb_departure.setModel(new DefaultComboBoxModel(zones));
@@ -424,7 +410,7 @@ public class AdminUI extends javax.swing.JFrame {
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_editJourneysActionPerformed
 
     private void cmb_departureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_departureActionPerformed
         if (cmb_departure.getItemCount() > 0 && cmb_arrival.getItemCount() > 0) {
@@ -475,14 +461,6 @@ public class AdminUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_savePriceChangesActionPerformed
-
-    private void btn_saveuserstmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveuserstmpActionPerformed
-        try {
-            TravelSystem.getInstance().serializeZones();
-        } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_saveuserstmpActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
@@ -548,12 +526,11 @@ public class AdminUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_closeEditJourney;
+    private javax.swing.JButton btn_editJourneys;
     private javax.swing.JButton btn_savePriceChanges;
-    private javax.swing.JButton btn_saveuserstmp;
     private javax.swing.JComboBox<String> cmb_arrival;
     private javax.swing.JComboBox<String> cmb_departure;
     private javax.swing.JDialog dlg_adminJourneyEdit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -303,11 +303,6 @@
                           <Component id="jLabel1" pref="680" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btn_saveuserstmp" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -315,9 +310,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="28" max="-2" attributes="0"/>
-                          <EmptySpace pref="153" max="32767" attributes="0"/>
-                          <Component id="btn_saveuserstmp" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace pref="262" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -328,14 +321,6 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Useful statistics "/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="btn_saveuserstmp">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Save Users"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_saveuserstmpActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -487,7 +472,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="276" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_editJourneys" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="278" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -496,19 +481,19 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_editJourneys" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="195" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton1">
+                    <Component class="javax.swing.JButton" name="btn_editJourneys">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Edit Journeys"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_editJourneysActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
