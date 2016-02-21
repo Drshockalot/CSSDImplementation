@@ -49,6 +49,11 @@ public class User implements Serializable {
         return this.username;
     }
 
+    @Override
+    public String toString() {
+        return this.userId + " - " + this.forename + " " + this.surname;
+    }
+
     public int getId() {
         return this.userId;
     }

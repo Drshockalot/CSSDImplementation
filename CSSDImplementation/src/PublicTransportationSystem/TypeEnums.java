@@ -7,7 +7,7 @@ package PublicTransportationSystem;
 
 /**
  *
- * @author JackMcGlone
+ * @author JackMcBlown
  */
 public final class TypeEnums {
 
@@ -15,13 +15,15 @@ public final class TypeEnums {
 
     }
 
-    public enum TicketType {
+    public enum UserType {
+        ADMIN, TRAVELINSPECTOR, USER
+    };
 
+    public enum TicketType {
         BUS, TRAIN
     };
 
     public enum PassType {
-
         BUS, TRAIN, BUSANDTRAIN
     };
 

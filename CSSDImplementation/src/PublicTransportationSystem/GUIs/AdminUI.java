@@ -9,10 +9,9 @@ import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.Journey;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.Zone;
-import PublicTransportationSystem.ZoneList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -57,14 +56,10 @@ public class AdminUI extends javax.swing.JFrame {
         tab_admin = new javax.swing.JTabbedPane();
         pnl_adminHome = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        pnl_adminTT = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        pnl_adminStats = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        pnl_adminAdmin = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        pnl_adminJourney = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jlist_adminGUIUserList = new javax.swing.JList<>();
+        jPanel2 = new javax.swing.JPanel();
         btn_editJourneys = new javax.swing.JButton();
 
         dlg_adminJourneyEdit.setResizable(false);
@@ -240,68 +235,31 @@ public class AdminUI extends javax.swing.JFrame {
 
         tab_admin.addTab("Home", pnl_adminHome);
 
-        jLabel3.setText("...");
+        jlist_adminGUIUserList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jlist_adminGUIUserList);
 
-        javax.swing.GroupLayout pnl_adminTTLayout = new javax.swing.GroupLayout(pnl_adminTT);
-        pnl_adminTT.setLayout(pnl_adminTTLayout);
-        pnl_adminTTLayout.setHorizontalGroup(
-            pnl_adminTTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminTTLayout.createSequentialGroup()
-                .addContainerGap(636, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(44, 44, 44))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(442, Short.MAX_VALUE))
         );
-        pnl_adminTTLayout.setVerticalGroup(
-            pnl_adminTTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_adminTTLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jLabel3)
-                .addContainerGap(284, Short.MAX_VALUE))
-        );
-
-        tab_admin.addTab("Timetable", pnl_adminTT);
-
-        jLabel2.setText("Statistics dashboard with search functionality");
-
-        javax.swing.GroupLayout pnl_adminStatsLayout = new javax.swing.GroupLayout(pnl_adminStats);
-        pnl_adminStats.setLayout(pnl_adminStatsLayout);
-        pnl_adminStatsLayout.setHorizontalGroup(
-            pnl_adminStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminStatsLayout.createSequentialGroup()
-                .addContainerGap(360, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(44, 44, 44))
-        );
-        pnl_adminStatsLayout.setVerticalGroup(
-            pnl_adminStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_adminStatsLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jLabel2)
-                .addContainerGap(284, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        tab_admin.addTab("Statistics", pnl_adminStats);
-
-        jLabel4.setText("...");
-
-        javax.swing.GroupLayout pnl_adminAdminLayout = new javax.swing.GroupLayout(pnl_adminAdmin);
-        pnl_adminAdmin.setLayout(pnl_adminAdminLayout);
-        pnl_adminAdminLayout.setHorizontalGroup(
-            pnl_adminAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminAdminLayout.createSequentialGroup()
-                .addContainerGap(636, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(44, 44, 44))
-        );
-        pnl_adminAdminLayout.setVerticalGroup(
-            pnl_adminAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_adminAdminLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jLabel4)
-                .addContainerGap(284, Short.MAX_VALUE))
-        );
-
-        tab_admin.addTab("Admin", pnl_adminAdmin);
+        tab_admin.addTab("Users", jPanel1);
 
         btn_editJourneys.setText("Edit Journeys");
         btn_editJourneys.addActionListener(new java.awt.event.ActionListener() {
@@ -310,41 +268,24 @@ public class AdminUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(276, 276, 276)
                 .addComponent(btn_editJourneys)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(167, 167, 167)
                 .addComponent(btn_editJourneys)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout pnl_adminJourneyLayout = new javax.swing.GroupLayout(pnl_adminJourney);
-        pnl_adminJourney.setLayout(pnl_adminJourneyLayout);
-        pnl_adminJourneyLayout.setHorizontalGroup(
-            pnl_adminJourneyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_adminJourneyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnl_adminJourneyLayout.setVerticalGroup(
-            pnl_adminJourneyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_adminJourneyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        tab_admin.addTab("Journey", pnl_adminJourney);
+        tab_admin.addTab("Journeys", jPanel2);
 
         javax.swing.GroupLayout pnl_adminGUITabsLayout = new javax.swing.GroupLayout(pnl_adminGUITabs);
         pnl_adminGUITabs.setLayout(pnl_adminGUITabsLayout);
@@ -388,29 +329,20 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            jlist_adminGUIUserList.setListData((Vector) TravelSystem.getInstance().getUsers());
 //        adminLoginPopup.pack();
 //        adminLoginPopup.setVisible(true);
 //        adminLoginPopup.setAlwaysOnTop(true);
 //        this.setEnabled(false);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void dlg_adminJourneyEditWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneyEditWindowOpened
         lbl_error.setVisible(false);
     }//GEN-LAST:event_dlg_adminJourneyEditWindowOpened
-
-    private void btn_editJourneysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editJourneysActionPerformed
-        try {
-            ZoneList zones = TravelSystem.getInstance().getZones();
-            cmb_departure.setModel(new DefaultComboBoxModel(zones));
-            cmb_arrival.setModel(new DefaultComboBoxModel(zones));
-
-            dlg_adminJourneyEdit.pack();
-            dlg_adminJourneyEdit.setAlwaysOnTop(true);
-            dlg_adminJourneyEdit.show();
-        } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_editJourneysActionPerformed
 
     private void cmb_departureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_departureActionPerformed
         if (cmb_departure.getItemCount() > 0 && cmb_arrival.getItemCount() > 0) {
@@ -466,6 +398,10 @@ public class AdminUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         mainUI.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void btn_editJourneysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editJourneysActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_editJourneysActionPerformed
 
     private void displayPrices() {
         Object departure = cmb_departure.getSelectedItem();
@@ -532,25 +468,21 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmb_departure;
     private javax.swing.JDialog dlg_adminJourneyEdit;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JList<String> jlist_adminGUIUserList;
     private javax.swing.JLabel lbl_adminJourneyEditTitle;
     private javax.swing.JLabel lbl_error;
     private javax.swing.JLabel lbl_managementUITitle;
-    private javax.swing.JPanel pnl_adminAdmin;
     private javax.swing.JPanel pnl_adminGUITabs;
     private javax.swing.JPanel pnl_adminGUITitle;
     private javax.swing.JPanel pnl_adminHome;
-    private javax.swing.JPanel pnl_adminJourney;
-    private javax.swing.JPanel pnl_adminStats;
-    private javax.swing.JPanel pnl_adminTT;
     private javax.swing.JTabbedPane tab_admin;
     private javax.swing.JTextField txt_offPeakPrice;
     private javax.swing.JTextField txt_onPeakPrice;
