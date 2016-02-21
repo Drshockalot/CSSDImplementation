@@ -31,8 +31,6 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeJourneys();
         deserializeZones();
         initTravelCard();
-
-        getSystemRoles();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -58,6 +56,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public void initUsers() {
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.ADMIN);
+
         registerUser("Test", "Loser", "User", "test@test.com", "password", newSysRole);
         registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", "FromAmericaWithLove", newSysRole);
         registerUser("Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", "p", newSysRole);
@@ -71,11 +70,10 @@ public class TravelSystem implements SetOfUsersInterface {
         float dailyCap = 9.00f;
 
         try {
-            user = TravelSystem.getInstance().systemUsers.getUserById(1);
+            user = systemUsers.getUserById(1);
         } catch (Throwable ex) {
             Logger.getLogger(TravelSystem.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         registerTravelCard(user, "test", discount, dailyCap);
     }
 
