@@ -109,6 +109,15 @@ public class TravelCard {
         return this.myTickets;
     }
 
+    public boolean checkForScannedStation() {
+        return this.lastDepartedStation == null;
+    }
+
+    public void setLastDepartedStationNull() {
+        this.lastDepartedStation = null;
+        this.lastDepartedTime = null;
+    }
+
 // </editor-fold>
 // Methods End
 }

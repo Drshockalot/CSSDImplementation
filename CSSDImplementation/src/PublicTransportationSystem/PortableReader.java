@@ -18,8 +18,10 @@ public class PortableReader {
         TravelSystem sys = TravelSystem.getInstance();
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
 
-        if (currCard.checkForActivePass()) {
+        if (!currCard.checkForActivePass() && !currCard.checkForScannedStation()) {
+            sys.getStationSystems();
         }
+
     }
 
 }

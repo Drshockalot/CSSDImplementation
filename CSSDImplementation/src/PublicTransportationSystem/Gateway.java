@@ -45,6 +45,7 @@ public class Gateway {
 
             if (hasPaid) {
                 this.approve();
+                currCard.setLastDepartedStationNull();
             } else {
                 this.reject();
             }
