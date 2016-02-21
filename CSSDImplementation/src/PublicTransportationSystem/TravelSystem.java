@@ -24,13 +24,9 @@ public class TravelSystem implements SetOfUsersInterface {
      *
      */
     private TravelSystem() throws ClassNotFoundException {
-        try {
-            deserializeUsers();
-            deserializeJourneys();
-            deserializeZones();
-        } catch (Exception e) {
-            resetData();
-        }
+        deserializeUsers();
+        deserializeJourneys();
+        deserializeZones();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -42,6 +38,9 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void resetData() {
+        systemZones.removeAllElements();
+        systemUsers.removeAllElements();
+        systemJourneys.removeAllElements();
         initUsers();
         serializeUsers();
         initZones();
@@ -51,7 +50,6 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initUsers() {
-        systemUsers.removeAllElements();
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.ADMIN);
         registerUser("Test", "Loser", "User", "test@test.com", "password", newSysRole);
         registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", "FromAmericaWithLove", newSysRole);
@@ -61,7 +59,6 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initZones() {
-        systemZones.removeAllElements();
         registerZone("Zone A", 1);
         registerZone("Zone B", 2);
         registerZone("Zone C", 3);

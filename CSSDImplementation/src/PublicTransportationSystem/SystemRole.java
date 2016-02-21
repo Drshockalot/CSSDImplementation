@@ -13,6 +13,8 @@ import java.io.Serializable;
  */
 public class SystemRole implements Serializable {
 
+    private static final long serialVersionUID = -3633009533633799965L;
+
 //    String name;
     TypeEnums.UserType name;
     //PermissionList permissionList;
