@@ -73,7 +73,16 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         lbl_username.setText("Username");
 
+        txt_username.setText("JD");
+        txt_username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usernameActionPerformed(evt);
+            }
+        });
+
         lbl_password.setText("Password");
+
+        pass_Password.setText("p");
 
         lbl_loginTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         lbl_loginTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -410,6 +419,10 @@ public class WebsiteUI extends javax.swing.JFrame {
         loginPopup.setEnabled(true);
         loginPopup.setAlwaysOnTop(true);
     }//GEN-LAST:event_registerPopupWindowClosing
+
+    private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usernameActionPerformed
 
     private void openAdminUI() {
         loginPopup.dispose();
