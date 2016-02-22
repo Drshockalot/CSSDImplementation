@@ -56,7 +56,7 @@ public class AdminUI extends javax.swing.JFrame {
         btn_closeEditJourney = new javax.swing.JButton();
         lbl_error = new javax.swing.JLabel();
         dlg_adminUserAddEdit = new javax.swing.JDialog();
-        jPanel4 = new javax.swing.JPanel();
+        pnl_adminUserAddEditContainer = new javax.swing.JPanel();
         txt_adminUserAddEditForename = new javax.swing.JTextField();
         txt_adminUserAddEditSurname = new javax.swing.JTextField();
         txt_adminUserAddEditUsername = new javax.swing.JTextField();
@@ -70,8 +70,8 @@ public class AdminUI extends javax.swing.JFrame {
         txt_adminUserAddEditId = new javax.swing.JTextField();
         lbl_adminUserAddEditEmail = new javax.swing.JLabel();
         txt_adminUserAddEditEmail = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btn_adminUserAddEditSave = new javax.swing.JButton();
+        btn_adminUserAddEditCancel = new javax.swing.JButton();
         cmd_adminUserAddEditUserRole = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         pnl_adminGUITitle = new javax.swing.JPanel();
@@ -239,73 +239,73 @@ public class AdminUI extends javax.swing.JFrame {
 
         lbl_adminUserAddEditEmail.setText("Email");
 
-        jButton4.setText("Save");
+        btn_adminUserAddEditSave.setText("Save");
 
-        jButton5.setText("Cancel");
+        btn_adminUserAddEditCancel.setText("Cancel");
 
         cmd_adminUserAddEditUserRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_adminUserAddEditContainerLayout = new javax.swing.GroupLayout(pnl_adminUserAddEditContainer);
+        pnl_adminUserAddEditContainer.setLayout(pnl_adminUserAddEditContainerLayout);
+        pnl_adminUserAddEditContainerLayout.setHorizontalGroup(
+            pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserAddEditContainerLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addComponent(btn_adminUserAddEditCancel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(btn_adminUserAddEditSave)
                 .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
                 .addComponent(cmd_adminUserAddEditUserRole, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_adminUserAddEditPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_adminUserAddEditForename, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_adminUserAddEditForename))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_adminUserAddEditSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_adminUserAddEditSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lbl_adminUserAddEditPassword)
                     .addComponent(lbl_adminUserAddEditUserRole)
                     .addComponent(txt_adminUserAddEditId, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_adminUserAddEditId)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_adminUserAddEditUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_adminUserAddEditUsername))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_adminUserAddEditEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_adminUserAddEditEmail))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        pnl_adminUserAddEditContainerLayout.setVerticalGroup(
+            pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_adminUserAddEditId)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_adminUserAddEditId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserAddEditContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_adminUserAddEditForename)
                             .addComponent(lbl_adminUserAddEditSurname))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_adminUserAddEditForename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_adminUserAddEditSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_adminUserAddEditUsername))
                     .addComponent(lbl_adminUserAddEditEmail, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_adminUserAddEditUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_adminUserAddEditEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
@@ -317,9 +317,9 @@ public class AdminUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmd_adminUserAddEditUserRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_adminUserAddEditSave)
+                    .addComponent(btn_adminUserAddEditCancel))
                 .addContainerGap())
         );
 
@@ -331,7 +331,7 @@ public class AdminUI extends javax.swing.JFrame {
             .addGroup(dlg_adminUserAddEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(dlg_adminUserAddEditLayout.createSequentialGroup()
                     .addGap(18, 18, 18)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_adminUserAddEditContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(18, 18, 18)))
         );
         dlg_adminUserAddEditLayout.setVerticalGroup(
@@ -340,7 +340,7 @@ public class AdminUI extends javax.swing.JFrame {
             .addGroup(dlg_adminUserAddEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(dlg_adminUserAddEditLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_adminUserAddEditContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -686,6 +686,8 @@ public class AdminUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adminUserAdd;
+    private javax.swing.JButton btn_adminUserAddEditCancel;
+    private javax.swing.JButton btn_adminUserAddEditSave;
     private javax.swing.JButton btn_adminUserDelete;
     private javax.swing.JButton btn_adminUserEdit;
     private javax.swing.JButton btn_closeEditJourney;
@@ -697,8 +699,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmd_adminUserAddEditUserRole;
     private javax.swing.JDialog dlg_adminJourneyEdit;
     private javax.swing.JDialog dlg_adminUserAddEdit;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -706,7 +706,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -723,6 +722,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_adminGUITabs;
     private javax.swing.JPanel pnl_adminGUITitle;
     private javax.swing.JPanel pnl_adminHome;
+    private javax.swing.JPanel pnl_adminUserAddEditContainer;
     private javax.swing.JTabbedPane tab_admin;
     private javax.swing.JTable tbl_adminGUIUserList;
     private javax.swing.JTextField txt_adminUserAddEditEmail;
