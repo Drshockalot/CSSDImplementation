@@ -38,12 +38,18 @@ public class User implements Serializable {
         dateOfBirth = dob;
     }
 
-    public Date getDateOfBirth() {
-        return this.dateOfBirth;
+    @Override
+    public String toString() {
+        return this.userId + " - " + this.forename + " " + this.surname;
     }
 
     public boolean authenticateUser(String password) {
         return this.password.equals(password);
+    }
+
+    // <editor-fold desc="Getters">
+    public Date getDateOfBirth() {
+        return this.dateOfBirth;
     }
 
     public SystemRole getSystemRole() {
@@ -52,11 +58,6 @@ public class User implements Serializable {
 
     public String getUsername() {
         return this.username;
-    }
-
-    @Override
-    public String toString() {
-        return this.userId + " - " + this.forename + " " + this.surname;
     }
 
     public int getId() {
@@ -83,11 +84,31 @@ public class User implements Serializable {
         return this.password;
     }
 
-    public String setUsername(String newUsername) {
-        return this.username = newUsername;
+    // </editor-fold>
+    // <editor-fold desc="Setters">
+    public void setUsername(String newUsername) {
+        this.username = newUsername;
     }
 
-    public String setPassword(String newPassword) {
-        return this.password = newPassword;
+    public void setPassword(String newPassword) {
+        this.password = newPassword;
     }
+
+    public void setForename(String newForename) {
+        this.forename = newForename;
+    }
+
+    public void setSurname(String newSurname) {
+        this.surname = newSurname;
+    }
+
+    public void setUserRole(SystemRole newUserRole) {
+        this.userRole = newUserRole;
+    }
+
+    public void setEmail(String newEmail) {
+        this.email = newEmail;
+    }
+
+    // </editor-fold>
 }

@@ -238,6 +238,11 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminUserAddEditEmail.setText("Email");
 
         btn_adminUserAddEditSave.setText("Save");
+        btn_adminUserAddEditSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserAddEditSaveActionPerformed(evt);
+            }
+        });
 
         btn_adminUserAddEditCancel.setText("Cancel");
         btn_adminUserAddEditCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -656,6 +661,10 @@ public class AdminUI extends javax.swing.JFrame {
         this.setVisible(true);
         this.setAlwaysOnTop(true);
     }//GEN-LAST:event_btn_adminUserAddEditCancelActionPerformed
+
+    private void btn_adminUserAddEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddEditSaveActionPerformed
+
+    }//GEN-LAST:event_btn_adminUserAddEditSaveActionPerformed
 
     private void initAddEditView() {
         int row = tbl_adminGUIUserList.getSelectedRow();
