@@ -533,8 +533,6 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-//            jlist_adminGUIUserList.setModel(new DefaultListModel());
-//            jlist_adminGUIUserList.setListData((Vector) TravelSystem.getInstance().getUsers());
             populateTable();
             TypeEnums.UserType[] userTypes = TravelSystem.getInstance().getSystemRoles();
             cmd_adminUserAddEditUserRole.setModel(new DefaultComboBoxModel(userTypes));
