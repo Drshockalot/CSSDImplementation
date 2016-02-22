@@ -35,6 +35,16 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         return null;
     }
 
+    public TypeEnums.UserType getUserSystemEnum(int userId) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getId() == userId) {
+                return super.get(i).getSystemRole().getName();
+            }
+        }
+
+        return null;
+    }
+
     public User getUserById(int id) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getId() == id) {

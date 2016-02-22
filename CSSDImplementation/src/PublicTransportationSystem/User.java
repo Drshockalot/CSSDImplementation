@@ -14,6 +14,8 @@ import java.util.Date;
  */
 public class User implements Serializable {
 
+    private static final long serialVersionUID = 1326120471038901083L;
+
     private String forename;
     private String surname;
     private int userId;
@@ -59,6 +61,22 @@ public class User implements Serializable {
 
     public int getId() {
         return this.userId;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getDob() {
+        return this.dateOfBirth.toString();
+    }
+
+    public String getForename() {
+        return this.forename;
+    }
+
+    public String getSurname() {
+        return this.surname;
     }
 
     public String setUsername(String newUsername) {
