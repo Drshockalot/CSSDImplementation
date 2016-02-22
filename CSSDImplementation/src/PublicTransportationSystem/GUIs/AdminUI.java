@@ -253,9 +253,7 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        txt_adminUserAddEditForename.setEnabled(false);
-
-        txt_adminUserAddEditSurname.setEnabled(false);
+        dlg_adminUserAddEdit.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         txt_adminUserAddEditUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,8 +279,18 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminUserAddEditEmail.setText("Email");
 
         btn_adminUserAddEditSave.setText("Save");
+        btn_adminUserAddEditSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserAddEditSaveActionPerformed(evt);
+            }
+        });
 
         btn_adminUserAddEditCancel.setText("Cancel");
+        btn_adminUserAddEditCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserAddEditCancelActionPerformed(evt);
+            }
+        });
 
         cmd_adminUserAddEditUserRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -512,7 +520,7 @@ public class AdminUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbl_adminGUIUserList.setColumnSelectionAllowed(true);
+        tbl_adminGUIUserList.setCellSelectionEnabled(false);
         tbl_adminGUIUserList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_adminGUIUserList.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbl_adminGUIUserList);
@@ -528,6 +536,11 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminUserEdit.setText("Edit");
         btn_adminUserEdit.setEnabled(false);
         btn_adminUserEdit.setPreferredSize(new java.awt.Dimension(97, 29));
+        btn_adminUserEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserEditActionPerformed(evt);
+            }
+        });
 
         btn_adminUserSearch.setText("Search");
         btn_adminUserSearch.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -1069,8 +1082,6 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-//            jlist_adminGUIUserList.setModel(new DefaultListModel());
-//            jlist_adminGUIUserList.setListData((Vector) TravelSystem.getInstance().getUsers());
             populateTable();
             TypeEnums.UserType[] userTypes = TravelSystem.getInstance().getSystemRoles();
             cmd_adminUserAddEditUserRole.setModel(new DefaultComboBoxModel(userTypes));
@@ -1081,6 +1092,10 @@ public class AdminUI extends javax.swing.JFrame {
 
     public void populateTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIUserList.getModel();
+
+        tbl_adminGUIUserList.setCellSelectionEnabled(false);
+        tbl_adminGUIUserList.setRowSelectionAllowed(true);
+
         SetOfUsers setUsers = TravelSystem.getInstance().getUsers();
 
         for (User user : setUsers) {
@@ -1176,6 +1191,47 @@ public class AdminUI extends javax.swing.JFrame {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_adminJourneyEditActionPerformed
+
+    private void btn_adminUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserEditActionPerformed
+        if (tbl_adminGUIUserList.getSelectedRowCount() > 0) {
+            dlg_adminUserAddEdit.pack();
+            dlg_adminUserAddEdit.setAlwaysOnTop(true);
+            dlg_adminUserAddEdit.setVisible(true);
+            dlg_adminUserAddEdit.setEnabled(true);
+            this.setEnabled(false);
+            initAddEditView();
+        }
+    }//GEN-LAST:event_btn_adminUserEditActionPerformed
+
+    private void btn_adminUserAddEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddEditCancelActionPerformed
+        dlg_adminUserAddEdit.dispose();
+        this.setEnabled(true);
+        this.setVisible(true);
+        this.setAlwaysOnTop(true);
+    }//GEN-LAST:event_btn_adminUserAddEditCancelActionPerformed
+
+    private void btn_adminUserAddEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddEditSaveActionPerformed
+
+    }//GEN-LAST:event_btn_adminUserAddEditSaveActionPerformed
+
+    private void initAddEditView() {
+        int row = tbl_adminGUIUserList.getSelectedRow();
+
+        int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
+
+        try {
+            User user = TravelSystem.getInstance().getUsers().getUserById(userId);
+            txt_adminUserAddEditId.setText(Integer.toString(userId));
+            txt_adminUserAddEditForename.setText(user.getForename());
+            txt_adminUserAddEditSurname.setText(user.getSurname());
+            txt_adminUserAddEditUsername.setText(user.getUsername());
+            txt_adminUserAddEditEmail.setText(user.getEmail());
+            txt_adminUserAddEditPassword.setText(user.getPassword());
+            cmd_adminUserAddEditUserRole.setSelectedItem(user.getSystemRole().getName());
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void displayPrices() {
         Object departure = cmb_departure.getSelectedItem();
