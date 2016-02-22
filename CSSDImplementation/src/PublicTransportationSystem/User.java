@@ -79,6 +79,10 @@ public class User implements Serializable {
         return this.surname;
     }
 
+    public String getPassword() {
+        return this.password;
+    }
+
     public String setUsername(String newUsername) {
         return this.username = newUsername;
     }
