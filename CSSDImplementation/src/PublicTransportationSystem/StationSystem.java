@@ -62,6 +62,10 @@ public class StationSystem {
         return this.zone;
     }
 
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
+
     public boolean getPeak() {
         return this.peak;
     }

@@ -16,15 +16,18 @@ public final class TypeEnums {
     }
 
     public enum UserType {
+
         ADMIN, TRAVELINSPECTOR, USER
     };
 
     public enum TicketType {
+
         BUS, TRAIN
     };
 
     public enum PassType {
-        BUS, TRAIN, BUSANDTRAIN
+
+        BUSJOURNEY, BUSDAY, TRAINJOURNEY, TRAINDAY, BUSANDTRAINJOURNEY, BUSANDTRAINDAY
     };
 
 }

@@ -5,11 +5,15 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.Pass;
 import PublicTransportationSystem.PortableReader;
 import PublicTransportationSystem.TravelCard;
+import PublicTransportationSystem.TravelSystem;
+import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,9 +22,15 @@ import java.util.logging.Logger;
 public class PortableReaderUI extends javax.swing.JFrame {
 
     private PortableReader portableReader = new PortableReader();
+    private TravelSystem system = null;
+    private TravelCard currentCard = null;
+    // Whethere we're on a bus or train
+    private String travelType = null;
+    //private final String travelType;
 
     /**
      * Creates new form PortableReaderUI
+     *
      */
     public PortableReaderUI() {
         initComponents();
@@ -38,6 +48,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         scanPanel = new javax.swing.JPanel();
         scanCardButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         validPassPanel = new javax.swing.JPanel();
         passUserImage = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -72,10 +83,19 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
         jLayeredPane1.setLayout(new javax.swing.OverlayLayout(jLayeredPane1));
 
-        scanCardButton.setText("Scan Card");
+        scanCardButton.setText("Scan Card On Train");
         scanCardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scanCardButtonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Scan Card On Bus");
+        jButton1.setMaximumSize(new java.awt.Dimension(138, 24));
+        jButton1.setMinimumSize(new java.awt.Dimension(138, 24));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -83,17 +103,21 @@ public class PortableReaderUI extends javax.swing.JFrame {
         scanPanel.setLayout(scanPanelLayout);
         scanPanelLayout.setHorizontalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(scanPanelLayout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(scanCardButton)
-                .addContainerGap(170, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scanPanelLayout.createSequentialGroup()
+                .addContainerGap(155, Short.MAX_VALUE)
+                .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(scanCardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(144, 144, 144))
         );
         scanPanelLayout.setVerticalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(scanPanelLayout.createSequentialGroup()
-                .addContainerGap(237, Short.MAX_VALUE)
+                .addGap(198, 198, 198)
                 .addComponent(scanCardButton)
-                .addGap(249, 249, 249))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(246, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(scanPanel);
@@ -111,6 +135,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("User Details");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -126,56 +151,59 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
         jLabel6.setText("Balance: ");
 
+        passUserName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passUserName.setText("placeholder");
 
+        passUserDob.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passUserDob.setText("placeholder");
 
+        passUserID.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passUserID.setText("placeholder");
 
+        passUserBalance.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passUserBalance.setText("placeholder");
 
         passConfirmInspection.setText("Confirm Inspection");
+        passConfirmInspection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passConfirmInspectionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout validPassPanelLayout = new javax.swing.GroupLayout(validPassPanel);
         validPassPanel.setLayout(validPassPanelLayout);
         validPassPanelLayout.setHorizontalGroup(
             validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(validPassPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(validPassPanelLayout.createSequentialGroup()
-                        .addComponent(passUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(validPassPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(passUserID))
-                            .addGroup(validPassPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(passUserBalance))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, validPassPanelLayout.createSequentialGroup()
-                                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(31, 38, Short.MAX_VALUE)
-                                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(passUserName)
-                                    .addComponent(passUserDob)))))
-                    .addGroup(validPassPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(25, 25, 25)))
-                .addGap(168, 168, 168))
-            .addGroup(validPassPanelLayout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(passConfirmInspection)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(validPassPanelLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(validPassPanelLayout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(validPassPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(passUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, validPassPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(passUserBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, validPassPanelLayout.createSequentialGroup()
+                                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5))
+                                .addGap(18, 18, 18)
+                                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(passUserID, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                                    .addComponent(passUserDob, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                                    .addComponent(passUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         validPassPanelLayout.setVerticalGroup(
             validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,10 +270,13 @@ public class PortableReaderUI extends javax.swing.JFrame {
         paymentUserBalance.setText("placeholder");
 
         paymentConfirmInspection.setText("Confirm Inspection");
+        paymentConfirmInspection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paymentConfirmInspectionActionPerformed(evt);
+            }
+        });
 
-        fromZone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        toZone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        toZone.setModel(new javax.swing.DefaultComboBoxModel());
 
         jLabel8.setText("From:");
 
@@ -259,42 +290,41 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(payForTicketLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addGap(25, 25, 25))
-                    .addGroup(payForTicketLayout.createSequentialGroup()
                         .addComponent(paymentUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(payForTicketLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(paymentUserID))
-                            .addGroup(payForTicketLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(paymentUserBalance))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payForTicketLayout.createSequentialGroup()
                                 .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel9))
-                                .addGap(31, 38, Short.MAX_VALUE)
-                                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(paymentUserName)
-                                    .addComponent(paymentUserDob))))))
-                .addGap(168, 168, 168))
+                                .addGap(22, 22, 22)
+                                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(paymentUserDob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(paymentUserID, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                                    .addComponent(paymentUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(payForTicketLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(18, 18, 18)
+                                .addComponent(paymentUserBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payForTicketLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addGap(192, 192, 192)))
+                .addContainerGap())
             .addGroup(payForTicketLayout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(paymentConfirmInspection)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(payForTicketLayout.createSequentialGroup()
                 .addGap(102, 102, 102)
-                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel13)
                     .addComponent(jLabel8)
-                    .addComponent(toZone, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fromZone, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(toZone, 0, 240, Short.MAX_VALUE)
+                    .addComponent(fromZone, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         payForTicketLayout.setVerticalGroup(
             payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +337,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                     .addGroup(payForTicketLayout.createSequentialGroup()
                         .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(paymentUserName))
+                            .addComponent(paymentUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
@@ -316,10 +346,10 @@ public class PortableReaderUI extends javax.swing.JFrame {
                         .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(paymentUserID))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(paymentUserBalance))))
+                            .addComponent(paymentUserBalance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(76, 76, 76)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -350,21 +380,107 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void scanCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanCardButtonActionPerformed
-        // TODO add your handling code here:
+        // Train button pressed, we are on a train
+        this.travelType = "TRAIN";
+        setUpComponents();
+    }//GEN-LAST:event_scanCardButtonActionPerformed
+
+    private void setUpComponents() {
+        // Hide the first panel, we have our travel type now
         this.scanPanel.setVisible(false);
+        // Read the card and get it
+        getCurrentCardDetails();
+        setUpTravelSystemInstance();
+        ////////////////////////////////////////////////////////
+        // Hard-coded pass/station/zone, for testing purposes //
+        ////////////////////////////////////////////////////////
+        Pass pass = new Pass(TypeEnums.PassType.TRAINJOURNEY);
+        currentCard.setPass(pass);
+        currentCard.setLastDepartedStation(system.getStationSystems().getStationSystemById(1));
+        ////////////////////////////////////////////////////////
 
-        TravelCard currentCard = null;
+        // Get the user details from TravelCard and add them to the UI
+        User currentUser = currentCard.getUser();
+        setUpUserDetails(currentUser, currentCard);
 
+        validateJourney(currentCard);
+    }
+
+    private void getCurrentCardDetails() {
+        // Read from the scanner
         try {
             currentCard = this.portableReader.readTravelCard();
         } catch (Throwable ex) {
             Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
 
-        User currentUser = currentCard.getUser();
+    private void setUpTravelSystemInstance() {
+        try {
+            system = TravelSystem.getInstance();
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-        setUpUserDetails(currentUser, currentCard);
-    }//GEN-LAST:event_scanCardButtonActionPerformed
+    private void validateJourney(TravelCard currentCard) {
+        // If there is a pass, check that it is a valid one
+        // Decide which UI panel to show
+        if (!currentCard.checkForActivePass()) {
+            TypeEnums.PassType passType = currentCard.getPassType();
+
+            if ("BUS".equals(travelType)) {
+                // If we're on a bus
+                switch (passType) {
+                    case BUSDAY:
+                    case BUSANDTRAINDAY: {
+                        // VALID PASS SCREEN
+                        this.validPassPanel.setVisible(true);
+                    }
+                    case BUSJOURNEY:
+                    case BUSANDTRAINJOURNEY: {
+                        // Check the journey, approve/reject depending on result
+                        this.payForTicket.setVisible(true);
+                    }
+                }
+            } else if ("TRAIN".equals(travelType)) {
+                // Or on a train
+                switch (passType) {
+                    case TRAINDAY:
+                    case BUSANDTRAINDAY: {
+                        // VALID PASS SCREEN
+                        this.validPassPanel.setVisible(true);
+                    }
+                    case TRAINJOURNEY:
+                    case BUSANDTRAINJOURNEY: {
+                        // Check the journey, approve/reject depending on result
+                        this.payForTicket.setVisible(true);
+                    }
+                }
+            }
+        }
+    }
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Bus button pressed, we are on a bus
+        this.travelType = "BUS";
+        setUpComponents();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void passConfirmInspectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passConfirmInspectionActionPerformed
+        // The user has a valid pass, display a confirmation message
+        JOptionPane.showMessageDialog(validPassPanel, "Ticket Inspection Confirmed");
+        // V Have this stuff firing off the 'okay' botton press V
+        this.validPassPanel.setVisible(false);
+        this.payForTicket.setVisible(false);
+        this.scanPanel.setVisible(true);
+        // either close the application or return to the home screen here:
+    }//GEN-LAST:event_passConfirmInspectionActionPerformed
+
+    private void paymentConfirmInspectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentConfirmInspectionActionPerformed
+        // Check the 'from' and 'to' zones entered by the user and compare them to the
+        // values on their travel pass
+    }//GEN-LAST:event_paymentConfirmInspectionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,6 +519,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox fromZone;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -446,5 +563,18 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.paymentUserBalance.setText(Float.toString(card.getBalance()));
         this.paymentUserDob.setText(user.getDateOfBirth().toString());
         this.paymentUserID.setText(Integer.toString(user.getId()));
+
+        this.validPassPanel.setVisible(false);
+        this.payForTicket.setVisible(false);
+
+        if (!card.checkForScannedStation()) {
+            this.fromZone.addItem(card.getDepartureDetails().getZone().getName());
+            this.fromZone.setEnabled(false);
+        }
+
+        // Add the potential destination zones to the list
+        system.getZones().stream().forEach((zone) -> {
+            this.toZone.addItem(zone);
+        });
     }
 }

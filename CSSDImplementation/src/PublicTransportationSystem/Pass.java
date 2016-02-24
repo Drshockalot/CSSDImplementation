@@ -21,6 +21,7 @@ public class Pass {
 
     public Pass(TypeEnums.PassType passTypeEnum) {
         this.expiryDate = setExpiryDate();
+        this.passType = passTypeEnum;
     }
 
     private Date setExpiryDate() {

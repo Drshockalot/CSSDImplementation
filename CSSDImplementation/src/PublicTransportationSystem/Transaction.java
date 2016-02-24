@@ -35,7 +35,8 @@ public class Transaction {
         // If the total has reached/gone over the daily cap...
         if (todaysTotal >= dailyCap) {
             // Generate a new pass
-            Pass newPass = PassManager.generatePass(TypeEnums.PassType.BUSANDTRAIN);
+            // TODO: LOOK AT HANDLING DIFFERENT PASSES
+            Pass newPass = PassManager.generatePass(TypeEnums.PassType.TRAINDAY);
             // Assign the new pass to the users travel card
             currentTravelCard.setPass(newPass);
             // Calculate how far over the cap 'todaysTotal' is

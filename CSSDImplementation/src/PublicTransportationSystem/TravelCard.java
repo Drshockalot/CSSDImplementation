@@ -122,6 +122,10 @@ public class TravelCard {
         this.lastDepartedTime = null;
     }
 
+    public void setLastDepartedStation(StationSystem lastScanned) {
+        this.lastDepartedStation = lastScanned;
+    }
+
     public User getUser() {
         return this.user;
     }

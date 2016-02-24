@@ -32,6 +32,7 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeJourneys();
         deserializeZones();
         initTravelCard();
+        initStationSystems();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -117,7 +118,7 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initStationSystems() {
-        Zone zone = new Zone(3, "something");
+        Zone zone = new Zone(1, "Drop Zone");
         GPSCoordinates gps = new GPSCoordinates(11.21f, 41.21f);
         ArrayList<Gateway> scanners = new ArrayList<Gateway>(); // empty for now
 
