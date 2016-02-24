@@ -13,12 +13,14 @@ import java.io.Serializable;
  */
 public class Zone implements Serializable {
 
+    private static final long serialVersionUID = -4313904071667252251L;
+
     private String name;
     private int id;
 
-    public Zone(String name, int id) {
-        this.name = name;
+    public Zone(int id, String name) {
         this.id = id;
+        this.name = name;
     }
 
     public void setName(String name) {

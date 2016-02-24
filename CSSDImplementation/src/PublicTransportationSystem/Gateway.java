@@ -7,7 +7,7 @@ package PublicTransportationSystem;
 
 /**
  *
- * @author Drshockalotz
+ * @author DrPoopAlotz
  */
 public class Gateway {
 

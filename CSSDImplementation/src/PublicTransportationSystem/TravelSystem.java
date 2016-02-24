@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 import Interfaces.SetOfUsersInterface;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -79,11 +80,11 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initZones() {
-        registerZone("Zone A", 1);
-        registerZone("Zone B", 2);
-        registerZone("Zone C", 3);
-        registerZone("Zone D", 4);
-        registerZone("Zone E", 5);
+        registerZone(1, "Zone A");
+        registerZone(2, "Zone B");
+        registerZone(3, "Zone C");
+        registerZone(4, "Zone D");
+        registerZone(5, "Zone E");
     }
 
     public void initJourneyList() {
@@ -113,7 +114,14 @@ public class TravelSystem implements SetOfUsersInterface {
         registerJourney((float) 3.99, (float) 4.46, systemZones.getZoneById(5), systemZones.getZoneById(3));
         registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(5), systemZones.getZoneById(4));
         registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(5), systemZones.getZoneById(5));
+    }
 
+    public void initStationSystems() {
+        Zone zone = new Zone(3, "something");
+        GPSCoordinates gps = new GPSCoordinates(11.21f, 41.21f);
+        ArrayList<Gateway> scanners = new ArrayList<Gateway>(); // empty for now
+
+        registerStationSystem("Kings Cross", "Train", "London", gps, zone, scanners, false);
     }
 
     /**
@@ -131,8 +139,8 @@ public class TravelSystem implements SetOfUsersInterface {
         systemUsers.add(newUser);
     }
 
-    public void registerZone(String name, int id) {
-        Zone newZone = new Zone(name, id);
+    public void registerZone(int id, String name) {
+        Zone newZone = new Zone(id, name);
 
         systemZones.add(newZone);
     }
@@ -147,6 +155,22 @@ public class TravelSystem implements SetOfUsersInterface {
         TravelCard newTravelCard = new TravelCard(systemTravelCards.nextId(), user, cardType, discount, dailyCap);
 
         systemTravelCards.add(newTravelCard);
+    }
+
+    /**
+     *
+     * @param name
+     * @param stationType
+     * @param stationType
+     * @param gps
+     * @param zone
+     * @param scanners
+     * @param peak
+     */
+    public void registerStationSystem(String name, String stationType, String location, GPSCoordinates gps, Zone zone, ArrayList<Gateway> scanners, boolean peak) {
+        StationSystem newStationSystem = new StationSystem(systemStationSystems.getNextId(), name, stationType, location, gps, zone, scanners, peak);
+
+        systemStationSystems.add(newStationSystem);
     }
 
     /**

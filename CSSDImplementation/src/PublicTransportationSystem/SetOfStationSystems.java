@@ -5,11 +5,16 @@
  */
 package PublicTransportationSystem;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Vector;
 
 /**
  *
- * @author Drshockalotz
+ * @author DrPoopAlotz // Blame the Tacos
  */
 public class SetOfStationSystems extends Vector<StationSystem> {
 
@@ -27,5 +32,40 @@ public class SetOfStationSystems extends Vector<StationSystem> {
         }
         // Return null if no valid StationSystem object was found
         return null;
+    }
+
+    public int getNextId() {
+        return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
+    }
+
+    public SetOfUsers deserializeStationSystem() throws ClassNotFoundException {
+        try {
+            FileInputStream fileIn = new FileInputStream("files/stationSystems.ser");
+            ObjectInputStream objIn = new ObjectInputStream(fileIn);
+
+            SetOfUsers obj = (SetOfUsers) objIn.readObject();
+
+            fileIn.close();
+            objIn.close();
+            return obj;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void serializeStationSystem() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("files/stationSystems.ser");
+            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+            objOut.writeObject(this);
+
+            objOut.close();
+            fileOut.close();
+            System.out.println("Serialised users");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

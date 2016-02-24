@@ -7,7 +7,10 @@ package PublicTransportationSystem.GUIs;
 
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.Journey;
+import PublicTransportationSystem.JourneyList;
+import PublicTransportationSystem.SetOfStationSystems;
 import PublicTransportationSystem.SetOfUsers;
+import PublicTransportationSystem.StationSystem;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
@@ -520,12 +523,14 @@ public class AdminUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbl_adminGUIUserList.setCellSelectionEnabled(false);
+        tbl_adminGUIUserList.setColumnSelectionAllowed(true);
         tbl_adminGUIUserList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_adminGUIUserList.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbl_adminGUIUserList);
         tbl_adminGUIUserList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tbl_adminGUIUserList.getColumnModel().getColumnCount() > 0) {
+            tbl_adminGUIUserList.getColumnModel().getColumn(0).setPreferredWidth(70);
+            tbl_adminGUIUserList.getColumnModel().getColumn(0).setMaxWidth(70);
             tbl_adminGUIUserList.getColumnModel().getColumn(4).setMaxWidth(100);
             tbl_adminGUIUserList.getColumnModel().getColumn(6).setMinWidth(200);
         }
@@ -676,10 +681,17 @@ public class AdminUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbl_adminGUIJourneyList.setColumnSelectionAllowed(true);
         tbl_adminGUIJourneyList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_adminGUIJourneyList.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(tbl_adminGUIJourneyList);
         tbl_adminGUIJourneyList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tbl_adminGUIJourneyList.getColumnModel().getColumnCount() > 0) {
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setMaxWidth(100);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setMaxWidth(100);
+        }
 
         javax.swing.GroupLayout pnl_adminUserManagement1Layout = new javax.swing.GroupLayout(pnl_adminUserManagement1);
         pnl_adminUserManagement1.setLayout(pnl_adminUserManagement1Layout);
@@ -758,10 +770,15 @@ public class AdminUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbl_adminGUIZoneList.setColumnSelectionAllowed(true);
         tbl_adminGUIZoneList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_adminGUIZoneList.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(tbl_adminGUIZoneList);
         tbl_adminGUIZoneList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tbl_adminGUIZoneList.getColumnModel().getColumnCount() > 0) {
+            tbl_adminGUIZoneList.getColumnModel().getColumn(0).setPreferredWidth(70);
+            tbl_adminGUIZoneList.getColumnModel().getColumn(0).setMaxWidth(70);
+        }
 
         btn_adminZoneAdd.setText("Add");
         btn_adminZoneAdd.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -1082,7 +1099,10 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            populateTable();
+            populateUserTable();
+            populateJourneyTable();
+            populateZoneTable();
+            populateStationTable();
             TypeEnums.UserType[] userTypes = TravelSystem.getInstance().getSystemRoles();
             cmd_adminUserAddEditUserRole.setModel(new DefaultComboBoxModel(userTypes));
         } catch (Throwable ex) {
@@ -1090,16 +1110,59 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
-    public void populateTable() throws Throwable {
+    public void populateUserTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIUserList.getModel();
+        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
         tbl_adminGUIUserList.setCellSelectionEnabled(false);
         tbl_adminGUIUserList.setRowSelectionAllowed(true);
 
-        SetOfUsers setUsers = TravelSystem.getInstance().getUsers();
+        SetOfUsers users = TravelSystem.getInstance().getUsers();
 
-        for (User user : setUsers) {
+        for (User user : users) {
             model.addRow(new Object[]{user.getId(), user.getForename(), user.getSurname(), user.getUsername(), user.getSystemRole().getName(), user.getEmail(), user.getDob()});
+        }
+    }
+
+    public void populateJourneyTable() throws Throwable {
+        DefaultTableModel model = (DefaultTableModel) tbl_adminGUIJourneyList.getModel();
+        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
+
+        tbl_adminGUIJourneyList.setCellSelectionEnabled(false);
+        tbl_adminGUIJourneyList.setRowSelectionAllowed(true);
+
+        JourneyList journeys = TravelSystem.getInstance().getJourneys();
+
+        for (Journey journey : journeys) {
+            model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(), journey.getOffPeakPrice(), journey.getOnPeakPrice()});
+        }
+    }
+
+    public void populateZoneTable() throws Throwable {
+        DefaultTableModel model = (DefaultTableModel) tbl_adminGUIZoneList.getModel();
+        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
+
+        tbl_adminGUIZoneList.setCellSelectionEnabled(false);
+        tbl_adminGUIZoneList.setRowSelectionAllowed(true);
+
+        ZoneList zones = TravelSystem.getInstance().getZones();
+
+        for (Zone zone : zones) {
+            model.addRow(new Object[]{zone.getId(), zone.getName()});
+        }
+    }
+
+    public void populateStationTable() throws Throwable {
+        DefaultTableModel model = (DefaultTableModel) tbl_adminGUIStationList.getModel();
+        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
+
+        tbl_adminGUIStationList.setCellSelectionEnabled(false);
+        tbl_adminGUIStationList.setRowSelectionAllowed(true);
+
+        SetOfStationSystems stationSystems = TravelSystem.getInstance().getStationSystems();
+
+        for (StationSystem stationSystem : stationSystems) {
+            model.addRow(new Object[]{stationSystem.getId(), stationSystem.getName(), stationSystem.getType(), stationSystem.getLocation(), stationSystem.getGPSPos(), stationSystem.getZone()});
         }
     }
 
