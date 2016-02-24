@@ -39,7 +39,7 @@ public class StationSystem {
     }
 
     public String getName() {
-        return this.stationType;
+        return this.name;
     }
 
     public String getType() {

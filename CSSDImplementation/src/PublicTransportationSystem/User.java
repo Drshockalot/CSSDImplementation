@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -68,8 +69,22 @@ public class User implements Serializable {
         return this.email;
     }
 
-    public String getDob() {
-        return this.dateOfBirth.toString();
+    public Date getDob() {
+        return this.dateOfBirth;
+    }
+
+    public String getDobFormatted() {
+        return new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(this.dateOfBirth);
+    }
+
+    // overload for just time/date
+    public String getDobFormatted(String formatType) {
+        // defaults to date unless time is explictly passed
+        if (formatType.equals("time")) {
+            return new SimpleDateFormat("HH:mm:ss").format(this.dateOfBirth);
+        }
+        return new SimpleDateFormat("dd-MM-yyyy").format(this.dateOfBirth);
+
     }
 
     public String getForename() {

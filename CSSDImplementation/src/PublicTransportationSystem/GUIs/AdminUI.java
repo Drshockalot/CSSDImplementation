@@ -27,12 +27,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdminUI extends javax.swing.JFrame {
 
+//    static JFrame adminUI = new AdminUI();
     /**
      * Creates new form AdminUI
      */
     public AdminUI() {
         initComponents();
-
+//        adminUI.setVisible(true);
     }
 
     /**
@@ -44,7 +45,6 @@ public class AdminUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         dlg_adminJourneyEdit = new javax.swing.JDialog();
         lbl_adminJourneyEditTitle = new javax.swing.JLabel();
         cmb_departure = new javax.swing.JComboBox<>();
@@ -76,7 +76,6 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminUserAddEditSave = new javax.swing.JButton();
         btn_adminUserAddEditCancel = new javax.swing.JButton();
         cmd_adminUserAddEditUserRole = new javax.swing.JComboBox<>();
-        jSeparator1 = new javax.swing.JSeparator();
         pnl_adminGUITitle = new javax.swing.JPanel();
         lbl_managementUITitle = new javax.swing.JLabel();
         pnl_adminGUITabs = new javax.swing.JPanel();
@@ -634,6 +633,11 @@ public class AdminUI extends javax.swing.JFrame {
 
         btn_adminJourneySearch.setText("Search");
         btn_adminJourneySearch.setPreferredSize(new java.awt.Dimension(97, 29));
+        btn_adminJourneySearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneySearchActionPerformed(evt);
+            }
+        });
 
         btn_adminJourneyDelete.setText("Delete");
         btn_adminJourneyDelete.setEnabled(false);
@@ -899,10 +903,15 @@ public class AdminUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbl_adminGUIStationList.setColumnSelectionAllowed(true);
         tbl_adminGUIStationList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_adminGUIStationList.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(tbl_adminGUIStationList);
         tbl_adminGUIStationList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tbl_adminGUIStationList.getColumnModel().getColumnCount() > 0) {
+            tbl_adminGUIStationList.getColumnModel().getColumn(0).setPreferredWidth(70);
+            tbl_adminGUIStationList.getColumnModel().getColumn(0).setMaxWidth(70);
+        }
 
         btn_adminStationsAdd.setText("Add");
         btn_adminStationsAdd.setPreferredSize(new java.awt.Dimension(97, 29));
@@ -1099,6 +1108,8 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
+//            this.setFocusable(true);
+            this.setLocationRelativeTo(mainUI);
             populateUserTable();
             populateJourneyTable();
             populateZoneTable();
@@ -1120,7 +1131,7 @@ public class AdminUI extends javax.swing.JFrame {
         SetOfUsers users = TravelSystem.getInstance().getUsers();
 
         for (User user : users) {
-            model.addRow(new Object[]{user.getId(), user.getForename(), user.getSurname(), user.getUsername(), user.getSystemRole().getName(), user.getEmail(), user.getDob()});
+            model.addRow(new Object[]{user.getId(), user.getForename(), user.getSurname(), user.getUsername(), user.getSystemRole().getName(), user.getEmail(), user.getDobFormatted("date")});
         }
     }
 
@@ -1162,7 +1173,10 @@ public class AdminUI extends javax.swing.JFrame {
         SetOfStationSystems stationSystems = TravelSystem.getInstance().getStationSystems();
 
         for (StationSystem stationSystem : stationSystems) {
-            model.addRow(new Object[]{stationSystem.getId(), stationSystem.getName(), stationSystem.getType(), stationSystem.getLocation(), stationSystem.getGPSPos(), stationSystem.getZone()});
+            model.addRow(new Object[]{stationSystem.getId(), stationSystem.getName(),
+                stationSystem.getType(), stationSystem.getLocation(),
+                Float.toString(stationSystem.getGPSPos().getLongitude()) + ',' + Float.toString(stationSystem.getGPSPos().getLatitude()), stationSystem.getZone()
+            });
         }
     }
 
@@ -1213,9 +1227,11 @@ public class AdminUI extends javax.swing.JFrame {
                 } else {
                     lbl_error.setVisible(false);
                     editJourney(offPeakPrice, onPeakPrice, departureZone, arrivalZone);
+
                 }
             } catch (Throwable ex) {
-                Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AdminUI.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btn_savePriceChangesActionPerformed
@@ -1223,6 +1239,7 @@ public class AdminUI extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         mainUI.setEnabled(true);
+
     }//GEN-LAST:event_formWindowClosing
 
     private void txt_adminUserAddEditUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUserAddEditUsernameActionPerformed
@@ -1231,6 +1248,12 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
         // TODO add your handling code here:
+
+        // JB
+//        this.dispose();
+        this.dispose();
+
+        mainUI.setEnabled(true);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_adminZoneEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditActionPerformed
@@ -1250,8 +1273,10 @@ public class AdminUI extends javax.swing.JFrame {
             dlg_adminJourneyEdit.pack();
             dlg_adminJourneyEdit.setAlwaysOnTop(true);
             dlg_adminJourneyEdit.show();
+
         } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_adminJourneyEditActionPerformed
 
@@ -1277,6 +1302,10 @@ public class AdminUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_adminUserAddEditSaveActionPerformed
 
+    private void btn_adminJourneySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_adminJourneySearchActionPerformed
+
     private void initAddEditView() {
         int row = tbl_adminGUIUserList.getSelectedRow();
 
@@ -1291,8 +1320,10 @@ public class AdminUI extends javax.swing.JFrame {
             txt_adminUserAddEditEmail.setText(user.getEmail());
             txt_adminUserAddEditPassword.setText(user.getPassword());
             cmd_adminUserAddEditUserRole.setSelectedItem(user.getSystemRole().getName());
+
         } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -1306,8 +1337,10 @@ public class AdminUI extends javax.swing.JFrame {
             Journey journey = TravelSystem.getInstance().getJourneys().getJourney(departureZone, arrivalZone);
             txt_offPeakPrice.setText(Float.toString(journey.getOffPeakPrice()));
             txt_onPeakPrice.setText(Float.toString(journey.getOnPeakPrice()));
+
         } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -1332,16 +1365,24 @@ public class AdminUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1409,8 +1450,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbl_adminJourneyEditTitle;
     private javax.swing.JLabel lbl_adminUserAddEditEmail;
     private javax.swing.JLabel lbl_adminUserAddEditForename;

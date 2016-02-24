@@ -20,8 +20,6 @@ import javax.swing.JFrame;
  */
 public class WebsiteUI extends javax.swing.JFrame {
 
-    static JFrame adminUI = new AdminUI();
-
     /**
      * Creates new form WebsiteUI
      */
@@ -138,21 +136,20 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_loginTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txt_username, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(pass_Password, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLayeredPane2Layout.createSequentialGroup()
-                            .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbl_password, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_username, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                            .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 88, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_loginPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6))))
+                    .addComponent(txt_username)
+                    .addComponent(pass_Password)
+                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                        .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_password, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_username, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
+                        .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 88, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_loginPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)))
                 .addContainerGap())
         );
         jLayeredPane2Layout.setVerticalGroup(
@@ -407,6 +404,7 @@ public class WebsiteUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         loginPopup.pack();
+        loginPopup.setLocationRelativeTo(null);
         loginPopup.setVisible(true);
         loginPopup.setAlwaysOnTop(true);
         this.setEnabled(false);
@@ -455,6 +453,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         this.setAlwaysOnTop(false);
         loginPopup.setEnabled(false);
         registerPopup.pack();
+        registerPopup.setLocationRelativeTo(null);
         registerPopup.setAlwaysOnTop(true);
         registerPopup.setVisible(true);
         registerPopup.setEnabled(true);
@@ -494,6 +493,8 @@ public class WebsiteUI extends javax.swing.JFrame {
         this.setEnabled(false);
         this.setVisible(false);
 
+        JFrame adminUI = new AdminUI();
+        adminUI.setLocationRelativeTo(null);
         adminUI.setVisible(true);
         adminUI.setAlwaysOnTop(true);
         adminUI.setResizable(false);
@@ -501,6 +502,7 @@ public class WebsiteUI extends javax.swing.JFrame {
 
     private void openWebsiteUI() {
         loginPopup.dispose();
+        this.setLocationRelativeTo(null);
         this.setEnabled(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
@@ -535,7 +537,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WebsiteUI().setVisible(true);
+
             }
         });
     }
