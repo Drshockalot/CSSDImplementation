@@ -35,7 +35,7 @@ public class TravelCard {
         this.balance = 0.0f;
         this.myTickets = new SetOfTickets();
         this.startDate = new Date();
-        this.expiryDate = getExpiryDate();
+        this.expiryDate = calculateExpiryDate();
         this.cardType = cardType;
         this.discount = discount;
         this.pass = null;
@@ -44,12 +44,20 @@ public class TravelCard {
         this.dailyCap = dailyCap;
     }
 
-    public final Date getExpiryDate() {
+    private final Date calculateExpiryDate() {
         Date now = new Date();
         Calendar expiry = Calendar.getInstance();
         expiry.setTime(now);
         expiry.add(Calendar.DATE, 1095);
         return expiry.getTime();
+    }
+
+    public Date getExpiryDate() {
+        return this.expiryDate;
+    }
+
+    public Date getCreationDate() {
+        return this.startDate;
     }
 
     public int getId() {

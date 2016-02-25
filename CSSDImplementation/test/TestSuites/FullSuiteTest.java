@@ -15,17 +15,17 @@ import org.junit.runners.Suite;
  * @author Drshockalotz
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({})
-public class Suite2 {
+@Suite.SuiteClasses({TestSuites.Suite1.class, TestSuites.Suite2.class, TestSuites.Suite3.class, TestSuites.Suite4.class})
+public class FullSuiteTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        System.out.println("Running Test Suite 2...");
+        System.out.println("Running Full Suite Test...");
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-        System.out.println("Finishing Test Suite 2...");
+        System.out.println("Finishing Full Suite Test...");
     }
 
 }

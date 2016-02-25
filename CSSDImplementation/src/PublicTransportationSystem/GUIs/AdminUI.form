@@ -4,6 +4,8 @@
   <NonVisualComponents>
     <Container class="javax.swing.JDialog" name="dlg_adminJourneyEdit">
       <Properties>
+        <Property name="alwaysOnTop" type="boolean" value="true"/>
+        <Property name="modal" type="boolean" value="true"/>
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -184,31 +186,37 @@
     </Container>
     <Container class="javax.swing.JDialog" name="dlg_adminUserAddEdit">
       <Properties>
-        <Property name="defaultCloseOperation" type="int" value="0"/>
+        <Property name="alwaysOnTop" type="boolean" value="true"/>
+        <Property name="modal" type="boolean" value="true"/>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="pnl_adminUserAddEditContainer" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="pnl_adminUserAddEditContainer" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lbl_adminUserAddEditTitle" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="362" max="32767" attributes="0"/>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnl_adminUserAddEditContainer" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <Component id="lbl_adminUserAddEditTitle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="pnl_adminUserAddEditContainer" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -233,7 +241,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_adminUserAddEditPassword" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txt_adminUserAddEditForename" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
@@ -245,7 +252,6 @@
                                   <Component id="lbl_adminUserAddEditSurname" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="lbl_adminUserAddEditPassword" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_adminUserAddEditUserRole" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_adminUserAddEditId" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                           <Component id="lbl_adminUserAddEditId" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -260,8 +266,19 @@
                                   <Component id="lbl_adminUserAddEditEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txt_adminUserAddEditPassword" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Component id="lbl_adminUserAddEditPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbl_adminUserAddEditDob" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_adminUserAddEditDob" min="-2" pref="167" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -295,14 +312,20 @@
                           <Component id="txt_adminUserAddEditEmail" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="lbl_adminUserAddEditPassword" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbl_adminUserAddEditPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_adminUserAddEditDob" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_adminUserAddEditPassword" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_adminUserAddEditPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_adminUserAddEditDob" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="lbl_adminUserAddEditUserRole" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cmd_adminUserAddEditUserRole" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                      <EmptySpace pref="36" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_adminUserAddEditSave" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_adminUserAddEditCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -370,6 +393,9 @@
             <Component class="javax.swing.JButton" name="btn_adminUserAddEditSave">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save"/>
+                <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[75, 29]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminUserAddEditSaveActionPerformed"/>
@@ -378,6 +404,9 @@
             <Component class="javax.swing.JButton" name="btn_adminUserAddEditCancel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancel"/>
+                <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[75, 29]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminUserAddEditCancelActionPerformed"/>
@@ -398,6 +427,249 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JTextField" name="txt_adminUserAddEditDob">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_adminUserAddEditDob">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="DOB"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="lbl_adminUserAddEditTitle">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="18" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Add/Edit User"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JDialog" name="dlg_adminUserDelete">
+      <Properties>
+        <Property name="alwaysOnTop" type="boolean" value="true"/>
+        <Property name="modalityType" type="java.awt.Dialog$ModalityType" editor="org.netbeans.modules.form.editors.EnumEditor">
+          <Value id="APPLICATION_MODAL"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="pnl_adminUserDeleteContainer" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="pnl_adminUserDeleteContainer" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="pnl_adminUserDeleteContainer">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lbl_adminUserDeleteTitle" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lbl_adminUserDeleteMsg" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="btn_adminUserDeleteCancel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btn_adminUserDeleteConfirm" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="122" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lbl_adminUserDeleteTitle" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="lbl_adminUserDeleteMsg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_adminUserDeleteConfirm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_adminUserDeleteCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lbl_adminUserDeleteTitle">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="18" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Delete User"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_adminUserDeleteMsg">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Are you sure you want to delete user?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_adminUserDeleteConfirm">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Delete"/>
+                <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[75, 29]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_adminUserDeleteCancel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cancel"/>
+                <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[75, 29]"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JDialog" name="jDialog2">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JDialog" name="dlg_adminJourneyDelete">
+      <Properties>
+        <Property name="alwaysOnTop" type="boolean" value="true"/>
+        <Property name="modalityType" type="java.awt.Dialog$ModalityType" editor="org.netbeans.modules.form.editors.EnumEditor">
+          <Value id="APPLICATION_MODAL"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="pnl_adminJourneyDeleteContainer" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="pnl_adminJourneyDeleteContainer" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="pnl_adminJourneyDeleteContainer">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbl_adminJourneyDeleteTitle" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lbl_adminJourneyDeleteMsg" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="btn_adminJourneyDeleteCancel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btn_adminJourneyDeleteConfirm" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="122" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lbl_adminJourneyDeleteTitle" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="lbl_adminJourneyDeleteMsg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_adminJourneyDeleteConfirm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_adminJourneyDeleteCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lbl_adminJourneyDeleteTitle">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="18" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Delete User"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_adminJourneyDeleteMsg">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Are you sure you want to delete journey?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_adminJourneyDeleteConfirm">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Delete"/>
+                <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[75, 29]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_adminJourneyDeleteCancel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cancel"/>
+                <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[75, 29]"/>
+                </Property>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -406,6 +678,10 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Management UI"/>
+    <Property name="alwaysOnTop" type="boolean" value="true"/>
+    <Property name="modalExclusionType" type="java.awt.Dialog$ModalExclusionType" editor="org.netbeans.modules.form.editors.EnumEditor">
+      <Value id="APPLICATION_EXCLUDE"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -701,10 +977,11 @@
                     <Component class="javax.swing.JTable" name="tbl_adminGUIUserList">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="7" rowCount="0">
+                          <Table columnCount="8" rowCount="0">
                             <Column editable="false" title="ID" type="java.lang.Integer"/>
                             <Column editable="false" title="Forename" type="java.lang.String"/>
                             <Column editable="false" title="Surname" type="java.lang.String"/>
+                            <Column editable="false" title="TC ID" type="java.lang.Integer"/>
                             <Column editable="false" title="Username" type="java.lang.String"/>
                             <Column editable="false" title="User Role" type="java.lang.String"/>
                             <Column editable="false" title="Email" type="java.lang.String"/>
@@ -724,6 +1001,11 @@
                               <Renderer/>
                             </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="70" minWidth="70" prefWidth="70" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -758,6 +1040,9 @@
                           <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_adminGUIUserListMouseReleased"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -768,6 +1053,9 @@
                       <Dimension value="[97, 29]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminUserAddActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btn_adminUserEdit">
                   <Properties>
@@ -797,6 +1085,9 @@
                       <Dimension value="[97, 29]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminUserDeleteActionPerformed"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel6">
 
@@ -806,8 +1097,9 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton1" min="-2" pref="123" max="-2" attributes="0"/>
-                                  <Component id="jButton2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_adminUserAddTC" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                                  <Component id="btn_adminUserViewTC" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                                  <Component id="btn_adminUserViewTickets" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -817,24 +1109,32 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_adminUserAddTC" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="329" max="32767" attributes="0"/>
+                              <Component id="btn_adminUserViewTC" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btn_adminUserViewTickets" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="294" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton1">
+                    <Component class="javax.swing.JButton" name="btn_adminUserViewTC">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="View TC"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="btn_adminUserViewTickets">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="View Tickets"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btn_adminUserAddTC">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Add TC"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -1037,6 +1337,9 @@
                               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_adminGUIJourneyListMouseReleased"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>

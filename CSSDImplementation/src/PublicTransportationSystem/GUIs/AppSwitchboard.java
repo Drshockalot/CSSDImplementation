@@ -148,7 +148,6 @@ public class AppSwitchboard extends javax.swing.JFrame {
         JFrame portableReader = new PortableReaderUI();
         mainUI.setEnabled(false);
         portableReader.setVisible(true);
-        portableReader.setAlwaysOnTop(true);
     }//GEN-LAST:event_btn_switchInspectorUIActionPerformed
 
     private void btn_switchScannerUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUIActionPerformed
@@ -161,7 +160,6 @@ public class AppSwitchboard extends javax.swing.JFrame {
         mainUI.setEnabled(false);
         websiteUI.setLocationRelativeTo(null);
         websiteUI.setVisible(true);
-        websiteUI.setAlwaysOnTop(true);
     }//GEN-LAST:event_btn_loginUIActionPerformed
 
     private void btn_resetDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetDataActionPerformed

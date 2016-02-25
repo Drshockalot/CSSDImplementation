@@ -23,18 +23,25 @@ public class User implements Serializable {
     private String username;
     private String password;
     private SystemRole userRole;
-    private int travelCard;
+    private int travelCardId;
     private String email;
     private Date dateOfBirth;
 
-    public User(Integer newUserId, String newForename, String newSurname, String newUsername, String newEmail, String newPassword, SystemRole newUserRole, Date dob) {
+    public User(Integer newUserId, String newForename, String newSurname, String newUsername, String newEmail, Integer newTravelCardId, String newPassword, SystemRole newUserRole, Date dob) {
         forename = newForename;
         surname = newSurname;
         username = newUsername;
         password = newPassword;
         userId = newUserId;
         userRole = newUserRole;
-        travelCard = 1;
+
+        // -1 is added to signify that a user doesn't have a travel card
+        if (newTravelCardId == null || newTravelCardId < 0) {
+            travelCardId = -1;
+        } else {
+            travelCardId = newTravelCardId;
+        }
+
         email = newEmail;
         dateOfBirth = dob;
     }
@@ -59,6 +66,10 @@ public class User implements Serializable {
 
     public String getUsername() {
         return this.username;
+    }
+
+    public int getTravelCardId() {
+        return this.travelCardId;
     }
 
     public int getId() {
@@ -123,6 +134,10 @@ public class User implements Serializable {
 
     public void setEmail(String newEmail) {
         this.email = newEmail;
+    }
+
+    public void setDob(Date newDob) {
+        this.dateOfBirth = newDob;
     }
 
     // </editor-fold>
