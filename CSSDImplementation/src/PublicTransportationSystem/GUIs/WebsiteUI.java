@@ -427,7 +427,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         } else {
             try {
                 TravelSystem.getInstance()
-                        .registerUser(firstName, surname, username, email, password, newSysRole);
+                        .registerUser(firstName, surname, username, email, null, password, newSysRole);
             } catch (Throwable ex) {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
             }

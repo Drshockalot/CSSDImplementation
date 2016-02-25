@@ -27,13 +27,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdminUI extends javax.swing.JFrame {
 
-//    static JFrame adminUI = new AdminUI();
     /**
      * Creates new form AdminUI
      */
     public AdminUI() {
         initComponents();
-//        adminUI.setVisible(true);
     }
 
     /**
@@ -94,8 +92,9 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminUserSearch = new javax.swing.JButton();
         btn_adminUserDelete = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_adminUserViewTC = new javax.swing.JButton();
+        btn_adminUserViewTickets = new javax.swing.JButton();
+        btn_adminUserAddTC = new javax.swing.JButton();
         pnl_adminJourneyManagement = new javax.swing.JPanel();
         pnl_adminUserManagement1 = new javax.swing.JPanel();
         btn_adminJourneyAdd = new javax.swing.JButton();
@@ -504,14 +503,14 @@ public class AdminUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Forename", "Surname", "Username", "User Role", "Email", "Date of Birth"
+                "ID", "Forename", "Surname", "TC ID", "Username", "User Role", "Email", "Date of Birth"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -525,13 +524,21 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIUserList.setColumnSelectionAllowed(true);
         tbl_adminGUIUserList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_adminGUIUserList.getTableHeader().setReorderingAllowed(false);
+        tbl_adminGUIUserList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbl_adminGUIUserListMouseReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbl_adminGUIUserList);
         tbl_adminGUIUserList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tbl_adminGUIUserList.getColumnModel().getColumnCount() > 0) {
             tbl_adminGUIUserList.getColumnModel().getColumn(0).setPreferredWidth(70);
             tbl_adminGUIUserList.getColumnModel().getColumn(0).setMaxWidth(70);
-            tbl_adminGUIUserList.getColumnModel().getColumn(4).setMaxWidth(100);
-            tbl_adminGUIUserList.getColumnModel().getColumn(6).setMinWidth(200);
+            tbl_adminGUIUserList.getColumnModel().getColumn(3).setMinWidth(70);
+            tbl_adminGUIUserList.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tbl_adminGUIUserList.getColumnModel().getColumn(3).setMaxWidth(70);
+            tbl_adminGUIUserList.getColumnModel().getColumn(5).setMaxWidth(100);
+            tbl_adminGUIUserList.getColumnModel().getColumn(7).setMinWidth(200);
         }
 
         btn_adminUserAdd.setText("Add");
@@ -553,11 +560,14 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminUserDelete.setEnabled(false);
         btn_adminUserDelete.setPreferredSize(new java.awt.Dimension(97, 29));
 
-        jButton1.setText("View TC");
-        jButton1.setEnabled(false);
+        btn_adminUserViewTC.setText("View TC");
+        btn_adminUserViewTC.setEnabled(false);
 
-        jButton2.setText("View Tickets");
-        jButton2.setEnabled(false);
+        btn_adminUserViewTickets.setText("View Tickets");
+        btn_adminUserViewTickets.setEnabled(false);
+
+        btn_adminUserAddTC.setText("Add TC");
+        btn_adminUserAddTC.setEnabled(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -566,18 +576,21 @@ public class AdminUI extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(btn_adminUserAddTC, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_adminUserViewTC, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_adminUserViewTickets))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(btn_adminUserAddTC)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addComponent(btn_adminUserViewTC)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_adminUserViewTickets)
+                .addContainerGap(294, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnl_adminUserManagementLayout = new javax.swing.GroupLayout(pnl_adminUserManagement);
@@ -1131,7 +1144,7 @@ public class AdminUI extends javax.swing.JFrame {
         SetOfUsers users = TravelSystem.getInstance().getUsers();
 
         for (User user : users) {
-            model.addRow(new Object[]{user.getId(), user.getForename(), user.getSurname(), user.getUsername(), user.getSystemRole().getName(), user.getEmail(), user.getDobFormatted("date")});
+            model.addRow(new Object[]{user.getId(), user.getForename(), user.getSurname(), user.getTravelCardId(), user.getUsername(), user.getSystemRole().getName(), user.getEmail(), user.getDobFormatted("date")});
         }
     }
 
@@ -1247,12 +1260,7 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_adminUserAddEditUsernameActionPerformed
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
-        // TODO add your handling code here:
-
-        // JB
-//        this.dispose();
         this.dispose();
-
         mainUI.setEnabled(true);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
@@ -1305,6 +1313,36 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminJourneySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_adminJourneySearchActionPerformed
+
+    private void tbl_adminGUIUserListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIUserListMouseReleased
+        try {
+            // TODO add your handling code here:
+            int row = tbl_adminGUIUserList.getSelectedRow();
+            int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
+
+            // if users travel card id is -1 they don't have a travel card, return false, else true
+            boolean hasTC = TravelSystem.getInstance().getUsers().getUserById(userId).getTravelCardId() == -1 ? false : true;
+
+            if (hasTC) {
+                btn_adminUserViewTC.setEnabled(true);
+                btn_adminUserAddTC.setEnabled(false);
+            } else {
+                btn_adminUserAddTC.setEnabled(true);
+                btn_adminUserViewTC.setEnabled(false);
+            }
+
+            btn_adminUserViewTickets.setEnabled(true);
+            btn_adminUserEdit.setEnabled(true);
+            btn_adminUserDelete.setEnabled(true);
+
+            System.out.println(hasTC);
+            //User selectedUser = TravelSystem.getInstance().getUsers().getUserById(userId);
+            System.out.println(userId);
+
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tbl_adminGUIUserListMouseReleased
 
     private void initAddEditView() {
         int row = tbl_adminGUIUserList.getSelectedRow();
@@ -1406,9 +1444,12 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_adminUserAdd;
     private javax.swing.JButton btn_adminUserAddEditCancel;
     private javax.swing.JButton btn_adminUserAddEditSave;
+    private javax.swing.JButton btn_adminUserAddTC;
     private javax.swing.JButton btn_adminUserDelete;
     private javax.swing.JButton btn_adminUserEdit;
     private javax.swing.JButton btn_adminUserSearch;
+    private javax.swing.JButton btn_adminUserViewTC;
+    private javax.swing.JButton btn_adminUserViewTickets;
     private javax.swing.JButton btn_adminZoneAdd;
     private javax.swing.JButton btn_adminZoneDelete;
     private javax.swing.JButton btn_adminZoneEdit;
@@ -1421,8 +1462,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmd_adminUserAddEditUserRole;
     private javax.swing.JDialog dlg_adminJourneyEdit;
     private javax.swing.JDialog dlg_adminUserAddEdit;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;

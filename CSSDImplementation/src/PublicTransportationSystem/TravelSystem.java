@@ -60,11 +60,11 @@ public class TravelSystem implements SetOfUsersInterface {
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.ADMIN);
         SystemRole normalUser = new SystemRole(TypeEnums.UserType.USER);
 
-        registerUser("Test", "Loser", "User", "test@test.com", "password", normalUser);
-        registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", "FromAmericaWithLove", newSysRole);
-        registerUser("Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", "p", newSysRole);
-        registerUser("lil'", "Jack", "snapback", "test@test.org", "ch ch ch checkin' it out", newSysRole);
-        registerUser("Joshua", "Bates", "JoBa", "test@test.fr", "p", newSysRole);
+        registerUser("Test", "Loser", "User", "test@test.com", null, "password", normalUser);
+        registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", null, "FromAmericaWithLove", newSysRole);
+        registerUser("Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", newSysRole);
+        registerUser("lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", newSysRole);
+        registerUser("Joshua", "Bates", "JoBa", "test@test.fr", null, "p", newSysRole);
     }
 
     public void initTravelCard() {
@@ -134,8 +134,8 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param password
      * @param newSysRole
      */
-    public void registerUser(String forename, String surname, String username, String email, String password, SystemRole newSysRole) {
-        User newUser = new User(systemUsers.getNextId(), forename, surname, username, email, password, newSysRole, new Date());
+    public void registerUser(String forename, String surname, String username, String email, Integer travelCardId, String password, SystemRole newSysRole) {
+        User newUser = new User(systemUsers.getNextId(), forename, surname, username, email, travelCardId, password, newSysRole, new Date());
 
         systemUsers.add(newUser);
     }
