@@ -66,11 +66,16 @@ public class WebsiteUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbl_websiteUITitle = new javax.swing.JLabel();
 
-        loginPopup.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        loginPopup.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         loginPopup.setTitle("Login");
         loginPopup.setAlwaysOnTop(true);
         loginPopup.setModal(true);
         loginPopup.setResizable(false);
+        loginPopup.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                loginPopupWindowClosing(evt);
+            }
+        });
 
         jLayeredPane1.setBackground(new java.awt.Color(204, 255, 255));
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(635, 434));
@@ -489,6 +494,11 @@ public class WebsiteUI extends javax.swing.JFrame {
     private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_usernameActionPerformed
+
+    private void loginPopupWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_loginPopupWindowClosing
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_loginPopupWindowClosing
 
     private void openAdminUI() {
         loginPopup.dispose();
