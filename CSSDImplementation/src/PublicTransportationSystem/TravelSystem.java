@@ -60,11 +60,11 @@ public class TravelSystem implements SetOfUsersInterface {
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.ADMIN);
         SystemRole normalUser = new SystemRole(TypeEnums.UserType.USER);
 
-        registerUser("Test", "Loser", "User", "test@test.com", null, "password", normalUser);
-        registerUser("Chadwick", "Skimpson", "Freedom", "test@test.com", null, "FromAmericaWithLove", newSysRole);
-        registerUser("Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", newSysRole);
-        registerUser("lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", newSysRole);
-        registerUser("Joshua", "Bates", "JoBa", "test@test.fr", null, "p", newSysRole);
+        registerUser(1, "Test", "Loser", "User", "test@test.com", null, "password", normalUser);
+        registerUser(2, "Chadwick", "Skimpson", "Freedom", "test@test.com", null, "FromAmericaWithLove", newSysRole);
+        registerUser(null, "Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", newSysRole);
+        registerUser(null, "lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", newSysRole);
+        registerUser(6, "Joshua", "Bates", "JoBa", "test@test.fr", 1, "p", newSysRole);
     }
 
     public void initTravelCard() {
@@ -73,7 +73,7 @@ public class TravelSystem implements SetOfUsersInterface {
         float dailyCap = 9.00f;
 
         try {
-            user = systemUsers.getUserById(1);
+            user = systemUsers.getUserById(6);
         } catch (Throwable ex) {
             Logger.getLogger(TravelSystem.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -127,6 +127,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
     /**
      *
+     * @param id
      * @param forename
      * @param surname
      * @param username
@@ -134,8 +135,12 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param password
      * @param newSysRole
      */
-    public void registerUser(String forename, String surname, String username, String email, Integer travelCardId, String password, SystemRole newSysRole) {
-        User newUser = new User(systemUsers.getNextId(), forename, surname, username, email, travelCardId, password, newSysRole, new Date());
+    public void registerUser(Integer id, String forename, String surname, String username, String email, Integer travelCardId, String password, SystemRole newSysRole) {
+        // if no id is passed through, get next id
+        if (id == null) {
+            id = systemUsers.getNextId();
+        }
+        User newUser = new User(id, forename, surname, username, email, travelCardId, password, newSysRole, new Date());
 
         systemUsers.add(newUser);
     }

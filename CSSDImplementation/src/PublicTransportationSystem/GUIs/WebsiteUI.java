@@ -68,6 +68,8 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         loginPopup.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         loginPopup.setTitle("Login");
+        loginPopup.setAlwaysOnTop(true);
+        loginPopup.setModal(true);
         loginPopup.setResizable(false);
 
         jLayeredPane1.setBackground(new java.awt.Color(204, 255, 255));
@@ -236,6 +238,8 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        registerPopup.setAlwaysOnTop(true);
+        registerPopup.setModal(true);
         registerPopup.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 registerPopupWindowClosing(evt);
@@ -354,6 +358,8 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Website UI");
+        setAlwaysOnTop(true);
+        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -406,7 +412,6 @@ public class WebsiteUI extends javax.swing.JFrame {
         loginPopup.pack();
         loginPopup.setLocationRelativeTo(null);
         loginPopup.setVisible(true);
-        loginPopup.setAlwaysOnTop(true);
         this.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
@@ -427,7 +432,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         } else {
             try {
                 TravelSystem.getInstance()
-                        .registerUser(firstName, surname, username, email, null, password, newSysRole);
+                        .registerUser(null, firstName, surname, username, email, null, password, newSysRole);
             } catch (Throwable ex) {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -438,7 +443,6 @@ public class WebsiteUI extends javax.swing.JFrame {
 
     private void registerPopupWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_registerPopupWindowClosing
         loginPopup.setEnabled(true);
-        loginPopup.setAlwaysOnTop(true);
     }//GEN-LAST:event_registerPopupWindowClosing
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
@@ -450,11 +454,9 @@ public class WebsiteUI extends javax.swing.JFrame {
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         // TODO add your handling code here:
         this.setEnabled(false);
-        this.setAlwaysOnTop(false);
         loginPopup.setEnabled(false);
         registerPopup.pack();
         registerPopup.setLocationRelativeTo(null);
-        registerPopup.setAlwaysOnTop(true);
         registerPopup.setVisible(true);
         registerPopup.setEnabled(true);
     }//GEN-LAST:event_btn_registerActionPerformed
@@ -496,7 +498,6 @@ public class WebsiteUI extends javax.swing.JFrame {
         JFrame adminUI = new AdminUI();
         adminUI.setLocationRelativeTo(null);
         adminUI.setVisible(true);
-        adminUI.setAlwaysOnTop(true);
         adminUI.setResizable(false);
     }
 
