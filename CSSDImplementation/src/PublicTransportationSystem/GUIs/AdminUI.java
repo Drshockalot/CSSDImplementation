@@ -900,6 +900,11 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIJourneyList.setColumnSelectionAllowed(true);
         tbl_adminGUIJourneyList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_adminGUIJourneyList.getTableHeader().setReorderingAllowed(false);
+        tbl_adminGUIJourneyList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbl_adminGUIJourneyListMouseReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbl_adminGUIJourneyList);
         tbl_adminGUIJourneyList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tbl_adminGUIJourneyList.getColumnModel().getColumnCount() > 0) {
@@ -1472,6 +1477,21 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminJourneyEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyEditActionPerformed
         // TODO add your handling code here:
+        /* USE THE FOLLOWING, don't need to use combo boxes on the edit anymore */
+
+ /*
+                    int row = tbl_adminGUIJourneyList.getSelectedRow();
+            // casts two values from first two columns of JTable into Zones
+            // to be then checked against the journeylist. Returns relevant journey
+            // from 'db'. getJourneyAndPriceFromZones function checks the names, not
+            // the literal object references
+            Journey selectedJourney = TravelSystem.getInstance()
+                    .getJourneys().getJourneyAndPriceFromZones(
+                            (Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
+                            (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1)
+                    );
+
+         */
         try {
             ZoneList zones = TravelSystem.getInstance().getZones();
             cmb_departure.setModel(new DefaultComboBoxModel(zones));
@@ -1577,6 +1597,31 @@ public class AdminUI extends javax.swing.JFrame {
         dlg_adminUserAddEdit.pack();
         dlg_adminUserAddEdit.setVisible(true);
     }//GEN-LAST:event_btn_adminUserAddActionPerformed
+
+    private void tbl_adminGUIJourneyListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIJourneyListMouseReleased
+
+        try {
+
+            int row = tbl_adminGUIJourneyList.getSelectedRow();
+            // casts two values from first two columns of JTable into Zones
+            // to be then checked against the journeylist. Returns relevant journey
+            // from 'db'. getJourneyAndPriceFromZones function checks the names, not
+            // the literal object references
+            Journey selectedJourney = TravelSystem.getInstance()
+                    .getJourneys().getJourneyAndPriceFromZones(
+                            (Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
+                            (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1)
+                    );
+
+            //
+//            System.out.println(selectedJourney);
+            btn_adminJourneyEdit.setEnabled(true);
+            btn_adminJourneyDelete.setEnabled(true);
+
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tbl_adminGUIJourneyListMouseReleased
 
     private void initAddEditView() {
         int row = tbl_adminGUIUserList.getSelectedRow();

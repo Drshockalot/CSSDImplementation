@@ -19,16 +19,21 @@ import java.util.Vector;
  */
 public class JourneyList extends Vector<Journey> implements Serializable {
 
-    public JourneyList() {
-
-    }
-
     public Journey getJourneyAndPriceFromZones(Zone departureZone, Zone arrivalZone) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getStartZone().getName().equals(departureZone.getName())
+                    && super.get(i).getEndZone().getName().equals(arrivalZone.getName())) {
+                return super.get(i);
+            }
+        }
+        return null;
+        /*
+
         //  Add price for corresponding zones - Is this right??
         float price = 4.20f;
         float onPeak = 4.20f;
         Journey ret = new Journey(price, onPeak, departureZone, arrivalZone);
-        return ret;
+        return ret;*/
     }
 
     public Journey getJourney(Zone startZone, Zone endZone) {
