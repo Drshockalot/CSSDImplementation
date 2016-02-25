@@ -11,6 +11,7 @@ import PublicTransportationSystem.JourneyList;
 import PublicTransportationSystem.SetOfStationSystems;
 import PublicTransportationSystem.SetOfUsers;
 import PublicTransportationSystem.StationSystem;
+import PublicTransportationSystem.SystemRole;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
@@ -1397,11 +1398,11 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserEditActionPerformed
         if (tbl_adminGUIUserList.getSelectedRowCount() > 0) {
+            initAddEditView();
             dlg_adminUserAddEdit.pack();
             dlg_adminUserAddEdit.setVisible(true);
 //            dlg_adminUserAddEdit.setEnabled(true);
 //            this.setEnabled(false);
-            initAddEditView();
         }
     }//GEN-LAST:event_btn_adminUserEditActionPerformed
 
@@ -1412,6 +1413,28 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserAddEditCancelActionPerformed
 
     private void btn_adminUserAddEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddEditSaveActionPerformed
+        String editedUserId = txt_adminUserAddEditId.getText();
+        String editedForename = txt_adminUserAddEditForename.getText();
+        String editedSurname = txt_adminUserAddEditSurname.getText();
+        String editedUsername = txt_adminUserAddEditUsername.getText();
+        String editedEmail = txt_adminUserAddEditEmail.getText();
+        String editedPassword = txt_adminUserAddEditPassword.getText();
+        TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
+
+        try {
+            User user = TravelSystem.getInstance().getUsers().getUserById(Integer.parseInt(editedUserId));
+            user.setForename(editedForename);
+            user.setSurname(editedSurname);
+            user.setUsername(editedUsername);
+            user.setEmail(editedEmail);
+            user.setPassword(editedPassword);
+            user.setUserRole(new SystemRole(userRole));
+            TravelSystem.getInstance().serializeUsers();
+            populateUserTable();
+            dlg_adminUserAddEdit.dispose();
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btn_adminUserAddEditSaveActionPerformed
 
@@ -1467,31 +1490,26 @@ public class AdminUI extends javax.swing.JFrame {
 
         System.out.println(row);
         // if no selected row
-        if (row == -1) {
-            try {
-                // space here to set any inputs as required (userid, etc.)
-                txt_adminUserAddEditId.setText(Integer.toString(TravelSystem.getInstance().getUsers().getNextId()));
-            } catch (Throwable ex) {
-                Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
+        int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
 
-            try {
-                User user = TravelSystem.getInstance().getUsers().getUserById(userId);
-                txt_adminUserAddEditId.setText(Integer.toString(userId));
-                txt_adminUserAddEditForename.setText(user.getForename());
-                txt_adminUserAddEditSurname.setText(user.getSurname());
-                txt_adminUserAddEditUsername.setText(user.getUsername());
-                txt_adminUserAddEditEmail.setText(user.getEmail());
-                txt_adminUserAddEditPassword.setText(user.getPassword());
-                cmd_adminUserAddEditUserRole.setSelectedItem(user.getSystemRole().getName());
+        try {
+            User user = TravelSystem.getInstance().getUsers().getUserById(userId);
+            txt_adminUserAddEditId.setText(Integer.toString(userId));
+            txt_adminUserAddEditForename.setText(user.getForename());
+            txt_adminUserAddEditSurname.setText(user.getSurname());
+            txt_adminUserAddEditUsername.setText(user.getUsername());
+            txt_adminUserAddEditEmail.setText(user.getEmail());
+            txt_adminUserAddEditPassword.setText(user.getPassword());
+            cmd_adminUserAddEditUserRole.setSelectedItem(user.getSystemRole().getName());
 
-            } catch (Throwable ex) {
-                Logger.getLogger(AdminUI.class
-                        .getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void saveEditedUser() {
+
     }
 
     private void displayPrices() {
