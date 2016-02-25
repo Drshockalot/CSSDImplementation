@@ -57,4 +57,12 @@ public class Pass {
     public Zone departureZone() {
         return this.departureZone;
     }
+
+    public void setArrivalZone(Zone arrival) {
+        this.arrivalZone = arrival;
+    }
+
+    public void setDepartureZone(Zone departure) {
+        this.departureZone = departure;
+    }
 }

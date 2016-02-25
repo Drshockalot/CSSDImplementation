@@ -11,6 +11,7 @@ import PublicTransportationSystem.TravelCard;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
+import java.awt.HeadlessException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -51,6 +52,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         validPassPanel = new javax.swing.JPanel();
         passUserImage = new javax.swing.JPanel();
+        validPassUserImagelabel = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Images/user_image.png")));
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -64,6 +66,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         passConfirmInspection = new javax.swing.JButton();
         payForTicket = new javax.swing.JPanel();
         paymentUserImage = new javax.swing.JPanel();
+        paymentUserImagelabel = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Images/user_image.png")));
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -124,15 +127,17 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
         passUserImage.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        validPassUserImagelabel.setText(null);
+
         javax.swing.GroupLayout passUserImageLayout = new javax.swing.GroupLayout(passUserImage);
         passUserImage.setLayout(passUserImageLayout);
         passUserImageLayout.setHorizontalGroup(
             passUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addComponent(validPassUserImagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
         passUserImageLayout.setVerticalGroup(
             passUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addComponent(validPassUserImagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -240,15 +245,17 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
         paymentUserImage.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        paymentUserImagelabel.setText(null);
+
         javax.swing.GroupLayout paymentUserImageLayout = new javax.swing.GroupLayout(paymentUserImage);
         paymentUserImage.setLayout(paymentUserImageLayout);
         paymentUserImageLayout.setHorizontalGroup(
             paymentUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addComponent(paymentUserImagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
         paymentUserImageLayout.setVerticalGroup(
             paymentUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addComponent(paymentUserImagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
         jLabel7.setText("User Details");
@@ -395,6 +402,9 @@ public class PortableReaderUI extends javax.swing.JFrame {
         // Hard-coded pass/station/zone, for testing purposes //
         ////////////////////////////////////////////////////////
         Pass pass = new Pass(TypeEnums.PassType.TRAINJOURNEY);
+        // Only required for 'journey' passes (as opposed to day passes)
+        pass.setDepartureZone(system.getZones().getZoneById(1));
+        pass.setArrivalZone(system.getZones().getZoneById(2));
         currentCard.setPass(pass);
         currentCard.setLastDepartedStation(system.getStationSystems().getStationSystemById(1));
         ////////////////////////////////////////////////////////
@@ -480,7 +490,44 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private void paymentConfirmInspectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentConfirmInspectionActionPerformed
         // Check the 'from' and 'to' zones entered by the user and compare them to the
         // values on their travel pass
+        Pass targetPass = this.currentCard.getPass();
+        if ((targetPass.arrivalZone() == this.toZone.getSelectedItem())
+                && (targetPass.departureZone() == this.fromZone.getSelectedItem())) {
+            handleValidPass();
+
+        } else {
+            handleInvalidPass();
+        }
     }//GEN-LAST:event_paymentConfirmInspectionActionPerformed
+
+    private void handleValidPass() throws HeadlessException {
+        // Confirm that the pass is valid and return to the home screen
+        // for another scan
+        JOptionPane.showMessageDialog(payForTicket, "Ticket Inspection Confirmed", "Success", 1);
+        this.validPassPanel.setVisible(false);
+        this.payForTicket.setVisible(false);
+        this.scanPanel.setVisible(true);
+    }
+
+    private void handleInvalidPass() throws HeadlessException {
+        // Catch the which button the user presses and handle th result
+        String[] buttons = {"Pay for Journey", "Cancel"};
+        int buttonIndex = JOptionPane.showOptionDialog(null, "Pass not valid for journey", "Invalid Pass",
+                JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[1]);
+        switch (buttonIndex) {
+            case 0:
+                // Pay for journey
+                System.out.println("Launch pay for journey process");
+                // ADD NEW TICKET CREATION HERE
+                break;
+            case 1:
+            case -1:
+                System.out.println("dialog cancelled");
+                // Dialog cancel
+
+                break;
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -546,11 +593,13 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JLabel paymentUserDob;
     private javax.swing.JLabel paymentUserID;
     private javax.swing.JPanel paymentUserImage;
+    private javax.swing.JLabel paymentUserImagelabel;
     private javax.swing.JLabel paymentUserName;
     private javax.swing.JButton scanCardButton;
     private javax.swing.JPanel scanPanel;
     private javax.swing.JComboBox toZone;
     private javax.swing.JPanel validPassPanel;
+    private javax.swing.JLabel validPassUserImagelabel;
     // End of variables declaration//GEN-END:variables
 
     private void setUpUserDetails(User user, TravelCard card) {
@@ -568,7 +617,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.payForTicket.setVisible(false);
 
         if (!card.checkForScannedStation()) {
-            this.fromZone.addItem(card.getDepartureDetails().getZone().getName());
+            this.fromZone.addItem(card.getDepartureDetails().getZone());
             this.fromZone.setEnabled(false);
         }
 

@@ -118,7 +118,8 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initStationSystems() {
-        Zone zone = new Zone(1, "Drop Zone");
+        Zone zone = this.systemZones.getZoneById(1);
+
         GPSCoordinates gps = new GPSCoordinates(11.21f, 41.21f);
         ArrayList<Gateway> scanners = new ArrayList<Gateway>(); // empty for now
 

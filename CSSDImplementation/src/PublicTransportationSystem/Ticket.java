@@ -59,7 +59,7 @@ public class Ticket {
         this.paid = isPaid;
     }
 
-    public boolean isPeakTicket(boolean isPaid) {
+    public boolean isPeakTicket() {
         return this.peak;
     }
 }
