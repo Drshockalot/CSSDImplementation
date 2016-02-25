@@ -17,6 +17,10 @@ import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
 import PublicTransportationSystem.ZoneList;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -75,6 +79,8 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminUserAddEditSave = new javax.swing.JButton();
         btn_adminUserAddEditCancel = new javax.swing.JButton();
         cmd_adminUserAddEditUserRole = new javax.swing.JComboBox<>();
+        txt_adminUserAddEditDob = new javax.swing.JTextField();
+        lbl_adminUserAddEditDob = new javax.swing.JLabel();
         lbl_adminUserAddEditTitle = new javax.swing.JLabel();
         dlg_adminUserDelete = new javax.swing.JDialog();
         pnl_adminUserDeleteContainer = new javax.swing.JPanel();
@@ -315,6 +321,8 @@ public class AdminUI extends javax.swing.JFrame {
 
         cmd_adminUserAddEditUserRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        lbl_adminUserAddEditDob.setText("DOB");
+
         javax.swing.GroupLayout pnl_adminUserAddEditContainerLayout = new javax.swing.GroupLayout(pnl_adminUserAddEditContainer);
         pnl_adminUserAddEditContainer.setLayout(pnl_adminUserAddEditContainerLayout);
         pnl_adminUserAddEditContainerLayout.setHorizontalGroup(
@@ -331,7 +339,6 @@ public class AdminUI extends javax.swing.JFrame {
             .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_adminUserAddEditPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
                         .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_adminUserAddEditForename, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,7 +347,6 @@ public class AdminUI extends javax.swing.JFrame {
                         .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_adminUserAddEditSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_adminUserAddEditSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lbl_adminUserAddEditPassword)
                     .addComponent(lbl_adminUserAddEditUserRole)
                     .addComponent(txt_adminUserAddEditId, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_adminUserAddEditId)
@@ -351,8 +357,16 @@ public class AdminUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_adminUserAddEditEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_adminUserAddEditEmail))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                            .addComponent(lbl_adminUserAddEditEmail)))
+                    .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_adminUserAddEditPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_adminUserAddEditPassword))
+                        .addGap(26, 26, 26)
+                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_adminUserAddEditDob)
+                            .addComponent(txt_adminUserAddEditDob, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         pnl_adminUserAddEditContainerLayout.setVerticalGroup(
             pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,9 +393,13 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(txt_adminUserAddEditUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_adminUserAddEditEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
-                .addComponent(lbl_adminUserAddEditPassword)
+                .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_adminUserAddEditPassword)
+                    .addComponent(lbl_adminUserAddEditDob))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_adminUserAddEditPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_adminUserAddEditPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_adminUserAddEditDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addComponent(lbl_adminUserAddEditUserRole)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1490,6 +1508,7 @@ public class AdminUI extends javax.swing.JFrame {
         String editedUsername = txt_adminUserAddEditUsername.getText();
         String editedEmail = txt_adminUserAddEditEmail.getText();
         String editedPassword = txt_adminUserAddEditPassword.getText();
+        String editedDob = txt_adminUserAddEditDob.getText();
         TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
 
         try {
@@ -1501,6 +1520,9 @@ public class AdminUI extends javax.swing.JFrame {
             user.setPassword(editedPassword);
             user.setUserRole(new SystemRole(userRole));
             TravelSystem.getInstance().serializeUsers();
+            DateFormat format = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+            Date date = format.parse(editedDob);
+            user.setDob(date);
             populateUserTable();
             dlg_adminUserAddEdit.dispose();
         } catch (Throwable ex) {
@@ -1572,6 +1594,7 @@ public class AdminUI extends javax.swing.JFrame {
             txt_adminUserAddEditEmail.setText(user.getEmail());
             txt_adminUserAddEditPassword.setText(user.getPassword());
             cmd_adminUserAddEditUserRole.setSelectedItem(user.getSystemRole().getName());
+            txt_adminUserAddEditDob.setText(user.getDobFormatted("date"));
 
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class
@@ -1713,6 +1736,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_adminJourneyDeleteMsg;
     private javax.swing.JLabel lbl_adminJourneyDeleteTitle;
     private javax.swing.JLabel lbl_adminJourneyEditTitle;
+    private javax.swing.JLabel lbl_adminUserAddEditDob;
     private javax.swing.JLabel lbl_adminUserAddEditEmail;
     private javax.swing.JLabel lbl_adminUserAddEditForename;
     private javax.swing.JLabel lbl_adminUserAddEditId;
@@ -1741,6 +1765,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JTable tbl_adminGUIStationList;
     private javax.swing.JTable tbl_adminGUIUserList;
     private javax.swing.JTable tbl_adminGUIZoneList;
+    private javax.swing.JTextField txt_adminUserAddEditDob;
     private javax.swing.JTextField txt_adminUserAddEditEmail;
     private javax.swing.JTextField txt_adminUserAddEditForename;
     private javax.swing.JTextField txt_adminUserAddEditId;

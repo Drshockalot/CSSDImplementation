@@ -241,7 +241,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_adminUserAddEditPassword" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txt_adminUserAddEditForename" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
@@ -253,7 +252,6 @@
                                   <Component id="lbl_adminUserAddEditSurname" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="lbl_adminUserAddEditPassword" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_adminUserAddEditUserRole" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_adminUserAddEditId" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                           <Component id="lbl_adminUserAddEditId" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -268,8 +266,19 @@
                                   <Component id="lbl_adminUserAddEditEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txt_adminUserAddEditPassword" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Component id="lbl_adminUserAddEditPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbl_adminUserAddEditDob" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_adminUserAddEditDob" min="-2" pref="167" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -303,9 +312,15 @@
                           <Component id="txt_adminUserAddEditEmail" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="lbl_adminUserAddEditPassword" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbl_adminUserAddEditPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_adminUserAddEditDob" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_adminUserAddEditPassword" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_adminUserAddEditPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_adminUserAddEditDob" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="lbl_adminUserAddEditUserRole" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -411,6 +426,13 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_adminUserAddEditDob">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_adminUserAddEditDob">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="DOB"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

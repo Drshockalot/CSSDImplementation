@@ -136,5 +136,9 @@ public class User implements Serializable {
         this.email = newEmail;
     }
 
+    public void setDob(Date newDob) {
+        this.dateOfBirth = newDob;
+    }
+
     // </editor-fold>
 }
