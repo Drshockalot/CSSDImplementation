@@ -18,6 +18,8 @@ public class Gateway {
     private final String modeOfTransport = "TRAIN";
 
     public void PerformScanOut() throws Throwable {
+        // The card id is read from the scanner and used to get the travel card
+        // software object
         int cardID = scanner.read();
         TravelSystem sys = TravelSystem.getInstance();
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
@@ -41,7 +43,6 @@ public class Gateway {
             JourneyList list = new JourneyList();
             Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
 
-            // TODO: TICKET TYPE NEEDS TO DEPEND UPON USER INPUT
             Ticket currentTicket = currCard.userTickets().createNewTicket(journey, TypeEnums.TicketType.TRAIN, false);
 
             Transaction trans = new Transaction();

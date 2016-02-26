@@ -51,8 +51,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         scanPanel = new javax.swing.JPanel();
-        scanCardButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        scanCardTrainButton = new javax.swing.JButton();
+        scanCardBusButton = new javax.swing.JButton();
         validPassPanel = new javax.swing.JPanel();
         passUserImage = new javax.swing.JPanel();
         validPassUserImagelabel = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Images/user_image.png")));
@@ -85,23 +85,27 @@ public class PortableReaderUI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLayeredPane1.setLayout(new javax.swing.OverlayLayout(jLayeredPane1));
-
-        scanCardButton.setText("Scan Card On Train");
-        scanCardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scanCardButtonActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
-        jButton1.setText("Scan Card On Bus");
-        jButton1.setMaximumSize(new java.awt.Dimension(138, 24));
-        jButton1.setMinimumSize(new java.awt.Dimension(138, 24));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLayeredPane1.setLayout(new javax.swing.OverlayLayout(jLayeredPane1));
+
+        scanCardTrainButton.setText("Scan Card On Train");
+        scanCardTrainButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                scanCardTrainButtonActionPerformed(evt);
+            }
+        });
+
+        scanCardBusButton.setText("Scan Card On Bus");
+        scanCardBusButton.setMaximumSize(new java.awt.Dimension(138, 24));
+        scanCardBusButton.setMinimumSize(new java.awt.Dimension(138, 24));
+        scanCardBusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanCardBusButtonActionPerformed(evt);
             }
         });
 
@@ -112,17 +116,17 @@ public class PortableReaderUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scanPanelLayout.createSequentialGroup()
                 .addContainerGap(155, Short.MAX_VALUE)
                 .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(scanCardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scanCardTrainButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(144, 144, 144))
         );
         scanPanelLayout.setVerticalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(scanPanelLayout.createSequentialGroup()
                 .addGap(198, 198, 198)
-                .addComponent(scanCardButton)
+                .addComponent(scanCardTrainButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(246, Short.MAX_VALUE))
         );
 
@@ -389,11 +393,11 @@ public class PortableReaderUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void scanCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanCardButtonActionPerformed
+    private void scanCardTrainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanCardTrainButtonActionPerformed
         // Train button pressed, we are on a train
         this.travelType = "TRAIN";
         setUpComponents();
-    }//GEN-LAST:event_scanCardButtonActionPerformed
+    }//GEN-LAST:event_scanCardTrainButtonActionPerformed
 
     private void setUpComponents() {
         // Hide the first panel, we have our travel type now
@@ -404,7 +408,14 @@ public class PortableReaderUI extends javax.swing.JFrame {
         ////////////////////////////////////////////////////////
         // Hard-coded pass/station/zone, for testing purposes //
         ////////////////////////////////////////////////////////
-        Pass pass = new Pass(TypeEnums.PassType.TRAINJOURNEY);
+        Pass pass = null;
+
+        if ("BUS".equals(this.travelType)) {
+            pass = new Pass(TypeEnums.PassType.BUSJOURNEY);
+        } else if ("TRAIN".equals(this.travelType)) {
+            pass = new Pass(TypeEnums.PassType.TRAINJOURNEY);
+        }
+
         // Only required for 'journey' passes (as opposed to day passes)
         pass.setDepartureZone(system.getZones().getZoneById(1));
         pass.setArrivalZone(system.getZones().getZoneById(2));
@@ -474,11 +485,11 @@ public class PortableReaderUI extends javax.swing.JFrame {
         }
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void scanCardBusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanCardBusButtonActionPerformed
         // Bus button pressed, we are on a bus
         this.travelType = "BUS";
         setUpComponents();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_scanCardBusButtonActionPerformed
 
     private void passConfirmInspectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passConfirmInspectionActionPerformed
         // The user has a valid pass, display a confirmation message
@@ -502,6 +513,10 @@ public class PortableReaderUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_paymentConfirmInspectionActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        AppSwitchboard.mainUI.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
+
     private void handleValidPass() {
         // Confirm that the pass is valid and return to the home screen
         // for another scan
@@ -509,6 +524,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.validPassPanel.setVisible(false);
         this.payForTicket.setVisible(false);
         this.scanPanel.setVisible(true);
+        // Clear the list before re-drawing
+        this.toZone.removeAllItems();
     }
 
     private void handleInvalidPass() {
@@ -586,7 +603,6 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox fromZone;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -615,7 +631,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JPanel paymentUserImage;
     private javax.swing.JLabel paymentUserImagelabel;
     private javax.swing.JLabel paymentUserName;
-    private javax.swing.JButton scanCardButton;
+    private javax.swing.JButton scanCardBusButton;
+    private javax.swing.JButton scanCardTrainButton;
     private javax.swing.JPanel scanPanel;
     private javax.swing.JComboBox toZone;
     private javax.swing.JPanel validPassPanel;
