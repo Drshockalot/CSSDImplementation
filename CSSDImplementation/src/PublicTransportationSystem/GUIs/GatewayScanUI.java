@@ -39,7 +39,14 @@ public class GatewayScanUI extends javax.swing.JFrame {
         scanInHeader = new javax.swing.JLabel();
         scanOutHeader = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         gatewayTitle.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         gatewayTitle.setText("Gateway Simulation");
@@ -137,6 +144,14 @@ public class GatewayScanUI extends javax.swing.JFrame {
     private void scanInCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_scanInCard1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        AppSwitchboard.mainUI.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

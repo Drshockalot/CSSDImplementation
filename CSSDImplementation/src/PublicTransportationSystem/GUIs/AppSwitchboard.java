@@ -147,11 +147,15 @@ public class AppSwitchboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFrame portableReader = new PortableReaderUI();
         mainUI.setEnabled(false);
+        portableReader.setLocationRelativeTo(null);
         portableReader.setVisible(true);
     }//GEN-LAST:event_btn_switchInspectorUIActionPerformed
 
     private void btn_switchScannerUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUIActionPerformed
-        // TODO add your handling code here:
+        JFrame gatewayScanUI = new GatewayScanUI();
+        mainUI.setEnabled(false);
+        gatewayScanUI.setLocationRelativeTo(null);
+        gatewayScanUI.setVisible(true);
     }//GEN-LAST:event_btn_switchScannerUIActionPerformed
 
     private void btn_loginUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginUIActionPerformed
