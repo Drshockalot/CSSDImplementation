@@ -27,49 +27,51 @@ public class GatewayScanUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        gatewayTitle = new javax.swing.JLabel();
+        scanInCard1 = new javax.swing.JButton();
+        scanOutCard1 = new javax.swing.JButton();
+        scanInCard2 = new javax.swing.JButton();
+        scanOutCard2 = new javax.swing.JButton();
+        scanInCard3 = new javax.swing.JButton();
+        scanOutCard3 = new javax.swing.JButton();
+        rejectedMessage = new javax.swing.JLabel();
+        apporvedMessage = new javax.swing.JLabel();
+        scanInHeader = new javax.swing.JLabel();
+        scanOutHeader = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel1.setText("Gateway Simulation");
+        gatewayTitle.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        gatewayTitle.setText("Gateway Simulation");
 
-        jButton1.setLabel("Travel Card 1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        scanInCard1.setLabel("Travel Card 1");
+        scanInCard1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                scanInCard1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Travel Card 1");
+        scanOutCard1.setText("Travel Card 1");
 
-        jButton3.setText("Travel Card 2");
+        scanInCard2.setText("Travel Card 2");
 
-        jButton4.setText("Travel Card 2");
+        scanOutCard2.setText("Travel Card 2");
 
-        jButton5.setText("Travel Card 3");
+        scanInCard3.setText("Travel Card 3");
 
-        jButton6.setText("Travel Card 3");
+        scanOutCard3.setText("Travel Card 3");
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel2.setText("REJECTED");
+        rejectedMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        rejectedMessage.setForeground(new java.awt.Color(255, 0, 51));
+        rejectedMessage.setText("REJECTED");
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel3.setText("APPROVED");
+        apporvedMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        apporvedMessage.setForeground(new java.awt.Color(51, 255, 0));
+        apporvedMessage.setText("APPROVED");
 
-        jLabel4.setText("Scan In");
+        scanInHeader.setText("Scan In");
 
-        jLabel5.setText("Scan Out");
+        scanOutHeader.setText("Scan Out");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,61 +80,63 @@ public class GatewayScanUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton5)
-                    .addComponent(jButton3)
-                    .addComponent(jLabel2))
+                    .addComponent(scanInCard1)
+                    .addComponent(scanInCard3)
+                    .addComponent(scanInCard2)
+                    .addComponent(rejectedMessage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6)
-                    .addComponent(jButton4)
-                    .addComponent(jButton2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(scanOutCard3)
+                    .addComponent(scanOutCard2)
+                    .addComponent(scanOutCard1)
+                    .addComponent(apporvedMessage, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(66, 66, 66))
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(gatewayTitle)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(scanInHeader)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5))
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(scanOutHeader)
+                        .addGap(96, 96, 96))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(gatewayTitle)
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(scanInHeader)
+                    .addComponent(scanOutHeader))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(scanOutCard1)
+                    .addComponent(scanInCard1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(scanInCard2)
+                    .addComponent(scanOutCard2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(scanInCard3)
+                    .addComponent(scanOutCard3))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(rejectedMessage)
+                    .addComponent(apporvedMessage))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void scanInCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_scanInCard1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,16 +174,16 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel apporvedMessage;
+    private javax.swing.JLabel gatewayTitle;
+    private javax.swing.JLabel rejectedMessage;
+    private javax.swing.JButton scanInCard1;
+    private javax.swing.JButton scanInCard2;
+    private javax.swing.JButton scanInCard3;
+    private javax.swing.JLabel scanInHeader;
+    private javax.swing.JButton scanOutCard1;
+    private javax.swing.JButton scanOutCard2;
+    private javax.swing.JButton scanOutCard3;
+    private javax.swing.JLabel scanOutHeader;
     // End of variables declaration//GEN-END:variables
 }

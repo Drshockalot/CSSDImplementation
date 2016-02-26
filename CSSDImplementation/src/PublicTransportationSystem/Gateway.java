@@ -14,6 +14,8 @@ public class Gateway {
     private Scanner scanner;
     private GateController gateController;
     private int stationID;
+    // A gateway will always be in a train station
+    private final String modeOfTransport = "TRAIN";
 
     public void PerformScanOut() throws Throwable {
         int cardID = scanner.read();

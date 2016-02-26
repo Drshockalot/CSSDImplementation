@@ -31,12 +31,18 @@ public class Transaction {
         float dailyCap = currentTravelCard.getDailyCap();
         // After calculating the discount, subtract the amount from the card balance
         currentTravelCard.subtractFromBalance(discountedPrice);
+        // User has paid for the ticket, flag it as 'paid'
+        currentTicket.setPaid(true);
+        // Add the ticket to their tickets
+        currentTravelCard.userTickets().addTicket(currentTicket);
 
         // If the total has reached/gone over the daily cap...
         if (todaysTotal >= dailyCap) {
             // Generate a new pass
             // TODO: LOOK AT HANDLING DIFFERENT PASSES
-            Pass newPass = PassManager.generatePass(TypeEnums.PassType.TRAINDAY);
+            TypeEnums.PassType passType = null;
+            // Assign the proper type of pass
+            Pass newPass = PassManager.generatePass(TypeEnums.PassType.BUSANDTRAINDAY);
             // Assign the new pass to the users travel card
             currentTravelCard.setPass(newPass);
             // Calculate how far over the cap 'todaysTotal' is

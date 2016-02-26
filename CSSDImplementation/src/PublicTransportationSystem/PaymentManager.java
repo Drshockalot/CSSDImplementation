@@ -17,10 +17,10 @@ public class PaymentManager {
         // Calculate price taking into account discounts and peak time variables
         if (currentTicket.isPeakTicket()) {
             float ticketPrice = currentTicket.getJourney().getOnPeakPrice();
-            return ticketPrice -= ticketPrice * discount;
+            return ticketPrice -= ticketPrice * (discount / 100);
         } else {
             float ticketPrice = currentTicket.getJourney().getOffPeakPrice();
-            return ticketPrice -= ticketPrice * discount;
+            return ticketPrice -= ticketPrice * (discount / 100);
         }
     }
 
@@ -28,10 +28,10 @@ public class PaymentManager {
     public float calculatePrice(Journey journey, float discount, boolean peak) {
         if (peak) {
             float journeyPrice = journey.getOnPeakPrice();
-            return journeyPrice -= journeyPrice * discount;
+            return journeyPrice -= journeyPrice * (discount / 100);
         } else {
             float journeyPrice = journey.getOffPeakPrice();
-            return journeyPrice -= journeyPrice * discount;
+            return journeyPrice -= journeyPrice * (discount / 100);
         }
     }
 
