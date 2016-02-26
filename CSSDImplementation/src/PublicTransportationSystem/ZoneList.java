@@ -19,6 +19,8 @@ import java.util.Vector;
  */
 public class ZoneList extends Vector<Zone> implements Serializable {
 
+    private static final long serialVersionUID = 7852571661854962706L;
+
     public Zone getZoneById(int id) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getId() == id) {
@@ -58,5 +60,9 @@ public class ZoneList extends Vector<Zone> implements Serializable {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public int nextId() {
+        return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 }

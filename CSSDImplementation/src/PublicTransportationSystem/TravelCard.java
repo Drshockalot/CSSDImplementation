@@ -117,8 +117,14 @@ public class TravelCard {
     }
 
     public boolean checkForPass(Zone arrivingZone, Zone departureZone) {
-        return (departureZone.getName() == null ? this.pass.departureZone().getName() == null : departureZone.getName().equals(this.pass.departureZone().getName()))
-                && (this.pass.arrivalZone().getName() == null ? arrivingZone.getName() == null : this.pass.arrivalZone().getName().equals(arrivingZone.getName()));
+        if (this.pass != null) {
+            if (this.pass.departureZone() != null && this.pass.arrivalZone() != null) {
+                return this.pass.departureZone().getName().equals(departureZone.getName())
+                        && this.pass.arrivalZone().getName().equals(arrivingZone.getName());
+            }
+            return false;
+        }
+        return false;
     }
 
     public SetOfTickets userTickets() {
