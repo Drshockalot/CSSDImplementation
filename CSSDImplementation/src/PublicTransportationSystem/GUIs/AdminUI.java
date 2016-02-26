@@ -17,9 +17,9 @@ import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
 import PublicTransportationSystem.ZoneList;
-import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,7 +66,6 @@ public class AdminUI extends javax.swing.JFrame {
         txt_adminUserAddEditForename = new javax.swing.JTextField();
         txt_adminUserAddEditSurname = new javax.swing.JTextField();
         txt_adminUserAddEditUsername = new javax.swing.JTextField();
-        txt_adminUserAddEditPassword = new javax.swing.JTextField();
         lbl_adminUserAddEditForename = new javax.swing.JLabel();
         lbl_adminUserAddEditSurname = new javax.swing.JLabel();
         lbl_adminUserAddEditUsername = new javax.swing.JLabel();
@@ -81,6 +80,7 @@ public class AdminUI extends javax.swing.JFrame {
         cmd_adminUserAddEditUserRole = new javax.swing.JComboBox<>();
         txt_adminUserAddEditDob = new javax.swing.JTextField();
         lbl_adminUserAddEditDob = new javax.swing.JLabel();
+        txt_adminUserAddEditPassword = new javax.swing.JPasswordField();
         lbl_adminUserAddEditTitle = new javax.swing.JLabel();
         dlg_adminUserDelete = new javax.swing.JDialog();
         pnl_adminUserDeleteContainer = new javax.swing.JPanel();
@@ -88,7 +88,6 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminUserDeleteMsg = new javax.swing.JLabel();
         btn_adminUserDeleteConfirm = new javax.swing.JButton();
         btn_adminUserDeleteCancel = new javax.swing.JButton();
-        jDialog2 = new javax.swing.JDialog();
         dlg_adminJourneyDelete = new javax.swing.JDialog();
         pnl_adminJourneyDeleteContainer = new javax.swing.JPanel();
         lbl_adminJourneyDeleteTitle = new javax.swing.JLabel();
@@ -279,6 +278,7 @@ public class AdminUI extends javax.swing.JFrame {
 
         dlg_adminUserAddEdit.setAlwaysOnTop(true);
         dlg_adminUserAddEdit.setModal(true);
+        dlg_adminUserAddEdit.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
 
         txt_adminUserAddEditUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -323,6 +323,13 @@ public class AdminUI extends javax.swing.JFrame {
 
         lbl_adminUserAddEditDob.setText("DOB");
 
+        txt_adminUserAddEditPassword.setText("jPasswordField1");
+        txt_adminUserAddEditPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_adminUserAddEditPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnl_adminUserAddEditContainerLayout = new javax.swing.GroupLayout(pnl_adminUserAddEditContainer);
         pnl_adminUserAddEditContainer.setLayout(pnl_adminUserAddEditContainerLayout);
         pnl_adminUserAddEditContainerLayout.setHorizontalGroup(
@@ -359,14 +366,14 @@ public class AdminUI extends javax.swing.JFrame {
                             .addComponent(txt_adminUserAddEditEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_adminUserAddEditEmail)))
                     .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
-                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_adminUserAddEditPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_adminUserAddEditPassword))
-                        .addGap(26, 26, 26)
-                        .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_adminUserAddEditDob)
-                            .addComponent(txt_adminUserAddEditDob, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addComponent(lbl_adminUserAddEditPassword)
+                        .addGap(134, 134, 134)
+                        .addComponent(lbl_adminUserAddEditDob))
+                    .addGroup(pnl_adminUserAddEditContainerLayout.createSequentialGroup()
+                        .addComponent(txt_adminUserAddEditPassword)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_adminUserAddEditDob, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         pnl_adminUserAddEditContainerLayout.setVerticalGroup(
             pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,8 +405,8 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(lbl_adminUserAddEditDob))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_adminUserAddEditContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_adminUserAddEditPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_adminUserAddEditDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_adminUserAddEditDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_adminUserAddEditPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addComponent(lbl_adminUserAddEditUserRole)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -413,7 +420,7 @@ public class AdminUI extends javax.swing.JFrame {
 
         lbl_adminUserAddEditTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lbl_adminUserAddEditTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_adminUserAddEditTitle.setText("Add/Edit User");
+        lbl_adminUserAddEditTitle.setText("SetTitleHere");
 
         javax.swing.GroupLayout dlg_adminUserAddEditLayout = new javax.swing.GroupLayout(dlg_adminUserAddEdit.getContentPane());
         dlg_adminUserAddEdit.getContentPane().setLayout(dlg_adminUserAddEditLayout);
@@ -441,7 +448,7 @@ public class AdminUI extends javax.swing.JFrame {
         );
 
         dlg_adminUserDelete.setAlwaysOnTop(true);
-        dlg_adminUserDelete.setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
+        dlg_adminUserDelete.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
         dlg_adminUserDelete.setResizable(false);
 
         lbl_adminUserDeleteTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -452,9 +459,19 @@ public class AdminUI extends javax.swing.JFrame {
 
         btn_adminUserDeleteConfirm.setText("Delete");
         btn_adminUserDeleteConfirm.setSize(new java.awt.Dimension(75, 29));
+        btn_adminUserDeleteConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserDeleteConfirmActionPerformed(evt);
+            }
+        });
 
         btn_adminUserDeleteCancel.setText("Cancel");
         btn_adminUserDeleteCancel.setSize(new java.awt.Dimension(75, 29));
+        btn_adminUserDeleteCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserDeleteCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_adminUserDeleteContainerLayout = new javax.swing.GroupLayout(pnl_adminUserDeleteContainer);
         pnl_adminUserDeleteContainer.setLayout(pnl_adminUserDeleteContainerLayout);
@@ -503,17 +520,6 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnl_adminUserDeleteContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
-        jDialog2.getContentPane().setLayout(jDialog2Layout);
-        jDialog2Layout.setHorizontalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog2Layout.setVerticalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         dlg_adminJourneyDelete.setAlwaysOnTop(true);
@@ -583,7 +589,6 @@ public class AdminUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Management UI");
-        setAlwaysOnTop(true);
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -1507,7 +1512,7 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserEditActionPerformed
         if (tbl_adminGUIUserList.getSelectedRowCount() > 0) {
-            initAddEditView();
+            initEditView();
             dlg_adminUserAddEdit.pack();
             dlg_adminUserAddEdit.setVisible(true);
 //            dlg_adminUserAddEdit.setEnabled(true);
@@ -1522,16 +1527,69 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserAddEditCancelActionPerformed
 
     private void btn_adminUserAddEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddEditSaveActionPerformed
-        String editedUserId = txt_adminUserAddEditId.getText();
-        String editedForename = txt_adminUserAddEditForename.getText();
-        String editedSurname = txt_adminUserAddEditSurname.getText();
-        String editedUsername = txt_adminUserAddEditUsername.getText();
-        String editedEmail = txt_adminUserAddEditEmail.getText();
-        String editedPassword = txt_adminUserAddEditPassword.getText();
-        String editedDob = txt_adminUserAddEditDob.getText();
-        TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
-
         try {
+            Calendar cal = Calendar.getInstance();
+
+            String userId = txt_adminUserAddEditId.getText();
+            String forename = txt_adminUserAddEditForename.getText();
+            String surname = txt_adminUserAddEditSurname.getText();
+            String username = txt_adminUserAddEditUsername.getText();
+            String email = txt_adminUserAddEditEmail.getText();
+            String password = txt_adminUserAddEditPassword.getText();
+
+            // replace slash format if present
+            String dobString = txt_adminUserAddEditDob.getText().replace("/", "-");
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+
+            cal.setTime(sdf.parse(dobString));
+
+//            System.out.println(new Date(dobString));
+            TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
+
+            if (lbl_adminUserAddEditTitle.getText().equals("Edit User")) {
+                try {
+                    User user = TravelSystem.getInstance().getUsers().getUserById(Integer.parseInt(userId));
+                    user.setForename(forename);
+                    user.setSurname(surname);
+                    user.setUsername(username);
+                    user.setEmail(email);
+                    user.setPassword(password);
+                    user.setUserRole(new SystemRole(userRole));
+                    user.setDob(cal.getTime());
+                } catch (Throwable ex) {
+                    Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                User user = new User(TravelSystem.getInstance().getUsers().getNextId(), forename, surname, username, email, null, password, new SystemRole(userRole), cal.getTime());
+                TravelSystem.getInstance().getUsers().add(user);
+            }
+
+            try {
+                TravelSystem.getInstance().serializeUsers();
+                populateUserTable();
+                dlg_adminUserAddEdit.hide();
+            } catch (Throwable ex) {
+                Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } catch (ParseException ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        /*
+            String editedUserId = txt_adminUserAddEditId.getText();
+            String editedForename = txt_adminUserAddEditForename.getText();
+            String editedSurname = txt_adminUserAddEditSurname.getText();
+            String editedUsername = txt_adminUserAddEditUsername.getText();
+            String editedEmail = txt_adminUserAddEditEmail.getText();
+            String editedPassword = txt_adminUserAddEditPassword.getText();
+            String editedDob = txt_adminUserAddEditDob.getText();
+            TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
+
+            try {
             User user = TravelSystem.getInstance().getUsers().getUserById(Integer.parseInt(editedUserId));
             user.setForename(editedForename);
             user.setSurname(editedSurname);
@@ -1545,10 +1603,9 @@ public class AdminUI extends javax.swing.JFrame {
             user.setDob(date);
             populateUserTable();
             dlg_adminUserAddEdit.dispose();
-        } catch (Throwable ex) {
+            } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+            }*/
     }//GEN-LAST:event_btn_adminUserAddEditSaveActionPerformed
 
     private void btn_adminJourneySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchActionPerformed
@@ -1587,34 +1644,34 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserDeleteActionPerformed
         // TODO add your handling code here:
+//        initAddView();
         dlg_adminUserDelete.pack();
         dlg_adminUserDelete.setVisible(true);
     }//GEN-LAST:event_btn_adminUserDeleteActionPerformed
 
     private void btn_adminUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddActionPerformed
         // TODO add your handling code here:
-        initAddEditView();
+        initAddView();
+
         dlg_adminUserAddEdit.pack();
         dlg_adminUserAddEdit.setVisible(true);
     }//GEN-LAST:event_btn_adminUserAddActionPerformed
 
     private void tbl_adminGUIJourneyListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIJourneyListMouseReleased
-
         try {
-
             int row = tbl_adminGUIJourneyList.getSelectedRow();
-            // casts two values from first two columns of JTable into Zones
-            // to be then checked against the journeylist. Returns relevant journey
-            // from 'db'. getJourneyAndPriceFromZones function checks the names, not
-            // the literal object references
+            /* casts two values from first two columns of JTable into Zones
+             * to be then checked against the journeylist. Returns relevant journey
+             * from 'db'. getJourneyAndPriceFromZones function checks the names, not
+             * the literal object references
+             */
+
             Journey selectedJourney = TravelSystem.getInstance()
                     .getJourneys().getJourneyAndPriceFromZones(
                             (Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
                             (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1)
                     );
 
-            //
-//            System.out.println(selectedJourney);
             btn_adminJourneyEdit.setEnabled(true);
             btn_adminJourneyDelete.setEnabled(true);
 
@@ -1623,14 +1680,58 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tbl_adminGUIJourneyListMouseReleased
 
-    private void initAddEditView() {
-        int row = tbl_adminGUIUserList.getSelectedRow();
+    private void txt_adminUserAddEditPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUserAddEditPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_adminUserAddEditPasswordActionPerformed
 
-        System.out.println(row);
-        // if no selected row
+    private void btn_adminUserDeleteCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserDeleteCancelActionPerformed
+
+        dlg_adminUserDelete.hide();
+    }//GEN-LAST:event_btn_adminUserDeleteCancelActionPerformed
+
+    private void btn_adminUserDeleteConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserDeleteConfirmActionPerformed
+        int row = tbl_adminGUIUserList.getSelectedRow();
         int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
 
         try {
+            TravelSystem.getInstance().getUsers().remove(TravelSystem.getInstance().getUsers().getUserById(userId));
+            TravelSystem.getInstance().serializeUsers();
+            populateUserTable();
+            dlg_adminUserDelete.hide();
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_adminUserDeleteConfirmActionPerformed
+
+    private void initAddView() {
+        try {
+            lbl_adminUserAddEditTitle.setText("Add User");
+
+            txt_adminUserAddEditId.setText(Integer.toString(TravelSystem.getInstance().getUsers().getNextId()));
+            txt_adminUserAddEditForename.setText("New");
+            txt_adminUserAddEditSurname.setText("Guy");
+            txt_adminUserAddEditUsername.setText("NewGuy");
+            txt_adminUserAddEditEmail.setText("NewGuy@google.com");
+            txt_adminUserAddEditPassword.setText("newGuy");
+            cmd_adminUserAddEditUserRole.setSelectedItem("Admin");
+            txt_adminUserAddEditDob.setText("");
+
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void initEditView() {
+        int row = tbl_adminGUIUserList.getSelectedRow();
+
+        // get selected row - only occurs when a selection is made
+        int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
+
+        try {
+
+            lbl_adminUserAddEditTitle.setText("Edit User");
+
             User user = TravelSystem.getInstance().getUsers().getUserById(userId);
             txt_adminUserAddEditId.setText(Integer.toString(userId));
             txt_adminUserAddEditForename.setText(user.getForename());
@@ -1750,7 +1851,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JDialog dlg_adminJourneyEdit;
     private javax.swing.JDialog dlg_adminUserAddEdit;
     private javax.swing.JDialog dlg_adminUserDelete;
-    private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
@@ -1814,7 +1914,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_adminUserAddEditEmail;
     private javax.swing.JTextField txt_adminUserAddEditForename;
     private javax.swing.JTextField txt_adminUserAddEditId;
-    private javax.swing.JTextField txt_adminUserAddEditPassword;
+    private javax.swing.JPasswordField txt_adminUserAddEditPassword;
     private javax.swing.JTextField txt_adminUserAddEditSurname;
     private javax.swing.JTextField txt_adminUserAddEditUsername;
     private javax.swing.JTextField txt_offPeakPrice;
