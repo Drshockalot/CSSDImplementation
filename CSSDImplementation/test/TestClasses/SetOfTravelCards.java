@@ -28,6 +28,9 @@ public class SetOfTravelCards {
     public static void tearDownClass() {
     }
 
+    ///////////////////
+    // Test Case 1.3 //
+    ///////////////////
     @Test
     public void checkCorrectTravelCardNextID() throws Throwable {
         int number_of_travel_cards = TravelSystem.getInstance().getTravelCards().size();
@@ -44,6 +47,9 @@ public class SetOfTravelCards {
         assertTrue(test_id == travel_card_next_id);
     }
 
+    ///////////////////
+    // Test Case 1.4 //
+    ///////////////////
     @Test
     public void checkCorrectTravelCardIDReturn() throws Throwable {
         PublicTransportationSystem.TravelSystem database = PublicTransportationSystem.TravelSystem.getInstance();
@@ -66,6 +72,9 @@ public class SetOfTravelCards {
         assertTrue(test_travel_card_from_id == test_travel_card_from_set_directly);
     }
 
+    ///////////////////
+    // Test Case 1.5 //
+    ///////////////////
     @Test
     public void checkOutOfBoundsTravelCardIDReturn() throws Throwable {
         PublicTransportationSystem.TravelSystem database = PublicTransportationSystem.TravelSystem.getInstance();

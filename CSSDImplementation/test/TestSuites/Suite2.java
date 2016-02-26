@@ -15,7 +15,7 @@ import org.junit.runners.Suite;
  * @author Drshockalotz
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({})
+@Suite.SuiteClasses({TestClasses.User.class})
 public class Suite2 {
 
     @BeforeClass

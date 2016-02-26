@@ -29,6 +29,9 @@ public class TravelCard {
     public static void tearDownClass() {
     }
 
+    ///////////////////
+    // Test Case 1.1 //
+    ///////////////////
     @Test
     public void checkTravelCardExpiryDate() throws Throwable {
         PublicTransportationSystem.TravelCard test_travel_card = TravelSystem.getInstance().getTravelCards().getTravelCardById(1);
@@ -56,6 +59,9 @@ public class TravelCard {
         assertTrue(comparison_result == 0);
     }
 
+    ///////////////////
+    // Test Case 1.2 //
+    ///////////////////
     @Test
     public void hasCorrectPass() throws Throwable {
         PublicTransportationSystem.TravelSystem database = PublicTransportationSystem.TravelSystem.getInstance();
@@ -75,7 +81,7 @@ public class TravelCard {
         test_card.setPass(test_pass);
 
         // Ensure that the checkForPass method correctly evaluates the given
-        // Pass on the Zone parameters 
+        // Pass on the Zone parameters
         boolean result = test_card.checkForPass(test_arrival_zone, test_departure_zone);
         assertTrue(result);
     }
