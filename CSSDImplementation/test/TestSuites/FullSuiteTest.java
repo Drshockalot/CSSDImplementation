@@ -5,6 +5,7 @@
  */
 package TestSuites;
 
+import PublicTransportationSystem.TravelSystem;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
@@ -19,8 +20,9 @@ import org.junit.runners.Suite;
 public class FullSuiteTest {
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() throws Exception, Throwable {
         System.out.println("Running Full Suite Test...");
+        TravelSystem.getInstance().resetData();
     }
 
     @AfterClass
