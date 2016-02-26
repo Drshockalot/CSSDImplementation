@@ -50,17 +50,17 @@ public class AdminUI extends javax.swing.JFrame {
 
         dlg_adminJourneyEdit = new javax.swing.JDialog();
         lbl_adminJourneyEditTitle = new javax.swing.JLabel();
-        cmb_departure = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cmb_arrival = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         txt_offPeakPrice = new javax.swing.JTextField();
         txt_onPeakPrice = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btn_savePriceChanges = new javax.swing.JButton();
         btn_closeEditJourney = new javax.swing.JButton();
-        lbl_error = new javax.swing.JLabel();
+        lbl_adminJourneyEditError = new javax.swing.JLabel();
+        txt_adminJourneyEditDeparture = new javax.swing.JTextField();
+        txt_adminJourneyEditArrival = new javax.swing.JTextField();
         dlg_adminUserAddEdit = new javax.swing.JDialog();
         pnl_adminUserAddEditContainer = new javax.swing.JPanel();
         txt_adminUserAddEditForename = new javax.swing.JTextField();
@@ -165,33 +165,9 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminJourneyEditTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_adminJourneyEditTitle.setText("Edit Journey");
 
-        cmb_departure.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmb_departure.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_departureActionPerformed(evt);
-            }
-        });
-        cmb_departure.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                cmb_departurePropertyChange(evt);
-            }
-        });
-
         jLabel5.setText("Departure Zone");
 
         jLabel6.setText("Arrival Zone");
-
-        cmb_arrival.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmb_arrival.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_arrivalActionPerformed(evt);
-            }
-        });
-        cmb_arrival.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                cmb_arrivalPropertyChange(evt);
-            }
-        });
 
         jLabel7.setText("Off Peak");
 
@@ -211,40 +187,52 @@ public class AdminUI extends javax.swing.JFrame {
             }
         });
 
-        lbl_error.setForeground(new java.awt.Color(255, 0, 0));
-        lbl_error.setText("Off Peak is greater than On Peak");
+        lbl_adminJourneyEditError.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_adminJourneyEditError.setText("Off Peak is greater than On Peak");
+
+        txt_adminJourneyEditDeparture.setEnabled(false);
+
+        txt_adminJourneyEditArrival.setEnabled(false);
 
         javax.swing.GroupLayout dlg_adminJourneyEditLayout = new javax.swing.GroupLayout(dlg_adminJourneyEdit.getContentPane());
         dlg_adminJourneyEdit.getContentPane().setLayout(dlg_adminJourneyEditLayout);
         dlg_adminJourneyEditLayout.setHorizontalGroup(
             dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_adminJourneyEditTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmb_departure, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmb_arrival, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminJourneyEditLayout.createSequentialGroup()
-                        .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(txt_offPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btn_closeEditJourney)
-                                .addGap(1, 1, 1)
-                                .addComponent(btn_savePriceChanges, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
-                                .addComponent(lbl_error)
-                                .addGap(0, 19, Short.MAX_VALUE))))
                     .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
-                        .addComponent(txt_onPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_adminJourneyEditTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminJourneyEditLayout.createSequentialGroup()
+                                .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(txt_offPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btn_closeEditJourney)
+                                        .addGap(1, 1, 1)
+                                        .addComponent(btn_savePriceChanges, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
+                                        .addComponent(lbl_adminJourneyEditError)
+                                        .addGap(0, 19, Short.MAX_VALUE))))
+                            .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
+                                .addComponent(txt_onPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txt_adminJourneyEditDeparture, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txt_adminJourneyEditArrival, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dlg_adminJourneyEditLayout.setVerticalGroup(
             dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,18 +241,18 @@ public class AdminUI extends javax.swing.JFrame {
                 .addComponent(lbl_adminJourneyEditTitle)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmb_departure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmb_arrival, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(txt_adminJourneyEditDeparture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_adminJourneyEditArrival, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_offPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_error))
+                    .addComponent(lbl_adminJourneyEditError))
                 .addGap(13, 13, 13)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -448,6 +436,7 @@ public class AdminUI extends javax.swing.JFrame {
         );
 
         dlg_adminUserDelete.setAlwaysOnTop(true);
+        dlg_adminUserDelete.setLocationByPlatform(true);
         dlg_adminUserDelete.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
         dlg_adminUserDelete.setResizable(false);
 
@@ -1403,59 +1392,64 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void dlg_adminJourneyEditWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneyEditWindowOpened
-        lbl_error.setVisible(false);
+        lbl_adminJourneyEditError.setVisible(false);
     }//GEN-LAST:event_dlg_adminJourneyEditWindowOpened
-
-    private void cmb_departureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_departureActionPerformed
-        if (cmb_departure.getItemCount() > 0 && cmb_arrival.getItemCount() > 0) {
-            displayPrices();
-        }
-    }//GEN-LAST:event_cmb_departureActionPerformed
-
-    private void cmb_arrivalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_arrivalActionPerformed
-        if (cmb_departure.getItemCount() > 0 && cmb_arrival.getItemCount() > 0) {
-            displayPrices();
-        }
-    }//GEN-LAST:event_cmb_arrivalActionPerformed
-
-    private void cmb_departurePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmb_departurePropertyChange
-        if (cmb_departure.isShowing() && cmb_arrival.isShowing()) {
-            displayPrices();
-        }
-    }//GEN-LAST:event_cmb_departurePropertyChange
-
-    private void cmb_arrivalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmb_arrivalPropertyChange
-        if (cmb_departure.isShowing() && cmb_arrival.isShowing()) {
-            displayPrices();
-        }
-    }//GEN-LAST:event_cmb_arrivalPropertyChange
 
     private void btn_closeEditJourneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeEditJourneyActionPerformed
         dlg_adminJourneyEdit.dispose();
     }//GEN-LAST:event_btn_closeEditJourneyActionPerformed
 
     private void btn_savePriceChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_savePriceChangesActionPerformed
-        if (cmb_departure.getItemCount() > 0 && cmb_arrival.getItemCount() > 0) {
-            Object departure = cmb_departure.getSelectedItem();
-            Zone departureZone = ((Zone) departure);
-            Object arrival = cmb_arrival.getSelectedItem();
-            Zone arrivalZone = ((Zone) arrival);
+        int row = tbl_adminGUIJourneyList.getSelectedRow();
 
+        if (Float.valueOf(txt_offPeakPrice.getText()) <= Float.valueOf(txt_onPeakPrice.getText())) {
+            lbl_adminJourneyEditError.setVisible(false);
             try {
-                float offPeakPrice = Float.valueOf(txt_offPeakPrice.getText());
-                float onPeakPrice = Float.valueOf(txt_onPeakPrice.getText());
-                if (offPeakPrice > onPeakPrice) {
-                    lbl_error.setVisible(true);
-                } else {
-                    lbl_error.setVisible(false);
-                    editJourney(offPeakPrice, onPeakPrice, departureZone, arrivalZone);
+                // casts two values from first two columns of JTable into Zones
+                // to be then checked against the journeylist. Returns relevant journey
+                // from 'db'. getJourneyAndPriceFromZones function checks the names, not
+                // the literal object references
+                Journey selectedJourney = TravelSystem.getInstance()
+                        .getJourneys().getJourneyAndPriceFromZones(
+                                (Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
+                                (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1)
+                        );
+                selectedJourney.setOffPeakPrice(Float.valueOf(txt_offPeakPrice.getText()));
+                selectedJourney.setOnPeakPrice(Float.valueOf(txt_onPeakPrice.getText()));
 
-                }
+                TravelSystem.getInstance().serializeJourneys();
+                populateJourneyTable();
+
+                dlg_adminJourneyEdit.hide();
+
             } catch (Throwable ex) {
-                Logger.getLogger(AdminUI.class
-                        .getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            lbl_adminJourneyEditError.setVisible(true);
         }
+
+//        if (cmb_departure.getItemCount() > 0 && cmb_arrival.getItemCount() > 0) {
+//            Object departure = cmb_departure.getSelectedItem();
+//            Zone departureZone = ((Zone) departure);
+//            Object arrival = cmb_arrival.getSelectedItem();
+//            Zone arrivalZone = ((Zone) arrival);
+//
+//            try {
+//                float offPeakPrice = Float.valueOf(txt_offPeakPrice.getText());
+//                float onPeakPrice = Float.valueOf(txt_onPeakPrice.getText());
+//                if (offPeakPrice > onPeakPrice) {
+//                    lbl_error.setVisible(true);
+//                } else {
+//                    lbl_error.setVisible(false);
+//                    editJourney(offPeakPrice, onPeakPrice, departureZone, arrivalZone);
+//
+//                }
+//            } catch (Throwable ex) {
+//                Logger.getLogger(AdminUI.class
+//                        .getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }//GEN-LAST:event_btn_savePriceChangesActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -1481,11 +1475,13 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminStationsEditActionPerformed
 
     private void btn_adminJourneyEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyEditActionPerformed
-        // TODO add your handling code here:
-        /* USE THE FOLLOWING, don't need to use combo boxes on the edit anymore */
+        initEditJourneyView();
+    }//GEN-LAST:event_btn_adminJourneyEditActionPerformed
 
- /*
-                    int row = tbl_adminGUIJourneyList.getSelectedRow();
+    private void initEditJourneyView() {
+        int row = tbl_adminGUIJourneyList.getSelectedRow();
+
+        try {
             // casts two values from first two columns of JTable into Zones
             // to be then checked against the journeylist. Returns relevant journey
             // from 'db'. getJourneyAndPriceFromZones function checks the names, not
@@ -1495,24 +1491,22 @@ public class AdminUI extends javax.swing.JFrame {
                             (Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
                             (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1)
                     );
+            txt_adminJourneyEditDeparture.setText(selectedJourney.getStartZone().toString());
+            txt_adminJourneyEditArrival.setText(selectedJourney.getEndZone().toString());
+            txt_offPeakPrice.setText(Float.toString(selectedJourney.getOffPeakPrice()));
+            txt_onPeakPrice.setText(Float.toString(selectedJourney.getOnPeakPrice()));
 
-         */
-        try {
-            ZoneList zones = TravelSystem.getInstance().getZones();
-            cmb_departure.setModel(new DefaultComboBoxModel(zones));
-            cmb_arrival.setModel(new DefaultComboBoxModel(zones));
             dlg_adminJourneyEdit.pack();
             dlg_adminJourneyEdit.show();
 
         } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_adminJourneyEditActionPerformed
+    }
 
     private void btn_adminUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserEditActionPerformed
         if (tbl_adminGUIUserList.getSelectedRowCount() > 0) {
-            initEditView();
+            initEditUserView();
             dlg_adminUserAddEdit.pack();
             dlg_adminUserAddEdit.setVisible(true);
 //            dlg_adminUserAddEdit.setEnabled(true);
@@ -1651,7 +1645,7 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddActionPerformed
         // TODO add your handling code here:
-        initAddView();
+        initAddUserView();
 
         dlg_adminUserAddEdit.pack();
         dlg_adminUserAddEdit.setVisible(true);
@@ -1703,7 +1697,7 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_adminUserDeleteConfirmActionPerformed
 
-    private void initAddView() {
+    private void initAddUserView() {
         try {
             lbl_adminUserAddEditTitle.setText("Add User");
 
@@ -1713,7 +1707,7 @@ public class AdminUI extends javax.swing.JFrame {
             txt_adminUserAddEditUsername.setText("NewGuy");
             txt_adminUserAddEditEmail.setText("NewGuy@google.com");
             txt_adminUserAddEditPassword.setText("newGuy");
-            cmd_adminUserAddEditUserRole.setSelectedItem("Admin");
+            cmd_adminUserAddEditUserRole.setSelectedIndex(0);
             txt_adminUserAddEditDob.setText("");
 
         } catch (Throwable ex) {
@@ -1722,7 +1716,7 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }
 
-    private void initEditView() {
+    private void initEditUserView() {
         int row = tbl_adminGUIUserList.getSelectedRow();
 
         // get selected row - only occurs when a selection is made
@@ -1749,20 +1743,20 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void displayPrices() {
-        Object departure = cmb_departure.getSelectedItem();
-        Zone departureZone = ((Zone) departure);
-        Object arrival = cmb_arrival.getSelectedItem();
-        Zone arrivalZone = ((Zone) arrival);
-
-        try {
-            Journey journey = TravelSystem.getInstance().getJourneys().getJourney(departureZone, arrivalZone);
-            txt_offPeakPrice.setText(Float.toString(journey.getOffPeakPrice()));
-            txt_onPeakPrice.setText(Float.toString(journey.getOnPeakPrice()));
-
-        } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
+//        Object departure = cmb_departure.getSelectedItem();
+//        Zone departureZone = ((Zone) departure);
+//        Object arrival = cmb_arrival.getSelectedItem();
+//        Zone arrivalZone = ((Zone) arrival);
+//
+//        try {
+//            Journey journey = TravelSystem.getInstance().getJourneys().getJourney(departureZone, arrivalZone);
+//            txt_offPeakPrice.setText(Float.toString(journey.getOffPeakPrice()));
+//            txt_onPeakPrice.setText(Float.toString(journey.getOnPeakPrice()));
+//
+//        } catch (Throwable ex) {
+//            Logger.getLogger(AdminUI.class
+//                    .getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     private void editJourney(float newOffPeakPrice, float newOnPeakPrice, Zone startZone, Zone endZone) throws Throwable {
@@ -1844,8 +1838,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_closeEditJourney;
     private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_savePriceChanges;
-    private javax.swing.JComboBox<String> cmb_arrival;
-    private javax.swing.JComboBox<String> cmb_departure;
     private javax.swing.JComboBox<String> cmd_adminUserAddEditUserRole;
     private javax.swing.JDialog dlg_adminJourneyDelete;
     private javax.swing.JDialog dlg_adminJourneyEdit;
@@ -1880,6 +1872,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lbl_adminJourneyDeleteMsg;
     private javax.swing.JLabel lbl_adminJourneyDeleteTitle;
+    private javax.swing.JLabel lbl_adminJourneyEditError;
     private javax.swing.JLabel lbl_adminJourneyEditTitle;
     private javax.swing.JLabel lbl_adminUserAddEditDob;
     private javax.swing.JLabel lbl_adminUserAddEditEmail;
@@ -1892,7 +1885,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_adminUserAddEditUsername;
     private javax.swing.JLabel lbl_adminUserDeleteMsg;
     private javax.swing.JLabel lbl_adminUserDeleteTitle;
-    private javax.swing.JLabel lbl_error;
     private javax.swing.JLabel lbl_managementUITitle;
     private javax.swing.JPanel pnl_adminGUITabs;
     private javax.swing.JPanel pnl_adminGUITitle;
@@ -1910,6 +1902,8 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JTable tbl_adminGUIStationList;
     private javax.swing.JTable tbl_adminGUIUserList;
     private javax.swing.JTable tbl_adminGUIZoneList;
+    private javax.swing.JTextField txt_adminJourneyEditArrival;
+    private javax.swing.JTextField txt_adminJourneyEditDeparture;
     private javax.swing.JTextField txt_adminUserAddEditDob;
     private javax.swing.JTextField txt_adminUserAddEditEmail;
     private javax.swing.JTextField txt_adminUserAddEditForename;
