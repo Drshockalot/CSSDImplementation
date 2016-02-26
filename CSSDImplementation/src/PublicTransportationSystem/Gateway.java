@@ -39,7 +39,9 @@ public class Gateway {
             JourneyList list = new JourneyList();
             Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
 
-            Ticket currentTicket = new Ticket(userTickets.nextId(), TypeEnums.TicketType.TRAIN, journey, false);
+            // TODO: TICKET TYPE NEEDS TO DEPEND UPON USER INPUT
+            Ticket currentTicket = currCard.userTickets().createNewTicket(journey, TypeEnums.TicketType.TRAIN, false);
+
             Transaction trans = new Transaction();
             trans.payForTicket(userTickets, currentTicket, currCard);
 

@@ -5,13 +5,16 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.Journey;
 import PublicTransportationSystem.Pass;
 import PublicTransportationSystem.PortableReader;
+import PublicTransportationSystem.Ticket;
+import PublicTransportationSystem.Transaction;
 import PublicTransportationSystem.TravelCard;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
-import java.awt.HeadlessException;
+import PublicTransportationSystem.Zone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -494,13 +497,12 @@ public class PortableReaderUI extends javax.swing.JFrame {
         if ((targetPass.arrivalZone() == this.toZone.getSelectedItem())
                 && (targetPass.departureZone() == this.fromZone.getSelectedItem())) {
             handleValidPass();
-
         } else {
             handleInvalidPass();
         }
     }//GEN-LAST:event_paymentConfirmInspectionActionPerformed
 
-    private void handleValidPass() throws HeadlessException {
+    private void handleValidPass() {
         // Confirm that the pass is valid and return to the home screen
         // for another scan
         JOptionPane.showMessageDialog(payForTicket, "Ticket Inspection Confirmed", "Success", 1);
@@ -509,16 +511,14 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.scanPanel.setVisible(true);
     }
 
-    private void handleInvalidPass() throws HeadlessException {
+    private void handleInvalidPass() {
         // Catch the which button the user presses and handle th result
         String[] buttons = {"Pay for Journey", "Cancel"};
         int buttonIndex = JOptionPane.showOptionDialog(null, "Pass not valid for journey", "Invalid Pass",
                 JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[1]);
         switch (buttonIndex) {
             case 0:
-                // Pay for journey
-                System.out.println("Launch pay for journey process");
-                // ADD NEW TICKET CREATION HERE
+                handleTransaction();
                 break;
             case 1:
             case -1:
@@ -527,6 +527,26 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
                 break;
         }
+    }
+
+    private void handleTransaction() {
+        // Create a new Transaction so that we can handle ticket payment
+        Transaction transaction = new Transaction();
+        // The users pass does not cover their desired journey,
+        // so create a ticket
+        Journey journey = system.getJourneys().getJourney(
+                (Zone) this.fromZone.getSelectedItem(),
+                (Zone) this.toZone.getSelectedItem());
+
+        TypeEnums.TicketType ticketType = null;
+        // Discern whether we are travelling on a bus or a train
+        if ("TRAIN".equals(this.travelType)) {
+            ticketType = TypeEnums.TicketType.TRAIN;
+        } else if ("BUS".equals(this.travelType)) {
+            ticketType = TypeEnums.TicketType.TRAIN;
+        }
+        Ticket newTicket = currentCard.userTickets().createNewTicket(journey, ticketType, false);
+        transaction.payForTicket(this.currentCard.userTickets(), newTicket, this.currentCard);
     }
 
     /**

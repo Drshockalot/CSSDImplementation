@@ -26,7 +26,7 @@ public class Transaction {
         // Takes the current ticket and applies the discount, returns the result
         float discountedPrice = payManager.calculatePrice(currentTicket, discount);
         // Returns the sum of the ticket prices purchased today
-        float todaysTotal = ticketHistory.calculateTodaysTotal();
+        float todaysTotal = ticketHistory.calculateTodaysTotal(discount);
         // Gets the cap for daily transactions
         float dailyCap = currentTravelCard.getDailyCap();
         // After calculating the discount, subtract the amount from the card balance

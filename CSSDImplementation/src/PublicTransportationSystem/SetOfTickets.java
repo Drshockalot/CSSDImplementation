@@ -13,11 +13,32 @@ import java.util.Vector;
  */
 public class SetOfTickets extends Vector<Ticket> {
 
-    float calculateTodaysTotal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    float calculateTodaysTotal(float discount) {
+        // Create a PaymentManager to help us with calculating costs
+        PaymentManager paymentManager = new PaymentManager();
+        float todaysTotal = 0.00f;
+        // Iterate through each ticket and add the price on to the total
+        for (Ticket ticket : this) {
+            // Only if it has been paid for
+            if (ticket.getIsPaid()) {
+                todaysTotal += paymentManager.calculatePrice(ticket, discount);
+            }
+        }
+
+        return todaysTotal;
+    }
+
+    public Ticket createNewTicket(Journey journey, TypeEnums.TicketType type, boolean peak) {
+        // Create a new ticket based upon journey
+        return new Ticket(this.nextId(), type, journey, peak);
+    }
+
+    public void addTicket(Ticket ticket) {
+        this.add(ticket);
     }
 
     public int nextId() {
+        // Return the next available ID
         return super.isEmpty() ? 1 : super.lastElement().getTicketId() + 1;
     }
 }
