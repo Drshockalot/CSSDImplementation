@@ -55,4 +55,28 @@ public class TravelCard {
         int comparison_result = test_expiry_date.compareTo(card_expiry_date);
         assertTrue(comparison_result == 0);
     }
+
+    @Test
+    public void hasCorrectPass() throws Throwable {
+        PublicTransportationSystem.TravelSystem database = PublicTransportationSystem.TravelSystem.getInstance();
+        PublicTransportationSystem.SetOfTravelCards card_list = database.getTravelCards();
+        PublicTransportationSystem.ZoneList zone_list = database.getZones();
+        PublicTransportationSystem.TravelCard test_card = card_list.getTravelCardById(1);
+
+        // Add suitable Pass for testing purposes
+        Pass test_pass = new Pass(TypeEnums.PassType.BUSJOURNEY);
+        Zone test_departure_zone = zone_list.getZoneById(1);
+        Zone test_arrival_zone = zone_list.getZoneById(2);
+
+        // Ensure that the Pass has correct zones allocated
+        test_pass.setDepartureZone(test_departure_zone);
+        test_pass.setArrivalZone(test_arrival_zone);
+
+        test_card.setPass(test_pass);
+
+        // Ensure that the checkForPass method correctly evaluates the given
+        // Pass on the Zone parameters 
+        boolean result = test_card.checkForPass(test_arrival_zone, test_departure_zone);
+        assertTrue(result);
+    }
 }
