@@ -94,6 +94,18 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminJourneyDeleteMsg = new javax.swing.JLabel();
         btn_adminJourneyDeleteConfirm = new javax.swing.JButton();
         btn_adminJourneyDeleteCancel = new javax.swing.JButton();
+        dlg_adminUserAddPass = new javax.swing.JDialog();
+        dlg_adminUserViewPass = new javax.swing.JDialog();
+        dlg_adminUserViewTickets = new javax.swing.JDialog();
+        dlg_adminUserSearch = new javax.swing.JDialog();
+        jSeparatorMemSearchHeader = new javax.swing.JSeparator();
+        lbl_adminUserSearchSearchBy = new javax.swing.JLabel();
+        lbl_adminUserSearchSearchValue = new javax.swing.JLabel();
+        cmb_adminUserSearchSearchBy = new javax.swing.JComboBox();
+        txt_adminUserSearchValue = new javax.swing.JTextField();
+        lbl_adminUserDeleteTitle1 = new javax.swing.JLabel();
+        btn_adminUserSearchSearch = new javax.swing.JButton();
+        btn_adminUserSearchCancel = new javax.swing.JButton();
         pnl_adminGUITitle = new javax.swing.JPanel();
         lbl_managementUITitle = new javax.swing.JLabel();
         pnl_adminGUITabs = new javax.swing.JPanel();
@@ -115,6 +127,7 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminUserViewTC = new javax.swing.JButton();
         btn_adminUserViewTickets = new javax.swing.JButton();
         btn_adminUserAddTC = new javax.swing.JButton();
+        btn_adminUserSearch1 = new javax.swing.JButton();
         pnl_adminJourneyManagement = new javax.swing.JPanel();
         pnl_adminUserManagement1 = new javax.swing.JPanel();
         btn_adminJourneyAdd = new javax.swing.JButton();
@@ -576,6 +589,129 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout dlg_adminUserAddPassLayout = new javax.swing.GroupLayout(dlg_adminUserAddPass.getContentPane());
+        dlg_adminUserAddPass.getContentPane().setLayout(dlg_adminUserAddPassLayout);
+        dlg_adminUserAddPassLayout.setHorizontalGroup(
+            dlg_adminUserAddPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        dlg_adminUserAddPassLayout.setVerticalGroup(
+            dlg_adminUserAddPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout dlg_adminUserViewPassLayout = new javax.swing.GroupLayout(dlg_adminUserViewPass.getContentPane());
+        dlg_adminUserViewPass.getContentPane().setLayout(dlg_adminUserViewPassLayout);
+        dlg_adminUserViewPassLayout.setHorizontalGroup(
+            dlg_adminUserViewPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        dlg_adminUserViewPassLayout.setVerticalGroup(
+            dlg_adminUserViewPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout dlg_adminUserViewTicketsLayout = new javax.swing.GroupLayout(dlg_adminUserViewTickets.getContentPane());
+        dlg_adminUserViewTickets.getContentPane().setLayout(dlg_adminUserViewTicketsLayout);
+        dlg_adminUserViewTicketsLayout.setHorizontalGroup(
+            dlg_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        dlg_adminUserViewTicketsLayout.setVerticalGroup(
+            dlg_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        dlg_adminUserSearch.setLocationByPlatform(true);
+        dlg_adminUserSearch.setMinimumSize(new java.awt.Dimension(470, 257));
+        dlg_adminUserSearch.setModal(true);
+        dlg_adminUserSearch.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
+        dlg_adminUserSearch.setResizable(false);
+        dlg_adminUserSearch.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                dlg_adminUserSearchWindowActivated(evt);
+            }
+        });
+
+        lbl_adminUserSearchSearchBy.setText("Search By");
+
+        lbl_adminUserSearchSearchValue.setText("Search Value");
+
+        cmb_adminUserSearchSearchBy.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID", "Name" }));
+
+        txt_adminUserSearchValue.setMinimumSize(new java.awt.Dimension(72, 26));
+        txt_adminUserSearchValue.setName(""); // NOI18N
+        txt_adminUserSearchValue.setPreferredSize(new java.awt.Dimension(72, 26));
+
+        lbl_adminUserDeleteTitle1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lbl_adminUserDeleteTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_adminUserDeleteTitle1.setText("User Search");
+
+        btn_adminUserSearchSearch.setText("Search");
+        btn_adminUserSearchSearch.setSize(new java.awt.Dimension(75, 29));
+        btn_adminUserSearchSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserSearchSearchActionPerformed(evt);
+            }
+        });
+
+        btn_adminUserSearchCancel.setText("Cancel");
+        btn_adminUserSearchCancel.setSize(new java.awt.Dimension(75, 29));
+        btn_adminUserSearchCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserSearchCancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dlg_adminUserSearchLayout = new javax.swing.GroupLayout(dlg_adminUserSearch.getContentPane());
+        dlg_adminUserSearch.getContentPane().setLayout(dlg_adminUserSearchLayout);
+        dlg_adminUserSearchLayout.setHorizontalGroup(
+            dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminUserSearchLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_adminUserSearchCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_adminUserSearchSearch))
+                    .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
+                        .addComponent(jSeparatorMemSearchHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lbl_adminUserDeleteTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
+                                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbl_adminUserSearchSearchBy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lbl_adminUserSearchSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                                .addGap(44, 44, 44)
+                                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmb_adminUserSearchSearchBy, 0, 236, Short.MAX_VALUE)
+                                    .addComponent(txt_adminUserSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addGap(25, 25, 25))
+        );
+        dlg_adminUserSearchLayout.setVerticalGroup(
+            dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jSeparatorMemSearchHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_adminUserDeleteTitle1)
+                .addGap(18, 18, 18)
+                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_adminUserSearchSearchBy)
+                    .addComponent(cmb_adminUserSearchSearchBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_adminUserSearchSearchValue)
+                    .addComponent(txt_adminUserSearchValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_adminUserSearchSearch)
+                    .addComponent(btn_adminUserSearchCancel))
+                .addGap(20, 20, 20))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Management UI");
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
@@ -743,6 +879,11 @@ public class AdminUI extends javax.swing.JFrame {
 
         btn_adminUserSearch.setText("Search");
         btn_adminUserSearch.setPreferredSize(new java.awt.Dimension(97, 29));
+        btn_adminUserSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserSearchActionPerformed(evt);
+            }
+        });
 
         btn_adminUserDelete.setText("Delete");
         btn_adminUserDelete.setEnabled(false);
@@ -786,6 +927,15 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap(294, Short.MAX_VALUE))
         );
 
+        btn_adminUserSearch1.setText("Clear Search");
+        btn_adminUserSearch1.setEnabled(false);
+        btn_adminUserSearch1.setPreferredSize(new java.awt.Dimension(97, 29));
+        btn_adminUserSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserSearch1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnl_adminUserManagementLayout = new javax.swing.GroupLayout(pnl_adminUserManagement);
         pnl_adminUserManagement.setLayout(pnl_adminUserManagementLayout);
         pnl_adminUserManagementLayout.setHorizontalGroup(
@@ -795,6 +945,8 @@ public class AdminUI extends javax.swing.JFrame {
                 .addGroup(pnl_adminUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_adminUserManagementLayout.createSequentialGroup()
                         .addComponent(btn_adminUserSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_adminUserSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_adminUserDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -819,7 +971,8 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(btn_adminUserAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminUserEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminUserSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_adminUserDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_adminUserDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_adminUserSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -1333,6 +1486,7 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     public void populateUserTable() throws Throwable {
+
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIUserList.getModel();
         model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
@@ -1697,6 +1851,47 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_adminUserDeleteConfirmActionPerformed
 
+    private void dlg_adminUserSearchWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminUserSearchWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dlg_adminUserSearchWindowActivated
+
+    private void btn_adminUserSearchSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserSearchSearchActionPerformed
+        // if equals id search by id, else search by name
+//        SetOfUsers users;
+//
+//        try {
+//            if (cmb_adminUserSearchSearchBy.getSelectedIndex() == 0) {
+//                //user = TravelSystem.getInstance().getUsers().getUserById(Integer.valueOf(txt_adminUserSearchValue.getText()));
+//            } else {
+//                users = TravelSystem.getInstance().getUsers().searchUsersByUsername(txt_adminUserSearchValue.getText());
+//            }
+//            System.out.println(users);
+//        } catch (Throwable ex) {
+//            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+    }//GEN-LAST:event_btn_adminUserSearchSearchActionPerformed
+
+    private void btn_adminUserSearchCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserSearchCancelActionPerformed
+        dlg_adminUserSearch.hide();
+        //reset inputs
+        cmb_adminUserSearchSearchBy.setSelectedIndex(0);
+        txt_adminUserSearchValue.setText("");
+    }//GEN-LAST:event_btn_adminUserSearchCancelActionPerformed
+
+    private void btn_adminUserSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserSearchActionPerformed
+        dlg_adminUserSearch.show();
+    }//GEN-LAST:event_btn_adminUserSearchActionPerformed
+
+    private void btn_adminUserSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserSearch1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            populateUserTable();
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_adminUserSearch1ActionPerformed
+
     private void initAddUserView() {
         try {
             lbl_adminUserAddEditTitle.setText("Add User");
@@ -1829,6 +2024,9 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_adminUserDeleteConfirm;
     private javax.swing.JButton btn_adminUserEdit;
     private javax.swing.JButton btn_adminUserSearch;
+    private javax.swing.JButton btn_adminUserSearch1;
+    private javax.swing.JButton btn_adminUserSearchCancel;
+    private javax.swing.JButton btn_adminUserSearchSearch;
     private javax.swing.JButton btn_adminUserViewTC;
     private javax.swing.JButton btn_adminUserViewTickets;
     private javax.swing.JButton btn_adminZoneAdd;
@@ -1838,11 +2036,16 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_closeEditJourney;
     private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_savePriceChanges;
+    private javax.swing.JComboBox cmb_adminUserSearchSearchBy;
     private javax.swing.JComboBox<String> cmd_adminUserAddEditUserRole;
     private javax.swing.JDialog dlg_adminJourneyDelete;
     private javax.swing.JDialog dlg_adminJourneyEdit;
     private javax.swing.JDialog dlg_adminUserAddEdit;
+    private javax.swing.JDialog dlg_adminUserAddPass;
     private javax.swing.JDialog dlg_adminUserDelete;
+    private javax.swing.JDialog dlg_adminUserSearch;
+    private javax.swing.JDialog dlg_adminUserViewPass;
+    private javax.swing.JDialog dlg_adminUserViewTickets;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
@@ -1870,6 +2073,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSeparator jSeparatorMemSearchHeader;
     private javax.swing.JLabel lbl_adminJourneyDeleteMsg;
     private javax.swing.JLabel lbl_adminJourneyDeleteTitle;
     private javax.swing.JLabel lbl_adminJourneyEditError;
@@ -1885,6 +2089,9 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_adminUserAddEditUsername;
     private javax.swing.JLabel lbl_adminUserDeleteMsg;
     private javax.swing.JLabel lbl_adminUserDeleteTitle;
+    private javax.swing.JLabel lbl_adminUserDeleteTitle1;
+    private javax.swing.JLabel lbl_adminUserSearchSearchBy;
+    private javax.swing.JLabel lbl_adminUserSearchSearchValue;
     private javax.swing.JLabel lbl_managementUITitle;
     private javax.swing.JPanel pnl_adminGUITabs;
     private javax.swing.JPanel pnl_adminGUITitle;
@@ -1911,6 +2118,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField txt_adminUserAddEditPassword;
     private javax.swing.JTextField txt_adminUserAddEditSurname;
     private javax.swing.JTextField txt_adminUserAddEditUsername;
+    private javax.swing.JTextField txt_adminUserSearchValue;
     private javax.swing.JTextField txt_offPeakPrice;
     private javax.swing.JTextField txt_onPeakPrice;
     // End of variables declaration//GEN-END:variables

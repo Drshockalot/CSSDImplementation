@@ -25,6 +25,17 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         super.add(user);
     }
 
+    // searches through set of users and gets anything containing the String passed through
+    public SetOfUsers searchUsersByUsername(String username) {
+        SetOfUsers searchResult = new SetOfUsers();
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getUsername().equals(username)) {
+                searchResult.addUser(super.get(i));
+            }
+        }
+        return searchResult;
+    }
+
     public User getUserByUsername(String username) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getUsername().equals(username)) {

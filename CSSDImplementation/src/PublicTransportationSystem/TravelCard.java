@@ -18,9 +18,9 @@ public class TravelCard {
     private User user;
     private float balance;
     private SetOfTickets myTickets;
-    private Date startDate;
+//    private Date startDate;
     private Date expiryDate;
-    private String cardType;
+//    private String cardType;
     private float discount;
     private Pass pass;
     private StationSystem lastDepartedStation;
@@ -34,9 +34,9 @@ public class TravelCard {
         this.user = user;
         this.balance = 0.0f;
         this.myTickets = new SetOfTickets();
-        this.startDate = new Date();
+//        this.startDate = new Date();
         this.expiryDate = calculateExpiryDate();
-        this.cardType = cardType;
+//        this.cardType = cardType;
         this.discount = discount;
         this.pass = null;
         this.lastDepartedStation = null;
@@ -56,10 +56,9 @@ public class TravelCard {
         return this.expiryDate;
     }
 
-    public Date getCreationDate() {
-        return this.startDate;
-    }
-
+//    public Date getCreationDate() {
+//        return this.startDate;
+//    }
     public int getId() {
         return this.travelCardID;
     }
