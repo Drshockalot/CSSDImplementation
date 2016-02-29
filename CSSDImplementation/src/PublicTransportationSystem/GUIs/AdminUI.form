@@ -645,6 +645,9 @@
                   <Dimension value="[75, 29]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminJourneyDeleteConfirmActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_adminJourneyDeleteCancel">
               <Properties>
@@ -653,6 +656,9 @@
                   <Dimension value="[75, 29]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminJourneyDeleteCancelActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1448,6 +1454,9 @@
                           <Dimension value="[97, 29]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminJourneyDeleteActionPerformed"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JPanel" name="jPanel8">
 
