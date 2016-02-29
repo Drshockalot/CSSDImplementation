@@ -21,19 +21,19 @@
                       <Component id="lbl_adminJourneyEditTitle" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_adminJourneyEditDepZone" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_adminJourneyEditArrZone" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_adminJourneyEditOffPeakPrice" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_offPeakPrice" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_adminJourneyEditOnPeakPrice" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="btn_closeEditJourney" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_adminJourneyEditClose" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                  <Component id="btn_savePriceChanges" min="-2" pref="86" max="-2" attributes="0"/>
+                                  <Component id="btn_adminJourneyEditSave" min="-2" pref="86" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lbl_adminJourneyEditError" min="-2" max="-2" attributes="0"/>
@@ -60,28 +60,28 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbl_adminJourneyEditTitle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_adminJourneyEditDepZone" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Component id="txt_adminJourneyEditDeparture" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_adminJourneyEditArrZone" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="txt_adminJourneyEditArrival" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_adminJourneyEditOffPeakPrice" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txt_offPeakPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_adminJourneyEditError" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_adminJourneyEditOnPeakPrice" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="txt_onPeakPrice" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="109" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_closeEditJourney" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_savePriceChanges" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_adminJourneyEditClose" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_adminJourneyEditSave" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -98,17 +98,17 @@
             <Property name="text" type="java.lang.String" value="Edit Journey"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyEditDepZone">
           <Properties>
             <Property name="text" type="java.lang.String" value="Departure Zone"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyEditArrZone">
           <Properties>
             <Property name="text" type="java.lang.String" value="Arrival Zone"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyEditOffPeakPrice">
           <Properties>
             <Property name="text" type="java.lang.String" value="Off Peak"/>
           </Properties>
@@ -117,25 +117,25 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txt_onPeakPrice">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyEditOnPeakPrice">
           <Properties>
             <Property name="text" type="java.lang.String" value="On Peak"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btn_savePriceChanges">
+        <Component class="javax.swing.JButton" name="btn_adminJourneyEditSave">
           <Properties>
             <Property name="text" type="java.lang.String" value="Save"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_savePriceChangesActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminJourneyEditSaveActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btn_closeEditJourney">
+        <Component class="javax.swing.JButton" name="btn_adminJourneyEditClose">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancel"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_closeEditJourneyActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminJourneyEditCloseActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_adminJourneyEditError">
@@ -1310,6 +1310,186 @@
         </Container>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JDialog" name="dlg_adminJourneyAdd">
+      <Properties>
+        <Property name="alwaysOnTop" type="boolean" value="true"/>
+        <Property name="modal" type="boolean" value="true"/>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="dlg_adminJourneyAddWindowOpened"/>
+      </Events>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbl_adminJourneyAddTitle" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_adminJourneyAddDepZone" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_adminJourneyAddArrZone" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_adminJourneyAddOffPeak" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_adminJourneyAddOffPeakPrice" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
+                              <Component id="lbl_adminJourneyAddOnPeak" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btn_adminJourneyAddCancel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  <Component id="btn_adminJourneyAddSave" min="-2" pref="86" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lbl_adminJourneyAddError" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="txt_adminJourneyAddOnPeakPrice" min="-2" pref="215" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="cmb_adminJourneyAddDepZone" max="32767" attributes="0"/>
+                      <Component id="cmb_adminJourneyAddArrZone" alignment="1" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lbl_adminJourneyAddTitle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lbl_adminJourneyAddDepZone" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="cmb_adminJourneyAddDepZone" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lbl_adminJourneyAddArrZone" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="cmb_adminJourneyAddArrZone" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="lbl_adminJourneyAddOffPeak" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txt_adminJourneyAddOffPeakPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_adminJourneyAddError" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <Component id="lbl_adminJourneyAddOnPeak" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txt_adminJourneyAddOnPeakPrice" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="109" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btn_adminJourneyAddCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_adminJourneyAddSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyAddTitle">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="18" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Add Journey"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyAddDepZone">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Departure Zone"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyAddArrZone">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Arrival Zone"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyAddOffPeak">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Off Peak"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_adminJourneyAddOffPeakPrice">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0.00"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_adminJourneyAddOnPeakPrice">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0.00"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyAddOnPeak">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="On Peak"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_adminJourneyAddSave">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Save"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminJourneyAddSaveActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_adminJourneyAddCancel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cancel"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminJourneyAddCancelActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_adminJourneyAddError">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Off Peak is greater than On Peak"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmb_adminJourneyAddDepZone">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmb_adminJourneyAddArrZone">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -1872,6 +2052,9 @@
                           <Dimension value="[97, 29]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminJourneyAddActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btn_adminJourneyEdit">
                       <Properties>

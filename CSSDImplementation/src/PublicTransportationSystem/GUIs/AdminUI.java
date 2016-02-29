@@ -50,14 +50,14 @@ public class AdminUI extends javax.swing.JFrame {
 
         dlg_adminJourneyEdit = new javax.swing.JDialog();
         lbl_adminJourneyEditTitle = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbl_adminJourneyEditDepZone = new javax.swing.JLabel();
+        lbl_adminJourneyEditArrZone = new javax.swing.JLabel();
+        lbl_adminJourneyEditOffPeakPrice = new javax.swing.JLabel();
         txt_offPeakPrice = new javax.swing.JTextField();
         txt_onPeakPrice = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        btn_savePriceChanges = new javax.swing.JButton();
-        btn_closeEditJourney = new javax.swing.JButton();
+        lbl_adminJourneyEditOnPeakPrice = new javax.swing.JLabel();
+        btn_adminJourneyEditSave = new javax.swing.JButton();
+        btn_adminJourneyEditClose = new javax.swing.JButton();
         lbl_adminJourneyEditError = new javax.swing.JLabel();
         txt_adminJourneyEditDeparture = new javax.swing.JTextField();
         txt_adminJourneyEditArrival = new javax.swing.JTextField();
@@ -141,6 +141,19 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminZoneAddAdd = new javax.swing.JButton();
         btn_adminZoneAddCancel = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        dlg_adminJourneyAdd = new javax.swing.JDialog();
+        lbl_adminJourneyAddTitle = new javax.swing.JLabel();
+        lbl_adminJourneyAddDepZone = new javax.swing.JLabel();
+        lbl_adminJourneyAddArrZone = new javax.swing.JLabel();
+        lbl_adminJourneyAddOffPeak = new javax.swing.JLabel();
+        txt_adminJourneyAddOffPeakPrice = new javax.swing.JTextField();
+        txt_adminJourneyAddOnPeakPrice = new javax.swing.JTextField();
+        lbl_adminJourneyAddOnPeak = new javax.swing.JLabel();
+        btn_adminJourneyAddSave = new javax.swing.JButton();
+        btn_adminJourneyAddCancel = new javax.swing.JButton();
+        lbl_adminJourneyAddError = new javax.swing.JLabel();
+        cmb_adminJourneyAddDepZone = new javax.swing.JComboBox<>();
+        cmb_adminJourneyAddArrZone = new javax.swing.JComboBox<>();
         pnl_adminGUITitle = new javax.swing.JPanel();
         lbl_managementUITitle = new javax.swing.JLabel();
         pnl_adminGUITabs = new javax.swing.JPanel();
@@ -212,25 +225,25 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminJourneyEditTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_adminJourneyEditTitle.setText("Edit Journey");
 
-        jLabel5.setText("Departure Zone");
+        lbl_adminJourneyEditDepZone.setText("Departure Zone");
 
-        jLabel6.setText("Arrival Zone");
+        lbl_adminJourneyEditArrZone.setText("Arrival Zone");
 
-        jLabel7.setText("Off Peak");
+        lbl_adminJourneyEditOffPeakPrice.setText("Off Peak");
 
-        jLabel8.setText("On Peak");
+        lbl_adminJourneyEditOnPeakPrice.setText("On Peak");
 
-        btn_savePriceChanges.setText("Save");
-        btn_savePriceChanges.addActionListener(new java.awt.event.ActionListener() {
+        btn_adminJourneyEditSave.setText("Save");
+        btn_adminJourneyEditSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_savePriceChangesActionPerformed(evt);
+                btn_adminJourneyEditSaveActionPerformed(evt);
             }
         });
 
-        btn_closeEditJourney.setText("Cancel");
-        btn_closeEditJourney.addActionListener(new java.awt.event.ActionListener() {
+        btn_adminJourneyEditClose.setText("Cancel");
+        btn_adminJourneyEditClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_closeEditJourneyActionPerformed(evt);
+                btn_adminJourneyEditCloseActionPerformed(evt);
             }
         });
 
@@ -251,18 +264,18 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(lbl_adminJourneyEditTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminJourneyEditLayout.createSequentialGroup()
                         .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
+                            .addComponent(lbl_adminJourneyEditDepZone)
+                            .addComponent(lbl_adminJourneyEditArrZone)
+                            .addComponent(lbl_adminJourneyEditOffPeakPrice)
                             .addComponent(txt_offPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
+                            .addComponent(lbl_adminJourneyEditOnPeakPrice))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btn_closeEditJourney)
+                                .addComponent(btn_adminJourneyEditClose)
                                 .addGap(1, 1, 1)
-                                .addComponent(btn_savePriceChanges, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btn_adminJourneyEditSave, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(dlg_adminJourneyEditLayout.createSequentialGroup()
                                 .addComponent(lbl_adminJourneyEditError)
                                 .addGap(0, 19, Short.MAX_VALUE))))
@@ -280,27 +293,27 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbl_adminJourneyEditTitle)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(lbl_adminJourneyEditDepZone)
                 .addGap(13, 13, 13)
                 .addComponent(txt_adminJourneyEditDeparture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(lbl_adminJourneyEditArrZone)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_adminJourneyEditArrival, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(jLabel7)
+                .addComponent(lbl_adminJourneyEditOffPeakPrice)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_offPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_adminJourneyEditError))
                 .addGap(13, 13, 13)
-                .addComponent(jLabel8)
+                .addComponent(lbl_adminJourneyEditOnPeakPrice)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_onPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(dlg_adminJourneyEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_closeEditJourney)
-                    .addComponent(btn_savePriceChanges))
+                    .addComponent(btn_adminJourneyEditClose)
+                    .addComponent(btn_adminJourneyEditSave))
                 .addContainerGap())
         );
 
@@ -1049,6 +1062,114 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        dlg_adminJourneyAdd.setAlwaysOnTop(true);
+        dlg_adminJourneyAdd.setModal(true);
+        dlg_adminJourneyAdd.setResizable(false);
+        dlg_adminJourneyAdd.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                dlg_adminJourneyAddWindowOpened(evt);
+            }
+        });
+
+        lbl_adminJourneyAddTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lbl_adminJourneyAddTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_adminJourneyAddTitle.setText("Add Journey");
+
+        lbl_adminJourneyAddDepZone.setText("Departure Zone");
+
+        lbl_adminJourneyAddArrZone.setText("Arrival Zone");
+
+        lbl_adminJourneyAddOffPeak.setText("Off Peak");
+
+        txt_adminJourneyAddOffPeakPrice.setText("0.00");
+
+        txt_adminJourneyAddOnPeakPrice.setText("0.00");
+
+        lbl_adminJourneyAddOnPeak.setText("On Peak");
+
+        btn_adminJourneyAddSave.setText("Save");
+        btn_adminJourneyAddSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneyAddSaveActionPerformed(evt);
+            }
+        });
+
+        btn_adminJourneyAddCancel.setText("Cancel");
+        btn_adminJourneyAddCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneyAddCancelActionPerformed(evt);
+            }
+        });
+
+        lbl_adminJourneyAddError.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_adminJourneyAddError.setText("Off Peak is greater than On Peak");
+
+        cmb_adminJourneyAddDepZone.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cmb_adminJourneyAddArrZone.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout dlg_adminJourneyAddLayout = new javax.swing.GroupLayout(dlg_adminJourneyAdd.getContentPane());
+        dlg_adminJourneyAdd.getContentPane().setLayout(dlg_adminJourneyAddLayout);
+        dlg_adminJourneyAddLayout.setHorizontalGroup(
+            dlg_adminJourneyAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlg_adminJourneyAddLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dlg_adminJourneyAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_adminJourneyAddTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminJourneyAddLayout.createSequentialGroup()
+                        .addGroup(dlg_adminJourneyAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_adminJourneyAddDepZone)
+                            .addComponent(lbl_adminJourneyAddArrZone)
+                            .addComponent(lbl_adminJourneyAddOffPeak)
+                            .addComponent(txt_adminJourneyAddOffPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_adminJourneyAddOnPeak))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(dlg_adminJourneyAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dlg_adminJourneyAddLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btn_adminJourneyAddCancel)
+                                .addGap(1, 1, 1)
+                                .addComponent(btn_adminJourneyAddSave, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(dlg_adminJourneyAddLayout.createSequentialGroup()
+                                .addComponent(lbl_adminJourneyAddError)
+                                .addGap(0, 19, Short.MAX_VALUE))))
+                    .addGroup(dlg_adminJourneyAddLayout.createSequentialGroup()
+                        .addComponent(txt_adminJourneyAddOnPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cmb_adminJourneyAddDepZone, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_adminJourneyAddArrZone, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        dlg_adminJourneyAddLayout.setVerticalGroup(
+            dlg_adminJourneyAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlg_adminJourneyAddLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_adminJourneyAddTitle)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_adminJourneyAddDepZone)
+                .addGap(12, 12, 12)
+                .addComponent(cmb_adminJourneyAddDepZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_adminJourneyAddArrZone)
+                .addGap(12, 12, 12)
+                .addComponent(cmb_adminJourneyAddArrZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_adminJourneyAddOffPeak)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(dlg_adminJourneyAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_adminJourneyAddOffPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_adminJourneyAddError))
+                .addGap(13, 13, 13)
+                .addComponent(lbl_adminJourneyAddOnPeak)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_adminJourneyAddOnPeakPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGroup(dlg_adminJourneyAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_adminJourneyAddCancel)
+                    .addComponent(btn_adminJourneyAddSave))
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Management UI");
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
@@ -1316,6 +1437,11 @@ public class AdminUI extends javax.swing.JFrame {
 
         btn_adminJourneyAdd.setText("Add");
         btn_adminJourneyAdd.setPreferredSize(new java.awt.Dimension(97, 29));
+        btn_adminJourneyAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneyAddActionPerformed(evt);
+            }
+        });
 
         btn_adminJourneyEdit.setText("Edit");
         btn_adminJourneyEdit.setEnabled(false);
@@ -1902,11 +2028,11 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminJourneyEditError.setVisible(false);
     }//GEN-LAST:event_dlg_adminJourneyEditWindowOpened
 
-    private void btn_closeEditJourneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeEditJourneyActionPerformed
+    private void btn_adminJourneyEditCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyEditCloseActionPerformed
         dlg_adminJourneyEdit.dispose();
-    }//GEN-LAST:event_btn_closeEditJourneyActionPerformed
+    }//GEN-LAST:event_btn_adminJourneyEditCloseActionPerformed
 
-    private void btn_savePriceChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_savePriceChangesActionPerformed
+    private void btn_adminJourneyEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyEditSaveActionPerformed
         int row = tbl_adminGUIJourneyList.getSelectedRow();
 
         if (Float.valueOf(txt_offPeakPrice.getText()) <= Float.valueOf(txt_onPeakPrice.getText())) {
@@ -1957,7 +2083,7 @@ public class AdminUI extends javax.swing.JFrame {
 //                        .getName()).log(Level.SEVERE, null, ex);
 //            }
 //        }
-    }//GEN-LAST:event_btn_savePriceChangesActionPerformed
+    }//GEN-LAST:event_btn_adminJourneyEditSaveActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
@@ -2325,6 +2451,25 @@ public class AdminUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_adminUserViewTCClose1ActionPerformed
 
+    private void btn_adminJourneyAddSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyAddSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_adminJourneyAddSaveActionPerformed
+
+    private void btn_adminJourneyAddCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyAddCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_adminJourneyAddCancelActionPerformed
+
+    private void dlg_adminJourneyAddWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneyAddWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dlg_adminJourneyAddWindowOpened
+
+    private void btn_adminJourneyAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyAddActionPerformed
+        // Add code for combo boxes here
+        dlg_adminJourneyAdd.pack();
+        lbl_adminJourneyAddError.hide();
+        dlg_adminJourneyAdd.show();
+    }//GEN-LAST:event_btn_adminJourneyAddActionPerformed
+
     private void initAddUserView() {
         try {
             lbl_adminUserAddEditTitle.setText("Add User");
@@ -2439,10 +2584,14 @@ public class AdminUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adminJourneyAdd;
+    private javax.swing.JButton btn_adminJourneyAddCancel;
+    private javax.swing.JButton btn_adminJourneyAddSave;
     private javax.swing.JButton btn_adminJourneyDelete;
     private javax.swing.JButton btn_adminJourneyDeleteCancel;
     private javax.swing.JButton btn_adminJourneyDeleteConfirm;
     private javax.swing.JButton btn_adminJourneyEdit;
+    private javax.swing.JButton btn_adminJourneyEditClose;
+    private javax.swing.JButton btn_adminJourneyEditSave;
     private javax.swing.JButton btn_adminJourneySearch;
     private javax.swing.JButton btn_adminStationsAdd;
     private javax.swing.JButton btn_adminStationsDelete;
@@ -2471,11 +2620,12 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_adminZoneDelete;
     private javax.swing.JButton btn_adminZoneEdit;
     private javax.swing.JButton btn_adminZoneSearch;
-    private javax.swing.JButton btn_closeEditJourney;
     private javax.swing.JButton btn_logout;
-    private javax.swing.JButton btn_savePriceChanges;
+    private javax.swing.JComboBox<String> cmb_adminJourneyAddArrZone;
+    private javax.swing.JComboBox<String> cmb_adminJourneyAddDepZone;
     private javax.swing.JComboBox cmb_adminUserSearchSearchBy;
     private javax.swing.JComboBox<String> cmd_adminUserAddEditUserRole;
+    private javax.swing.JDialog dlg_adminJourneyAdd;
     private javax.swing.JDialog dlg_adminJourneyDelete;
     private javax.swing.JDialog dlg_adminJourneyEdit;
     private javax.swing.JDialog dlg_adminUserAddEdit;
@@ -2494,10 +2644,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
@@ -2514,9 +2660,19 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparatorMemSearchHeader;
+    private javax.swing.JLabel lbl_adminJourneyAddArrZone;
+    private javax.swing.JLabel lbl_adminJourneyAddDepZone;
+    private javax.swing.JLabel lbl_adminJourneyAddError;
+    private javax.swing.JLabel lbl_adminJourneyAddOffPeak;
+    private javax.swing.JLabel lbl_adminJourneyAddOnPeak;
+    private javax.swing.JLabel lbl_adminJourneyAddTitle;
     private javax.swing.JLabel lbl_adminJourneyDeleteMsg;
     private javax.swing.JLabel lbl_adminJourneyDeleteTitle;
+    private javax.swing.JLabel lbl_adminJourneyEditArrZone;
+    private javax.swing.JLabel lbl_adminJourneyEditDepZone;
     private javax.swing.JLabel lbl_adminJourneyEditError;
+    private javax.swing.JLabel lbl_adminJourneyEditOffPeakPrice;
+    private javax.swing.JLabel lbl_adminJourneyEditOnPeakPrice;
     private javax.swing.JLabel lbl_adminJourneyEditTitle;
     private javax.swing.JLabel lbl_adminUserAddEditDob;
     private javax.swing.JLabel lbl_adminUserAddEditEmail;
@@ -2565,6 +2721,8 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JTable tbl_adminGUIStationList;
     private javax.swing.JTable tbl_adminGUIUserList;
     private javax.swing.JTable tbl_adminGUIZoneList;
+    private javax.swing.JTextField txt_adminJourneyAddOffPeakPrice;
+    private javax.swing.JTextField txt_adminJourneyAddOnPeakPrice;
     private javax.swing.JTextField txt_adminJourneyEditArrival;
     private javax.swing.JTextField txt_adminJourneyEditDeparture;
     private javax.swing.JTextField txt_adminUserAddEditDob;
