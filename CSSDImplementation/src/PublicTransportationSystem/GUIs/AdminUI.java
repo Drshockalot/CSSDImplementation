@@ -111,7 +111,7 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txt_adminUserAddTCDiscount = new javax.swing.JTextField();
         txt_adminUserAddTCDailyCap = new javax.swing.JTextField();
-        dlg_adminUserViewPass = new javax.swing.JDialog();
+        dlg_adminUserViewTravelCard = new javax.swing.JDialog();
         pnl_adminUserViewTCContainer = new javax.swing.JPanel();
         txt_adminUserViewTCBalance = new javax.swing.JTextField();
         txt_adminUserViewTCStartDate = new javax.swing.JTextField();
@@ -637,6 +637,9 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        dlg_adminUserAddTravelCard.setModal(true);
+        dlg_adminUserAddTravelCard.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
+
         txt_adminUserAddTCStartDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_adminUserAddTCStartDateActionPerformed(evt);
@@ -938,18 +941,18 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout dlg_adminUserViewPassLayout = new javax.swing.GroupLayout(dlg_adminUserViewPass.getContentPane());
-        dlg_adminUserViewPass.getContentPane().setLayout(dlg_adminUserViewPassLayout);
-        dlg_adminUserViewPassLayout.setHorizontalGroup(
-            dlg_adminUserViewPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dlg_adminUserViewPassLayout.createSequentialGroup()
+        javax.swing.GroupLayout dlg_adminUserViewTravelCardLayout = new javax.swing.GroupLayout(dlg_adminUserViewTravelCard.getContentPane());
+        dlg_adminUserViewTravelCard.getContentPane().setLayout(dlg_adminUserViewTravelCardLayout);
+        dlg_adminUserViewTravelCardLayout.setHorizontalGroup(
+            dlg_adminUserViewTravelCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlg_adminUserViewTravelCardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnl_adminUserViewTCContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        dlg_adminUserViewPassLayout.setVerticalGroup(
-            dlg_adminUserViewPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminUserViewPassLayout.createSequentialGroup()
+        dlg_adminUserViewTravelCardLayout.setVerticalGroup(
+            dlg_adminUserViewTravelCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminUserViewTravelCardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnl_adminUserViewTCContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1239,12 +1242,22 @@ public class AdminUI extends javax.swing.JFrame {
 
         btn_adminUserViewTC.setText("View TC");
         btn_adminUserViewTC.setEnabled(false);
+        btn_adminUserViewTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserViewTCActionPerformed(evt);
+            }
+        });
 
         btn_adminUserViewTickets.setText("View Tickets");
         btn_adminUserViewTickets.setEnabled(false);
 
         btn_adminUserAddTC.setText("Add TC");
         btn_adminUserAddTC.setEnabled(false);
+        btn_adminUserAddTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserAddTCActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -2257,6 +2270,7 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserAddTCCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddTCCancelActionPerformed
         // TODO add your handling code here:
+        dlg_adminUserAddTravelCard.hide();
     }//GEN-LAST:event_btn_adminUserAddTCCancelActionPerformed
 
     private void txt_adminUserViewTCStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUserViewTCStartDateActionPerformed
@@ -2269,6 +2283,8 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserViewTCCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCCloseActionPerformed
         // TODO add your handling code here:
+        dlg_adminUserViewTravelCard.hide();
+
     }//GEN-LAST:event_btn_adminUserViewTCCloseActionPerformed
 
     private void btn_adminUserViewTCEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCEditActionPerformed
@@ -2305,6 +2321,18 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminJourneyDeleteCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyDeleteCancelActionPerformed
         dlg_adminJourneyDelete.dispose();
     }//GEN-LAST:event_btn_adminJourneyDeleteCancelActionPerformed
+
+    private void btn_adminUserAddTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddTCActionPerformed
+        // TODO add your handling code here:
+        dlg_adminUserAddTravelCard.pack();
+        dlg_adminUserAddTravelCard.show();
+    }//GEN-LAST:event_btn_adminUserAddTCActionPerformed
+
+    private void btn_adminUserViewTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCActionPerformed
+        // TODO add your handling code here:
+        dlg_adminUserViewTravelCard.pack();
+        dlg_adminUserViewTravelCard.show();
+    }//GEN-LAST:event_btn_adminUserViewTCActionPerformed
 
     private void initAddUserView() {
         try {
@@ -2463,8 +2491,8 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JDialog dlg_adminUserAddTravelCard;
     private javax.swing.JDialog dlg_adminUserDelete;
     private javax.swing.JDialog dlg_adminUserSearch;
-    private javax.swing.JDialog dlg_adminUserViewPass;
     private javax.swing.JDialog dlg_adminUserViewTickets;
+    private javax.swing.JDialog dlg_adminUserViewTravelCard;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
