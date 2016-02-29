@@ -18,6 +18,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
     private SetOfUsers systemUsers = new SetOfUsers();
     private SetOfTravelCards systemTravelCards = new SetOfTravelCards();
+    private SetOfTickets systemTickets = new SetOfTickets();
     private SetOfStationSystems systemStationSystems = new SetOfStationSystems();
     private JourneyList systemJourneys = new JourneyList();
     private ZoneList systemZones = new ZoneList();
@@ -181,7 +182,7 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void registerTravelCard(User user, String cardType, float discount, float dailyCap) {
-        TravelCard newTravelCard = new TravelCard(systemTravelCards.nextId(), user, cardType, discount, dailyCap);
+        TravelCard newTravelCard = new TravelCard(systemTravelCards.getNextId(), user, cardType, discount, dailyCap);
         newTravelCard.addFunds(7.00f);
         systemTravelCards.add(newTravelCard);
     }
@@ -224,6 +225,10 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public ZoneList getZones() {
         return systemZones;
+    }
+
+    public SetOfTickets getTickets() {
+        return systemTickets;
     }
 
     public TypeEnums.UserType[] getSystemRoles() {

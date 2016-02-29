@@ -17,7 +17,6 @@ public class TravelCard {
     private int travelCardID;
     private User user;
     private float balance;
-    private SetOfTickets myTickets;
     private Date startDate;
     private Date expiryDate;
 //    private String cardType;
@@ -33,7 +32,6 @@ public class TravelCard {
         this.travelCardID = travelCardID;
         this.user = user;
         this.balance = 0.0f;
-        this.myTickets = new SetOfTickets();
         this.startDate = new Date();
         this.expiryDate = calculateExpiryDate();
 //        this.cardType = cardType;
@@ -125,10 +123,6 @@ public class TravelCard {
             return false;
         }
         return false;
-    }
-
-    public SetOfTickets userTickets() {
-        return this.myTickets;
     }
 
     public boolean checkForScannedStation() {

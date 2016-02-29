@@ -47,13 +47,15 @@ public class Gateway {
         } else {
             boolean hasPaid = false;
 
-            SetOfTickets userTickets = currCard.userTickets();
+            SetOfTickets userTickets = TravelSystem.getInstance().getTickets()
+                    .getTicketsForUser(currCard.getUser().getId());
 
             //Get journey price
             JourneyList list = new JourneyList();
             Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
 
-            Ticket currentTicket = currCard.userTickets().createNewTicket(journey, TypeEnums.TicketType.TRAIN, false);
+            Ticket currentTicket = TravelSystem.getInstance().getTickets()
+                    .createNewTicket(journey, TypeEnums.TicketType.TRAIN, false, currCard.getUser().getId());
 
             Transaction trans = new Transaction();
             hasPaid = trans.payForTicket(userTickets, currentTicket, currCard);

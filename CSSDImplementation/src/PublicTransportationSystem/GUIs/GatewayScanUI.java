@@ -33,6 +33,9 @@ public class GatewayScanUI extends javax.swing.JFrame {
         initComponents();
         this.rejectedMessage.setVisible(false);
         this.approvedMessage.setVisible(false);
+        this.scanOutCard1.setEnabled(false);
+        this.scanOutCard2.setEnabled(false);
+        this.scanOutCard3.setEnabled(false);
     }
 
     /**
@@ -206,6 +209,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
         TravelCard travelCard = travelCards.getTravelCardById(1);
+
         try {
             boolean result = gateway.PerformScanIn(travelCard);
 
@@ -213,33 +217,149 @@ public class GatewayScanUI extends javax.swing.JFrame {
                 this.approvedMessage.setVisible(true);
                 this.rejectedMessage.setVisible(false);
                 this.scanInCard1.setEnabled(false);
+                this.scanOutCard1.setEnabled(true);
             } else {
                 this.rejectedMessage.setVisible(true);
                 this.approvedMessage.setVisible(false);
             }
+        } catch (NullPointerException ex) {
+            this.rejectedMessage.setVisible(true);
+            this.approvedMessage.setVisible(false);
         } catch (Throwable ex) {
             Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_scanInCard1MouseClicked
 
     private void scanInCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard2ActionPerformed
-        // TODO add your handling code here:
+        StationSystem station = stations.getStationSystemById(2);
+        SetOfGateways gateways = station.getStationGateways();
+        Gateway gateway = gateways.getGatewayById(2);
+        SetOfTravelCards travelCards = system.getTravelCards();
+        TravelCard travelCard = travelCards.getTravelCardById(2);
+
+        try {
+            boolean result = gateway.PerformScanIn(travelCard);
+
+            if (result) {
+                this.approvedMessage.setVisible(true);
+                this.rejectedMessage.setVisible(false);
+                this.scanInCard2.setEnabled(false);
+                this.scanOutCard2.setEnabled(true);
+            } else {
+                this.rejectedMessage.setVisible(true);
+                this.approvedMessage.setVisible(false);
+            }
+        } catch (NullPointerException ex) {
+            this.rejectedMessage.setVisible(true);
+            this.approvedMessage.setVisible(false);
+        } catch (Throwable ex) {
+            Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_scanInCard2ActionPerformed
 
     private void scanInCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard3ActionPerformed
-        // TODO add your handling code here:
+        StationSystem station = stations.getStationSystemById(3);
+        SetOfGateways gateways = station.getStationGateways();
+        Gateway gateway = gateways.getGatewayById(3);
+        SetOfTravelCards travelCards = system.getTravelCards();
+        TravelCard travelCard = travelCards.getTravelCardById(3);
+
+        try {
+            boolean result = gateway.PerformScanIn(travelCard);
+
+            if (result) {
+                this.approvedMessage.setVisible(true);
+                this.rejectedMessage.setVisible(false);
+                this.scanInCard3.setEnabled(false);
+                this.scanOutCard3.setEnabled(true);
+            } else {
+                this.rejectedMessage.setVisible(true);
+                this.approvedMessage.setVisible(false);
+            }
+        } catch (NullPointerException ex) {
+            this.rejectedMessage.setVisible(true);
+            this.approvedMessage.setVisible(false);
+        } catch (Throwable ex) {
+            Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_scanInCard3ActionPerformed
 
     private void scanOutCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard1ActionPerformed
-        // TODO add your handling code here:
+        StationSystem station = stations.getStationSystemById(1);
+        SetOfGateways gateways = station.getStationGateways();
+        Gateway gateway = gateways.getGatewayById(1);
+        SetOfTravelCards travelCards = system.getTravelCards();
+        TravelCard travelCard = travelCards.getTravelCardById(1);
+
+        try {
+            boolean result = gateway.PerformScanOut(travelCard);
+
+            if (result) {
+                this.approvedMessage.setVisible(true);
+                this.rejectedMessage.setVisible(false);
+                this.scanOutCard1.setEnabled(false);
+                this.scanInCard1.setEnabled(true);
+            } else {
+                this.rejectedMessage.setVisible(true);
+                this.approvedMessage.setVisible(false);
+            }
+        } catch (NullPointerException ex) {
+
+        } catch (Throwable ex) {
+            Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_scanOutCard1ActionPerformed
 
     private void scanOutCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard2ActionPerformed
-        // TODO add your handling code here:
+        StationSystem station = stations.getStationSystemById(2);
+        SetOfGateways gateways = station.getStationGateways();
+        Gateway gateway = gateways.getGatewayById(2);
+        SetOfTravelCards travelCards = system.getTravelCards();
+        TravelCard travelCard = travelCards.getTravelCardById(2);
+
+        try {
+            boolean result = gateway.PerformScanOut(travelCard);
+
+            if (result) {
+                this.approvedMessage.setVisible(true);
+                this.rejectedMessage.setVisible(false);
+                this.scanOutCard2.setEnabled(false);
+                this.scanInCard2.setEnabled(true);
+            } else {
+                this.rejectedMessage.setVisible(true);
+                this.approvedMessage.setVisible(false);
+            }
+        } catch (NullPointerException ex) {
+
+        } catch (Throwable ex) {
+            Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_scanOutCard2ActionPerformed
 
     private void scanOutCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard3ActionPerformed
-        // TODO add your handling code here:
+        StationSystem station = stations.getStationSystemById(3);
+        SetOfGateways gateways = station.getStationGateways();
+        Gateway gateway = gateways.getGatewayById(3);
+        SetOfTravelCards travelCards = system.getTravelCards();
+        TravelCard travelCard = travelCards.getTravelCardById(3);
+
+        try {
+            boolean result = gateway.PerformScanOut(travelCard);
+
+            if (result) {
+                this.approvedMessage.setVisible(true);
+                this.rejectedMessage.setVisible(false);
+                this.scanOutCard3.setEnabled(false);
+                this.scanInCard3.setEnabled(true);
+            } else {
+                this.rejectedMessage.setVisible(true);
+                this.approvedMessage.setVisible(false);
+            }
+        } catch (NullPointerException ex) {
+
+        } catch (Throwable ex) {
+            Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_scanOutCard3ActionPerformed
 
     /**

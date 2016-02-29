@@ -36,7 +36,7 @@ public class SetOfTravelCards {
         int number_of_travel_cards = TravelSystem.getInstance().getTravelCards().size();
 
         // Create a copy of next id for later comparison
-        int travel_card_next_id = TravelSystem.getInstance().getTravelCards().nextId();
+        int travel_card_next_id = TravelSystem.getInstance().getTravelCards().getNextId();
 
         // The next id generated through manual means
         // THIS CALCULATION SHOULD ALWAYS REFLECT THE METHOD USED TO GENERATE AN ID
