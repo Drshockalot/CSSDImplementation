@@ -46,7 +46,7 @@ public class Gateway {
             Ticket currentTicket = currCard.userTickets().createNewTicket(journey, TypeEnums.TicketType.TRAIN, false);
 
             Transaction trans = new Transaction();
-            trans.payForTicket(userTickets, currentTicket, currCard);
+            hasPaid = trans.payForTicket(userTickets, currentTicket, currCard);
 
             if (hasPaid) {
                 this.approve();
