@@ -159,7 +159,7 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void registerTravelCard(User user, String cardType, float discount, float dailyCap) {
-        TravelCard newTravelCard = new TravelCard(systemTravelCards.nextId(), user, cardType, discount, dailyCap);
+        TravelCard newTravelCard = new TravelCard(systemTravelCards.getNextId(), user, cardType, discount, dailyCap);
 
         systemTravelCards.add(newTravelCard);
     }
