@@ -51,7 +51,7 @@ public class Gateway {
                     .getTicketsForUser(currCard.getUser().getId());
 
             //Get journey price
-            JourneyList list = new JourneyList();
+            JourneyList list = sys.getJourneys();
             Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
 
             Ticket currentTicket = TravelSystem.getInstance().getTickets()
@@ -79,6 +79,7 @@ public class Gateway {
         if (currCard != null) {
             if (currCard.getBalance() > 0) {
                 this.approve();
+                currCard.setLastDepartedStation(sys.getStationSystems().getStationSystemById(stationID));
                 return true;
             } else {
                 this.reject();
