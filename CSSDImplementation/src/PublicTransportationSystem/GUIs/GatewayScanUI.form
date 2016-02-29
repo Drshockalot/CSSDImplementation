@@ -107,6 +107,7 @@
         <Property name="label" type="java.lang.String" value="Travel Card 1"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="scanInCard1MouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="scanInCard1ActionPerformed"/>
       </Events>
     </Component>
@@ -114,26 +115,41 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Travel Card 1"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="scanOutCard1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="scanInCard2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Travel Card 2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="scanInCard2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="scanOutCard2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Travel Card 2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="scanOutCard2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="scanInCard3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Travel Card 3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="scanInCard3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="scanOutCard3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Travel Card 3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="scanOutCard3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="rejectedMessage">
       <Properties>

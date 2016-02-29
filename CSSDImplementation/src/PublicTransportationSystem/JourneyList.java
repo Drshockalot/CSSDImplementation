@@ -19,6 +19,8 @@ import java.util.Vector;
  */
 public class JourneyList extends Vector<Journey> implements Serializable {
 
+    private static final long serialVersionUID = 6001781469688361443L;
+
     public Journey getJourneyAndPriceFromZones(Zone departureZone, Zone arrivalZone) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getStartZone().getName().equals(departureZone.getName())
@@ -46,6 +48,28 @@ public class JourneyList extends Vector<Journey> implements Serializable {
         }
 
         return null;
+    }
+
+    public int getTotalJourneysToZone(Zone zone) {
+        int count = 0;
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getEndZone().getId() == zone.getId()) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public int getTotalJourneysFromZone(Zone zone) {
+        int count = 0;
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getStartZone().getId() == zone.getId()) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public JourneyList deserializeJourneys() throws ClassNotFoundException {

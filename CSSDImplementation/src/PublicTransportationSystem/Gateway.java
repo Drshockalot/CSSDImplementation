@@ -11,16 +11,23 @@ package PublicTransportationSystem;
  */
 public class Gateway {
 
+    private int gatewayID;
     private Scanner scanner;
     private GateController gateController;
     private int stationID;
     // A gateway will always be in a train station
     private final String modeOfTransport = "TRAIN";
 
-    public void PerformScanOut() throws Throwable {
+    public Gateway(int stationID) {
+        this.scanner = new Scanner();
+        this.gateController = new GateController();
+        this.stationID = stationID;
+    }
+
+    public void PerformScanOut(TravelCard travelCard) throws Throwable {
         // The card id is read from the scanner and used to get the travel card
         // software object
-        int cardID = scanner.read();
+        int cardID = scanner.read(travelCard);
         TravelSystem sys = TravelSystem.getInstance();
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
         Zone zone = sys.getStationSystems().getStationSystemById(this.stationID).getZone();
@@ -57,8 +64,8 @@ public class Gateway {
         }
     }
 
-    public void PerformScanIn() throws Throwable {
-        int cardID = scanner.read();
+    public void PerformScanIn(TravelCard travelCard) throws Throwable {
+        int cardID = scanner.read(travelCard);
         TravelSystem sys = TravelSystem.getInstance();
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
 
@@ -77,5 +84,9 @@ public class Gateway {
 
     public void reject() {
         gateController.close();
+    }
+
+    public int getId() {
+        return this.gatewayID;
     }
 }

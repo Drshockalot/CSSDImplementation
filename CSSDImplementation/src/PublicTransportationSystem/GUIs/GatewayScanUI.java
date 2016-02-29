@@ -5,17 +5,34 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.Gateway;
+import PublicTransportationSystem.SetOfGateways;
+import PublicTransportationSystem.SetOfStationSystems;
+import PublicTransportationSystem.SetOfTravelCards;
+import PublicTransportationSystem.StationSystem;
+import PublicTransportationSystem.TravelCard;
+import PublicTransportationSystem.TravelSystem;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Drshockalotz
  */
 public class GatewayScanUI extends javax.swing.JFrame {
 
+    TravelSystem system;
+    SetOfStationSystems stations;
+
     /**
      * Creates new form GatewayScanUI
      */
-    public GatewayScanUI() {
+    public GatewayScanUI() throws Throwable {
+        this.system = TravelSystem.getInstance();
+        stations = system.getStationSystems();
         initComponents();
+        this.rejectedMessage.setVisible(false);
+        this.apporvedMessage.setVisible(false);
     }
 
     /**
@@ -52,6 +69,11 @@ public class GatewayScanUI extends javax.swing.JFrame {
         gatewayTitle.setText("Gateway Simulation");
 
         scanInCard1.setLabel("Travel Card 1");
+        scanInCard1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                scanInCard1MouseClicked(evt);
+            }
+        });
         scanInCard1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scanInCard1ActionPerformed(evt);
@@ -59,14 +81,39 @@ public class GatewayScanUI extends javax.swing.JFrame {
         });
 
         scanOutCard1.setText("Travel Card 1");
+        scanOutCard1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanOutCard1ActionPerformed(evt);
+            }
+        });
 
         scanInCard2.setText("Travel Card 2");
+        scanInCard2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanInCard2ActionPerformed(evt);
+            }
+        });
 
         scanOutCard2.setText("Travel Card 2");
+        scanOutCard2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanOutCard2ActionPerformed(evt);
+            }
+        });
 
         scanInCard3.setText("Travel Card 3");
+        scanInCard3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanInCard3ActionPerformed(evt);
+            }
+        });
 
         scanOutCard3.setText("Travel Card 3");
+        scanOutCard3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanOutCard3ActionPerformed(evt);
+            }
+        });
 
         rejectedMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         rejectedMessage.setForeground(new java.awt.Color(255, 0, 51));
@@ -153,6 +200,39 @@ public class GatewayScanUI extends javax.swing.JFrame {
         AppSwitchboard.mainUI.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void scanInCard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scanInCard1MouseClicked
+        StationSystem station = stations.getStationSystemById(1);
+        SetOfGateways gateways = station.getStationGateways();
+        Gateway gateway = gateways.getGatewayById(1);
+        SetOfTravelCards travelCards = system.getTravelCards();
+        TravelCard travelCard = travelCards.getTravelCardById(1);
+        try {
+            gateway.PerformScanIn(travelCard);
+        } catch (Throwable ex) {
+            Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_scanInCard1MouseClicked
+
+    private void scanInCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanInCard2ActionPerformed
+
+    private void scanInCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanInCard3ActionPerformed
+
+    private void scanOutCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanOutCard1ActionPerformed
+
+    private void scanOutCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanOutCard2ActionPerformed
+
+    private void scanOutCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanOutCard3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -183,7 +263,11 @@ public class GatewayScanUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GatewayScanUI().setVisible(true);
+                try {
+                    new GatewayScanUI().setVisible(true);
+                } catch (Throwable ex) {
+                    Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
