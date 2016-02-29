@@ -120,9 +120,10 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminUserViewTCDepTime = new javax.swing.JLabel();
         dlg_adminUserViewTickets = new javax.swing.JDialog();
         pnl_adminUserViewTickets = new javax.swing.JPanel();
-        lbl_adminUserViewTCId1 = new javax.swing.JLabel();
-        btn_adminUserViewTCClose1 = new javax.swing.JButton();
+        btn_adminUserViewTicketsClose = new javax.swing.JButton();
         lbl_adminUserViewTicketsTitle = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_adminUserViewTickets = new javax.swing.JTable();
         dlg_adminUserSearch = new javax.swing.JDialog();
         jSeparatorMemSearchHeader = new javax.swing.JSeparator();
         lbl_adminUserSearchSearchBy = new javax.swing.JLabel();
@@ -826,13 +827,11 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        lbl_adminUserViewTCId1.setText("Add Ticket List for user in here");
-
-        btn_adminUserViewTCClose1.setText("Close");
-        btn_adminUserViewTCClose1.setSize(new java.awt.Dimension(75, 29));
-        btn_adminUserViewTCClose1.addActionListener(new java.awt.event.ActionListener() {
+        btn_adminUserViewTicketsClose.setText("Close");
+        btn_adminUserViewTicketsClose.setSize(new java.awt.Dimension(75, 29));
+        btn_adminUserViewTicketsClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_adminUserViewTCClose1ActionPerformed(evt);
+                btn_adminUserViewTicketsCloseActionPerformed(evt);
             }
         });
 
@@ -840,32 +839,66 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminUserViewTicketsTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_adminUserViewTicketsTitle.setText("View Tickets");
 
+        tbl_adminUserViewTickets.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Ticket Id", "Departure", "Arrival", "Purchase Date", "Ticket Type", "Peak"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbl_adminUserViewTickets);
+        if (tbl_adminUserViewTickets.getColumnModel().getColumnCount() > 0) {
+            tbl_adminUserViewTickets.getColumnModel().getColumn(0).setPreferredWidth(70);
+            tbl_adminUserViewTickets.getColumnModel().getColumn(0).setMaxWidth(70);
+        }
+
         javax.swing.GroupLayout pnl_adminUserViewTicketsLayout = new javax.swing.GroupLayout(pnl_adminUserViewTickets);
         pnl_adminUserViewTickets.setLayout(pnl_adminUserViewTicketsLayout);
         pnl_adminUserViewTicketsLayout.setHorizontalGroup(
             pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserViewTicketsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_adminUserViewTicketsClose)
+                .addContainerGap())
             .addGroup(pnl_adminUserViewTicketsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_adminUserViewTicketsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnl_adminUserViewTicketsLayout.createSequentialGroup()
-                        .addComponent(lbl_adminUserViewTCId1)
-                        .addGap(0, 181, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserViewTicketsLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_adminUserViewTCClose1)))
-                .addContainerGap())
+                        .addComponent(lbl_adminUserViewTicketsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(10, 10, 10))
+                    .addGroup(pnl_adminUserViewTicketsLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         pnl_adminUserViewTicketsLayout.setVerticalGroup(
             pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_adminUserViewTicketsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_adminUserViewTicketsTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_adminUserViewTCId1)
-                .addGap(373, 373, 373)
-                .addComponent(btn_adminUserViewTCClose1)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_adminUserViewTicketsClose)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dlg_adminUserViewTicketsLayout = new javax.swing.GroupLayout(dlg_adminUserViewTickets.getContentPane());
@@ -873,9 +906,8 @@ public class AdminUI extends javax.swing.JFrame {
         dlg_adminUserViewTicketsLayout.setHorizontalGroup(
             dlg_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dlg_adminUserViewTicketsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnl_adminUserViewTickets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_adminUserViewTickets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         dlg_adminUserViewTicketsLayout.setVerticalGroup(
             dlg_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1370,6 +1402,11 @@ public class AdminUI extends javax.swing.JFrame {
 
         btn_adminUserViewTickets.setText("View Tickets");
         btn_adminUserViewTickets.setEnabled(false);
+        btn_adminUserViewTickets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminUserViewTicketsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -2484,9 +2521,11 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_adminZoneAddActionPerformed
 
-    private void btn_adminUserViewTCClose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCClose1ActionPerformed
+    private void btn_adminUserViewTicketsCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTicketsCloseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_adminUserViewTCClose1ActionPerformed
+        dlg_adminUserViewTickets.hide();
+
+    }//GEN-LAST:event_btn_adminUserViewTicketsCloseActionPerformed
 
     private void btn_adminJourneyAddSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyAddSaveActionPerformed
         // TODO add your handling code here:
@@ -2506,6 +2545,12 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminJourneyAddError.hide();
         dlg_adminJourneyAdd.show();
     }//GEN-LAST:event_btn_adminJourneyAddActionPerformed
+
+    private void btn_adminUserViewTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTicketsActionPerformed
+        // set values here?
+        dlg_adminUserViewTickets.pack();
+        dlg_adminUserViewTickets.show();
+    }//GEN-LAST:event_btn_adminUserViewTicketsActionPerformed
 
     private void initAddUserView() {
         try {
@@ -2647,10 +2692,10 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_adminUserSearchSearch;
     private javax.swing.JButton btn_adminUserViewTC;
     private javax.swing.JButton btn_adminUserViewTCClose;
-    private javax.swing.JButton btn_adminUserViewTCClose1;
     private javax.swing.JButton btn_adminUserViewTCEdit;
     private javax.swing.JButton btn_adminUserViewTCSave;
     private javax.swing.JButton btn_adminUserViewTickets;
+    private javax.swing.JButton btn_adminUserViewTicketsClose;
     private javax.swing.JButton btn_adminZoneAdd;
     private javax.swing.JButton btn_adminZoneAddAdd;
     private javax.swing.JButton btn_adminZoneAddCancel;
@@ -2692,6 +2737,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2733,7 +2779,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_adminUserViewTCDiscount;
     private javax.swing.JLabel lbl_adminUserViewTCExpiryDate;
     private javax.swing.JLabel lbl_adminUserViewTCId;
-    private javax.swing.JLabel lbl_adminUserViewTCId1;
     private javax.swing.JLabel lbl_adminUserViewTCStartDate;
     private javax.swing.JLabel lbl_adminUserViewTicketsTitle;
     private javax.swing.JLabel lbl_adminZoneAddId;
@@ -2759,6 +2804,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JTable tbl_adminGUIStationList;
     private javax.swing.JTable tbl_adminGUIUserList;
     private javax.swing.JTable tbl_adminGUIZoneList;
+    private javax.swing.JTable tbl_adminUserViewTickets;
     private javax.swing.JTextField txt_adminJourneyAddOffPeakPrice;
     private javax.swing.JTextField txt_adminJourneyAddOnPeakPrice;
     private javax.swing.JTextField txt_adminJourneyEditArrival;
