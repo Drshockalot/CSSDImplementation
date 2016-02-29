@@ -1041,14 +1041,14 @@ public class AdminUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Start Zone", "End Zone", "Off Peak", "On Peak"
+                "Start Zone", "End Zone", "Off Peak", "On Peak", "Todays Journeys Off-Peak", "Todays Journeys On-Peak", "Todays Revenue"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1135,14 +1135,14 @@ public class AdminUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name"
+                "ID", "Name", "Journeys To", "Journeys From", "Number of Stations"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1525,7 +1525,8 @@ public class AdminUI extends javax.swing.JFrame {
         JourneyList journeys = TravelSystem.getInstance().getJourneys();
 
         for (Journey journey : journeys) {
-            model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(), journey.getOffPeakPrice(), journey.getOnPeakPrice()});
+            model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
+                journey.getOffPeakPrice(), journey.getOnPeakPrice(), 0, 0, 0});
         }
     }
 
@@ -1539,7 +1540,10 @@ public class AdminUI extends javax.swing.JFrame {
         ZoneList zones = TravelSystem.getInstance().getZones();
 
         for (Zone zone : zones) {
-            model.addRow(new Object[]{zone.getId(), zone.getName()});
+            model.addRow(new Object[]{zone.getId(), zone.getName(),
+                TravelSystem.getInstance().getJourneys().getTotalJourneysToZone(zone),
+                TravelSystem.getInstance().getJourneys().getTotalJourneysFromZone(zone),
+                TravelSystem.getInstance().getStationSystems().getNumberOfStationsInZone(zone)});
         }
     }
 
@@ -1928,6 +1932,7 @@ public class AdminUI extends javax.swing.JFrame {
             TravelSystem.getInstance().getJourneys().remove(journey);
             TravelSystem.getInstance().serializeJourneys();
             populateJourneyTable();
+            populateZoneTable();
             btn_adminJourneyDelete.setEnabled(false);
             btn_adminJourneyEdit.setEnabled(false);
             dlg_adminJourneyDelete.dispose();
