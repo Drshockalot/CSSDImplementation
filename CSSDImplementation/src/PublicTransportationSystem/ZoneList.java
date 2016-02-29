@@ -62,7 +62,7 @@ public class ZoneList extends Vector<Zone> implements Serializable {
         }
     }
 
-    public int nextId() {
+    public int getNextId() {
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 }
