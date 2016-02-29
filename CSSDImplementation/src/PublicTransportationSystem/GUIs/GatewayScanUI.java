@@ -304,7 +304,8 @@ public class GatewayScanUI extends javax.swing.JFrame {
                 this.approvedMessage.setVisible(false);
             }
         } catch (NullPointerException ex) {
-
+            this.rejectedMessage.setVisible(true);
+            this.approvedMessage.setVisible(false);
         } catch (Throwable ex) {
             Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -330,7 +331,8 @@ public class GatewayScanUI extends javax.swing.JFrame {
                 this.approvedMessage.setVisible(false);
             }
         } catch (NullPointerException ex) {
-
+            this.rejectedMessage.setVisible(true);
+            this.approvedMessage.setVisible(false);
         } catch (Throwable ex) {
             Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -356,7 +358,8 @@ public class GatewayScanUI extends javax.swing.JFrame {
                 this.approvedMessage.setVisible(false);
             }
         } catch (NullPointerException ex) {
-
+            this.rejectedMessage.setVisible(true);
+            this.approvedMessage.setVisible(false);
         } catch (Throwable ex) {
             Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
         }

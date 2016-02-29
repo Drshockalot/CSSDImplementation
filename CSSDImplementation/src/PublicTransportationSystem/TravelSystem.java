@@ -78,6 +78,10 @@ public class TravelSystem implements SetOfUsersInterface {
             Logger.getLogger(TravelSystem.class.getName()).log(Level.SEVERE, null, ex);
         }
         registerTravelCard(user, "test", discount, dailyCap);
+
+        user = systemUsers.getUserById(3);
+        registerTravelCard(user, "nothing", discount, dailyCap);
+        registerTravelCard(systemUsers.getUserById(2), "nothing", discount, dailyCap);
     }
 
     public void initZones() {
