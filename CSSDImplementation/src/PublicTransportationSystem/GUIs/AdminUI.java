@@ -574,9 +574,19 @@ public class AdminUI extends javax.swing.JFrame {
 
         btn_adminJourneyDeleteConfirm.setText("Delete");
         btn_adminJourneyDeleteConfirm.setSize(new java.awt.Dimension(75, 29));
+        btn_adminJourneyDeleteConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneyDeleteConfirmActionPerformed(evt);
+            }
+        });
 
         btn_adminJourneyDeleteCancel.setText("Cancel");
         btn_adminJourneyDeleteCancel.setSize(new java.awt.Dimension(75, 29));
+        btn_adminJourneyDeleteCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneyDeleteCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_adminJourneyDeleteContainerLayout = new javax.swing.GroupLayout(pnl_adminJourneyDeleteContainer);
         pnl_adminJourneyDeleteContainer.setLayout(pnl_adminJourneyDeleteContainerLayout);
@@ -1334,6 +1344,11 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminJourneyDelete.setText("Delete");
         btn_adminJourneyDelete.setEnabled(false);
         btn_adminJourneyDelete.setPreferredSize(new java.awt.Dimension(97, 29));
+        btn_adminJourneyDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneyDeleteActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("btns");
 
@@ -1359,14 +1374,14 @@ public class AdminUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Start Zone", "End Zone", "Off Peak", "On Peak"
+                "Start Zone", "End Zone", "Off Peak", "On Peak", "Todays Journeys Off-Peak", "Todays Journeys On-Peak", "Todays Revenue"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1453,14 +1468,14 @@ public class AdminUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name"
+                "ID", "Name", "Journeys To", "Journeys From", "Number of Stations"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1843,7 +1858,8 @@ public class AdminUI extends javax.swing.JFrame {
         JourneyList journeys = TravelSystem.getInstance().getJourneys();
 
         for (Journey journey : journeys) {
-            model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(), journey.getOffPeakPrice(), journey.getOnPeakPrice()});
+            model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
+                journey.getOffPeakPrice(), journey.getOnPeakPrice(), 0, 0, 0});
         }
     }
 
@@ -1857,7 +1873,10 @@ public class AdminUI extends javax.swing.JFrame {
         ZoneList zones = TravelSystem.getInstance().getZones();
 
         for (Zone zone : zones) {
-            model.addRow(new Object[]{zone.getId(), zone.getName()});
+            model.addRow(new Object[]{zone.getId(), zone.getName(),
+                TravelSystem.getInstance().getJourneys().getTotalJourneysToZone(zone),
+                TravelSystem.getInstance().getJourneys().getTotalJourneysFromZone(zone),
+                TravelSystem.getInstance().getStationSystems().getNumberOfStationsInZone(zone)});
         }
     }
 
@@ -2025,7 +2044,6 @@ public class AdminUI extends javax.swing.JFrame {
 
             cal.setTime(sdf.parse(dobString));
 
-//            System.out.println(new Date(dobString));
             TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
 
             if (lbl_adminUserAddEditTitle.getText().equals("Edit User")) {
@@ -2124,10 +2142,12 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_adminGUIUserListMouseReleased
 
     private void btn_adminUserDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserDeleteActionPerformed
-        // TODO add your handling code here:
+//        TODO add your handling code here:
 //        initAddView();
-        dlg_adminUserDelete.pack();
-        dlg_adminUserDelete.setVisible(true);
+        if (tbl_adminGUIUserList.getSelectedRowCount() > 0) {
+            dlg_adminUserDelete.pack();
+            dlg_adminUserDelete.setVisible(true);
+        }
     }//GEN-LAST:event_btn_adminUserDeleteActionPerformed
 
     private void btn_adminUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddActionPerformed
@@ -2178,6 +2198,8 @@ public class AdminUI extends javax.swing.JFrame {
             TravelSystem.getInstance().getUsers().remove(TravelSystem.getInstance().getUsers().getUserById(userId));
             TravelSystem.getInstance().serializeUsers();
             populateUserTable();
+            btn_adminUserDelete.setEnabled(false);
+            btn_adminUserEdit.setEnabled(false);
             dlg_adminUserDelete.hide();
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2252,6 +2274,37 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminUserViewTCEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCEditActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_adminUserViewTCEditActionPerformed
+
+    private void btn_adminJourneyDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyDeleteActionPerformed
+        if (tbl_adminGUIJourneyList.getSelectedRowCount() > 0) {
+            dlg_adminJourneyDelete.pack();
+            dlg_adminJourneyDelete.setVisible(true);
+        }
+    }//GEN-LAST:event_btn_adminJourneyDeleteActionPerformed
+
+    private void btn_adminJourneyDeleteConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyDeleteConfirmActionPerformed
+        int row = tbl_adminGUIJourneyList.getSelectedRow();
+
+        try {
+            Journey journey = TravelSystem.getInstance().getJourneys()
+                    .getJourney((Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
+                            (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1));
+
+            TravelSystem.getInstance().getJourneys().remove(journey);
+            TravelSystem.getInstance().serializeJourneys();
+            populateJourneyTable();
+            populateZoneTable();
+            btn_adminJourneyDelete.setEnabled(false);
+            btn_adminJourneyEdit.setEnabled(false);
+            dlg_adminJourneyDelete.dispose();
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_adminJourneyDeleteConfirmActionPerformed
+
+    private void btn_adminJourneyDeleteCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyDeleteCancelActionPerformed
+        dlg_adminJourneyDelete.dispose();
+    }//GEN-LAST:event_btn_adminJourneyDeleteCancelActionPerformed
 
     private void initAddUserView() {
         try {
