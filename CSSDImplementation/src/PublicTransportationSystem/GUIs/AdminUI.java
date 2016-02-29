@@ -94,23 +94,6 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminJourneyDeleteMsg = new javax.swing.JLabel();
         btn_adminJourneyDeleteConfirm = new javax.swing.JButton();
         btn_adminJourneyDeleteCancel = new javax.swing.JButton();
-        dlg_adminUserAddTravelCard = new javax.swing.JDialog();
-        pnl_adminUserAddTCContainer = new javax.swing.JPanel();
-        txt_adminUserAddTCBalance = new javax.swing.JTextField();
-        txt_adminUserAddTCStartDate = new javax.swing.JTextField();
-        lbl_adminUserAddTCBalance = new javax.swing.JLabel();
-        lbl_adminUserAddTCStartDate = new javax.swing.JLabel();
-        lbl_adminUserAddTCDiscount = new javax.swing.JLabel();
-        lbl_adminUserAddTCDailyCap = new javax.swing.JLabel();
-        lbl_adminUserAddTCId = new javax.swing.JLabel();
-        txt_adminUserAddTCId = new javax.swing.JTextField();
-        lbl_adminUserAddTCExpiryDate = new javax.swing.JLabel();
-        txt_adminUserAddTCExpiryDate = new javax.swing.JTextField();
-        btn_adminUserAddTCSave = new javax.swing.JButton();
-        btn_adminUserAddTCCancel = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        txt_adminUserAddTCDiscount = new javax.swing.JTextField();
-        txt_adminUserAddTCDailyCap = new javax.swing.JTextField();
         dlg_adminUserViewTravelCard = new javax.swing.JDialog();
         pnl_adminUserViewTCContainer = new javax.swing.JPanel();
         txt_adminUserViewTCBalance = new javax.swing.JTextField();
@@ -178,7 +161,6 @@ public class AdminUI extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         btn_adminUserViewTC = new javax.swing.JButton();
         btn_adminUserViewTickets = new javax.swing.JButton();
-        btn_adminUserAddTC = new javax.swing.JButton();
         btn_adminUserSearch1 = new javax.swing.JButton();
         pnl_adminJourneyManagement = new javax.swing.JPanel();
         pnl_adminUserManagement1 = new javax.swing.JPanel();
@@ -641,140 +623,6 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnl_adminJourneyDeleteContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        dlg_adminUserAddTravelCard.setModal(true);
-        dlg_adminUserAddTravelCard.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
-
-        txt_adminUserAddTCStartDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_adminUserAddTCStartDateActionPerformed(evt);
-            }
-        });
-
-        lbl_adminUserAddTCBalance.setText("Balance");
-
-        lbl_adminUserAddTCStartDate.setText("Start Date");
-
-        lbl_adminUserAddTCDiscount.setText("Discount");
-
-        lbl_adminUserAddTCDailyCap.setText("Daily Cap");
-
-        lbl_adminUserAddTCId.setText("ID");
-
-        txt_adminUserAddTCId.setText("travelcard id");
-        txt_adminUserAddTCId.setEnabled(false);
-
-        lbl_adminUserAddTCExpiryDate.setText("Expiry Date");
-
-        btn_adminUserAddTCSave.setText("Save");
-        btn_adminUserAddTCSave.setSize(new java.awt.Dimension(75, 29));
-        btn_adminUserAddTCSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_adminUserAddTCSaveActionPerformed(evt);
-            }
-        });
-
-        btn_adminUserAddTCCancel.setText("Cancel");
-        btn_adminUserAddTCCancel.setSize(new java.awt.Dimension(75, 29));
-        btn_adminUserAddTCCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_adminUserAddTCCancelActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Add Travel Card");
-
-        javax.swing.GroupLayout pnl_adminUserAddTCContainerLayout = new javax.swing.GroupLayout(pnl_adminUserAddTCContainer);
-        pnl_adminUserAddTCContainer.setLayout(pnl_adminUserAddTCContainerLayout);
-        pnl_adminUserAddTCContainerLayout.setHorizontalGroup(
-            pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_adminUserAddTCContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserAddTCContainerLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_adminUserAddTCCancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_adminUserAddTCSave))
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnl_adminUserAddTCContainerLayout.createSequentialGroup()
-                        .addGroup(pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_adminUserAddTCBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_adminUserAddTCBalance)
-                            .addComponent(txt_adminUserAddTCId, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_adminUserAddTCId)
-                            .addGroup(pnl_adminUserAddTCContainerLayout.createSequentialGroup()
-                                .addGroup(pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_adminUserAddTCStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_adminUserAddTCStartDate)
-                                    .addComponent(lbl_adminUserAddTCDiscount))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_adminUserAddTCDailyCap)
-                                    .addComponent(txt_adminUserAddTCExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_adminUserAddTCExpiryDate)))
-                            .addGroup(pnl_adminUserAddTCContainerLayout.createSequentialGroup()
-                                .addComponent(txt_adminUserAddTCDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_adminUserAddTCDailyCap, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 24, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        pnl_adminUserAddTCContainerLayout.setVerticalGroup(
-            pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_adminUserAddTCContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_adminUserAddTCId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_adminUserAddTCId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserAddTCContainerLayout.createSequentialGroup()
-                        .addComponent(lbl_adminUserAddTCBalance)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_adminUserAddTCBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_adminUserAddTCStartDate))
-                    .addComponent(lbl_adminUserAddTCExpiryDate, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_adminUserAddTCStartDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_adminUserAddTCExpiryDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_adminUserAddTCDiscount)
-                    .addComponent(lbl_adminUserAddTCDailyCap))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_adminUserAddTCDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_adminUserAddTCDailyCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(pnl_adminUserAddTCContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_adminUserAddTCSave)
-                    .addComponent(btn_adminUserAddTCCancel))
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout dlg_adminUserAddTravelCardLayout = new javax.swing.GroupLayout(dlg_adminUserAddTravelCard.getContentPane());
-        dlg_adminUserAddTravelCard.getContentPane().setLayout(dlg_adminUserAddTravelCardLayout);
-        dlg_adminUserAddTravelCardLayout.setHorizontalGroup(
-            dlg_adminUserAddTravelCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dlg_adminUserAddTravelCardLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnl_adminUserAddTCContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        dlg_adminUserAddTravelCardLayout.setVerticalGroup(
-            dlg_adminUserAddTravelCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminUserAddTravelCardLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnl_adminUserAddTCContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
 
         txt_adminUserViewTCBalance.setEnabled(false);
@@ -1394,14 +1242,6 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminUserViewTickets.setText("View Tickets");
         btn_adminUserViewTickets.setEnabled(false);
 
-        btn_adminUserAddTC.setText("Add TC");
-        btn_adminUserAddTC.setEnabled(false);
-        btn_adminUserAddTC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_adminUserAddTCActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -1409,7 +1249,6 @@ public class AdminUI extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_adminUserAddTC, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminUserViewTC, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminUserViewTickets))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1417,13 +1256,11 @@ public class AdminUI extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_adminUserAddTC)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(15, 15, 15)
                 .addComponent(btn_adminUserViewTC)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_adminUserViewTickets)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         btn_adminUserSearch1.setText("Clear Search");
@@ -2055,7 +1892,8 @@ public class AdminUI extends javax.swing.JFrame {
         for (StationSystem stationSystem : stationSystems) {
             model.addRow(new Object[]{stationSystem.getId(), stationSystem.getName(),
                 stationSystem.getType(), stationSystem.getLocation(),
-                Float.toString(stationSystem.getGPSPos().getLongitude()) + ',' + Float.toString(stationSystem.getGPSPos().getLatitude()), stationSystem.getZone()
+                Float.toString(stationSystem.getGPSPos().getLongitude()) + ','
+                + Float.toString(stationSystem.getGPSPos().getLatitude()), stationSystem.getZone()
             });
         }
     }
@@ -2286,9 +2124,7 @@ public class AdminUI extends javax.swing.JFrame {
 
             if (hasTC) {
                 btn_adminUserViewTC.setEnabled(true);
-                btn_adminUserAddTC.setEnabled(false);
             } else {
-                btn_adminUserAddTC.setEnabled(true);
                 btn_adminUserViewTC.setEnabled(false);
             }
 
@@ -2411,19 +2247,6 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_adminUserSearch1ActionPerformed
 
-    private void txt_adminUserAddTCStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUserAddTCStartDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_adminUserAddTCStartDateActionPerformed
-
-    private void btn_adminUserAddTCSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddTCSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_adminUserAddTCSaveActionPerformed
-
-    private void btn_adminUserAddTCCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddTCCancelActionPerformed
-        // TODO add your handling code here:
-        dlg_adminUserAddTravelCard.hide();
-    }//GEN-LAST:event_btn_adminUserAddTCCancelActionPerformed
-
     private void txt_adminUserViewTCStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUserViewTCStartDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_adminUserViewTCStartDateActionPerformed
@@ -2471,12 +2294,6 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminJourneyDeleteCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyDeleteCancelActionPerformed
         dlg_adminJourneyDelete.dispose();
     }//GEN-LAST:event_btn_adminJourneyDeleteCancelActionPerformed
-
-    private void btn_adminUserAddTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddTCActionPerformed
-        // TODO add your handling code here:
-        dlg_adminUserAddTravelCard.pack();
-        dlg_adminUserAddTravelCard.show();
-    }//GEN-LAST:event_btn_adminUserAddTCActionPerformed
 
     private void btn_adminUserViewTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCActionPerformed
         // TODO add your handling code here:
@@ -2634,9 +2451,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_adminUserAdd;
     private javax.swing.JButton btn_adminUserAddEditCancel;
     private javax.swing.JButton btn_adminUserAddEditSave;
-    private javax.swing.JButton btn_adminUserAddTC;
-    private javax.swing.JButton btn_adminUserAddTCCancel;
-    private javax.swing.JButton btn_adminUserAddTCSave;
     private javax.swing.JButton btn_adminUserDelete;
     private javax.swing.JButton btn_adminUserDeleteCancel;
     private javax.swing.JButton btn_adminUserDeleteConfirm;
@@ -2665,7 +2479,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JDialog dlg_adminJourneyDelete;
     private javax.swing.JDialog dlg_adminJourneyEdit;
     private javax.swing.JDialog dlg_adminUserAddEdit;
-    private javax.swing.JDialog dlg_adminUserAddTravelCard;
     private javax.swing.JDialog dlg_adminUserDelete;
     private javax.swing.JDialog dlg_adminUserSearch;
     private javax.swing.JDialog dlg_adminUserViewTickets;
@@ -2673,7 +2486,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JDialog dlg_adminZoneAdd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -2715,12 +2527,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_adminUserAddEditTitle;
     private javax.swing.JLabel lbl_adminUserAddEditUserRole;
     private javax.swing.JLabel lbl_adminUserAddEditUsername;
-    private javax.swing.JLabel lbl_adminUserAddTCBalance;
-    private javax.swing.JLabel lbl_adminUserAddTCDailyCap;
-    private javax.swing.JLabel lbl_adminUserAddTCDiscount;
-    private javax.swing.JLabel lbl_adminUserAddTCExpiryDate;
-    private javax.swing.JLabel lbl_adminUserAddTCId;
-    private javax.swing.JLabel lbl_adminUserAddTCStartDate;
     private javax.swing.JLabel lbl_adminUserDeleteMsg;
     private javax.swing.JLabel lbl_adminUserDeleteTitle;
     private javax.swing.JLabel lbl_adminUserDeleteTitle1;
@@ -2746,7 +2552,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_adminJourneyDeleteContainer;
     private javax.swing.JPanel pnl_adminJourneyManagement;
     private javax.swing.JPanel pnl_adminUserAddEditContainer;
-    private javax.swing.JPanel pnl_adminUserAddTCContainer;
     private javax.swing.JPanel pnl_adminUserDeleteContainer;
     private javax.swing.JPanel pnl_adminUserManagement;
     private javax.swing.JPanel pnl_adminUserManagement1;
@@ -2769,13 +2574,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField txt_adminUserAddEditPassword;
     private javax.swing.JTextField txt_adminUserAddEditSurname;
     private javax.swing.JTextField txt_adminUserAddEditUsername;
-    private javax.swing.JTextField txt_adminUserAddTCBalance;
-    private javax.swing.JTextField txt_adminUserAddTCDailyCap;
-    private javax.swing.JTextField txt_adminUserAddTCDiscount;
-    private javax.swing.JTextField txt_adminUserAddTCExpiryDate;
-    private javax.swing.JTextField txt_adminUserAddTCId;
     private javax.swing.JTextField txt_adminUserAddTCId1;
-    private javax.swing.JTextField txt_adminUserAddTCStartDate;
     private javax.swing.JTextField txt_adminUserSearchValue;
     private javax.swing.JTextField txt_adminUserViewTCBalance;
     private javax.swing.JTextField txt_adminUserViewTCDailyCap;
@@ -2790,4 +2589,5 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_offPeakPrice;
     private javax.swing.JTextField txt_onPeakPrice;
     // End of variables declaration//GEN-END:variables
+
 }

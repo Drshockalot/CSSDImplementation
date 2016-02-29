@@ -9,7 +9,7 @@ import java.util.Vector;
 
 /**
  *
- * @author JoBa
+ * @author SackFat
  */
 public class SetOfTravelCards extends Vector<TravelCard> {
 
@@ -30,7 +30,7 @@ public class SetOfTravelCards extends Vector<TravelCard> {
         return null;
     }
 
-    public int nextId() {
+    public int getNextId() {
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 }

@@ -11,22 +11,31 @@ package PublicTransportationSystem;
  */
 public class Gateway {
 
+    private int gatewayID;
     private Scanner scanner;
     private GateController gateController;
     private int stationID;
     // A gateway will always be in a train station
     private final String modeOfTransport = "TRAIN";
 
-    public void PerformScanOut() throws Throwable {
+    public Gateway(int ID, int stationID) {
+        this.gatewayID = ID;
+        this.scanner = new Scanner();
+        this.gateController = new GateController();
+        this.stationID = stationID;
+    }
+
+    public boolean PerformScanOut(TravelCard travelCard) throws Throwable {
         // The card id is read from the scanner and used to get the travel card
         // software object
-        int cardID = scanner.read();
+        int cardID = scanner.read(travelCard);
         TravelSystem sys = TravelSystem.getInstance();
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
         Zone zone = sys.getStationSystems().getStationSystemById(this.stationID).getZone();
 
         if (currCard == null) {
             this.reject();
+            return false;
         }
 
         Zone departureZone = currCard.getDepartureDetails().getZone();
@@ -34,6 +43,7 @@ public class Gateway {
 
         if (hasPass) {
             this.approve();
+            return true;
         } else {
             boolean hasPaid = false;
 
@@ -46,29 +56,34 @@ public class Gateway {
             Ticket currentTicket = currCard.userTickets().createNewTicket(journey, TypeEnums.TicketType.TRAIN, false);
 
             Transaction trans = new Transaction();
-            trans.payForTicket(userTickets, currentTicket, currCard);
+            hasPaid = trans.payForTicket(userTickets, currentTicket, currCard);
 
             if (hasPaid) {
                 this.approve();
                 currCard.setLastDepartedStationNull();
+                return true;
             } else {
                 this.reject();
+                return false;
             }
         }
     }
 
-    public void PerformScanIn() throws Throwable {
-        int cardID = scanner.read();
+    public boolean PerformScanIn(TravelCard travelCard) throws Throwable {
+        int cardID = scanner.read(travelCard);
         TravelSystem sys = TravelSystem.getInstance();
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
 
         if (currCard != null) {
             if (currCard.getBalance() > 0) {
                 this.approve();
+                return true;
             } else {
                 this.reject();
+                return false;
             }
         }
+        return false;
     }
 
     public void approve() {
@@ -77,5 +92,9 @@ public class Gateway {
 
     public void reject() {
         gateController.close();
+    }
+
+    public int getId() {
+        return this.gatewayID;
     }
 }
