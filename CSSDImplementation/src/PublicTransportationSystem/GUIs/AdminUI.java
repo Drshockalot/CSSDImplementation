@@ -1511,7 +1511,9 @@ public class AdminUI extends javax.swing.JFrame {
         SetOfUsers users = TravelSystem.getInstance().getUsers();
 
         for (User user : users) {
-            model.addRow(new Object[]{user.getId(), user.getForename(), user.getSurname(), user.getTravelCardId(), user.getUsername(), user.getSystemRole().getName(), user.getEmail(), user.getDobFormatted("date")});
+            model.addRow(new Object[]{user.getId(), user.getForename(), user.getSurname(),
+                user.getTravelCardId(), user.getUsername(), user.getSystemRole().getName(),
+                user.getEmail(), user.getDobFormatted("date")});
         }
     }
 
