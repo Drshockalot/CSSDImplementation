@@ -18,6 +18,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
     private SetOfUsers systemUsers = new SetOfUsers();
     private SetOfTravelCards systemTravelCards = new SetOfTravelCards();
+    private SetOfTickets systemTickets = new SetOfTickets();
     private SetOfStationSystems systemStationSystems = new SetOfStationSystems();
     private JourneyList systemJourneys = new JourneyList();
     private ZoneList systemZones = new ZoneList();
@@ -224,6 +225,10 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public ZoneList getZones() {
         return systemZones;
+    }
+
+    public SetOfTickets getTickets() {
+        return systemTickets;
     }
 
     public TypeEnums.UserType[] getSystemRoles() {

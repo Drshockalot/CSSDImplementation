@@ -28,9 +28,20 @@ public class SetOfTickets extends Vector<Ticket> {
         return todaysTotal;
     }
 
-    public Ticket createNewTicket(Journey journey, TypeEnums.TicketType type, boolean peak) {
+    public Ticket createNewTicket(Journey journey, TypeEnums.TicketType type, boolean peak, int userId) {
         // Create a new ticket based upon journey
-        return new Ticket(this.nextId(), type, journey, peak);
+        return new Ticket(this.nextId(), type, journey, peak, userId);
+    }
+
+    public SetOfTickets getTicketsForUser(int userId) {
+        SetOfTickets userTickets = new SetOfTickets();
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getUserId() == userId) {
+                userTickets.add(super.get(i));
+            }
+        }
+
+        return userTickets;
     }
 
     public void addTicket(Ticket ticket) {

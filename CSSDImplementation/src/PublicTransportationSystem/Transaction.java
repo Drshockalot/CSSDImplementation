@@ -5,6 +5,9 @@
  */
 package PublicTransportationSystem;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author JoBa
@@ -37,7 +40,11 @@ public class Transaction {
             // User has paid for the ticket, flag it as 'paid'
             currentTicket.setPaid(true);
             // Add the ticket to their tickets
-            currentTravelCard.userTickets().addTicket(currentTicket);
+            try {
+                TravelSystem.getInstance().getTickets().add(currentTicket);
+            } catch (Throwable ex) {
+                Logger.getLogger(Transaction.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             // If the total has reached/gone over the daily cap...
             if (todaysTotal >= dailyCap) {

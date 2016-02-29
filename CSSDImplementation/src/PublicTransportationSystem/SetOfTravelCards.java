@@ -30,6 +30,16 @@ public class SetOfTravelCards extends Vector<TravelCard> {
         return null;
     }
 
+    public TravelCard getUserTravelCard(int travelCardId) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getId() == travelCardId) {
+                return super.get(i);
+            }
+        }
+
+        return null;
+    }
+
     public int getNextId() {
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }

@@ -564,9 +564,21 @@ public class PortableReaderUI extends javax.swing.JFrame {
         } else if ("BUS".equals(this.travelType)) {
             ticketType = TypeEnums.TicketType.TRAIN;
         }
-        Ticket newTicket = currentCard.userTickets().createNewTicket(journey, ticketType, false);
-        // Pay for the ticket, returns true if the payment was successful
-        return transaction.payForTicket(this.currentCard.userTickets(), newTicket, this.currentCard);
+        Ticket newTicket = null;
+        try {
+            newTicket = TravelSystem.getInstance().getTickets().createNewTicket(journey, ticketType, false, currentCard.getUser().getId());
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            // Pay for the ticket, returns true if the payment was successful
+            return transaction.payForTicket(TravelSystem.getInstance().getTickets().getTicketsForUser(currentCard.getUser().getId()), newTicket, this.currentCard);
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
     }
 
     /**
