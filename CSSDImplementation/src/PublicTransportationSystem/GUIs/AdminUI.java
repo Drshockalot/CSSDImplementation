@@ -1894,7 +1894,8 @@ public class AdminUI extends javax.swing.JFrame {
         for (StationSystem stationSystem : stationSystems) {
             model.addRow(new Object[]{stationSystem.getId(), stationSystem.getName(),
                 stationSystem.getType(), stationSystem.getLocation(),
-                Float.toString(stationSystem.getGPSPos().getLongitude()) + ',' + Float.toString(stationSystem.getGPSPos().getLatitude()), stationSystem.getZone()
+                Float.toString(stationSystem.getGPSPos().getLongitude()) + ','
+                + Float.toString(stationSystem.getGPSPos().getLatitude()), stationSystem.getZone()
             });
         }
     }
