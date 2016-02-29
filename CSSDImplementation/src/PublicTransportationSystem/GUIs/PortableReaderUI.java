@@ -433,7 +433,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private void getCurrentCardDetails() {
         // Read from the scanner
         try {
-            currentCard = this.portableReader.readTravelCard();
+            currentCard = this.portableReader.readTravelCard(TravelSystem.getInstance().getTravelCards().getTravelCardById(1));
         } catch (Throwable ex) {
             Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
         }

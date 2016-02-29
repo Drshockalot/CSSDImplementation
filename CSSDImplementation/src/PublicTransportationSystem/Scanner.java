@@ -11,7 +11,7 @@ package PublicTransportationSystem;
  */
 public class Scanner {
 
-    public int read() {
-        return 1;
+    public int read(TravelCard travelCard) {
+        return travelCard.getId();
     }
 }

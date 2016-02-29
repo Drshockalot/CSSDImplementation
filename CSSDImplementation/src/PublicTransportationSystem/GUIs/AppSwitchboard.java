@@ -152,7 +152,12 @@ public class AppSwitchboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_switchInspectorUIActionPerformed
 
     private void btn_switchScannerUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUIActionPerformed
-        JFrame gatewayScanUI = new GatewayScanUI();
+        JFrame gatewayScanUI = null;
+        try {
+            gatewayScanUI = new GatewayScanUI();
+        } catch (Throwable ex) {
+            Logger.getLogger(AppSwitchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
         mainUI.setEnabled(false);
         gatewayScanUI.setLocationRelativeTo(null);
         gatewayScanUI.setVisible(true);

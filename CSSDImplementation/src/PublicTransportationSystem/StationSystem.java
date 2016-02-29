@@ -5,8 +5,6 @@
  */
 package PublicTransportationSystem;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author JoBa
@@ -19,18 +17,18 @@ public class StationSystem {
     private String location;
     private GPSCoordinates gps;
     private Zone zone;
-    private ArrayList<Gateway> scanners;
+    private SetOfGateways gateways;
     private boolean peak;
 
     // Abbreviated Station System to Ss for the following constructor
-    public StationSystem(Integer newSsId, String newSsName, String newSsType, String newSsLocation, GPSCoordinates newSsGPSCoords, Zone newSsZone, ArrayList<Gateway> newSsScanners, boolean newSsPeak) {
+    public StationSystem(Integer newSsId, String newSsName, String newSsType, String newSsLocation, GPSCoordinates newSsGPSCoords, Zone newSsZone, SetOfGateways gateways, boolean newSsPeak) {
         stationID = newSsId;
         name = newSsName;
         stationType = newSsType;
         location = newSsLocation;
         gps = newSsGPSCoords;
         zone = newSsZone;
-        scanners = newSsScanners;
+        this.gateways = gateways;
         peak = newSsPeak;
     }
 
@@ -54,8 +52,8 @@ public class StationSystem {
         return this.gps;
     }
 
-    public ArrayList<Gateway> getStationScanners() {
-        return this.scanners;
+    public SetOfGateways getStationGateways() {
+        return this.gateways;
     }
 
     public Zone getZone() {
