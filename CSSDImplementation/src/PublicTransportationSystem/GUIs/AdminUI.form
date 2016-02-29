@@ -1214,7 +1214,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txt_adminZoneAddName" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="lbl_zoneErrorMsg" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btn_adminZoneAddCancel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btn_adminZoneAddAdd" min="-2" max="-2" attributes="0"/>
@@ -1246,10 +1248,13 @@
                       <Component id="lbl_adminZoneAddName" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_adminZoneAddName" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_adminZoneAddAdd" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_adminZoneAddCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btn_adminZoneAddAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_adminZoneAddCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lbl_zoneErrorMsg" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1304,6 +1309,14 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Add Zone"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_zoneErrorMsg">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="33" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Zone names not unique"/>
               </Properties>
             </Component>
           </SubComponents>

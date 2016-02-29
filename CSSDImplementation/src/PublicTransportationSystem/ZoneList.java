@@ -31,6 +31,16 @@ public class ZoneList extends Vector<Zone> implements Serializable {
         return null;
     }
 
+    public boolean isZoneNameUnique(String zoneName) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getName().equalsIgnoreCase(zoneName)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public void serializeZones() {
         try {
             FileOutputStream fileOut = new FileOutputStream("files/zones.ser");

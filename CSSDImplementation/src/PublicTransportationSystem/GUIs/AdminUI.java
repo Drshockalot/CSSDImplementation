@@ -141,6 +141,7 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminZoneAddAdd = new javax.swing.JButton();
         btn_adminZoneAddCancel = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        lbl_zoneErrorMsg = new javax.swing.JLabel();
         pnl_adminGUITitle = new javax.swing.JPanel();
         lbl_managementUITitle = new javax.swing.JLabel();
         pnl_adminGUITabs = new javax.swing.JPanel();
@@ -990,6 +991,9 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Add Zone");
 
+        lbl_zoneErrorMsg.setForeground(new java.awt.Color(255, 51, 0));
+        lbl_zoneErrorMsg.setText("Zone names not unique");
+
         javax.swing.GroupLayout pnl_adminZoneAddContainerLayout = new javax.swing.GroupLayout(pnl_adminZoneAddContainer);
         pnl_adminZoneAddContainer.setLayout(pnl_adminZoneAddContainerLayout);
         pnl_adminZoneAddContainerLayout.setHorizontalGroup(
@@ -999,7 +1003,9 @@ public class AdminUI extends javax.swing.JFrame {
                 .addGroup(pnl_adminZoneAddContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_adminZoneAddName)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminZoneAddContainerLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
+                        .addComponent(lbl_zoneErrorMsg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_adminZoneAddCancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_adminZoneAddAdd))
@@ -1025,10 +1031,12 @@ public class AdminUI extends javax.swing.JFrame {
                 .addComponent(lbl_adminZoneAddName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_adminZoneAddName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnl_adminZoneAddContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_adminZoneAddAdd)
-                    .addComponent(btn_adminZoneAddCancel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_adminZoneAddContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_adminZoneAddContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_adminZoneAddAdd)
+                        .addComponent(btn_adminZoneAddCancel))
+                    .addComponent(lbl_zoneErrorMsg))
                 .addContainerGap())
         );
 
@@ -2302,8 +2310,36 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserViewTCActionPerformed
 
     private void btn_adminZoneAddAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneAddAddActionPerformed
-        // TODO add your handling code here:
+        int zoneId = Integer.valueOf(txt_adminZoneAddId.getText());
+        String zoneName = txt_adminZoneAddName.getText();
+
+        try {
+            if (TravelSystem.getInstance().getZones().isZoneNameUnique(zoneName)) {
+                AddNewZone(zoneId, zoneName);
+
+                try {
+                    populateZoneTable();
+                    dlg_adminZoneAdd.hide();
+                } catch (Throwable ex) {
+                    Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                lbl_zoneErrorMsg.setVisible(true);
+            }
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_adminZoneAddAddActionPerformed
+
+    private void AddNewZone(int zoneId, String zoneName) {
+        Zone newZone = new Zone(zoneId, zoneName);
+        try {
+            TravelSystem.getInstance().getZones().add(newZone);
+            TravelSystem.getInstance().serializeZones();
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void btn_adminZoneAddCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneAddCancelActionPerformed
         // TODO add your handling code here:
@@ -2315,6 +2351,7 @@ public class AdminUI extends javax.swing.JFrame {
             // TODO add your handling code here
             dlg_adminZoneAdd.pack();
             txt_adminZoneAddId.setText(Integer.toString(TravelSystem.getInstance().getZones().getNextId()));
+            lbl_zoneErrorMsg.setVisible(false);
             dlg_adminZoneAdd.show();
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2546,6 +2583,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_adminZoneAddId;
     private javax.swing.JLabel lbl_adminZoneAddName;
     private javax.swing.JLabel lbl_managementUITitle;
+    private javax.swing.JLabel lbl_zoneErrorMsg;
     private javax.swing.JPanel pnl_adminGUITabs;
     private javax.swing.JPanel pnl_adminGUITitle;
     private javax.swing.JPanel pnl_adminHome;
