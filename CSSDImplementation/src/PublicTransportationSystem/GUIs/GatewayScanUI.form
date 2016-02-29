@@ -37,7 +37,7 @@
                   <Component id="scanOutCard3" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="scanOutCard2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="scanOutCard1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="apporvedMessage" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="approvedMessage" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
           </Group>
@@ -86,7 +86,7 @@
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rejectedMessage" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="apporvedMessage" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="approvedMessage" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
@@ -162,7 +162,7 @@
         <Property name="text" type="java.lang.String" value="REJECTED"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="apporvedMessage">
+    <Component class="javax.swing.JLabel" name="approvedMessage">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Grande" size="18" style="0"/>

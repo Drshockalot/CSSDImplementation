@@ -13,8 +13,8 @@ import java.util.Vector;
  */
 public class SetOfGateways extends Vector<Gateway> {
 
-    public void addGateway(Gateway gateway) {
-        super.add(gateway);
+    public void addGateway(int StationID) {
+        super.add(new Gateway(getNextId(), StationID));
     }
 
     public Gateway getGatewayById(int id) {

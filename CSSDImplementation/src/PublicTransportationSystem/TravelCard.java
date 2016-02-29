@@ -112,8 +112,8 @@ public class TravelCard {
         this.pass = newPass;
     }
 
-    public void addFunds(float refundAmount) {
-        this.balance = refundAmount;
+    public void addFunds(float funds) {
+        this.balance += funds;
     }
 
     public boolean checkForPass(Zone arrivingZone, Zone departureZone) {

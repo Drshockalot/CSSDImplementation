@@ -32,7 +32,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
         stations = system.getStationSystems();
         initComponents();
         this.rejectedMessage.setVisible(false);
-        this.apporvedMessage.setVisible(false);
+        this.approvedMessage.setVisible(false);
     }
 
     /**
@@ -52,7 +52,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
         scanInCard3 = new javax.swing.JButton();
         scanOutCard3 = new javax.swing.JButton();
         rejectedMessage = new javax.swing.JLabel();
-        apporvedMessage = new javax.swing.JLabel();
+        approvedMessage = new javax.swing.JLabel();
         scanInHeader = new javax.swing.JLabel();
         scanOutHeader = new javax.swing.JLabel();
 
@@ -119,9 +119,9 @@ public class GatewayScanUI extends javax.swing.JFrame {
         rejectedMessage.setForeground(new java.awt.Color(255, 0, 51));
         rejectedMessage.setText("REJECTED");
 
-        apporvedMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        apporvedMessage.setForeground(new java.awt.Color(51, 255, 0));
-        apporvedMessage.setText("APPROVED");
+        approvedMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        approvedMessage.setForeground(new java.awt.Color(51, 255, 0));
+        approvedMessage.setText("APPROVED");
 
         scanInHeader.setText("Scan In");
 
@@ -143,7 +143,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
                     .addComponent(scanOutCard3)
                     .addComponent(scanOutCard2)
                     .addComponent(scanOutCard1)
-                    .addComponent(apporvedMessage, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(approvedMessage, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(66, 66, 66))
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
@@ -181,7 +181,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rejectedMessage)
-                    .addComponent(apporvedMessage))
+                    .addComponent(approvedMessage))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -207,7 +207,16 @@ public class GatewayScanUI extends javax.swing.JFrame {
         SetOfTravelCards travelCards = system.getTravelCards();
         TravelCard travelCard = travelCards.getTravelCardById(1);
         try {
-            gateway.PerformScanIn(travelCard);
+            boolean result = gateway.PerformScanIn(travelCard);
+
+            if (result) {
+                this.approvedMessage.setVisible(true);
+                this.rejectedMessage.setVisible(false);
+                this.scanInCard1.setEnabled(false);
+            } else {
+                this.rejectedMessage.setVisible(true);
+                this.approvedMessage.setVisible(false);
+            }
         } catch (Throwable ex) {
             Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -273,7 +282,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel apporvedMessage;
+    private javax.swing.JLabel approvedMessage;
     private javax.swing.JLabel gatewayTitle;
     private javax.swing.JLabel rejectedMessage;
     private javax.swing.JButton scanInCard1;

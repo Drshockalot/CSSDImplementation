@@ -18,13 +18,14 @@ public class Gateway {
     // A gateway will always be in a train station
     private final String modeOfTransport = "TRAIN";
 
-    public Gateway(int stationID) {
+    public Gateway(int ID, int stationID) {
+        this.gatewayID = ID;
         this.scanner = new Scanner();
         this.gateController = new GateController();
         this.stationID = stationID;
     }
 
-    public void PerformScanOut(TravelCard travelCard) throws Throwable {
+    public boolean PerformScanOut(TravelCard travelCard) throws Throwable {
         // The card id is read from the scanner and used to get the travel card
         // software object
         int cardID = scanner.read(travelCard);
@@ -34,6 +35,7 @@ public class Gateway {
 
         if (currCard == null) {
             this.reject();
+            return false;
         }
 
         Zone departureZone = currCard.getDepartureDetails().getZone();
@@ -41,6 +43,7 @@ public class Gateway {
 
         if (hasPass) {
             this.approve();
+            return true;
         } else {
             boolean hasPaid = false;
 
@@ -58,13 +61,15 @@ public class Gateway {
             if (hasPaid) {
                 this.approve();
                 currCard.setLastDepartedStationNull();
+                return true;
             } else {
                 this.reject();
+                return false;
             }
         }
     }
 
-    public void PerformScanIn(TravelCard travelCard) throws Throwable {
+    public boolean PerformScanIn(TravelCard travelCard) throws Throwable {
         int cardID = scanner.read(travelCard);
         TravelSystem sys = TravelSystem.getInstance();
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
@@ -72,10 +77,13 @@ public class Gateway {
         if (currCard != null) {
             if (currCard.getBalance() > 0) {
                 this.approve();
+                return true;
             } else {
                 this.reject();
+                return false;
             }
         }
+        return false;
     }
 
     public void approve() {

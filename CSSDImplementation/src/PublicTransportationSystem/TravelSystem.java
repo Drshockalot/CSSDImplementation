@@ -121,9 +121,9 @@ public class TravelSystem implements SetOfUsersInterface {
 
         GPSCoordinates gps = new GPSCoordinates(11.21f, 41.21f);
         SetOfGateways gateways = new SetOfGateways(); // empty for now
-        gateways.addGateway(new Gateway(1));
-        gateways.addGateway(new Gateway(1));
-        gateways.addGateway(new Gateway(1));
+        gateways.addGateway(1);
+        gateways.addGateway(1);
+        gateways.addGateway(1);
 
         registerStationSystem("Kings Cross", "Train", "London", gps, zone, gateways, false);
 
@@ -131,9 +131,9 @@ public class TravelSystem implements SetOfUsersInterface {
 
         gps = new GPSCoordinates(53.378471f, -1.462358f);
         gateways = new SetOfGateways();
-        gateways.addGateway(new Gateway(2));
-        gateways.addGateway(new Gateway(2));
-        gateways.addGateway(new Gateway(2));
+        gateways.addGateway(2);
+        gateways.addGateway(2);
+        gateways.addGateway(2);
 
         registerStationSystem("Sheffield Station", "Train", "Sheffield", gps, zone, gateways, false);
 
@@ -141,9 +141,9 @@ public class TravelSystem implements SetOfUsersInterface {
 
         gps = new GPSCoordinates(53.47740289999999f, -2.2309324999999944f);
         gateways = new SetOfGateways();
-        gateways.addGateway(new Gateway(3));
-        gateways.addGateway(new Gateway(3));
-        gateways.addGateway(new Gateway(3));
+        gateways.addGateway(3);
+        gateways.addGateway(3);
+        gateways.addGateway(3);
 
         registerStationSystem("Manchester Piccadilly", "Train", "Manchester", gps, zone, gateways, false);
     }
@@ -182,7 +182,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public void registerTravelCard(User user, String cardType, float discount, float dailyCap) {
         TravelCard newTravelCard = new TravelCard(systemTravelCards.nextId(), user, cardType, discount, dailyCap);
-
+        newTravelCard.addFunds(7.00f);
         systemTravelCards.add(newTravelCard);
     }
 
