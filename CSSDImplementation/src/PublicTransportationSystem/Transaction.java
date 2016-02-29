@@ -29,7 +29,7 @@ public class Transaction {
         float discountedPrice = payManager.calculatePrice(currentTicket, discount);
 
         // If the user has enough to pay for the ticket
-        if (currentTravelCard.getBalance() < 0) {
+        if (currentTravelCard.getBalance() > 0) {
             // Returns the sum of the ticket prices purchased today
             float todaysTotal = ticketHistory.calculateTodaysTotal(discount);
             // Gets the cap for daily transactions
