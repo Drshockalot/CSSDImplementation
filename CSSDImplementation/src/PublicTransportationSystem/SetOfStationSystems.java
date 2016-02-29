@@ -38,6 +38,17 @@ public class SetOfStationSystems extends Vector<StationSystem> {
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 
+    public int getNumberOfStationsInZone(Zone zone) {
+        int count = 0;
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getZone().getId() == zone.getId()) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     public SetOfUsers deserializeStationSystem() throws ClassNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("files/stationSystems.ser");
