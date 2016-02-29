@@ -38,6 +38,10 @@ public class PortableReaderUI extends javax.swing.JFrame {
      */
     public PortableReaderUI() {
         initComponents();
+        this.addFundsPanel.setVisible(false);
+        this.payForTicketPanel.setVisible(false);
+        this.validPassPanel.setVisible(false);
+        this.scanPanel.setVisible(true);
     }
 
     /**
@@ -67,7 +71,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         passUserID = new javax.swing.JLabel();
         passUserBalance = new javax.swing.JLabel();
         passConfirmInspection = new javax.swing.JButton();
-        payForTicket = new javax.swing.JPanel();
+        payForTicketPanel = new javax.swing.JPanel();
         paymentUserImage = new javax.swing.JPanel();
         paymentUserImagelabel = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Images/user_image.png")));
         jLabel7 = new javax.swing.JLabel();
@@ -84,6 +88,11 @@ public class PortableReaderUI extends javax.swing.JFrame {
         toZone = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        addFundsPanel = new javax.swing.JPanel();
+        addFundsTextField = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        addFundsButton = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -296,72 +305,72 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
         jLabel13.setText("To:");
 
-        javax.swing.GroupLayout payForTicketLayout = new javax.swing.GroupLayout(payForTicket);
-        payForTicket.setLayout(payForTicketLayout);
-        payForTicketLayout.setHorizontalGroup(
-            payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(payForTicketLayout.createSequentialGroup()
+        javax.swing.GroupLayout payForTicketPanelLayout = new javax.swing.GroupLayout(payForTicketPanel);
+        payForTicketPanel.setLayout(payForTicketPanelLayout);
+        payForTicketPanelLayout.setHorizontalGroup(
+            payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(payForTicketPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(payForTicketLayout.createSequentialGroup()
+                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(payForTicketPanelLayout.createSequentialGroup()
                         .addComponent(paymentUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(payForTicketLayout.createSequentialGroup()
-                                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(payForTicketPanelLayout.createSequentialGroup()
+                                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel9))
                                 .addGap(22, 22, 22)
-                                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(paymentUserDob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(paymentUserID, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                                     .addComponent(paymentUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(payForTicketLayout.createSequentialGroup()
+                            .addGroup(payForTicketPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(18, 18, 18)
                                 .addComponent(paymentUserBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payForTicketLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payForTicketPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(192, 192, 192)))
                 .addContainerGap())
-            .addGroup(payForTicketLayout.createSequentialGroup()
+            .addGroup(payForTicketPanelLayout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(paymentConfirmInspection)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(payForTicketLayout.createSequentialGroup()
+            .addGroup(payForTicketPanelLayout.createSequentialGroup()
                 .addGap(102, 102, 102)
-                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel13)
                     .addComponent(jLabel8)
                     .addComponent(toZone, 0, 240, Short.MAX_VALUE)
                     .addComponent(fromZone, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
-        payForTicketLayout.setVerticalGroup(
-            payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(payForTicketLayout.createSequentialGroup()
+        payForTicketPanelLayout.setVerticalGroup(
+            payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(payForTicketPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paymentUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(payForTicketLayout.createSequentialGroup()
-                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(payForTicketPanelLayout.createSequentialGroup()
+                        .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(paymentUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(paymentUserDob))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(paymentUserID))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(payForTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(paymentUserBalance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(76, 76, 76)
@@ -377,7 +386,56 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 .addGap(52, 52, 52))
         );
 
-        jLayeredPane1.add(payForTicket);
+        jLayeredPane1.add(payForTicketPanel);
+
+        jLabel14.setText("£");
+
+        addFundsButton.setText("Add Funds");
+        addFundsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addFundsButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setBackground(new java.awt.Color(51, 255, 0));
+        jLabel15.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(51, 255, 0));
+        jLabel15.setText("$$$");
+
+        javax.swing.GroupLayout addFundsPanelLayout = new javax.swing.GroupLayout(addFundsPanel);
+        addFundsPanel.setLayout(addFundsPanelLayout);
+        addFundsPanelLayout.setHorizontalGroup(
+            addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addFundsPanelLayout.createSequentialGroup()
+                .addGroup(addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addFundsPanelLayout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(addFundsButton))
+                    .addGroup(addFundsPanelLayout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(jLabel14)
+                        .addGap(1, 1, 1)
+                        .addComponent(addFundsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addFundsPanelLayout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(jLabel15)))
+                .addContainerGap(143, Short.MAX_VALUE))
+        );
+        addFundsPanelLayout.setVerticalGroup(
+            addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addFundsPanelLayout.createSequentialGroup()
+                .addContainerGap(168, Short.MAX_VALUE)
+                .addComponent(jLabel15)
+                .addGap(107, 107, 107)
+                .addGroup(addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addFundsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
+                .addComponent(addFundsButton)
+                .addGap(117, 117, 117))
+        );
+
+        jLayeredPane1.add(addFundsPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -465,7 +523,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                     case BUSJOURNEY:
                     case BUSANDTRAINJOURNEY: {
                         // Check the journey, approve/reject depending on result
-                        this.payForTicket.setVisible(true);
+                        this.payForTicketPanel.setVisible(true);
                     }
                 }
             } else if ("TRAIN".equals(travelType)) {
@@ -479,7 +537,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                     case TRAINJOURNEY:
                     case BUSANDTRAINJOURNEY: {
                         // Check the journey, approve/reject depending on result
-                        this.payForTicket.setVisible(true);
+                        this.payForTicketPanel.setVisible(true);
                     }
                 }
             }
@@ -497,7 +555,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(validPassPanel, "Ticket Inspection Confirmed");
         // V Have this stuff firing off the 'okay' botton press V
         this.validPassPanel.setVisible(false);
-        this.payForTicket.setVisible(false);
+        this.payForTicketPanel.setVisible(false);
         this.scanPanel.setVisible(true);
         // either close the application or return to the home screen here:
     }//GEN-LAST:event_passConfirmInspectionActionPerformed
@@ -518,12 +576,16 @@ public class PortableReaderUI extends javax.swing.JFrame {
         AppSwitchboard.mainUI.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void addFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFundsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addFundsButtonActionPerformed
+
     private void handleValidPass() {
         // Confirm that the pass is valid and return to the home screen
         // for another scan
-        JOptionPane.showMessageDialog(payForTicket, "Ticket Inspection Confirmed", "Success", 1);
+        JOptionPane.showMessageDialog(payForTicketPanel, "Ticket Inspection Confirmed", "Success", 1);
         this.validPassPanel.setVisible(false);
-        this.payForTicket.setVisible(false);
+        this.payForTicketPanel.setVisible(false);
         this.scanPanel.setVisible(true);
         // Clear the list before re-drawing
         this.toZone.removeAllItems();
@@ -538,13 +600,23 @@ public class PortableReaderUI extends javax.swing.JFrame {
         if (buttonIndex == 0) {
             if (handleTransaction()) {
                 // Payment has been successful, notify the user
-                JOptionPane.showMessageDialog(payForTicket, "Ticket Inspection Confirmed", "Success", 1);
+                JOptionPane.showMessageDialog(payForTicketPanel, "Ticket Inspection Confirmed", "Success", 1);
             } else {
-                // Payment has been unsuccessful
-                String[] fundsButtons = {"Add Funds", "Cancel"};
-                int fundsButton = JOptionPane.showOptionDialog(null, "Insufficient Funds", "Attention",
-                        JOptionPane.WARNING_MESSAGE, 0, null, fundsButtons, fundsButtons[1]);
+                addFunds();
             }
+        }
+    }
+
+    private void addFunds() {
+        // Payment has been unsuccessful, add funds?
+        String[] fundsButtons = {"Add Funds", "Cancel"};
+        int fundsButton = JOptionPane.showOptionDialog(null, "Insufficient Funds", "Attention",
+                JOptionPane.WARNING_MESSAGE, 0, null, fundsButtons, fundsButtons[1]);
+        if (fundsButton == 0) {
+            this.addFundsPanel.setVisible(true);
+            this.payForTicketPanel.setVisible(false);
+        } else {
+
         }
     }
 
@@ -617,12 +689,17 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addFundsButton;
+    private javax.swing.JPanel addFundsPanel;
+    private javax.swing.JTextField addFundsTextField;
     private javax.swing.JComboBox fromZone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -638,7 +715,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JLabel passUserID;
     private javax.swing.JPanel passUserImage;
     private javax.swing.JLabel passUserName;
-    private javax.swing.JPanel payForTicket;
+    private javax.swing.JPanel payForTicketPanel;
     private javax.swing.JButton paymentConfirmInspection;
     private javax.swing.JLabel paymentUserBalance;
     private javax.swing.JLabel paymentUserDob;
@@ -666,7 +743,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.paymentUserID.setText(Integer.toString(user.getId()));
 
         this.validPassPanel.setVisible(false);
-        this.payForTicket.setVisible(false);
+        this.payForTicketPanel.setVisible(false);
 
         if (!card.checkForScannedStation()) {
             this.fromZone.addItem(card.getDepartureDetails().getZone());
