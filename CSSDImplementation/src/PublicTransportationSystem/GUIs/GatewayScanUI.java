@@ -5,17 +5,34 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.Gateway;
+import PublicTransportationSystem.SetOfGateways;
+import PublicTransportationSystem.SetOfStationSystems;
+import PublicTransportationSystem.SetOfTravelCards;
+import PublicTransportationSystem.StationSystem;
+import PublicTransportationSystem.TravelCard;
+import PublicTransportationSystem.TravelSystem;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Drshockalotz
  */
 public class GatewayScanUI extends javax.swing.JFrame {
 
+    TravelSystem system;
+    SetOfStationSystems stations;
+
     /**
      * Creates new form GatewayScanUI
      */
-    public GatewayScanUI() {
+    public GatewayScanUI() throws Throwable {
+        this.system = TravelSystem.getInstance();
+        stations = system.getStationSystems();
         initComponents();
+        this.rejectedMessage.setVisible(false);
+        this.approvedMessage.setVisible(false);
     }
 
     /**
@@ -35,7 +52,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
         scanInCard3 = new javax.swing.JButton();
         scanOutCard3 = new javax.swing.JButton();
         rejectedMessage = new javax.swing.JLabel();
-        apporvedMessage = new javax.swing.JLabel();
+        approvedMessage = new javax.swing.JLabel();
         scanInHeader = new javax.swing.JLabel();
         scanOutHeader = new javax.swing.JLabel();
 
@@ -52,6 +69,11 @@ public class GatewayScanUI extends javax.swing.JFrame {
         gatewayTitle.setText("Gateway Simulation");
 
         scanInCard1.setLabel("Travel Card 1");
+        scanInCard1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                scanInCard1MouseClicked(evt);
+            }
+        });
         scanInCard1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scanInCard1ActionPerformed(evt);
@@ -59,22 +81,47 @@ public class GatewayScanUI extends javax.swing.JFrame {
         });
 
         scanOutCard1.setText("Travel Card 1");
+        scanOutCard1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanOutCard1ActionPerformed(evt);
+            }
+        });
 
         scanInCard2.setText("Travel Card 2");
+        scanInCard2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanInCard2ActionPerformed(evt);
+            }
+        });
 
         scanOutCard2.setText("Travel Card 2");
+        scanOutCard2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanOutCard2ActionPerformed(evt);
+            }
+        });
 
         scanInCard3.setText("Travel Card 3");
+        scanInCard3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanInCard3ActionPerformed(evt);
+            }
+        });
 
         scanOutCard3.setText("Travel Card 3");
+        scanOutCard3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanOutCard3ActionPerformed(evt);
+            }
+        });
 
         rejectedMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         rejectedMessage.setForeground(new java.awt.Color(255, 0, 51));
         rejectedMessage.setText("REJECTED");
 
-        apporvedMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        apporvedMessage.setForeground(new java.awt.Color(51, 255, 0));
-        apporvedMessage.setText("APPROVED");
+        approvedMessage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        approvedMessage.setForeground(new java.awt.Color(51, 255, 0));
+        approvedMessage.setText("APPROVED");
 
         scanInHeader.setText("Scan In");
 
@@ -96,7 +143,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
                     .addComponent(scanOutCard3)
                     .addComponent(scanOutCard2)
                     .addComponent(scanOutCard1)
-                    .addComponent(apporvedMessage, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(approvedMessage, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(66, 66, 66))
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
@@ -134,7 +181,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rejectedMessage)
-                    .addComponent(apporvedMessage))
+                    .addComponent(approvedMessage))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -152,6 +199,48 @@ public class GatewayScanUI extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         AppSwitchboard.mainUI.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void scanInCard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scanInCard1MouseClicked
+        StationSystem station = stations.getStationSystemById(1);
+        SetOfGateways gateways = station.getStationGateways();
+        Gateway gateway = gateways.getGatewayById(1);
+        SetOfTravelCards travelCards = system.getTravelCards();
+        TravelCard travelCard = travelCards.getTravelCardById(1);
+        try {
+            boolean result = gateway.PerformScanIn(travelCard);
+
+            if (result) {
+                this.approvedMessage.setVisible(true);
+                this.rejectedMessage.setVisible(false);
+                this.scanInCard1.setEnabled(false);
+            } else {
+                this.rejectedMessage.setVisible(true);
+                this.approvedMessage.setVisible(false);
+            }
+        } catch (Throwable ex) {
+            Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_scanInCard1MouseClicked
+
+    private void scanInCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanInCard2ActionPerformed
+
+    private void scanInCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanInCard3ActionPerformed
+
+    private void scanOutCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanOutCard1ActionPerformed
+
+    private void scanOutCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanOutCard2ActionPerformed
+
+    private void scanOutCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scanOutCard3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,13 +272,17 @@ public class GatewayScanUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GatewayScanUI().setVisible(true);
+                try {
+                    new GatewayScanUI().setVisible(true);
+                } catch (Throwable ex) {
+                    Logger.getLogger(GatewayScanUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel apporvedMessage;
+    private javax.swing.JLabel approvedMessage;
     private javax.swing.JLabel gatewayTitle;
     private javax.swing.JLabel rejectedMessage;
     private javax.swing.JButton scanInCard1;

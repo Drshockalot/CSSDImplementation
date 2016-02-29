@@ -6,7 +6,6 @@
 package PublicTransportationSystem;
 
 import Interfaces.SetOfUsersInterface;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -121,9 +120,32 @@ public class TravelSystem implements SetOfUsersInterface {
         Zone zone = this.systemZones.getZoneById(1);
 
         GPSCoordinates gps = new GPSCoordinates(11.21f, 41.21f);
-        ArrayList<Gateway> scanners = new ArrayList<Gateway>(); // empty for now
+        SetOfGateways gateways = new SetOfGateways(); // empty for now
+        gateways.addGateway(1);
+        gateways.addGateway(1);
+        gateways.addGateway(1);
 
-        registerStationSystem("Kings Cross", "Train", "London", gps, zone, scanners, false);
+        registerStationSystem("Kings Cross", "Train", "London", gps, zone, gateways, false);
+
+        zone = this.systemZones.getZoneById(2);
+
+        gps = new GPSCoordinates(53.378471f, -1.462358f);
+        gateways = new SetOfGateways();
+        gateways.addGateway(2);
+        gateways.addGateway(2);
+        gateways.addGateway(2);
+
+        registerStationSystem("Sheffield Station", "Train", "Sheffield", gps, zone, gateways, false);
+
+        zone = this.systemZones.getZoneById(3);
+
+        gps = new GPSCoordinates(53.47740289999999f, -2.2309324999999944f);
+        gateways = new SetOfGateways();
+        gateways.addGateway(3);
+        gateways.addGateway(3);
+        gateways.addGateway(3);
+
+        registerStationSystem("Manchester Piccadilly", "Train", "Manchester", gps, zone, gateways, false);
     }
 
     /**
@@ -160,7 +182,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public void registerTravelCard(User user, String cardType, float discount, float dailyCap) {
         TravelCard newTravelCard = new TravelCard(systemTravelCards.getNextId(), user, cardType, discount, dailyCap);
-
+        newTravelCard.addFunds(7.00f);
         systemTravelCards.add(newTravelCard);
     }
 
@@ -174,7 +196,7 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param scanners
      * @param peak
      */
-    public void registerStationSystem(String name, String stationType, String location, GPSCoordinates gps, Zone zone, ArrayList<Gateway> scanners, boolean peak) {
+    public void registerStationSystem(String name, String stationType, String location, GPSCoordinates gps, Zone zone, SetOfGateways scanners, boolean peak) {
         StationSystem newStationSystem = new StationSystem(systemStationSystems.getNextId(), name, stationType, location, gps, zone, scanners, peak);
 
         systemStationSystems.add(newStationSystem);

@@ -410,6 +410,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         ////////////////////////////////////////////////////////
         Pass pass = null;
 
+        // Get the correct pass - testing purposes
         if ("BUS".equals(this.travelType)) {
             pass = new Pass(TypeEnums.PassType.BUSJOURNEY);
         } else if ("TRAIN".equals(this.travelType)) {
@@ -433,7 +434,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private void getCurrentCardDetails() {
         // Read from the scanner
         try {
-            currentCard = this.portableReader.readTravelCard();
+            currentCard = this.portableReader.readTravelCard(TravelSystem.getInstance().getTravelCards().getTravelCardById(1));
         } catch (Throwable ex) {
             Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -533,20 +534,21 @@ public class PortableReaderUI extends javax.swing.JFrame {
         String[] buttons = {"Pay for Journey", "Cancel"};
         int buttonIndex = JOptionPane.showOptionDialog(null, "Pass not valid for journey", "Invalid Pass",
                 JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[1]);
-        switch (buttonIndex) {
-            case 0:
-                handleTransaction();
-                break;
-            case 1:
-            case -1:
-                System.out.println("dialog cancelled");
-                // Dialog cancel
-
-                break;
+        // If the 'Pay for Journey' button is pressed
+        if (buttonIndex == 0) {
+            if (handleTransaction()) {
+                // Payment has been successful, notify the user
+                JOptionPane.showMessageDialog(payForTicket, "Ticket Inspection Confirmed", "Success", 1);
+            } else {
+                // Payment has been unsuccessful
+                String[] fundsButtons = {"Add Funds", "Cancel"};
+                int fundsButton = JOptionPane.showOptionDialog(null, "Insufficient Funds", "Attention",
+                        JOptionPane.WARNING_MESSAGE, 0, null, fundsButtons, fundsButtons[1]);
+            }
         }
     }
 
-    private void handleTransaction() {
+    private boolean handleTransaction() {
         // Create a new Transaction so that we can handle ticket payment
         Transaction transaction = new Transaction();
         // The users pass does not cover their desired journey,
@@ -563,7 +565,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
             ticketType = TypeEnums.TicketType.TRAIN;
         }
         Ticket newTicket = currentCard.userTickets().createNewTicket(journey, ticketType, false);
-        transaction.payForTicket(this.currentCard.userTickets(), newTicket, this.currentCard);
+        // Pay for the ticket, returns true if the payment was successful
+        return transaction.payForTicket(this.currentCard.userTickets(), newTicket, this.currentCard);
     }
 
     /**
