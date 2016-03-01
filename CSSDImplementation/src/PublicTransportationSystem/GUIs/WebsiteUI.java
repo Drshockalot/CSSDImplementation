@@ -808,7 +808,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                 if (user.authenticateUser(password)) {
                     if (user.getSystemRole().isAdmin()) {
                         lbl_loginErrorMsg.setVisible(false);
-                        openAdminUI();
+                        openAdminUI(username);
                     } else {
                         lbl_loginErrorMsg.setVisible(false);
                         openWebsiteUI();
@@ -873,12 +873,12 @@ public class WebsiteUI extends javax.swing.JFrame {
         registerPopup.setVisible(false);
     }//GEN-LAST:event_btn_RegisterCancelActionPerformed
 
-    private void openAdminUI() {
+    private void openAdminUI(String username) {
         loginPopup.dispose();
         this.setEnabled(false);
         this.setVisible(false);
 
-        JFrame adminUI = new AdminUI();
+        JFrame adminUI = new AdminUI(username);
         adminUI.setLocationRelativeTo(null);
         adminUI.setVisible(true);
         adminUI.setResizable(false);
