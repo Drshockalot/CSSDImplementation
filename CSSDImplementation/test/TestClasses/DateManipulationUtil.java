@@ -20,4 +20,13 @@ public class DateManipulationUtil {
         expiry.add(Calendar.DATE, futureDays);
         return expiry.getTime();
     }
+
+    public static boolean isOnSameDay(Date ticketDate, Date desiredDate) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(ticketDate);
+        cal2.setTime(desiredDate);
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+    }
 }
