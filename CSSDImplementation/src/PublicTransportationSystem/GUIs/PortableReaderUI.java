@@ -15,6 +15,7 @@ import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
+import PublicTransportationSystem.ZoneList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -299,6 +300,12 @@ public class PortableReaderUI extends javax.swing.JFrame {
             }
         });
 
+        fromZone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromZoneActionPerformed(evt);
+            }
+        });
+
         toZone.setModel(new javax.swing.DefaultComboBoxModel());
 
         jLabel8.setText("From:");
@@ -509,7 +516,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private void validateJourney(TravelCard currentCard) {
         // If there is a pass, check that it is a valid one
         // Decide which UI panel to show
-        if (!currentCard.checkForActivePass()) {
+        if (currentCard.checkForActivePass()) {
             TypeEnums.PassType passType = currentCard.getPassType();
 
             if ("BUS".equals(travelType)) {
@@ -557,7 +564,6 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.validPassPanel.setVisible(false);
         this.payForTicketPanel.setVisible(false);
         this.scanPanel.setVisible(true);
-        // either close the application or return to the home screen here:
     }//GEN-LAST:event_passConfirmInspectionActionPerformed
 
     private void paymentConfirmInspectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentConfirmInspectionActionPerformed
@@ -588,6 +594,11 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.payForTicketPanel.setVisible(true);
 
     }//GEN-LAST:event_addFundsButtonActionPerformed
+
+    private void fromZoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromZoneActionPerformed
+        this.toZone.removeAllItems();
+        setUpToZones();
+    }//GEN-LAST:event_fromZoneActionPerformed
 
     private void handleValidPass() {
         // Confirm that the pass is valid and return to the home screen
@@ -627,8 +638,6 @@ public class PortableReaderUI extends javax.swing.JFrame {
         if (fundsButton == 0) {
             this.addFundsPanel.setVisible(true);
             this.payForTicketPanel.setVisible(false);
-        } else {
-            // HELP
         }
     }
 
@@ -757,13 +766,31 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.validPassPanel.setVisible(false);
         this.payForTicketPanel.setVisible(false);
 
+        // If the passenger has scanned in at a station, use that as the
+        // starting point
         if (!card.checkForScannedStation()) {
             this.fromZone.addItem(card.getDepartureDetails().getZone());
             this.fromZone.setEnabled(false);
+        } else {
+            // If not, display all of the potential departure zones
+            this.fromZone.removeAllItems();
+            system.getZones().stream().forEach((zone) -> {
+                if (!system.getJourneys().getAllZonesDepartingFromStartZone(zone).isEmpty()) {
+                    this.fromZone.addItem(zone);
+                }
+            });
         }
+        // Make sure the combo box is clear before re-populating
+        this.toZone.removeAllItems();
+        setUpToZones();
+    }
+
+    private void setUpToZones() {
+        ZoneList toZones = system.getJourneys()
+                .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
 
         // Add the potential destination zones to the list
-        system.getZones().stream().forEach((zone) -> {
+        toZones.stream().forEach((zone) -> {
             this.toZone.addItem(zone);
         });
     }
