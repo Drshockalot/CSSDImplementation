@@ -1053,14 +1053,14 @@ public class AdminUI extends javax.swing.JFrame {
             dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jSeparatorMemSearchHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_adminUserDeleteTitle1)
-                .addGap(18, 18, 18)
+                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparatorMemSearchHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_adminUserDeleteTitle1))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_adminUserSearchSearchBy)
                     .addComponent(cmb_adminUserSearchSearchBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_adminUserSearchSearchValue)
                     .addComponent(txt_adminUserSearchValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2156,10 +2156,10 @@ public class AdminUI extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tbl_adminGUIJourneyList);
         tbl_adminGUIJourneyList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tbl_adminGUIJourneyList.getColumnModel().getColumnCount() > 0) {
-            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setPreferredWidth(100);
-            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setMaxWidth(100);
-            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setPreferredWidth(100);
-            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setMaxWidth(100);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setPreferredWidth(70);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setMaxWidth(70);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setMaxWidth(70);
         }
 
         btn_adminJourneySearchClear.setText("Clear Search");

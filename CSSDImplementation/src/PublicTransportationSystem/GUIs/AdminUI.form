@@ -1145,15 +1145,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Component id="jSeparatorMemSearchHeader" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lbl_adminUserDeleteTitle1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jSeparatorMemSearchHeader" min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="lbl_adminUserDeleteTitle1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_adminUserSearchSearchBy" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmb_adminUserSearchSearchBy" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_adminUserSearchSearchValue" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txt_adminUserSearchValue" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3030,12 +3031,12 @@
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                                <Column maxWidth="70" minWidth="-1" prefWidth="70" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                                <Column maxWidth="70" minWidth="-1" prefWidth="70" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
