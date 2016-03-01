@@ -50,6 +50,18 @@ public class JourneyList extends Vector<Journey> implements Serializable {
         return null;
     }
 
+    public JourneyList getAllJourneysContainingZone(Zone zone) {
+        JourneyList journeys = new JourneyList();
+        for (int i = 0; i < super.size(); i++) {
+            if ((super.get(i).getStartZone().getId() == zone.getId())
+                    || (super.get(i).getEndZone().getId() == zone.getId())) {
+                journeys.add(super.get(i));
+            }
+        }
+
+        return journeys;
+    }
+
     public ZoneList getAllZonesDepartingFromStartZone(Zone zone) {
         ZoneList zoneList = new ZoneList();
         for (int i = 0; i < super.size(); i++) {

@@ -39,16 +39,17 @@ public class WebsiteUI extends javax.swing.JFrame {
         loginPopup = new javax.swing.JDialog();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLayeredPane3 = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         lbl_username = new javax.swing.JLabel();
         txt_username = new javax.swing.JTextField();
         lbl_password = new javax.swing.JLabel();
-        pass_Password = new javax.swing.JPasswordField();
+        pass_password = new javax.swing.JPasswordField();
         lbl_loginTitle = new javax.swing.JLabel();
         btn_loginPopup = new javax.swing.JButton();
         btn_register = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
+        lbl_loginErrorMsg = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         registerPopup = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         lbl_fullname = new javax.swing.JLabel();
@@ -96,9 +97,6 @@ public class WebsiteUI extends javax.swing.JFrame {
         jLayeredPane1.setBackground(new java.awt.Color(204, 255, 255));
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(635, 434));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LDN_Underground.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-
         jLayeredPane2.setBackground(new java.awt.Color(184, 184, 184));
         jLayeredPane2.setOpaque(true);
 
@@ -110,10 +108,20 @@ public class WebsiteUI extends javax.swing.JFrame {
                 txt_usernameActionPerformed(evt);
             }
         });
+        txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_usernameKeyReleased(evt);
+            }
+        });
 
         lbl_password.setText("Password");
 
-        pass_Password.setText("p");
+        pass_password.setText("p");
+        pass_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pass_passwordKeyReleased(evt);
+            }
+        });
 
         lbl_loginTitle.setBackground(new java.awt.Color(192, 221, 253));
         lbl_loginTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -142,14 +150,19 @@ public class WebsiteUI extends javax.swing.JFrame {
             }
         });
 
+        lbl_loginErrorMsg.setForeground(new java.awt.Color(255, 51, 0));
+        lbl_loginErrorMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_loginErrorMsg.setText("Something went wrong");
+
         jLayeredPane2.setLayer(lbl_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(txt_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(lbl_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(pass_Password, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(pass_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(lbl_loginTitle, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(btn_loginPopup, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(btn_register, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(btn_cancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(lbl_loginErrorMsg, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
@@ -160,19 +173,20 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_loginTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txt_username)
-                    .addComponent(pass_Password)
-                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                        .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_password, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_username, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(pass_password)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
                         .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 88, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_loginPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)))
+                        .addGap(6, 6, 6))
+                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                        .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_username, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lbl_loginErrorMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jLayeredPane2Layout.setVerticalGroup(
@@ -187,41 +201,46 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pass_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pass_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_loginErrorMsg, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_loginPopup)
                     .addComponent(btn_register)
                     .addComponent(btn_cancel))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jLayeredPane3.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LDN_Underground.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
         jLayeredPane3.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane3Layout = new javax.swing.GroupLayout(jLayeredPane3);
         jLayeredPane3.setLayout(jLayeredPane3Layout);
         jLayeredPane3Layout.setHorizontalGroup(
             jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                .addGap(173, 173, 173)
+                .addGap(169, 169, 169)
                 .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jLayeredPane3Layout.setVerticalGroup(
             jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                .addGap(113, 113, 113)
+                .addGap(109, 109, 109)
                 .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 138, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
             .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane3Layout.createSequentialGroup()
                     .addComponent(jLabel1)
-                    .addGap(0, 12, Short.MAX_VALUE)))
+                    .addGap(0, 9, Short.MAX_VALUE)))
         );
 
         jLayeredPane1.setLayer(jLayeredPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -381,6 +400,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Website UI");
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -402,6 +422,11 @@ public class WebsiteUI extends javax.swing.JFrame {
         btn_websiteURLGo.setEnabled(false);
 
         btn_websiteMainLogout.setText("Log Out");
+        btn_websiteMainLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_websiteMainLogoutActionPerformed(evt);
+            }
+        });
 
         txt_websiteMainTitle.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         txt_websiteMainTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -591,8 +616,8 @@ public class WebsiteUI extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         loginPopup.pack();
         loginPopup.setLocationRelativeTo(null);
+        lbl_loginErrorMsg.setVisible(false);
         loginPopup.setVisible(true);
-        this.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void txt_FirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FirstnameActionPerformed
@@ -622,7 +647,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_RegisterActionPerformed
 
     private void registerPopupWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_registerPopupWindowClosing
-        loginPopup.setEnabled(true);
+//        loginPopup.setEnabled(true);
     }//GEN-LAST:event_registerPopupWindowClosing
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
@@ -633,37 +658,52 @@ public class WebsiteUI extends javax.swing.JFrame {
 
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         // TODO add your handling code here:
-        this.setEnabled(false);
-        loginPopup.setEnabled(false);
         registerPopup.pack();
         registerPopup.setLocationRelativeTo(null);
-        registerPopup.setVisible(true);
-        registerPopup.setEnabled(true);
+//        registerPopup.setVisible(true);
     }//GEN-LAST:event_btn_registerActionPerformed
 
-    private void btn_loginPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginPopupActionPerformed
+    private void throwLoginError(String error) {
+        lbl_loginErrorMsg.setText(error);
+        lbl_loginErrorMsg.setVisible(true);
+    }
+
+    private void login() {
         String username = txt_username.getText();
-        String password = new String(pass_Password.getPassword());
+        String password = new String(pass_password.getPassword());
 
         try {
             User user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
             if (user != null) {
                 if (user.authenticateUser(password)) {
                     if (user.getSystemRole().isAdmin()) {
+                        lbl_loginErrorMsg.setVisible(false);
                         openAdminUI();
                     } else {
+                        lbl_loginErrorMsg.setVisible(false);
                         openWebsiteUI();
-                        System.out.println("Turd 1");
                     }
                 } else {
-                    System.out.println("Turd 2");
+                    /* don't want anymore information
+                     * telling the user that a user exists with this information
+                     * would potentially enable security flaws
+                     */
+                    throwLoginError("Credentials Invalid");
                 }
             } else {
-                System.out.println("Turd 3");
+                throwLoginError("Credentials Invalid");
             }
         } catch (Throwable ex) {
-            System.out.println("yolo" + ex);
+            System.out.println(ex);
+            throwLoginError("Something went wrong");
+
         }
+    }
+
+    private void btn_loginPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginPopupActionPerformed
+        // seperated from keypress so it can be used on input key listeners for
+        // enter key click
+        login();
     }//GEN-LAST:event_btn_loginPopupActionPerformed
 
     private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
@@ -678,6 +718,25 @@ public class WebsiteUI extends javax.swing.JFrame {
     private void txt_websiteURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_websiteURLActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_websiteURLActionPerformed
+
+    private void btn_websiteMainLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_websiteMainLogoutActionPerformed
+        this.dispose();
+        mainUI.setEnabled(true);
+    }//GEN-LAST:event_btn_websiteMainLogoutActionPerformed
+
+    private void txt_usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyReleased
+        // attach keyListener, listening for 'enter' key presses to fire login
+        if (evt.getKeyCode() == 10) {
+            login();
+        }
+    }//GEN-LAST:event_txt_usernameKeyReleased
+
+    private void pass_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass_passwordKeyReleased
+        // attach keyListener, listening for 'enter' key presses to fire login
+        if (evt.getKeyCode() == 10) {
+            login();
+        }
+    }//GEN-LAST:event_pass_passwordKeyReleased
 
     private void openAdminUI() {
         loginPopup.dispose();
@@ -757,11 +816,12 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_Username1;
     private javax.swing.JLabel lbl_fullname;
     private javax.swing.JLabel lbl_fullname1;
+    private javax.swing.JLabel lbl_loginErrorMsg;
     private javax.swing.JLabel lbl_loginTitle;
     private javax.swing.JLabel lbl_password;
     private javax.swing.JLabel lbl_username;
     private javax.swing.JDialog loginPopup;
-    private javax.swing.JPasswordField pass_Password;
+    private javax.swing.JPasswordField pass_password;
     private javax.swing.JPanel pnl_websiteContainer;
     private javax.swing.JPanel pnl_websiteHistoryContainer;
     private javax.swing.JPanel pnl_websiteMainContainer;

@@ -156,6 +156,11 @@ public class TravelCard {
     public void setLastDepartedTime(Date date) {
         this.lastDepartedTime = date;
     }
+
+    @Override
+    public String toString() {
+        return this.travelCardID + " " + this.user;
+    }
 // </editor-fold>
 // Methods End
 }
