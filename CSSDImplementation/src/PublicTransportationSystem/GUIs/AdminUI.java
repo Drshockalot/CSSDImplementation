@@ -3092,7 +3092,7 @@ public class AdminUI extends javax.swing.JFrame {
             txt_adminUserViewTCDiscount.setText(travelCard.getDiscount() + "%");
             txt_adminUserViewTCDailyCap.setText("£" + TravelSystem.getInstance()
                     .convertToTwoDecimalPlace(travelCard.getDailyCap()));
-            if (travelCard.checkForActivePass()) {
+            if (travelCard.isPassActive()) {
                 txt_adminUserViewTCPass.setText(travelCard.getPass().passType().name());
             } else {
                 txt_adminUserViewTCPass.setText("No active pass");

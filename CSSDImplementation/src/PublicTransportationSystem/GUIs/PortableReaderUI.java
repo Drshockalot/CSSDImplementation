@@ -509,7 +509,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private void validateJourney(TravelCard currentCard) {
         // If there is a pass, check that it is a valid one
         // Decide which UI panel to show
-        if (!currentCard.checkForActivePass()) {
+        if (!currentCard.isPassActive()) {
             TypeEnums.PassType passType = currentCard.getPassType();
 
             if ("BUS".equals(travelType)) {
