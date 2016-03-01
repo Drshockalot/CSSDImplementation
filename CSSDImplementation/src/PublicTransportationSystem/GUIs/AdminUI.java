@@ -2723,6 +2723,15 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminZoneEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditActionPerformed
         // temp until load is in
         lbl_adminZoneEditErrorMsg.hide();
+        int row = tbl_adminGUIZoneList.getSelectedRow();
+        int zoneId = (int) tbl_adminGUIZoneList.getValueAt(row, 0);
+        try {
+            Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
+            txt_adminZoneEditId.setText(String.valueOf(zone.getId()));
+            txt_adminZoneEditName.setText(String.valueOf(zone.getName()));
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dlg_adminZoneEdit.pack();
         dlg_adminZoneEdit.show();
     }//GEN-LAST:event_btn_adminZoneEditActionPerformed
@@ -3198,7 +3207,21 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserViewTicketsActionPerformed
 
     private void btn_adminZoneEditAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditAddActionPerformed
-        // TODO add your handling code here:
+        int zoneId = Integer.valueOf(txt_adminZoneEditId.getText());
+        String zoneName = txt_adminZoneEditName.getText();
+
+        try {
+            if (TravelSystem.getInstance().getZones().isZoneNameUnique(zoneName, zoneId)) {
+                Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
+                zone.setName(zoneName);
+                populateZoneTable();
+                dlg_adminZoneEdit.setVisible(false);
+            } else {
+                lbl_adminZoneEditErrorMsg.setVisible(true);
+            }
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_adminZoneEditAddActionPerformed
 
     private void btn_adminZoneEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditCancelActionPerformed

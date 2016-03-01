@@ -41,6 +41,20 @@ public class ZoneList extends Vector<Zone> implements Serializable {
         return true;
     }
 
+    // Overloaded to check when editing zone, the other version
+    // would throw an error because it would find itself
+    public boolean isZoneNameUnique(String zoneName, int zoneId) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getName().equalsIgnoreCase(zoneName)) {
+                if (super.get(i).getId() != zoneId) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public void serializeZones() {
         try {
             FileOutputStream fileOut = new FileOutputStream("files/zones.ser");
