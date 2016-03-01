@@ -215,6 +215,10 @@ public class TravelSystem implements SetOfUsersInterface {
         return systemUsers;
     }
 
+    public String convertToTwoDecimalPlace(float number) {
+        return String.format("%.2f", number);
+    }
+
     public SetOfTravelCards getTravelCards() {
         return systemTravelCards;
     }

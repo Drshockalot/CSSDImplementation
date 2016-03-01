@@ -742,6 +742,11 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel12.setText("View Travel Card");
 
         txt_adminUserViewTCDiscount.setEnabled(false);
+        txt_adminUserViewTCDiscount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_adminUserViewTCDiscountFocusLost(evt);
+            }
+        });
 
         txt_adminUserViewTCDailyCap.setEnabled(false);
 
@@ -2999,16 +3004,39 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_adminUserViewTCStartDateActionPerformed
 
     private void btn_adminUserViewTCSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCSaveActionPerformed
-        // TODO add your handling code here:
+        float newDiscount = Float.valueOf(txt_adminUserViewTCDiscount.getText());
+        float newDailyCap = Float.valueOf(txt_adminUserViewTCDailyCap.getText());
+        int tcId = Integer.valueOf(txt_adminUserAddTCId1.getText());
+
+        try {
+            TravelCard travelCard = TravelSystem.getInstance().getTravelCards().getTravelCardById(tcId);
+            travelCard.setDailyCap(newDailyCap);
+            travelCard.setDisount(newDiscount);
+            txt_adminUserViewTCDiscount.setEnabled(false);
+            txt_adminUserViewTCDailyCap.setEnabled(false);
+            TravelSystem.getInstance().serializeUsers();
+            initTravelCardView();
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_adminUserViewTCSaveActionPerformed
 
     private void btn_adminUserViewTCCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCCloseActionPerformed
         // TODO add your handling code here:
+        txt_adminUserViewTCDiscount.setEnabled(false);
+        txt_adminUserViewTCDailyCap.setEnabled(false);
         dlg_adminUserViewTravelCard.hide();
     }//GEN-LAST:event_btn_adminUserViewTCCloseActionPerformed
 
     private void btn_adminUserViewTCEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCEditActionPerformed
-        // TODO add your handling code here:
+        txt_adminUserViewTCDiscount.setEnabled(true);
+        txt_adminUserViewTCDailyCap.setEnabled(true);
+        String dailyCap = txt_adminUserViewTCDailyCap.getText();
+        dailyCap = dailyCap.replace("£", "");
+        txt_adminUserViewTCDailyCap.setText(dailyCap);
+        String discount = txt_adminUserViewTCDiscount.getText();
+        discount = discount.replace("%", "");
+        txt_adminUserViewTCDiscount.setText(discount);
     }//GEN-LAST:event_btn_adminUserViewTCEditActionPerformed
 
     private void btn_adminJourneyDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyDeleteActionPerformed
@@ -3057,12 +3085,14 @@ public class AdminUI extends javax.swing.JFrame {
             TravelCard travelCard = TravelSystem.getInstance().getTravelCards()
                     .getTravelCardById(user.getTravelCardId());
             txt_adminUserAddTCId1.setText(String.valueOf(travelCard.getId()));
-            txt_adminUserViewTCBalance.setText("£" + String.valueOf(travelCard.getBalance()));
+            txt_adminUserViewTCBalance.setText("£" + TravelSystem.getInstance()
+                    .convertToTwoDecimalPlace(travelCard.getBalance()));
             txt_adminUserViewTCStartDate.setText(getDateFormatted("date", travelCard.getCreationDate()));
             txt_adminUserViewTCExpiryDate.setText(getDateFormatted("date", travelCard.getExpiryDate()));
-            txt_adminUserViewTCDiscount.setText("£" + String.valueOf(travelCard.getDiscount()));
-            txt_adminUserViewTCDailyCap.setText("£" + String.valueOf(travelCard.getDailyCap()));
-            if (travelCard.checkForActivePass()) {
+            txt_adminUserViewTCDiscount.setText(travelCard.getDiscount() + "%");
+            txt_adminUserViewTCDailyCap.setText("£" + TravelSystem.getInstance()
+                    .convertToTwoDecimalPlace(travelCard.getDailyCap()));
+            if (travelCard.isPassActive()) {
                 txt_adminUserViewTCPass.setText(travelCard.getPass().passType().name());
             } else {
                 txt_adminUserViewTCPass.setText("No active pass");
@@ -3288,6 +3318,12 @@ public class AdminUI extends javax.swing.JFrame {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tbl_adminGUIStationListMouseReleased
+
+    private void txt_adminUserViewTCDiscountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_adminUserViewTCDiscountFocusLost
+        if (txt_adminUserViewTCDiscount.getText().isEmpty()) {
+            txt_adminUserViewTCDiscount.setText("0");
+        }
+    }//GEN-LAST:event_txt_adminUserViewTCDiscountFocusLost
 
     private void initUserTicketView(int userId) {
         DefaultTableModel model = (DefaultTableModel) tbl_adminUserViewTickets.getModel();
