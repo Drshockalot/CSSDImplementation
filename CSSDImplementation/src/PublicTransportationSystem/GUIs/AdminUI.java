@@ -2156,10 +2156,10 @@ public class AdminUI extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tbl_adminGUIJourneyList);
         tbl_adminGUIJourneyList.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tbl_adminGUIJourneyList.getColumnModel().getColumnCount() > 0) {
-            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setPreferredWidth(100);
-            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setMaxWidth(100);
-            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setPreferredWidth(100);
-            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setMaxWidth(100);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setPreferredWidth(70);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(2).setMaxWidth(70);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setMaxWidth(70);
         }
 
         btn_adminJourneySearchClear.setText("Clear Search");
