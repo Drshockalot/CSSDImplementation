@@ -49,6 +49,7 @@ public class SetOfTickets extends Vector<Ticket> {
 
     public SetOfTickets getTicketsForUserOnDay(int userId, Date date) {
         SetOfTickets userTickets = getTicketsForUser(userId);
+        SetOfTickets retTickets = new SetOfTickets();
         for (int i = 0; i < userTickets.size(); ++i) {
             Calendar cal1 = Calendar.getInstance();
             Calendar cal2 = Calendar.getInstance();
@@ -56,9 +57,12 @@ public class SetOfTickets extends Vector<Ticket> {
             cal2.setTime(userTickets.get(i).getPurchasedTime());
             boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
                     && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+            if (sameDay) {
+                retTickets.add(userTickets.get(i));
+            }
         }
 
-        return userTickets;
+        return retTickets;
     }
 
     public void addTicket(Ticket ticket) {
