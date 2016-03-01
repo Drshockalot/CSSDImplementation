@@ -118,6 +118,14 @@ public class TravelCard {
         this.balance += funds;
     }
 
+    public void setDisount(float discount) {
+        this.discount = discount;
+    }
+
+    public void setDailyCap(float dailyCap) {
+        this.dailyCap = dailyCap;
+    }
+
     public boolean checkForPass(Zone arrivingZone, Zone departureZone) {
         if (this.pass != null) {
             if (this.pass.departureZone() != null && this.pass.arrivalZone() != null) {
