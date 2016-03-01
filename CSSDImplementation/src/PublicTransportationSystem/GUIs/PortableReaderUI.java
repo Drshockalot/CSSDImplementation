@@ -577,7 +577,16 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void addFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFundsButtonActionPerformed
-        // TODO add your handling code here:
+        // Get the value from the UI and add it to a travel card
+        int amountToAdd = Integer.parseInt(this.addFundsTextField.getText());
+        this.currentCard.addFunds(amountToAdd);
+        JOptionPane.showMessageDialog(validPassPanel, "You have added: £" + amountToAdd);
+        String currentBalance = String.format("%.2f", this.currentCard.getBalance());
+        this.passUserBalance.setText(currentBalance);
+        this.paymentUserBalance.setText(currentBalance);
+        this.addFundsPanel.setVisible(false);
+        this.payForTicketPanel.setVisible(true);
+
     }//GEN-LAST:event_addFundsButtonActionPerformed
 
     private void handleValidPass() {
@@ -601,6 +610,9 @@ public class PortableReaderUI extends javax.swing.JFrame {
             if (handleTransaction()) {
                 // Payment has been successful, notify the user
                 JOptionPane.showMessageDialog(payForTicketPanel, "Ticket Inspection Confirmed", "Success", 1);
+                String currentBalance = String.format("%.2f", this.currentCard.getBalance());
+                this.passUserBalance.setText(currentBalance);
+                this.paymentUserBalance.setText(currentBalance);
             } else {
                 addFunds();
             }
@@ -616,7 +628,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
             this.addFundsPanel.setVisible(true);
             this.payForTicketPanel.setVisible(false);
         } else {
-
+            // HELP
         }
     }
 

@@ -12,6 +12,7 @@ import PublicTransportationSystem.SetOfStationSystems;
 import PublicTransportationSystem.SetOfUsers;
 import PublicTransportationSystem.StationSystem;
 import PublicTransportationSystem.SystemRole;
+import PublicTransportationSystem.Ticket;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
@@ -2548,9 +2549,28 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserViewTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTicketsActionPerformed
         // set values here?
+        int row = tbl_adminGUIUserList.getSelectedRow();
+        int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
+        initUserTicketView(userId);
+
         dlg_adminUserViewTickets.pack();
         dlg_adminUserViewTickets.show();
     }//GEN-LAST:event_btn_adminUserViewTicketsActionPerformed
+
+    private void initUserTicketView(int userId) {
+        DefaultTableModel model = (DefaultTableModel) tbl_adminUserViewTickets.getModel();
+
+        try {
+            for (Ticket ticket : TravelSystem.getInstance().getTickets().getTicketsForUser(userId)) {
+                model.addRow(new Object[]{ticket.getTicketId(), ticket.getJourney().getStartZone(),
+                    ticket.getJourney().getEndZone(), ticket.getPurchasedTime(),
+                    ticket.getTicketType(), ticket.isPeakTicket()
+                });
+            }
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void initAddUserView() {
         try {
