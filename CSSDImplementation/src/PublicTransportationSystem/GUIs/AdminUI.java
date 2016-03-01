@@ -3233,6 +3233,8 @@ public class AdminUI extends javax.swing.JFrame {
                     if (onPeak < offPeak) {
                         lbl_adminJourneyAddError.setVisible(true);
                     } else {
+                        onPeak = TravelSystem.getInstance().convertToTwoDecimalPlaces(onPeak);
+                        offPeak = TravelSystem.getInstance().convertToTwoDecimalPlaces(offPeak);
                         Journey journey = new Journey(offPeak, onPeak, departureZone, arrivalZone);
                         TravelSystem.getInstance().getJourneys().add(journey);
                         TravelSystem.getInstance().serializeJourneys();
