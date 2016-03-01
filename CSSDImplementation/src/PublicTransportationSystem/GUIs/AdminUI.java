@@ -129,7 +129,6 @@ public class AdminUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_adminUserViewTickets = new javax.swing.JTable();
         dlg_adminUserSearch = new javax.swing.JDialog();
-        jSeparatorMemSearchHeader = new javax.swing.JSeparator();
         lbl_adminUserSearchSearchBy = new javax.swing.JLabel();
         lbl_adminUserSearchSearchValue = new javax.swing.JLabel();
         cmb_adminUserSearchSearchBy = new javax.swing.JComboBox();
@@ -982,7 +981,7 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        dlg_adminUserSearch.setMinimumSize(new java.awt.Dimension(470, 257));
+        dlg_adminUserSearch.setMinimumSize(new java.awt.Dimension(470, 188));
         dlg_adminUserSearch.setModal(true);
         dlg_adminUserSearch.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
         dlg_adminUserSearch.setResizable(false);
@@ -1027,36 +1026,30 @@ public class AdminUI extends javax.swing.JFrame {
         dlg_adminUserSearchLayout.setHorizontalGroup(
             dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminUserSearchLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_adminUserSearchCancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_adminUserSearchSearch))
-                    .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
-                        .addComponent(jSeparatorMemSearchHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lbl_adminUserDeleteTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
-                                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lbl_adminUserSearchSearchBy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbl_adminUserSearchSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-                                .addGap(44, 44, 44)
-                                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmb_adminUserSearchSearchBy, 0, 236, Short.MAX_VALUE)
-                                    .addComponent(txt_adminUserSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(lbl_adminUserDeleteTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
+                            .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lbl_adminUserSearchSearchBy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_adminUserSearchSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                            .addGap(44, 44, 44)
+                            .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmb_adminUserSearchSearchBy, 0, 236, Short.MAX_VALUE)
+                                .addComponent(txt_adminUserSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(25, 25, 25))
         );
         dlg_adminUserSearchLayout.setVerticalGroup(
             dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparatorMemSearchHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_adminUserDeleteTitle1))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(lbl_adminUserDeleteTitle1)
+                .addGap(18, 18, 18)
                 .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_adminUserSearchSearchBy)
                     .addComponent(cmb_adminUserSearchSearchBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1068,7 +1061,7 @@ public class AdminUI extends javax.swing.JFrame {
                 .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_adminUserSearchSearch)
                     .addComponent(btn_adminUserSearchCancel))
-                .addGap(20, 20, 20))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         dlg_adminZoneAdd.setModal(true);
@@ -3722,7 +3715,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSeparator jSeparatorMemSearchHeader;
     private javax.swing.JLabel lbl_adminJourneyAddArrZone;
     private javax.swing.JLabel lbl_adminJourneyAddDepZone;
     private javax.swing.JLabel lbl_adminJourneyAddError;
