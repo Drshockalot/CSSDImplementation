@@ -7,6 +7,7 @@ package PublicTransportationSystem;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Vector;
 
 /**
  *
@@ -72,10 +73,8 @@ public class TravelCard {
         return this.pass != null;
     }
 
-    public boolean checkForPass(Zone zone) {
-        boolean hasPass = false;
-
-        return hasPass;
+    public boolean checkForPass(Vector<TypeEnums.PassType> types) {
+        return this.pass != null ? types.stream().anyMatch((type) -> (this.pass.passType() == type)) : false;
     }
 
     public Pass getPass() {
@@ -156,6 +155,11 @@ public class TravelCard {
 
     public void setLastDepartedTime(Date date) {
         this.lastDepartedTime = date;
+    }
+
+    @Override
+    public String toString() {
+        return this.travelCardID + " " + this.user;
     }
 // </editor-fold>
 // Methods End

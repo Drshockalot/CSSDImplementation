@@ -29,9 +29,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private PortableReader portableReader = new PortableReader();
     private TravelSystem system = null;
     private TravelCard currentCard = null;
-    // Whethere we're on a bus or train
+    // Whether we're on a bus or train
     private String travelType = null;
-    //private final String travelType;
 
     /**
      * Creates new form PortableReaderUI
@@ -43,6 +42,11 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.payForTicketPanel.setVisible(false);
         this.validPassPanel.setVisible(false);
         this.scanPanel.setVisible(true);
+        // Get a list of travel cards to scan
+        setUpTravelSystemInstance();
+        system.getTravelCards().stream().forEach((card) -> {
+            this.travelCardsComboBox.addItem(card);
+        });
     }
 
     /**
@@ -58,6 +62,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
         scanPanel = new javax.swing.JPanel();
         scanCardTrainButton = new javax.swing.JButton();
         scanCardBusButton = new javax.swing.JButton();
+        travelCardsComboBox = new javax.swing.JComboBox();
+        scanPanelTravelCardLabel = new javax.swing.JLabel();
         validPassPanel = new javax.swing.JPanel();
         passUserImage = new javax.swing.JPanel();
         validPassUserImagelabel = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Images/user_image.png")));
@@ -119,25 +125,39 @@ public class PortableReaderUI extends javax.swing.JFrame {
             }
         });
 
+        travelCardsComboBox.setModel(new javax.swing.DefaultComboBoxModel());
+
+        scanPanelTravelCardLabel.setText("Travel Card:");
+
         javax.swing.GroupLayout scanPanelLayout = new javax.swing.GroupLayout(scanPanel);
         scanPanel.setLayout(scanPanelLayout);
         scanPanelLayout.setHorizontalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scanPanelLayout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(scanCardTrainButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(144, 144, 144))
+                .addGap(146, 146, 146))
+            .addGroup(scanPanelLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scanPanelTravelCardLabel)
+                    .addComponent(travelCardsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         scanPanelLayout.setVerticalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(scanPanelLayout.createSequentialGroup()
-                .addGap(198, 198, 198)
+                .addGap(159, 159, 159)
+                .addComponent(scanPanelTravelCardLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(travelCardsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(scanCardTrainButton)
                 .addGap(18, 18, 18)
                 .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(scanPanel);
@@ -461,48 +481,24 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private void scanCardTrainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanCardTrainButtonActionPerformed
         // Train button pressed, we are on a train
         this.travelType = "TRAIN";
+
+        try {
+            // Read the travel card
+            this.currentCard = this.portableReader.readTravelCard((TravelCard) this.travelCardsComboBox.getSelectedItem());
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setUpComponents();
     }//GEN-LAST:event_scanCardTrainButtonActionPerformed
 
     private void setUpComponents() {
         // Hide the first panel, we have our travel type now
         this.scanPanel.setVisible(false);
-        // Read the card and get it
-        getCurrentCardDetails();
-        setUpTravelSystemInstance();
-        ////////////////////////////////////////////////////////
-        // Hard-coded pass/station/zone, for testing purposes //
-        ////////////////////////////////////////////////////////
-        Pass pass = null;
-
-        // Get the correct pass - testing purposes
-        if ("BUS".equals(this.travelType)) {
-            pass = new Pass(TypeEnums.PassType.BUSJOURNEY);
-        } else if ("TRAIN".equals(this.travelType)) {
-            pass = new Pass(TypeEnums.PassType.TRAINJOURNEY);
-        }
-
-        // Only required for 'journey' passes (as opposed to day passes)
-        pass.setDepartureZone(system.getZones().getZoneById(1));
-        pass.setArrivalZone(system.getZones().getZoneById(2));
-        currentCard.setPass(pass);
-        currentCard.setLastDepartedStation(system.getStationSystems().getStationSystemById(1));
-        ////////////////////////////////////////////////////////
 
         // Get the user details from TravelCard and add them to the UI
         User currentUser = currentCard.getUser();
         setUpUserDetails(currentUser, currentCard);
-
         validateJourney(currentCard);
-    }
-
-    private void getCurrentCardDetails() {
-        // Read from the scanner
-        try {
-            currentCard = this.portableReader.readTravelCard(TravelSystem.getInstance().getTravelCards().getTravelCardById(1));
-        } catch (Throwable ex) {
-            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     private void setUpTravelSystemInstance() {
@@ -549,12 +545,23 @@ public class PortableReaderUI extends javax.swing.JFrame {
                     }
                 }
             }
+        } else {
+            // The user does not have a pass
+            this.payForTicketPanel.setVisible(true);
         }
     }
 
     private void scanCardBusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanCardBusButtonActionPerformed
         // Bus button pressed, we are on a bus
         this.travelType = "BUS";
+
+        try {
+            // Read the travel card
+            this.currentCard = this.portableReader.readTravelCard((TravelCard) this.travelCardsComboBox.getSelectedItem());
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         setUpComponents();
     }//GEN-LAST:event_scanCardBusButtonActionPerformed
 
@@ -571,10 +578,15 @@ public class PortableReaderUI extends javax.swing.JFrame {
         // Check the 'from' and 'to' zones entered by the user and compare them to the
         // values on their travel pass
         Pass targetPass = this.currentCard.getPass();
-        if ((targetPass.arrivalZone() == this.toZone.getSelectedItem())
-                && (targetPass.departureZone() == this.fromZone.getSelectedItem())) {
-            handleValidPass();
+        if (targetPass != null) {
+            if ((targetPass.arrivalZone() == this.toZone.getSelectedItem())
+                    && (targetPass.departureZone() == this.fromZone.getSelectedItem())) {
+                handleValidPass();
+            } else {
+                handleInvalidPass();
+            }
         } else {
+            // The passenger does not have a pass
             handleInvalidPass();
         }
     }//GEN-LAST:event_paymentConfirmInspectionActionPerformed
@@ -584,11 +596,12 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void addFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFundsButtonActionPerformed
-        // Get the value from the UI and add it to a travel card
+        // Get the amount of funds to be added and add it to a travel card
         int amountToAdd = Integer.parseInt(this.addFundsTextField.getText());
         this.currentCard.addFunds(amountToAdd);
         JOptionPane.showMessageDialog(validPassPanel, "You have added: £" + amountToAdd);
         String currentBalance = String.format("%.2f", this.currentCard.getBalance());
+        // Return to the ticket payment screen
         this.passUserBalance.setText(currentBalance);
         this.paymentUserBalance.setText(currentBalance);
         this.addFundsPanel.setVisible(false);
@@ -597,6 +610,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addFundsButtonActionPerformed
 
     private void fromZoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromZoneActionPerformed
+        // When the 'from' combo box is interacted with, update the
+        // 'to' combo box accordingly
         this.toZone.removeAllItems();
         setUpToZones();
     }//GEN-LAST:event_fromZoneActionPerformed
@@ -659,20 +674,58 @@ public class PortableReaderUI extends javax.swing.JFrame {
             ticketType = TypeEnums.TicketType.TRAIN;
         }
         Ticket newTicket = null;
-        try {
-            newTicket = TravelSystem.getInstance().getTickets().createNewTicket(journey, ticketType, false, currentCard.getUser().getId());
-        } catch (Throwable ex) {
-            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // Create a new 'ticket' for this journey
+        newTicket = system.getTickets().createNewTicket(journey, ticketType, false,
+                currentCard.getUser().getId());
 
-        try {
-            // Pay for the ticket, returns true if the payment was successful
-            return transaction.payForTicket(TravelSystem.getInstance().getTickets().getTicketsForUser(currentCard.getUser().getId()), newTicket, this.currentCard);
-        } catch (Throwable ex) {
-            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // Pay for the ticket, returns true if the payment was successful
+        return transaction.payForTicket(system.getTickets()
+                .getTicketsForUser(currentCard.getUser().getId()), newTicket, this.currentCard);
 
-        return false;
+    }
+
+    private void setUpUserDetails(User user, TravelCard card) {
+        // Set up the user details on the UI panels
+        this.passUserName.setText(user.getUsername());
+        this.passUserBalance.setText(Float.toString(card.getBalance()));
+        this.passUserDob.setText(user.getDateOfBirth().toString());
+        this.passUserID.setText(Integer.toString(user.getId()));
+
+        this.paymentUserName.setText(user.getUsername());
+        this.paymentUserBalance.setText(String.format("%.2f", card.getBalance()));
+        this.paymentUserDob.setText(user.getDateOfBirth().toString());
+        this.paymentUserID.setText(Integer.toString(user.getId()));
+
+        this.validPassPanel.setVisible(false);
+        this.payForTicketPanel.setVisible(false);
+
+        // If the passenger has scanned in at a station, use that as the
+        // starting point
+        if (!card.checkForScannedStation()) {
+            this.fromZone.addItem(card.getDepartureDetails().getZone());
+            this.fromZone.setEnabled(false);
+        } else {
+            // If not, display all of the potential departure zones
+            this.fromZone.removeAllItems();
+            system.getZones().stream().forEach((zone) -> {
+                if (!system.getJourneys().getAllZonesDepartingFromStartZone(zone).isEmpty()) {
+                    this.fromZone.addItem(zone);
+                }
+            });
+        }
+        // Make sure the combo box is clear before re-populating
+        this.toZone.removeAllItems();
+        setUpToZones();
+    }
+
+    private void setUpToZones() {
+        ZoneList toZones = system.getJourneys()
+                .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
+
+        // Add the potential destination zones to the list
+        toZones.stream().forEach((zone) -> {
+            this.toZone.addItem(zone);
+        });
     }
 
     /**
@@ -748,51 +801,10 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JButton scanCardBusButton;
     private javax.swing.JButton scanCardTrainButton;
     private javax.swing.JPanel scanPanel;
+    private javax.swing.JLabel scanPanelTravelCardLabel;
     private javax.swing.JComboBox toZone;
+    private javax.swing.JComboBox travelCardsComboBox;
     private javax.swing.JPanel validPassPanel;
     private javax.swing.JLabel validPassUserImagelabel;
     // End of variables declaration//GEN-END:variables
-
-    private void setUpUserDetails(User user, TravelCard card) {
-        this.passUserName.setText(user.getUsername());
-        this.passUserBalance.setText(Float.toString(card.getBalance()));
-        this.passUserDob.setText(user.getDateOfBirth().toString());
-        this.passUserID.setText(Integer.toString(user.getId()));
-
-        this.paymentUserName.setText(user.getUsername());
-        this.paymentUserBalance.setText(Float.toString(card.getBalance()));
-        this.paymentUserDob.setText(user.getDateOfBirth().toString());
-        this.paymentUserID.setText(Integer.toString(user.getId()));
-
-        this.validPassPanel.setVisible(false);
-        this.payForTicketPanel.setVisible(false);
-
-        // If the passenger has scanned in at a station, use that as the
-        // starting point
-        if (!card.checkForScannedStation()) {
-            this.fromZone.addItem(card.getDepartureDetails().getZone());
-            this.fromZone.setEnabled(false);
-        } else {
-            // If not, display all of the potential departure zones
-            this.fromZone.removeAllItems();
-            system.getZones().stream().forEach((zone) -> {
-                if (!system.getJourneys().getAllZonesDepartingFromStartZone(zone).isEmpty()) {
-                    this.fromZone.addItem(zone);
-                }
-            });
-        }
-        // Make sure the combo box is clear before re-populating
-        this.toZone.removeAllItems();
-        setUpToZones();
-    }
-
-    private void setUpToZones() {
-        ZoneList toZones = system.getJourneys()
-                .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
-
-        // Add the potential destination zones to the list
-        toZones.stream().forEach((zone) -> {
-            this.toZone.addItem(zone);
-        });
-    }
 }

@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 import java.util.Date;
+import java.util.Vector;
 
 /**
  *
@@ -42,6 +43,12 @@ public class Gateway {
 
         Zone departureZone = currCard.getDepartureDetails().getZone();
         boolean hasPass = currCard.checkForPass(zone, departureZone);
+        if (!hasPass) {
+            Vector<TypeEnums.PassType> list = new Vector<>();
+            list.add(TypeEnums.PassType.TRAINDAY);
+            list.add(TypeEnums.PassType.BUSANDTRAINDAY);
+            hasPass = currCard.checkForPass(list);
+        }
 
         if (hasPass) {
             this.approve();
@@ -79,7 +86,7 @@ public class Gateway {
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
 
         if (currCard != null) {
-            if (currCard.getBalance() > 0) {
+            if (currCard.getBalance() >= 0) {
                 this.approve();
                 currCard.setLastDepartedStation(sys.getStationSystems().getStationSystemById(stationID));
                 currCard.setLastDepartedTime(new Date());

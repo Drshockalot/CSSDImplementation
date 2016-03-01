@@ -44,4 +44,8 @@ public class User {
         assertFalse(test_user.authenticateUser("pass"));
         assertTrue(test_user.authenticateUser("p"));
     }
+
+    ///////////////////
+    // Test Case 2.2 //
+    ///////////////////
 }
