@@ -108,7 +108,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
 
         lbl_mainSwitchTitle.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         lbl_mainSwitchTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_mainSwitchTitle.setText("Public Management System");
+        lbl_mainSwitchTitle.setText("Public Transport Management System");
 
         lbl_mainSwitchAuthors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_mainSwitchAuthors.setText("3 Snakes & a Bootlace 2016 (c)");
