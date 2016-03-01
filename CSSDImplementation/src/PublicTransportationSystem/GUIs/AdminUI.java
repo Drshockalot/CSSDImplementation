@@ -3239,7 +3239,29 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminZoneEditCancelActionPerformed
 
     private void btn_adminZoneDeleteConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneDeleteConfirmActionPerformed
-        // TODO add your handling code here:
+        if (tbl_adminGUIZoneList.getSelectedRowCount() > 0) {
+            int row = tbl_adminGUIZoneList.getSelectedRow();
+            int zoneId = (int) tbl_adminGUIZoneList.getValueAt(row, 0);
+
+            try {
+                Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
+                TravelSystem.getInstance().getZones().remove(zone);
+                JourneyList journeysToRemove = TravelSystem.getInstance().getJourneys()
+                        .getAllJourneysContainingZone(zone);
+
+                for (Journey journey : journeysToRemove) {
+                    TravelSystem.getInstance().getJourneys().remove(journey);
+                }
+
+                TravelSystem.getInstance().serializeJourneys();
+                TravelSystem.getInstance().serializeZones();
+                populateZoneTable();
+                populateJourneyTable();
+                dlg_adminZoneDelete.setVisible(false);
+            } catch (Throwable ex) {
+                Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_adminZoneDeleteConfirmActionPerformed
 
     private void btn_adminZoneDeleteCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneDeleteCancelActionPerformed
