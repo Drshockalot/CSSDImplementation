@@ -55,6 +55,48 @@ public class ZoneList extends Vector<Zone> implements Serializable {
         return true;
     }
 
+    public String[] getZonesAsStringArray() {
+        String[] zoneList = new String[super.size()];
+
+        for (int i = 0; i < super.size(); i++) {
+            zoneList[i] = super.get(i).getName();
+        }
+
+        return zoneList;
+    }
+
+    public String[] getZonesAsStringArray(ZoneList zones) {
+        String[] zoneList = new String[zones.size()];
+
+        for (int i = 0; i < zones.size(); i++) {
+            zoneList[i] = zones.get(i).getName();
+        }
+
+        return zoneList;
+    }
+
+    public Zone getZoneByName(String zoneName) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getName().equalsIgnoreCase(zoneName)) {
+                return super.get(i);
+            }
+        }
+
+        return null;
+    }
+
+    public ZoneList getZonesNotInList(ZoneList zones) {
+        ZoneList list = new ZoneList();
+
+        for (int i = 0; i < super.size(); i++) {
+            if (zones.getZoneById(super.get(i).getId()) == null) {
+                list.add(super.get(i));
+            }
+        }
+
+        return list;
+    }
+
     public void serializeZones() {
         try {
             FileOutputStream fileOut = new FileOutputStream("files/zones.ser");

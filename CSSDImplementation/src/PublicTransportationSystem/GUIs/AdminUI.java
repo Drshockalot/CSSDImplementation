@@ -1205,6 +1205,11 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminJourneyAddError.setText("Off Peak is greater than On Peak");
 
         cmb_adminJourneyAddDepZone.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_adminJourneyAddDepZone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_adminJourneyAddDepZoneActionPerformed(evt);
+            }
+        });
 
         cmb_adminJourneyAddArrZone.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -3185,11 +3190,36 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserViewTicketsCloseActionPerformed
 
     private void btn_adminJourneyAddSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyAddSaveActionPerformed
-        // TODO add your handling code here:
+        if (cmb_adminJourneyAddArrZone.getSelectedItem() != null) {
+            float offPeak = Float.valueOf(txt_adminJourneyAddOffPeakPrice.getText());
+            float onPeak = Float.valueOf(txt_adminJourneyAddOnPeakPrice.getText());
+            String arrivalName = (String) cmb_adminJourneyAddArrZone.getSelectedItem();
+            String departureName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
+
+            try {
+                Zone arrivalZone = TravelSystem.getInstance().getZones().getZoneByName(arrivalName);
+                Zone departureZone = TravelSystem.getInstance().getZones().getZoneByName(departureName);
+
+                if (offPeak > 0 && onPeak > 0) {
+                    if (onPeak < offPeak) {
+                        lbl_adminJourneyAddError.setVisible(true);
+                    } else {
+                        Journey journey = new Journey(offPeak, onPeak, departureZone, arrivalZone);
+                        TravelSystem.getInstance().getJourneys().add(journey);
+                        TravelSystem.getInstance().serializeJourneys();
+                        populateJourneyTable();
+                        dlg_adminJourneyAdd.setVisible(false);
+                    }
+                }
+            } catch (Throwable ex) {
+                Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_adminJourneyAddSaveActionPerformed
 
     private void btn_adminJourneyAddCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyAddCancelActionPerformed
-        // TODO add your handling code here:
+        initAddJourneyView();
+        dlg_adminJourneyAdd.setVisible(false);
     }//GEN-LAST:event_btn_adminJourneyAddCancelActionPerformed
 
     private void dlg_adminJourneyAddWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneyAddWindowOpened
@@ -3198,10 +3228,24 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminJourneyAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyAddActionPerformed
         // Add code for combo boxes here
+        initAddJourneyView();
         dlg_adminJourneyAdd.pack();
         lbl_adminJourneyAddError.hide();
         dlg_adminJourneyAdd.show();
     }//GEN-LAST:event_btn_adminJourneyAddActionPerformed
+
+    private void initAddJourneyView() {
+        try {
+            txt_adminJourneyAddOffPeakPrice.setText("0.00");
+            txt_adminJourneyAddOnPeakPrice.setText("0.00");
+            cmb_adminJourneyAddDepZone.setModel(new DefaultComboBoxModel(
+                    TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+            String zoneName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
+            populateComboWithAvailableDestinations(zoneName);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void btn_adminUserViewTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTicketsActionPerformed
         // set values here?
@@ -3379,6 +3423,28 @@ public class AdminUI extends javax.swing.JFrame {
             txt_adminUserViewTCDiscount.setText("0");
         }
     }//GEN-LAST:event_txt_adminUserViewTCDiscountFocusLost
+
+    private void cmb_adminJourneyAddDepZoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_adminJourneyAddDepZoneActionPerformed
+        String zoneName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
+        populateComboWithAvailableDestinations(zoneName);
+    }//GEN-LAST:event_cmb_adminJourneyAddDepZoneActionPerformed
+
+    private void populateComboWithAvailableDestinations(String zoneName) {
+        try {
+            // Get the departure zone
+            Zone zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
+            // Get all destinations that the departure zone goes to
+            ZoneList destinations = TravelSystem.getInstance()
+                    .getJourneys().getDestinationsForDepartureZone(zone.getId());
+            // Get all the zones not included in destinations
+            ZoneList availableDestinations = TravelSystem.getInstance().getZones().getZonesNotInList(destinations);
+            // Convert into string array for combo
+            String[] destinationsForCombo = TravelSystem.getInstance().getZones().getZonesAsStringArray(availableDestinations);
+            cmb_adminJourneyAddArrZone.setModel(new DefaultComboBoxModel(destinationsForCombo));
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void initUserTicketView(int userId) {
         DefaultTableModel model = (DefaultTableModel) tbl_adminUserViewTickets.getModel();

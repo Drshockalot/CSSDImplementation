@@ -111,6 +111,30 @@ public class JourneyList extends Vector<Journey> implements Serializable {
         }
     }
 
+    public ZoneList getDestinationsForDepartureZone(int zoneId) {
+        ZoneList zoneList = new ZoneList();
+
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getStartZone().getId() == zoneId) {
+                zoneList.add(super.get(i).getEndZone());
+            }
+        }
+
+        return zoneList;
+    }
+
+    public ZoneList getDeparturesForDestinationZone(int zoneId) {
+        ZoneList zoneList = new ZoneList();
+
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getEndZone().getId() == zoneId) {
+                zoneList.add(super.get(i).getStartZone());
+            }
+        }
+
+        return zoneList;
+    }
+
     public void serializeJourneys() {
         try {
             FileOutputStream fileOut = new FileOutputStream("files/journeys.ser");
