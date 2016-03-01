@@ -5,6 +5,8 @@
  */
 package TestClasses;
 
+import PublicTransportationSystem.*;
+import java.util.Date;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -21,7 +23,23 @@ public class User {
     }
 
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws Throwable {
+        PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
+        StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
+        SetOfGateways gateways = station_system.getStationGateways();
+        PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(1);
+
+        PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
+        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(1);
+
+        gateway.PerformScanIn(travel_card);
+        gateway.PerformScanOut(travel_card);
+
+        gateway.PerformScanIn(travel_card);
+        gateway.PerformScanOut(travel_card);
+
+        gateway.PerformScanIn(travel_card);
+        gateway.PerformScanOut(travel_card);
     }
 
     @AfterClass
@@ -48,4 +66,18 @@ public class User {
     ///////////////////
     // Test Case 2.2 //
     ///////////////////
+    @Test
+    public void checkUserTicketsOnDay() throws Throwable {
+        PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
+        PublicTransportationSystem.SetOfTickets tickets = travel_system.getTickets();
+        PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
+        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(1);
+        PublicTransportationSystem.User user = travel_card.getUser();
+
+        SetOfTickets userTickets = tickets.getTicketsForUserOnDay(user.getId(), new Date());
+
+        userTickets.stream().forEach((ticket) -> {
+            assertTrue(DateManipulationUtil.isOnSameDay(ticket.getPurchasedTime(), new Date()));
+        });
+    }
 }
