@@ -69,7 +69,7 @@ public class TravelCard {
     }
 
     public boolean checkForActivePass() {
-        return this.pass == null;
+        return this.pass != null;
     }
 
     public boolean checkForPass(Zone zone) {
@@ -99,6 +99,10 @@ public class TravelCard {
     public float getDailyCap() {
         // Return the value of 'dailyCap'
         return this.dailyCap;
+    }
+
+    public Date getLastDepartedTime() {
+        return this.lastDepartedTime;
     }
 
     public void subtractFromBalance(float cost) {

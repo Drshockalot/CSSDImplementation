@@ -13,6 +13,7 @@ import PublicTransportationSystem.SetOfUsers;
 import PublicTransportationSystem.StationSystem;
 import PublicTransportationSystem.SystemRole;
 import PublicTransportationSystem.Ticket;
+import PublicTransportationSystem.TravelCard;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
@@ -21,6 +22,7 @@ import PublicTransportationSystem.ZoneList;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -2469,9 +2471,44 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserViewTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCActionPerformed
         // TODO add your handling code here:
+        initTravelCardView();
         dlg_adminUserViewTravelCard.pack();
         dlg_adminUserViewTravelCard.show();
     }//GEN-LAST:event_btn_adminUserViewTCActionPerformed
+
+    private void initTravelCardView() {
+        int row = tbl_adminGUIUserList.getSelectedRow();
+        int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
+        try {
+            User user = TravelSystem.getInstance().getUsers().getUserById(userId);
+            TravelCard travelCard = TravelSystem.getInstance().getTravelCards()
+                    .getTravelCardById(user.getTravelCardId());
+            txt_adminUserAddTCId1.setText(String.valueOf(travelCard.getId()));
+            txt_adminUserViewTCBalance.setText("£" + String.valueOf(travelCard.getBalance()));
+            txt_adminUserViewTCStartDate.setText(getDateFormatted("date", travelCard.getCreationDate()));
+            txt_adminUserViewTCExpiryDate.setText(getDateFormatted("date", travelCard.getExpiryDate()));
+            txt_adminUserViewTCDiscount.setText("£" + String.valueOf(travelCard.getDiscount()));
+            txt_adminUserViewTCDailyCap.setText("£" + String.valueOf(travelCard.getDailyCap()));
+            if (travelCard.checkForActivePass()) {
+                txt_adminUserViewTCPass.setText(travelCard.getPass().passType().name());
+            } else {
+                txt_adminUserViewTCPass.setText("No active pass");
+            }
+            if (travelCard.getDepartureDetails() != null) {
+                txt_adminUserViewTCDepStation.setText(travelCard.getDepartureDetails().getName());
+            } else {
+                txt_adminUserViewTCDepStation.setText("No departure details");
+            }
+            if (travelCard.getLastDepartedTime() != null) {
+                txt_adminUserViewTCDepTime.setText(getDateFormatted("time", travelCard.getLastDepartedTime()));
+            } else {
+                txt_adminUserViewTCDepTime.setText("No departure details");
+            }
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     private void btn_adminZoneAddAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneAddAddActionPerformed
         int zoneId = Integer.valueOf(txt_adminZoneAddId.getText());
@@ -2615,6 +2652,15 @@ public class AdminUI extends javax.swing.JFrame {
             Logger.getLogger(AdminUI.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private String getDateFormatted(String formatType, Date date) {
+        // defaults to date unless time is explictly passed
+        if (formatType.equals("time")) {
+            return new SimpleDateFormat("HH:mm:ss").format(date);
+        }
+        return new SimpleDateFormat("dd-MM-yyyy").format(date);
+
     }
 
     private void displayPrices() {
