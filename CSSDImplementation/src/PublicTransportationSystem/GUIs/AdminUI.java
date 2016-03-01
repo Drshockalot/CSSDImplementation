@@ -36,10 +36,11 @@ import javax.swing.table.DefaultTableModel;
 public class AdminUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form AdminUI
+     * Creates new form AdminUI, takes login username from website login
      */
-    public AdminUI() {
+    public AdminUI(String username) {
         initComponents();
+        lbl_adminOverviewUsername.setText(username);
     }
 
     /**
@@ -218,11 +219,12 @@ public class AdminUI extends javax.swing.JFrame {
         pnl_adminGUITabs = new javax.swing.JPanel();
         tab_admin = new javax.swing.JTabbedPane();
         pnl_adminHome = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_adminOverviewTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        lbl_adminOverviewUsername = new javax.swing.JLabel();
         pnl_adminUserManagement = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_adminGUIUserList = new javax.swing.JTable();
@@ -1821,8 +1823,8 @@ public class AdminUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel2.setText("Welcome UserNameHere");
+        lbl_adminOverviewTitle.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        lbl_adminOverviewTitle.setText("Welcome");
 
         jLabel1.setText("Left Panel");
 
@@ -1865,6 +1867,9 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap(382, Short.MAX_VALUE))
         );
 
+        lbl_adminOverviewUsername.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        lbl_adminOverviewUsername.setText("UserNameHere");
+
         javax.swing.GroupLayout pnl_adminHomeLayout = new javax.swing.GroupLayout(pnl_adminHome);
         pnl_adminHome.setLayout(pnl_adminHomeLayout);
         pnl_adminHomeLayout.setHorizontalGroup(
@@ -1878,14 +1883,18 @@ public class AdminUI extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 190, Short.MAX_VALUE))
                     .addGroup(pnl_adminHomeLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(lbl_adminOverviewTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_adminOverviewUsername)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnl_adminHomeLayout.setVerticalGroup(
             pnl_adminHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_adminHomeLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel2)
+                .addGroup(pnl_adminHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_adminOverviewTitle)
+                    .addComponent(lbl_adminOverviewUsername))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_adminHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3611,7 +3620,7 @@ public class AdminUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminUI().setVisible(true);
+                new AdminUI("").setVisible(true);
             }
         });
     }
@@ -3697,7 +3706,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -3729,6 +3737,8 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_adminJourneyEditOffPeakPrice;
     private javax.swing.JLabel lbl_adminJourneyEditOnPeakPrice;
     private javax.swing.JLabel lbl_adminJourneyEditTitle;
+    private javax.swing.JLabel lbl_adminOverviewTitle;
+    private javax.swing.JLabel lbl_adminOverviewUsername;
     private javax.swing.JLabel lbl_adminStationAddGPS;
     private javax.swing.JLabel lbl_adminStationAddId;
     private javax.swing.JLabel lbl_adminStationAddLocation;
