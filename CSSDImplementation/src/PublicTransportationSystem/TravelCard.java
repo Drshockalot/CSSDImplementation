@@ -145,6 +145,14 @@ public class TravelCard {
     public User getUser() {
         return this.user;
     }
+
+    public Date getLastDepartedTime() {
+        return this.lastDepartedTime;
+    }
+
+    public void setLastDepartedTime(Date date) {
+        this.lastDepartedTime = date;
+    }
 // </editor-fold>
 // Methods End
 }

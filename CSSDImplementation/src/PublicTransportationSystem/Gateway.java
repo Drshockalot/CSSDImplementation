@@ -5,6 +5,8 @@
  */
 package PublicTransportationSystem;
 
+import java.util.Date;
+
 /**
  *
  * @author DrPoopAlotz
@@ -80,6 +82,7 @@ public class Gateway {
             if (currCard.getBalance() > 0) {
                 this.approve();
                 currCard.setLastDepartedStation(sys.getStationSystems().getStationSystemById(stationID));
+                currCard.setLastDepartedTime(new Date());
                 return true;
             } else {
                 this.reject();
