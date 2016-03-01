@@ -46,6 +46,15 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         return null;
     }
 
+    public User getUserByEmail(String email) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getEmail().equalsIgnoreCase(email)) {
+                return super.get(i);
+            }
+        }
+        return null;
+    }
+
     public TypeEnums.UserType getUserSystemEnum(int userId) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getId() == userId) {

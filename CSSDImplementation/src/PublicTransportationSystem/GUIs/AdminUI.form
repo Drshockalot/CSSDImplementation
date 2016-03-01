@@ -2866,6 +2866,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="btn_adminJourneySearch" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btn_adminJourneySearchClear" min="-2" pref="107" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="btn_adminJourneyDelete" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -2896,6 +2898,7 @@
                                   <Component id="btn_adminJourneyEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_adminJourneySearch" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_adminJourneyDelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_adminJourneySearchClear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -3052,6 +3055,18 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JButton" name="btn_adminJourneySearchClear">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear Search"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[97, 29]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_adminJourneySearchClearActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -3100,6 +3115,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="btn_adminZoneSearch" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btn_adminZoneSearchClear" min="-2" pref="106" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="btn_adminZoneDelete" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -3131,8 +3148,9 @@
                                   <Component id="btn_adminZoneEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_adminZoneSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_adminZoneDelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_adminZoneSearchClear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3272,6 +3290,15 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JButton" name="btn_adminZoneSearchClear">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear Search"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[97, 29]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -3319,6 +3346,8 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="btn_adminStationsSearch" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btn_adminStationsSearchClear" min="-2" pref="106" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="btn_adminStationsDelete" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -3345,6 +3374,7 @@
                                   <Component id="btn_adminStationsEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_adminStationsSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_adminStationsDelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_adminStationsSearchClear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="12" max="32767" attributes="0"/>
                           </Group>
@@ -3492,6 +3522,15 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JButton" name="btn_adminStationsSearchClear">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear Search"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[97, 29]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>

@@ -272,72 +272,72 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
-              </Group>
+              <Component id="pnl_registerContainer" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+              <Component id="pnl_registerContainer" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel2">
+        <Container class="javax.swing.JPanel" name="pnl_registerContainer">
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btn_Register" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="lbl_registerTitle" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btn_RegisterCancel" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbl_fullname" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txt_Firstname" min="-2" pref="129" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="lbl_fullname1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="txt_Surname" min="-2" pref="141" max="-2" attributes="0"/>
+                                      <Component id="txt_registerFirstName" min="-2" pref="183" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lbl_registerFirstNameError" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="155" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btn_RegisterSubmit" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lbl_Username" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_Username1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txt_Email" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txt_Username" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
+                                  <Component id="lbl_registerUsername" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lbl_registerEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pass_registerPassword" alignment="0" pref="251" max="32767" attributes="0"/>
+                                          <Component id="lbl_registerPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_registerUsername" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lbl_registerUsernameError" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="txtPass_Password" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
-                                  <Component id="txt_Password" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txt_registerEmail" min="-2" pref="166" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lbl_registerEmailError" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lbl_registerLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txt_registerLastName" min="-2" pref="183" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lbl_registerLastNameError" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lbl_registerFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
+                                      <Component id="lbl_registerPasswordError" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -345,90 +345,154 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_fullname1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_fullname" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lbl_registerTitle" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Component id="lbl_registerFirstName" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_Firstname" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_Surname" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_registerFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_registerFirstNameError" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lbl_Username" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_registerLastName" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_Username" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_registerLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_registerLastNameError" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lbl_registerUsername" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lbl_Username1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_registerUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_registerUsernameError" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_Email" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_registerEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_Password" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_registerEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_registerEmailError" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtPass_Password" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_Register" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <Component id="lbl_registerPassword" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="pass_registerPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_registerPasswordError" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_RegisterSubmit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_RegisterCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lbl_fullname">
+            <Component class="javax.swing.JLabel" name="lbl_registerFirstName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="First Name"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_Firstname">
+            <Component class="javax.swing.JTextField" name="txt_registerFirstName">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FirstnameActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_registerFirstNameActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_Username">
+            <Component class="javax.swing.JLabel" name="lbl_registerUsername">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Username"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_Username">
+            <Component class="javax.swing.JTextField" name="txt_registerUsername">
             </Component>
-            <Component class="javax.swing.JLabel" name="txt_Password">
+            <Component class="javax.swing.JLabel" name="lbl_registerPassword">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="txtPass_Password">
+            <Component class="javax.swing.JPasswordField" name="pass_registerPassword">
             </Component>
-            <Component class="javax.swing.JButton" name="btn_Register">
+            <Component class="javax.swing.JButton" name="btn_RegisterSubmit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Register"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_RegisterActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_RegisterSubmitActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_Surname">
+            <Component class="javax.swing.JTextField" name="txt_registerLastName">
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_fullname1">
+            <Component class="javax.swing.JLabel" name="lbl_registerLastName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Surname"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_Email">
+            <Component class="javax.swing.JTextField" name="txt_registerEmail">
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_Username1">
+            <Component class="javax.swing.JLabel" name="lbl_registerEmail">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lbl_registerTitle">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="24" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Register"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_RegisterCancel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cancel"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_RegisterCancelActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_registerUsernameError">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Username already exists!"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_registerEmailError">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Email already exists!"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_registerFirstNameError">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Required"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_registerLastNameError">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Required"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_registerPasswordError">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Required"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -490,7 +554,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="pnl_websiteMainContainer" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txt_websiteURL" min="-2" pref="997" max="-2" attributes="0"/>
@@ -510,8 +574,8 @@
                       <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
                       <Component id="btn_websiteURLGo" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="pnl_websiteMainContainer" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="pnl_websiteMainContainer" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -730,7 +794,7 @@
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="173" max="32767" attributes="0"/>
+                          <EmptySpace pref="165" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

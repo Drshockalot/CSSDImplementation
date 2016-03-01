@@ -244,6 +244,7 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_adminGUIJourneyList = new javax.swing.JTable();
+        btn_adminJourneySearchClear = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         pnl_adminUserManagement2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -254,6 +255,7 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminZoneDelete = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        btn_adminZoneSearchClear = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         pnl_adminUserManagement3 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -264,6 +266,7 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminStationsDelete = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
+        btn_adminStationsSearchClear = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -2145,6 +2148,15 @@ public class AdminUI extends javax.swing.JFrame {
             tbl_adminGUIJourneyList.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
+        btn_adminJourneySearchClear.setText("Clear Search");
+        btn_adminJourneySearchClear.setEnabled(false);
+        btn_adminJourneySearchClear.setPreferredSize(new java.awt.Dimension(97, 29));
+        btn_adminJourneySearchClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneySearchClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnl_adminUserManagement1Layout = new javax.swing.GroupLayout(pnl_adminUserManagement1);
         pnl_adminUserManagement1.setLayout(pnl_adminUserManagement1Layout);
         pnl_adminUserManagement1Layout.setHorizontalGroup(
@@ -2154,6 +2166,8 @@ public class AdminUI extends javax.swing.JFrame {
                 .addGroup(pnl_adminUserManagement1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_adminUserManagement1Layout.createSequentialGroup()
                         .addComponent(btn_adminJourneySearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_adminJourneySearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_adminJourneyDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2177,7 +2191,8 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(btn_adminJourneyAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminJourneyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminJourneySearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_adminJourneyDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_adminJourneyDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_adminJourneySearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2285,6 +2300,10 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap(377, Short.MAX_VALUE))
         );
 
+        btn_adminZoneSearchClear.setText("Clear Search");
+        btn_adminZoneSearchClear.setEnabled(false);
+        btn_adminZoneSearchClear.setPreferredSize(new java.awt.Dimension(97, 29));
+
         javax.swing.GroupLayout pnl_adminUserManagement2Layout = new javax.swing.GroupLayout(pnl_adminUserManagement2);
         pnl_adminUserManagement2.setLayout(pnl_adminUserManagement2Layout);
         pnl_adminUserManagement2Layout.setHorizontalGroup(
@@ -2294,6 +2313,8 @@ public class AdminUI extends javax.swing.JFrame {
                 .addGroup(pnl_adminUserManagement2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_adminUserManagement2Layout.createSequentialGroup()
                         .addComponent(btn_adminZoneSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_adminZoneSearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_adminZoneDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2318,8 +2339,9 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(btn_adminZoneAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminZoneEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminZoneSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_adminZoneDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_adminZoneDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_adminZoneSearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -2429,6 +2451,10 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap(377, Short.MAX_VALUE))
         );
 
+        btn_adminStationsSearchClear.setText("Clear Search");
+        btn_adminStationsSearchClear.setEnabled(false);
+        btn_adminStationsSearchClear.setPreferredSize(new java.awt.Dimension(97, 29));
+
         javax.swing.GroupLayout pnl_adminUserManagement3Layout = new javax.swing.GroupLayout(pnl_adminUserManagement3);
         pnl_adminUserManagement3.setLayout(pnl_adminUserManagement3Layout);
         pnl_adminUserManagement3Layout.setHorizontalGroup(
@@ -2442,6 +2468,8 @@ public class AdminUI extends javax.swing.JFrame {
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnl_adminUserManagement3Layout.createSequentialGroup()
                         .addComponent(btn_adminStationsSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_adminStationsSearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_adminStationsDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2462,7 +2490,8 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(btn_adminStationsAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminStationsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminStationsSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_adminStationsDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_adminStationsDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_adminStationsSearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -3380,6 +3409,10 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_adminUserViewTCDiscountFocusLost
 
+    private void btn_adminJourneySearchClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_adminJourneySearchClearActionPerformed
+
     private void initUserTicketView(int userId) {
         DefaultTableModel model = (DefaultTableModel) tbl_adminUserViewTickets.getModel();
 
@@ -3527,6 +3560,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_adminJourneyEditClose;
     private javax.swing.JButton btn_adminJourneyEditSave;
     private javax.swing.JButton btn_adminJourneySearch;
+    private javax.swing.JButton btn_adminJourneySearchClear;
     private javax.swing.JButton btn_adminStationAddAdd;
     private javax.swing.JButton btn_adminStationAddCancel;
     private javax.swing.JButton btn_adminStationDeleteCancel;
@@ -3537,6 +3571,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_adminStationsDelete;
     private javax.swing.JButton btn_adminStationsEdit;
     private javax.swing.JButton btn_adminStationsSearch;
+    private javax.swing.JButton btn_adminStationsSearchClear;
     private javax.swing.JButton btn_adminUserAdd;
     private javax.swing.JButton btn_adminUserAddEditCancel;
     private javax.swing.JButton btn_adminUserAddEditSave;
@@ -3564,6 +3599,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_adminZoneEditAdd;
     private javax.swing.JButton btn_adminZoneEditCancel;
     private javax.swing.JButton btn_adminZoneSearch;
+    private javax.swing.JButton btn_adminZoneSearchClear;
     private javax.swing.JButton btn_logout;
     private javax.swing.JComboBox<String> cmb_adminJourneyAddArrZone;
     private javax.swing.JComboBox<String> cmb_adminJourneyAddDepZone;

@@ -51,19 +51,25 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_loginErrorMsg = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         registerPopup = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        lbl_fullname = new javax.swing.JLabel();
-        txt_Firstname = new javax.swing.JTextField();
-        lbl_Username = new javax.swing.JLabel();
-        txt_Username = new javax.swing.JTextField();
-        txt_Password = new javax.swing.JLabel();
-        txtPass_Password = new javax.swing.JPasswordField();
-        btn_Register = new javax.swing.JButton();
-        txt_Surname = new javax.swing.JTextField();
-        lbl_fullname1 = new javax.swing.JLabel();
-        txt_Email = new javax.swing.JTextField();
-        lbl_Username1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        pnl_registerContainer = new javax.swing.JPanel();
+        lbl_registerFirstName = new javax.swing.JLabel();
+        txt_registerFirstName = new javax.swing.JTextField();
+        lbl_registerUsername = new javax.swing.JLabel();
+        txt_registerUsername = new javax.swing.JTextField();
+        lbl_registerPassword = new javax.swing.JLabel();
+        pass_registerPassword = new javax.swing.JPasswordField();
+        btn_RegisterSubmit = new javax.swing.JButton();
+        txt_registerLastName = new javax.swing.JTextField();
+        lbl_registerLastName = new javax.swing.JLabel();
+        txt_registerEmail = new javax.swing.JTextField();
+        lbl_registerEmail = new javax.swing.JLabel();
+        lbl_registerTitle = new javax.swing.JLabel();
+        btn_RegisterCancel = new javax.swing.JButton();
+        lbl_registerUsernameError = new javax.swing.JLabel();
+        lbl_registerEmailError = new javax.swing.JLabel();
+        lbl_registerFirstNameError = new javax.swing.JLabel();
+        lbl_registerLastNameError = new javax.swing.JLabel();
+        lbl_registerPasswordError = new javax.swing.JLabel();
         pnl_websiteContainer = new javax.swing.JPanel();
         txt_websiteURL = new javax.swing.JTextField();
         btn_websiteURLGo = new javax.swing.JButton();
@@ -287,114 +293,151 @@ public class WebsiteUI extends javax.swing.JFrame {
             }
         });
 
-        lbl_fullname.setText("First Name");
+        lbl_registerFirstName.setText("First Name");
 
-        txt_Firstname.addActionListener(new java.awt.event.ActionListener() {
+        txt_registerFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_FirstnameActionPerformed(evt);
+                txt_registerFirstNameActionPerformed(evt);
             }
         });
 
-        lbl_Username.setText("Username");
+        lbl_registerUsername.setText("Username");
 
-        txt_Password.setText("Password");
+        lbl_registerPassword.setText("Password");
 
-        btn_Register.setText("Register");
-        btn_Register.addActionListener(new java.awt.event.ActionListener() {
+        btn_RegisterSubmit.setText("Register");
+        btn_RegisterSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_RegisterActionPerformed(evt);
+                btn_RegisterSubmitActionPerformed(evt);
             }
         });
 
-        lbl_fullname1.setText("Surname");
+        lbl_registerLastName.setText("Surname");
 
-        lbl_Username1.setText("Email");
+        lbl_registerEmail.setText("Email");
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Register");
+        lbl_registerTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        lbl_registerTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_registerTitle.setText("Register");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_Register)
-                .addGap(96, 96, 96))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        btn_RegisterCancel.setText("Cancel");
+        btn_RegisterCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegisterCancelActionPerformed(evt);
+            }
+        });
+
+        lbl_registerUsernameError.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_registerUsernameError.setText("Username already exists!");
+
+        lbl_registerEmailError.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_registerEmailError.setText("Email already exists!");
+
+        lbl_registerFirstNameError.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_registerFirstNameError.setText("Required");
+
+        lbl_registerLastNameError.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_registerLastNameError.setText("Required");
+
+        lbl_registerPasswordError.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_registerPasswordError.setText("Required");
+
+        javax.swing.GroupLayout pnl_registerContainerLayout = new javax.swing.GroupLayout(pnl_registerContainer);
+        pnl_registerContainer.setLayout(pnl_registerContainerLayout);
+        pnl_registerContainerLayout.setHorizontalGroup(
+            pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_registerTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnl_registerContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_fullname)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txt_Firstname, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_fullname1)
-                                .addGap(47, 47, 47))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(txt_Surname, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Username)
-                            .addComponent(lbl_Username1)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txt_Email, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_Username, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtPass_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_Password))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_registerContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_RegisterCancel)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl_registerContainerLayout.createSequentialGroup()
+                                .addComponent(txt_registerFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_registerFirstNameError)
+                                .addGap(0, 155, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_RegisterSubmit))
+                    .addGroup(pnl_registerContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_registerUsername)
+                            .addGroup(pnl_registerContainerLayout.createSequentialGroup()
+                                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbl_registerEmail)
+                                    .addComponent(pass_registerPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                                    .addComponent(lbl_registerPassword)
+                                    .addComponent(txt_registerUsername))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbl_registerUsernameError))
+                            .addGroup(pnl_registerContainerLayout.createSequentialGroup()
+                                .addComponent(txt_registerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbl_registerEmailError))
+                            .addComponent(lbl_registerLastName)
+                            .addGroup(pnl_registerContainerLayout.createSequentialGroup()
+                                .addComponent(txt_registerLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_registerLastNameError))
+                            .addComponent(lbl_registerFirstName)
+                            .addGroup(pnl_registerContainerLayout.createSequentialGroup()
+                                .addGap(261, 261, 261)
+                                .addComponent(lbl_registerPasswordError)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnl_registerContainerLayout.setVerticalGroup(
+            pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_registerContainerLayout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_fullname1)
-                    .addComponent(lbl_fullname))
+                .addComponent(lbl_registerTitle)
                 .addGap(4, 4, 4)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Firstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Surname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lbl_registerFirstName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_Username)
+                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_registerFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_registerFirstNameError))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_registerLastName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_Username1)
+                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_registerLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_registerLastNameError))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_registerUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_registerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_registerUsernameError))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Password)
+                .addComponent(lbl_registerEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPass_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_Register)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_registerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_registerEmailError))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_registerPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pass_registerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_registerPasswordError))
+                .addGap(20, 20, 20)
+                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_RegisterSubmit)
+                    .addComponent(btn_RegisterCancel))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout registerPopupLayout = new javax.swing.GroupLayout(registerPopup.getContentPane());
         registerPopup.getContentPane().setLayout(registerPopupLayout);
         registerPopupLayout.setHorizontalGroup(
             registerPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerPopupLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+            .addComponent(pnl_registerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         registerPopupLayout.setVerticalGroup(
             registerPopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerPopupLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pnl_registerContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -517,7 +560,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnl_websiteMainContainerLayout = new javax.swing.GroupLayout(pnl_websiteMainContainer);
@@ -573,7 +616,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addGroup(pnl_websiteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnl_websiteMainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnl_websiteContainerLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 4, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_websiteURL, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -589,7 +632,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_websiteURLGo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_websiteMainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_websiteMainContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -620,31 +663,105 @@ public class WebsiteUI extends javax.swing.JFrame {
         loginPopup.setVisible(true);
     }//GEN-LAST:event_formWindowOpened
 
-    private void txt_FirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FirstnameActionPerformed
+    private void txt_registerFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_registerFirstNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_FirstnameActionPerformed
+    }//GEN-LAST:event_txt_registerFirstNameActionPerformed
 
-    private void btn_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterActionPerformed
-        String firstName = txt_Firstname.getText();
-        String surname = txt_Surname.getText();
-        String username = txt_Username.getText();
-        String email = txt_Email.getText();
-        String password = new String(txtPass_Password.getPassword());
+    // sets error states inside register form if there is any issues
+    private boolean checkUsersRegistrationInput(String firstName, String surname,
+            String username, String email, String password, SystemRole newSysRole) {
+
+        boolean isValid = true;
+
+        if (firstName.isEmpty()) {
+            lbl_registerFirstNameError.setVisible(true);
+            isValid = false;
+        } else {
+            lbl_registerFirstNameError.setVisible(false);
+        }
+
+        if (surname.isEmpty()) {
+            lbl_registerLastNameError.setVisible(true);
+            isValid = false;
+        } else {
+            lbl_registerLastNameError.setVisible(false);
+        }
+
+        if (username.isEmpty()) {
+            lbl_registerUsernameError.setText("Required");
+            lbl_registerUsernameError.setVisible(true);
+            isValid = false;
+        } else {
+            try {
+                // if username is already taken
+                if (TravelSystem.getInstance().getUsers().getUserByUsername(username) != null) {
+                    lbl_registerUsernameError.setText("Username already exists!");
+                    lbl_registerUsernameError.setVisible(true);
+                    isValid = false;
+                } else {
+                    lbl_registerUsernameError.setVisible(false);
+                }
+            } catch (Throwable ex) {
+                Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        if (email.isEmpty()) {
+            lbl_registerEmailError.setText("Required");
+            lbl_registerEmailError.setVisible(true);
+            isValid = false;
+        } else {
+            try {
+                // if email is already taken
+                if (TravelSystem.getInstance().getUsers().getUserByEmail(email) != null) {
+                    lbl_registerEmailError.setText("Email already exists!");
+                    lbl_registerEmailError.setVisible(true);
+                    isValid = false;
+                } else {
+                    lbl_registerEmailError.setVisible(false);
+                }
+            } catch (Throwable ex) {
+                Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        if (password.isEmpty()) {
+            lbl_registerPasswordError.setVisible(true);
+            isValid = false;
+        } else {
+            lbl_registerPasswordError.setVisible(false);
+        }
+
+        // returns true allowing user to register if everything checks out
+        if (isValid) {
+            return true;
+        }
+        return false;
+
+    }
+
+    private void btn_RegisterSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterSubmitActionPerformed
+        String firstName = txt_registerFirstName.getText();
+        String surname = txt_registerLastName.getText();
+        String username = txt_registerUsername.getText();
+        String email = txt_registerEmail.getText();
+        String password = new String(pass_registerPassword.getPassword());
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.USER);
 
-        if (firstName.isEmpty() || surname.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            System.out.println("Idiots");
-        } else {
+        boolean isValid = checkUsersRegistrationInput(firstName, surname,
+                username, email, password, newSysRole);
+
+        if (isValid) {
             try {
                 TravelSystem.getInstance()
                         .registerUser(null, firstName, surname, username, email, null, password, newSysRole);
+                TravelSystem.getInstance().serializeUsers(); // save users with new user
             } catch (Throwable ex) {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
             openWebsiteUI();
-            this.dispose();
         }
-    }//GEN-LAST:event_btn_RegisterActionPerformed
+    }//GEN-LAST:event_btn_RegisterSubmitActionPerformed
 
     private void registerPopupWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_registerPopupWindowClosing
 //        loginPopup.setEnabled(true);
@@ -657,10 +774,23 @@ public class WebsiteUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
-        // TODO add your handling code here:
+        //Reset register inputs
+        txt_registerFirstName.setText("");
+        txt_registerLastName.setText("");
+        txt_registerUsername.setText("");
+        txt_registerEmail.setText("");
+        pass_registerPassword.setText("");
+
+        // re-hide register error messages
+        lbl_registerFirstNameError.setVisible(false);
+        lbl_registerLastNameError.setVisible(false);
+        lbl_registerPasswordError.setVisible(false);
+        lbl_registerUsernameError.setVisible(false);
+        lbl_registerEmailError.setVisible(false);
+
         registerPopup.pack();
         registerPopup.setLocationRelativeTo(null);
-//        registerPopup.setVisible(true);
+        registerPopup.setVisible(true);
     }//GEN-LAST:event_btn_registerActionPerformed
 
     private void throwLoginError(String error) {
@@ -738,6 +868,11 @@ public class WebsiteUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pass_passwordKeyReleased
 
+    private void btn_RegisterCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterCancelActionPerformed
+        // TODO add your handling code here:
+        registerPopup.setVisible(false);
+    }//GEN-LAST:event_btn_RegisterCancelActionPerformed
+
     private void openAdminUI() {
         loginPopup.dispose();
         this.setEnabled(false);
@@ -750,6 +885,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     }
 
     private void openWebsiteUI() {
+        registerPopup.dispose();
         loginPopup.dispose();
         this.setLocationRelativeTo(null);
         this.setEnabled(true);
@@ -792,7 +928,8 @@ public class WebsiteUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Register;
+    private javax.swing.JButton btn_RegisterCancel;
+    private javax.swing.JButton btn_RegisterSubmit;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_loginPopup;
     private javax.swing.JButton btn_register;
@@ -801,7 +938,6 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_websiteURLGo;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -811,29 +947,35 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lbl_Username;
-    private javax.swing.JLabel lbl_Username1;
-    private javax.swing.JLabel lbl_fullname;
-    private javax.swing.JLabel lbl_fullname1;
     private javax.swing.JLabel lbl_loginErrorMsg;
     private javax.swing.JLabel lbl_loginTitle;
     private javax.swing.JLabel lbl_password;
+    private javax.swing.JLabel lbl_registerEmail;
+    private javax.swing.JLabel lbl_registerEmailError;
+    private javax.swing.JLabel lbl_registerFirstName;
+    private javax.swing.JLabel lbl_registerFirstNameError;
+    private javax.swing.JLabel lbl_registerLastName;
+    private javax.swing.JLabel lbl_registerLastNameError;
+    private javax.swing.JLabel lbl_registerPassword;
+    private javax.swing.JLabel lbl_registerPasswordError;
+    private javax.swing.JLabel lbl_registerTitle;
+    private javax.swing.JLabel lbl_registerUsername;
+    private javax.swing.JLabel lbl_registerUsernameError;
     private javax.swing.JLabel lbl_username;
     private javax.swing.JDialog loginPopup;
     private javax.swing.JPasswordField pass_password;
+    private javax.swing.JPasswordField pass_registerPassword;
+    private javax.swing.JPanel pnl_registerContainer;
     private javax.swing.JPanel pnl_websiteContainer;
     private javax.swing.JPanel pnl_websiteHistoryContainer;
     private javax.swing.JPanel pnl_websiteMainContainer;
     private javax.swing.JPanel pnl_websiteTicketsContainer;
     private javax.swing.JPanel pnl_websiteTravelCardContainer;
     private javax.swing.JDialog registerPopup;
-    private javax.swing.JPasswordField txtPass_Password;
-    private javax.swing.JTextField txt_Email;
-    private javax.swing.JTextField txt_Firstname;
-    private javax.swing.JLabel txt_Password;
-    private javax.swing.JTextField txt_Surname;
-    private javax.swing.JTextField txt_Username;
+    private javax.swing.JTextField txt_registerEmail;
+    private javax.swing.JTextField txt_registerFirstName;
+    private javax.swing.JTextField txt_registerLastName;
+    private javax.swing.JTextField txt_registerUsername;
     private javax.swing.JTextField txt_username;
     private javax.swing.JLabel txt_websiteMainTitle;
     private javax.swing.JTextField txt_websiteURL;
