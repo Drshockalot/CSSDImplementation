@@ -5,6 +5,7 @@
  */
 package PublicTransportationSystem;
 
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,7 +32,7 @@ public class Transaction {
         // If the user has enough to pay for the ticket
         if (currentTravelCard.getBalance() > 0) {
             // Returns the sum of the ticket prices purchased today
-            float todaysTotal = ticketHistory.calculateTodaysTotal(discount);
+            float todaysTotal = ticketHistory.calculateTodaysTotal(discount, currentTravelCard.getUser(), new Date());
             // Gets the cap for daily transactions
             float dailyCap = currentTravelCard.getDailyCap();
 

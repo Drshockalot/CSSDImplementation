@@ -5,6 +5,8 @@
  */
 package PublicTransportationSystem;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -13,12 +15,13 @@ import java.util.Vector;
  */
 public class SetOfTickets extends Vector<Ticket> {
 
-    float calculateTodaysTotal(float discount) {
+    float calculateTodaysTotal(float discount, User user, Date date) {
         // Create a PaymentManager to help us with calculating costs
         PaymentManager paymentManager = new PaymentManager();
         float todaysTotal = 0.00f;
         // Iterate through each ticket and add the price on to the total
-        for (Ticket ticket : this) {
+        SetOfTickets list = getTicketsForUserOnDay(user.getId(), date);
+        for (Ticket ticket : list) {
             // Only if it has been paid for
             if (ticket.getIsPaid()) {
                 todaysTotal += paymentManager.calculatePrice(ticket, discount);
@@ -39,6 +42,20 @@ public class SetOfTickets extends Vector<Ticket> {
             if (super.get(i).getUserId() == userId) {
                 userTickets.add(super.get(i));
             }
+        }
+
+        return userTickets;
+    }
+
+    public SetOfTickets getTicketsForUserOnDay(int userId, Date date) {
+        SetOfTickets userTickets = getTicketsForUser(userId);
+        for (int i = 0; i < userTickets.size(); ++i) {
+            Calendar cal1 = Calendar.getInstance();
+            Calendar cal2 = Calendar.getInstance();
+            cal1.setTime(date);
+            cal2.setTime(userTickets.get(i).getPurchasedTime());
+            boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                    && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
         }
 
         return userTickets;

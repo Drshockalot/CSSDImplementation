@@ -7,6 +7,7 @@ package PublicTransportationSystem;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Vector;
 
 /**
  *
@@ -72,10 +73,8 @@ public class TravelCard {
         return this.pass != null;
     }
 
-    public boolean checkForPass(Zone zone) {
-        boolean hasPass = false;
-
-        return hasPass;
+    public boolean checkForPass(Vector<TypeEnums.PassType> types) {
+        return this.pass != null ? types.stream().anyMatch((type) -> (this.pass.passType() == type)) : false;
     }
 
     public Pass getPass() {

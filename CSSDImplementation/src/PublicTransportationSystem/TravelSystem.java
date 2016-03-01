@@ -77,11 +77,13 @@ public class TravelSystem implements SetOfUsersInterface {
         } catch (Throwable ex) {
             Logger.getLogger(TravelSystem.class.getName()).log(Level.SEVERE, null, ex);
         }
-        registerTravelCard(user, "test", discount, dailyCap);
+        registerTravelCard(user, "test", discount, dailyCap, 7.00f);
 
         user = systemUsers.getUserById(3);
-        registerTravelCard(user, "nothing", discount, dailyCap);
-        registerTravelCard(systemUsers.getUserById(2), "nothing", discount, dailyCap);
+        registerTravelCard(user, "nothing", discount, dailyCap, 7.00f);
+        registerTravelCard(systemUsers.getUserById(2), "nothing", discount, dailyCap, 1.00f);
+        registerTravelCard(systemUsers.getUserById(1), "Nothing", discount, dailyCap, -1.00f);
+        registerTravelCard(systemUsers.getUserById(4), "nothing", discount, dailyCap, 5.00f);
     }
 
     public void initZones() {
@@ -185,9 +187,9 @@ public class TravelSystem implements SetOfUsersInterface {
         systemJourneys.add(newJourney);
     }
 
-    public void registerTravelCard(User user, String cardType, float discount, float dailyCap) {
+    public void registerTravelCard(User user, String cardType, float discount, float dailyCap, float funds) {
         TravelCard newTravelCard = new TravelCard(systemTravelCards.getNextId(), user, cardType, discount, dailyCap);
-        newTravelCard.addFunds(7.00f);
+        newTravelCard.addFunds(funds);
         systemTravelCards.add(newTravelCard);
     }
 
