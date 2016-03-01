@@ -63,20 +63,20 @@ public class WebsiteUI extends javax.swing.JFrame {
         txt_Email = new javax.swing.JTextField();
         lbl_Username1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        pnl_websiteContainer = new javax.swing.JPanel();
+        txt_websiteURL = new javax.swing.JTextField();
+        btn_websiteURLGo = new javax.swing.JButton();
+        pnl_websiteMainContainer = new javax.swing.JPanel();
+        btn_websiteMainLogout = new javax.swing.JButton();
+        txt_websiteMainTitle = new javax.swing.JLabel();
+        btn_websiteMainAccount = new javax.swing.JButton();
+        pnl_websiteHistoryContainer = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        pnl_websiteTicketsContainer = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        pnl_websiteTravelCardContainer = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -390,26 +390,26 @@ public class WebsiteUI extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("  http://www.publictransportsystem.com?l=true&userid=2&frame=websiteui");
-        jTextField1.setEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_websiteURL.setText("  http://www.publictransportsystem.com?l=true&userid=2&frame=websiteui");
+        txt_websiteURL.setEnabled(false);
+        txt_websiteURL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txt_websiteURLActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Go");
-        jButton1.setEnabled(false);
+        btn_websiteURLGo.setText("Go");
+        btn_websiteURLGo.setEnabled(false);
 
-        jButton2.setText("Log Out");
+        btn_websiteMainLogout.setText("Log Out");
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("The Public Transport System");
+        txt_websiteMainTitle.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        txt_websiteMainTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_websiteMainTitle.setText("The Public Transport System");
 
-        jButton4.setText("My Account");
+        btn_websiteMainAccount.setText("My Account");
 
-        jPanel4.setBackground(new java.awt.Color(204, 255, 255));
+        pnl_websiteHistoryContainer.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -417,22 +417,22 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         jLabel5.setText("List here of the users journeys");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_websiteHistoryContainerLayout = new javax.swing.GroupLayout(pnl_websiteHistoryContainer);
+        pnl_websiteHistoryContainer.setLayout(pnl_websiteHistoryContainerLayout);
+        pnl_websiteHistoryContainerLayout.setHorizontalGroup(
+            pnl_websiteHistoryContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_websiteHistoryContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_websiteHistoryContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(pnl_websiteHistoryContainerLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 172, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        pnl_websiteHistoryContainerLayout.setVerticalGroup(
+            pnl_websiteHistoryContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_websiteHistoryContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(26, 26, 26)
@@ -445,20 +445,20 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         jLabel9.setText("Couple of inputs for user to buy a ticket");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_websiteTicketsContainerLayout = new javax.swing.GroupLayout(pnl_websiteTicketsContainer);
+        pnl_websiteTicketsContainer.setLayout(pnl_websiteTicketsContainerLayout);
+        pnl_websiteTicketsContainerLayout.setHorizontalGroup(
+            pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel9))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        pnl_websiteTicketsContainerLayout.setVerticalGroup(
+            pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -471,23 +471,23 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         jLabel8.setText("information about users travel card");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_websiteTravelCardContainerLayout = new javax.swing.GroupLayout(pnl_websiteTravelCardContainer);
+        pnl_websiteTravelCardContainer.setLayout(pnl_websiteTravelCardContainerLayout);
+        pnl_websiteTravelCardContainerLayout.setHorizontalGroup(
+            pnl_websiteTravelCardContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_websiteTravelCardContainerLayout.createSequentialGroup()
+                .addGroup(pnl_websiteTravelCardContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_websiteTravelCardContainerLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel7))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGroup(pnl_websiteTravelCardContainerLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jLabel8)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        pnl_websiteTravelCardContainerLayout.setVerticalGroup(
+            pnl_websiteTravelCardContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_websiteTravelCardContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
@@ -495,43 +495,43 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addContainerGap(173, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_websiteMainContainerLayout = new javax.swing.GroupLayout(pnl_websiteMainContainer);
+        pnl_websiteMainContainer.setLayout(pnl_websiteMainContainerLayout);
+        pnl_websiteMainContainerLayout.setHorizontalGroup(
+            pnl_websiteMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_websiteMainContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                .addGroup(pnl_websiteMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl_websiteMainContainerLayout.createSequentialGroup()
+                        .addComponent(btn_websiteMainLogout)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
+                        .addComponent(btn_websiteMainAccount)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txt_websiteMainTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_websiteMainContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_websiteMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnl_websiteTicketsContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnl_websiteTravelCardContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnl_websiteHistoryContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pnl_websiteMainContainerLayout.setVerticalGroup(
+            pnl_websiteMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_websiteMainContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
+                .addGroup(pnl_websiteMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_websiteMainLogout)
+                    .addComponent(btn_websiteMainAccount))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_websiteMainTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnl_websiteMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_websiteHistoryContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_websiteMainContainerLayout.createSequentialGroup()
+                        .addComponent(pnl_websiteTicketsContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(pnl_websiteTravelCardContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -539,32 +539,32 @@ public class WebsiteUI extends javax.swing.JFrame {
         jButton3.setToolTipText("");
         jButton3.setEnabled(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_websiteContainerLayout = new javax.swing.GroupLayout(pnl_websiteContainer);
+        pnl_websiteContainer.setLayout(pnl_websiteContainerLayout);
+        pnl_websiteContainerLayout.setHorizontalGroup(
+            pnl_websiteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_websiteContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pnl_websiteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_websiteMainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_websiteContainerLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_websiteURL, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_websiteURLGo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+        pnl_websiteContainerLayout.setVerticalGroup(
+            pnl_websiteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_websiteContainerLayout.createSequentialGroup()
+                .addGroup(pnl_websiteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txt_websiteURL, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_websiteURLGo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_websiteMainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -572,13 +572,13 @@ public class WebsiteUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_websiteContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnl_websiteContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -675,9 +675,9 @@ public class WebsiteUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_loginPopupWindowClosing
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txt_websiteURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_websiteURLActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txt_websiteURLActionPerformed
 
     private void openAdminUI() {
         loginPopup.dispose();
@@ -737,13 +737,12 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_loginPopup;
     private javax.swing.JButton btn_register;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_websiteMainAccount;
+    private javax.swing.JButton btn_websiteMainLogout;
+    private javax.swing.JButton btn_websiteURLGo;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -753,13 +752,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_Username;
     private javax.swing.JLabel lbl_Username1;
     private javax.swing.JLabel lbl_fullname;
@@ -769,6 +762,11 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_username;
     private javax.swing.JDialog loginPopup;
     private javax.swing.JPasswordField pass_Password;
+    private javax.swing.JPanel pnl_websiteContainer;
+    private javax.swing.JPanel pnl_websiteHistoryContainer;
+    private javax.swing.JPanel pnl_websiteMainContainer;
+    private javax.swing.JPanel pnl_websiteTicketsContainer;
+    private javax.swing.JPanel pnl_websiteTravelCardContainer;
     private javax.swing.JDialog registerPopup;
     private javax.swing.JPasswordField txtPass_Password;
     private javax.swing.JTextField txt_Email;
@@ -777,6 +775,8 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Surname;
     private javax.swing.JTextField txt_Username;
     private javax.swing.JTextField txt_username;
+    private javax.swing.JLabel txt_websiteMainTitle;
+    private javax.swing.JTextField txt_websiteURL;
     // End of variables declaration//GEN-END:variables
 
 }
