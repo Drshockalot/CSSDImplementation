@@ -2723,18 +2723,25 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminZoneEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditActionPerformed
         // temp until load is in
         lbl_adminZoneEditErrorMsg.hide();
-        int row = tbl_adminGUIZoneList.getSelectedRow();
-        int zoneId = (int) tbl_adminGUIZoneList.getValueAt(row, 0);
-        try {
-            Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
-            txt_adminZoneEditId.setText(String.valueOf(zone.getId()));
-            txt_adminZoneEditName.setText(String.valueOf(zone.getName()));
-        } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        populateEditZoneView();
         dlg_adminZoneEdit.pack();
         dlg_adminZoneEdit.show();
     }//GEN-LAST:event_btn_adminZoneEditActionPerformed
+
+    private void populateEditZoneView() {
+        if (tbl_adminGUIZoneList.getSelectedRowCount() > 0) {
+            int row = tbl_adminGUIZoneList.getSelectedRow();
+            int zoneId = (int) tbl_adminGUIZoneList.getValueAt(row, 0);
+
+            try {
+                Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
+                txt_adminZoneEditId.setText(String.valueOf(zone.getId()));
+                txt_adminZoneEditName.setText(String.valueOf(zone.getName()));
+            } catch (Throwable ex) {
+                Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
     private void btn_adminStationsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsEditActionPerformed
         // TODO add your handling code here:
@@ -3213,7 +3220,10 @@ public class AdminUI extends javax.swing.JFrame {
         try {
             if (TravelSystem.getInstance().getZones().isZoneNameUnique(zoneName, zoneId)) {
                 Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
-                zone.setName(zoneName);
+                if (!zoneName.isEmpty()) {
+                    zone.setName(zoneName);
+                    TravelSystem.getInstance().serializeZones();
+                }
                 populateZoneTable();
                 dlg_adminZoneEdit.setVisible(false);
             } else {
@@ -3225,7 +3235,7 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminZoneEditAddActionPerformed
 
     private void btn_adminZoneEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditCancelActionPerformed
-        // TODO add your handling code here:
+        dlg_adminZoneEdit.setVisible(false);
     }//GEN-LAST:event_btn_adminZoneEditCancelActionPerformed
 
     private void btn_adminZoneDeleteConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneDeleteConfirmActionPerformed
