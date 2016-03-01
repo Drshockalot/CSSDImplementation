@@ -74,14 +74,14 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                           <Component id="jLayeredPane2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="193" max="32767" attributes="0"/>
+                          <EmptySpace pref="197" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel1" min="-2" pref="639" max="-2" attributes="0"/>
-                              <EmptySpace min="0" max="32767" attributes="0"/>
+                              <Component id="jLabel1" pref="639" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -89,28 +89,20 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                           <Component id="jLayeredPane2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="138" max="32767" attributes="0"/>
+                          <EmptySpace pref="114" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel1">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/LDN_Underground.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="jLabel1"/>
-                  </Properties>
-                </Component>
                 <Container class="javax.swing.JLayeredPane" name="jLayeredPane2">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -122,19 +114,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbl_loginTitle" alignment="1" max="32767" attributes="0"/>
                                   <Component id="txt_username" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="pass_Password" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lbl_password" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
-                                          <Component id="lbl_username" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="pass_password" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="btn_cancel" min="-2" pref="82" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -143,6 +128,14 @@
                                       <Component id="btn_loginPopup" min="-2" pref="79" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lbl_password" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <Component id="lbl_username" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="lbl_loginErrorMsg" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -151,7 +144,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_loginTitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_username" min="-2" max="-2" attributes="0"/>
@@ -160,14 +153,16 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="lbl_password" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="pass_Password" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pass_password" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_loginErrorMsg" pref="31" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btn_loginPopup" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_register" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="18" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -184,6 +179,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_usernameActionPerformed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_usernameKeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbl_password">
@@ -191,10 +187,13 @@
                         <Property name="text" type="java.lang.String" value="Password"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JPasswordField" name="pass_Password">
+                    <Component class="javax.swing.JPasswordField" name="pass_password">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="p"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pass_passwordKeyReleased"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbl_loginTitle">
                       <Properties>
@@ -233,8 +232,25 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cancelActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="lbl_loginErrorMsg">
+                      <Properties>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="33" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Something went wrong"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/LDN_Underground.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="jLabel1"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -426,6 +442,7 @@
     <Property name="modalExclusionType" type="java.awt.Dialog$ModalExclusionType" editor="org.netbeans.modules.form.editors.EnumEditor">
       <Value id="APPLICATION_EXCLUDE"/>
     </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -573,6 +590,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Log Out"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_websiteMainLogoutActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="txt_websiteMainTitle">
               <Properties>

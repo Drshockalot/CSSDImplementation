@@ -43,6 +43,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
         btn_resetData = new javax.swing.JButton();
         lbl_mainSwitchTitle = new javax.swing.JLabel();
         lbl_mainSwitchAuthors = new javax.swing.JLabel();
+        lbl_mainSwitchTitle1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Switchboard UI");
@@ -101,17 +102,21 @@ public class AppSwitchboard extends javax.swing.JFrame {
                 .addComponent(btn_switchInspectorUI)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_switchScannerUI)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(btn_resetData)
                 .addContainerGap())
         );
 
         lbl_mainSwitchTitle.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         lbl_mainSwitchTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_mainSwitchTitle.setText("Public Transport Management System");
+        lbl_mainSwitchTitle.setText("Public Transport Management Switchboard");
 
         lbl_mainSwitchAuthors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_mainSwitchAuthors.setText("3 Snakes & a Bootlace 2016 (c)");
+
+        lbl_mainSwitchTitle1.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
+        lbl_mainSwitchTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_mainSwitchTitle1.setText("For demonstration purposes only");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,7 +130,8 @@ public class AppSwitchboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_mainSwitchAuthors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_mainSwitchTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_mainSwitchTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_mainSwitchTitle1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -134,7 +140,9 @@ public class AppSwitchboard extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(lbl_mainSwitchTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_mainSwitchTitle1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbl_mainSwitchAuthors)
                 .addContainerGap())
@@ -200,5 +208,6 @@ public class AppSwitchboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_mainSwitchAuthors;
     private javax.swing.JLabel lbl_mainSwitchTitle;
+    private javax.swing.JLabel lbl_mainSwitchTitle1;
     // End of variables declaration//GEN-END:variables
 }
