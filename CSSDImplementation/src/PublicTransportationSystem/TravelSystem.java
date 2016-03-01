@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 import Interfaces.SetOfUsersInterface;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -222,7 +223,8 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public float convertToTwoDecimalPlaces(float number) {
-        return Math.round(number * 100) / 100;
+        DecimalFormat decim = new DecimalFormat("0.00");
+        return Float.parseFloat(decim.format(number));
     }
 
     public SetOfTravelCards getTravelCards() {
