@@ -31,8 +31,7 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeJourneys();
         deserializeZones();
 
-        deserializeTickets();
-
+        //deserializeTickets();
         //deserializeTravelCard();
         initTravelCard();
 
@@ -59,6 +58,13 @@ public class TravelSystem implements SetOfUsersInterface {
         serializeZones();
         initJourneyList();
         serializeJourneys();
+        initTickets();
+        serializeTickets();
+    }
+
+    public void initTickets() {
+        this.systemTickets.createNewTicket(this.systemJourneys.get(1), TypeEnums.TicketType.TRAIN, true, 1);
+        this.systemTickets.createNewTicket(this.systemJourneys.get(2), TypeEnums.TicketType.TRAIN, true, 2);
     }
 
     public void initUsers() {
