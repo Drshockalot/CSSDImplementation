@@ -5,6 +5,7 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.GPSCoordinates;
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.Journey;
 import PublicTransportationSystem.JourneyList;
@@ -3354,8 +3355,37 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminStationAddCancelActionPerformed
 
     private void btn_adminStationAddAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationAddAddActionPerformed
-        // TODO add your handling code here:
+        addNewStation();
     }//GEN-LAST:event_btn_adminStationAddAddActionPerformed
+
+    private void addNewStation() {
+        int stationId = Integer.valueOf(txt_adminStationAddId.getText());
+        String stationName = txt_adminStationAddName.getText();
+        TypeEnums.StationType stationType = (TypeEnums.StationType) cmb_adminStationAddType.getSelectedItem();
+        String stationLocation = txt_adminStationAddLocation.getText();
+        String stationGps = txt_adminStationAddGPS.getText();
+        String stationZoneStr = (String) cmb_adminStationAddZone.getSelectedItem();
+
+        GPSCoordinates coordinates = generateGPSCoordinate(stationGps);
+
+        try {
+            Zone stationZone = TravelSystem.getInstance().getZones().getZoneByName(stationZoneStr);
+            StationSystem newStation = new StationSystem(stationId, stationName, stationType, stationLocation, coordinates, stationZone, null);
+            TravelSystem.getInstance().getStationSystems().add(newStation);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private GPSCoordinates generateGPSCoordinate(String gpsCoordinates) {
+        String[] gps = gpsCoordinates.split(",", -1);
+        float longitude = Float.valueOf(gps[0]);
+        float latitude = Float.valueOf(gps[1]);
+
+        GPSCoordinates coordinates = new GPSCoordinates(longitude, latitude);
+
+        return coordinates;
+    }
 
     private void txt_adminStationAddIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminStationAddIdActionPerformed
         // TODO add your handling code here:
@@ -3423,9 +3453,21 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminStationsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsAddActionPerformed
         // TODO add your handling code here:
+        initAddStationsView();
         dlg_adminStationAdd.pack();
         dlg_adminStationAdd.show();
     }//GEN-LAST:event_btn_adminStationsAddActionPerformed
+
+    private void initAddStationsView() {
+        try {
+            txt_adminStationAddId.setText(String.valueOf(TravelSystem.getInstance()
+                    .getStationSystems().getNextId()));
+            cmb_adminStationAddType.setModel(new DefaultComboBoxModel(TypeEnums.StationType.values()));
+            cmb_adminStationAddZone.setModel(new DefaultComboBoxModel(TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void btn_adminStationsDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsDeleteActionPerformed
         // TODO add your handling code here:
