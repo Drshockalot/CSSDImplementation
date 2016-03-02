@@ -30,6 +30,7 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeUsers();
         deserializeJourneys();
         deserializeZones();
+        deserializeStationSystems();
 
 //        deserializeTickets();
         initTravelCard();
@@ -37,7 +38,6 @@ public class TravelSystem implements SetOfUsersInterface {
         initStationSystems();
 
         //deserializeTravelCard();
-        //deserializeStationSystems();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -128,32 +128,34 @@ public class TravelSystem implements SetOfUsersInterface {
         Zone zone = this.systemZones.getZoneById(1);
 
         GPSCoordinates gps = new GPSCoordinates(11.21f, 41.21f);
-        SetOfGateways gateways = new SetOfGateways(); // empty for now
-        gateways.addGateway(1);
-        gateways.addGateway(1);
-        gateways.addGateway(1);
 
-        registerStationSystem("Kings Cross", TypeEnums.StationType.TRAIN, "London", gps, zone, gateways, false);
+        SetOfGateways gateways = new SetOfGateways();
+
+        StationSystem newStationSystem = registerStationSystem(
+                "Kings Cross", TypeEnums.StationType.TRAIN, "London", gps, zone, gateways, false);
+
+        Gateway gateway = new Gateway(newStationSystem.getStationGateways().getNextId(), 1);
+        newStationSystem.getStationGateways().add(gateway);
 
         zone = this.systemZones.getZoneById(2);
 
         gps = new GPSCoordinates(53.378471f, -1.462358f);
         gateways = new SetOfGateways();
-        gateways.addGateway(2);
-        gateways.addGateway(2);
-        gateways.addGateway(2);
 
-        registerStationSystem("Sheffield Station", TypeEnums.StationType.BUS, "Sheffield", gps, zone, gateways, false);
+        newStationSystem = registerStationSystem(
+                "Sheffield Station", TypeEnums.StationType.BUS, "Sheffield", gps, zone, gateways, false);
+        gateway = new Gateway(newStationSystem.getStationGateways().getNextId(), 1);
+        newStationSystem.getStationGateways().add(gateway);
 
         zone = this.systemZones.getZoneById(3);
 
         gps = new GPSCoordinates(53.47740289999999f, -2.2309324999999944f);
         gateways = new SetOfGateways();
-        gateways.addGateway(3);
-        gateways.addGateway(3);
-        gateways.addGateway(3);
 
-        registerStationSystem("Manchester Piccadilly", TypeEnums.StationType.TRAIN, "Manchester", gps, zone, gateways, false);
+        newStationSystem = registerStationSystem(
+                "Manchester Piccadilly", TypeEnums.StationType.TRAIN, "Manchester", gps, zone, gateways, false);
+        gateway = new Gateway(newStationSystem.getStationGateways().getNextId(), 1);
+        newStationSystem.getStationGateways().add(gateway);
     }
 
     /**
@@ -204,10 +206,11 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param scanners
      * @param peak
      */
-    public void registerStationSystem(String name, TypeEnums.StationType stationType, String location, GPSCoordinates gps, Zone zone, SetOfGateways scanners, boolean peak) {
+    public StationSystem registerStationSystem(String name, TypeEnums.StationType stationType, String location, GPSCoordinates gps, Zone zone, SetOfGateways scanners, boolean peak) {
         StationSystem newStationSystem = new StationSystem(systemStationSystems.getNextId(), name, stationType, location, gps, zone, scanners);
 
         systemStationSystems.add(newStationSystem);
+        return newStationSystem;
     }
 
     /**
