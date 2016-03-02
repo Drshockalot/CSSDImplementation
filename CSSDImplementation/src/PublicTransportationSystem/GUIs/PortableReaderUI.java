@@ -8,6 +8,7 @@ package PublicTransportationSystem.GUIs;
 import PublicTransportationSystem.Journey;
 import PublicTransportationSystem.Pass;
 import PublicTransportationSystem.PortableReader;
+import PublicTransportationSystem.SetOfZones;
 import PublicTransportationSystem.Ticket;
 import PublicTransportationSystem.Transaction;
 import PublicTransportationSystem.TravelCard;
@@ -15,7 +16,6 @@ import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
-import PublicTransportationSystem.SetOfZones;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -677,10 +677,15 @@ public class PortableReaderUI extends javax.swing.JFrame {
         } else if ("BUS".equals(this.travelType)) {
             ticketType = TypeEnums.TicketType.TRAIN;
         }
-        Ticket newTicket = null;
+
         // Create a new 'ticket' for this journey
-        newTicket = system.getTickets().createNewTicket(journey, ticketType, false,
-                currentCard.getUser().getId());
+        Ticket newTicket = null;
+        try {
+            newTicket = new Ticket(TravelSystem.getInstance().getTickets()
+                    .getNextId(), ticketType, journey, false, currentCard.getUser().getId());
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         // Pay for the ticket, returns true if the payment was successful
         return transaction.payForTicket(newTicket, this.currentCard);
