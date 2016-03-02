@@ -755,7 +755,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         if (isValid) {
             try {
                 TravelSystem.getInstance()
-                        .registerUser(null, firstName, surname, username, email, null, password, newSysRole);
+                        .registerUser(null, firstName, surname, username, email, null, password, newSysRole, null);
                 TravelSystem.getInstance().serializeUsers(); // save users with new user
             } catch (Throwable ex) {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);

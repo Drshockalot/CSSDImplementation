@@ -2616,7 +2616,6 @@ public class AdminUI extends javax.swing.JFrame {
     public void populateUserTable() throws Throwable {
 
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIUserList.getModel();
-        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
         tbl_adminGUIUserList.setCellSelectionEnabled(false);
         tbl_adminGUIUserList.setRowSelectionAllowed(true);
@@ -2632,7 +2631,6 @@ public class AdminUI extends javax.swing.JFrame {
 
     public void populateJourneyTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIJourneyList.getModel();
-        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
         tbl_adminGUIJourneyList.setCellSelectionEnabled(false);
         tbl_adminGUIJourneyList.setRowSelectionAllowed(true);
@@ -2647,8 +2645,6 @@ public class AdminUI extends javax.swing.JFrame {
 
     public void populateZoneTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIZoneList.getModel();
-        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
-
         tbl_adminGUIZoneList.setCellSelectionEnabled(false);
         tbl_adminGUIZoneList.setRowSelectionAllowed(true);
 
@@ -2664,7 +2660,6 @@ public class AdminUI extends javax.swing.JFrame {
 
     public void populateStationTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIStationList.getModel();
-        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
         tbl_adminGUIStationList.setCellSelectionEnabled(false);
         tbl_adminGUIStationList.setRowSelectionAllowed(true);
@@ -2818,10 +2813,9 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserEditActionPerformed
         if (tbl_adminGUIUserList.getSelectedRowCount() > 0) {
             initEditUserView();
+            cmd_adminUserAddEditUserRole.setEnabled(false);
             dlg_adminUserAddEdit.pack();
             dlg_adminUserAddEdit.setVisible(true);
-//            dlg_adminUserAddEdit.setEnabled(true);
-//            this.setEnabled(false);
         }
     }//GEN-LAST:event_btn_adminUserEditActionPerformed
 
@@ -2865,16 +2859,9 @@ public class AdminUI extends javax.swing.JFrame {
                     Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                User user = new User(TravelSystem.getInstance().getUsers().getNextId(), forename, surname, username, email, null, password, new SystemRole(userRole), cal.getTime());
-
-                if (user.getSystemRole().isUser()) {
-                    TravelCard travelCard = createTravelCardForUser(user);
-                    user.setTravelCardId(travelCard.getId());
-                    TravelSystem.getInstance().getTravelCards().add(travelCard);
-                    TravelSystem.getInstance().serializeTravelCards();
-                }
-
-                TravelSystem.getInstance().getUsers().add(user);
+                TravelSystem.getInstance().registerUser(null, forename, surname, username, email,
+                        null, password, new SystemRole(userRole), cal.getTime());
+                TravelSystem.getInstance().getUsers().serializeUsers();
             }
 
             try {
@@ -2964,7 +2951,7 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddActionPerformed
         // TODO add your handling code here:
         initAddUserView();
-
+        cmd_adminUserAddEditUserRole.setEnabled(true);
         dlg_adminUserAddEdit.pack();
         dlg_adminUserAddEdit.setVisible(true);
     }//GEN-LAST:event_btn_adminUserAddActionPerformed
@@ -3537,17 +3524,6 @@ public class AdminUI extends javax.swing.JFrame {
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    private TravelCard createTravelCardForUser(User user) {
-        TravelCard travelCard = null;
-        try {
-            travelCard = new TravelCard(TravelSystem.getInstance().getTravelCards().getNextId(), user, 0.00f, 8.00f);
-        } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return travelCard;
     }
 
     private void initUserTicketView(int userId) {
