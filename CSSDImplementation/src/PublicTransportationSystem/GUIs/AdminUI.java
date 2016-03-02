@@ -2866,6 +2866,14 @@ public class AdminUI extends javax.swing.JFrame {
                 }
             } else {
                 User user = new User(TravelSystem.getInstance().getUsers().getNextId(), forename, surname, username, email, null, password, new SystemRole(userRole), cal.getTime());
+
+                if (user.getSystemRole().isUser()) {
+                    TravelCard travelCard = createTravelCardForUser(user);
+                    user.setTravelCardId(travelCard.getId());
+                    TravelSystem.getInstance().getTravelCards().add(travelCard);
+                    TravelSystem.getInstance().serializeTravelCards();
+                }
+
                 TravelSystem.getInstance().getUsers().add(user);
             }
 
@@ -3529,6 +3537,17 @@ public class AdminUI extends javax.swing.JFrame {
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private TravelCard createTravelCardForUser(User user) {
+        TravelCard travelCard = null;
+        try {
+            travelCard = new TravelCard(TravelSystem.getInstance().getTravelCards().getNextId(), user, 0.00f, 8.00f);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return travelCard;
     }
 
     private void initUserTicketView(int userId) {

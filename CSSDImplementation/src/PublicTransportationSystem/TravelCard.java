@@ -30,7 +30,7 @@ public class TravelCard implements Serializable {
 
 // Methods Begin
 // <editor-fold>
-    TravelCard(int travelCardID, User user, float discount, float dailyCap) {
+    public TravelCard(int travelCardID, User user, float discount, float dailyCap) {
         this.travelCardID = travelCardID;
         this.user = user;
         this.balance = 0.0f;
