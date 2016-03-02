@@ -5,17 +5,14 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
  *
  * @author JoBa
  */
-public class SetOfGateways extends Vector<Gateway> {
-
-    public void addGateway(int StationID) {
-        super.add(new Gateway(getNextId(), StationID));
-    }
+public class SetOfGateways extends Vector<Gateway> implements Serializable {
 
     public Gateway getGatewayById(int id) {
         //  Locate correct Gateway Object to return

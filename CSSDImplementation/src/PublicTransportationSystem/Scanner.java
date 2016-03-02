@@ -5,11 +5,13 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JoBa
  */
-public class Scanner {
+public class Scanner implements Serializable {
 
     public int read(TravelCard travelCard) {
         return travelCard.getId();

@@ -8,9 +8,11 @@ package PublicTransportationSystem.GUIs;
 import PublicTransportationSystem.GPSCoordinates;
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.Journey;
+import PublicTransportationSystem.SetOfGateways;
 import PublicTransportationSystem.SetOfJourneys;
 import PublicTransportationSystem.SetOfStationSystems;
 import PublicTransportationSystem.SetOfUsers;
+import PublicTransportationSystem.SetOfZones;
 import PublicTransportationSystem.StationSystem;
 import PublicTransportationSystem.SystemRole;
 import PublicTransportationSystem.Ticket;
@@ -19,7 +21,6 @@ import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
-import PublicTransportationSystem.SetOfZones;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -3370,8 +3371,12 @@ public class AdminUI extends javax.swing.JFrame {
 
         try {
             Zone stationZone = TravelSystem.getInstance().getZones().getZoneByName(stationZoneStr);
-            StationSystem newStation = new StationSystem(stationId, stationName, stationType, stationLocation, coordinates, stationZone, null);
+            SetOfGateways gateways = new SetOfGateways();
+            StationSystem newStation = new StationSystem(stationId, stationName, stationType, stationLocation, coordinates, stationZone, gateways);
             TravelSystem.getInstance().getStationSystems().add(newStation);
+            TravelSystem.getInstance().serializeStationSystems();
+            populateStationTable();
+            dlg_adminStationAdd.setVisible(true);
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }

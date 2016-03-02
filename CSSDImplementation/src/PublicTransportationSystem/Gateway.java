@@ -5,6 +5,7 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Vector;
 
@@ -12,7 +13,7 @@ import java.util.Vector;
  *
  * @author DrPoopAlotz
  */
-public class Gateway {
+public class Gateway implements Serializable {
 
     private int gatewayID;
     private Scanner scanner;

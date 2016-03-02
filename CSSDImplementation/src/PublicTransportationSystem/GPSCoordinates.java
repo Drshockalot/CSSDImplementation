@@ -5,11 +5,13 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Drshockalotz
  */
-public class GPSCoordinates {
+public class GPSCoordinates implements Serializable {
 
     public float longitude;
     public float latitude;

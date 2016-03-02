@@ -5,25 +5,25 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JoBa
  */
-public class GateController {
+public class GateController implements Serializable {
+
     private boolean open;
-    
-    public boolean isOpen()
-    {
+
+    public boolean isOpen() {
         return this.open;
     }
-    
-    public void close()
-    {
+
+    public void close() {
         this.open = false;
     }
-    
-    public void open()
-    {
+
+    public void open() {
         this.open = true;
     }
 }
