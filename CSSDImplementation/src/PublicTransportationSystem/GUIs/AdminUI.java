@@ -907,10 +907,7 @@ public class AdminUI extends javax.swing.JFrame {
 
         tbl_adminUserViewTickets.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Ticket Id", "Departure", "Arrival", "Purchase Date", "Ticket Type", "Peak"
