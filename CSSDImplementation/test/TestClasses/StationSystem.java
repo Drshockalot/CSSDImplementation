@@ -7,6 +7,7 @@ package TestClasses;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  *
@@ -25,9 +26,11 @@ public class StationSystem {
     public static void tearDownClass() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    ///////////////////
+    // Test Case 2.5 //
+    ///////////////////
+    @Test
+    public void a() {
+
+    }
 }

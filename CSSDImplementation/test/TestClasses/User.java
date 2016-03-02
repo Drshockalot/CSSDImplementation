@@ -112,12 +112,4 @@ public class User {
     public void s() {
 
     }
-
-    ///////////////////
-    // Test Case 2.5 //
-    ///////////////////
-    @Test
-    public void a() {
-
-    }
 }
