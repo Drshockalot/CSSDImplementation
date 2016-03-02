@@ -308,16 +308,6 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbl_registerUsername" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lbl_registerEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="pass_registerPassword" alignment="0" pref="251" max="32767" attributes="0"/>
-                                          <Component id="lbl_registerPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txt_registerUsername" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="lbl_registerUsernameError" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="txt_registerEmail" min="-2" pref="166" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="lbl_registerEmailError" min="-2" max="-2" attributes="0"/>
@@ -329,9 +319,21 @@
                                       <Component id="lbl_registerLastNameError" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="lbl_registerFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
-                                      <Component id="lbl_registerPasswordError" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lbl_registerEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pass_registerPassword" alignment="0" pref="251" max="32767" attributes="0"/>
+                                          <Component id="lbl_registerPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_registerUsername" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lbl_registerDob" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_registerDob" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lbl_registerUsernameError" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_registerPasswordError" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_registerDobError" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -360,7 +362,7 @@
                           <Component id="txt_registerLastName" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_registerLastNameError" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbl_registerUsername" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -381,7 +383,14 @@
                           <Component id="pass_registerPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_registerPasswordError" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lbl_registerDob" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbl_registerDobError" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_registerDob" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_RegisterSubmit" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_RegisterCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -494,6 +503,21 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Required"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_registerDobError">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Required"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_registerDob">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Password"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_registerDob">
             </Component>
           </SubComponents>
         </Container>
