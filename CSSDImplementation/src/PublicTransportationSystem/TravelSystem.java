@@ -31,6 +31,8 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeJourneys();
         deserializeZones();
 
+        deserializeTickets();
+
         //deserializeTravelCard();
         initTravelCard();
 
