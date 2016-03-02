@@ -32,12 +32,13 @@ public class TravelSystem implements SetOfUsersInterface {
      *
      */
     private TravelSystem() throws ClassNotFoundException {
+
+        deserializeZones();
         deserializeUsers();
         deserializeJourneys();
-        deserializeZones();
-        deserializeStationSystems();
         deserializeTravelCards();
         deserializeTickets();
+        deserializeStationSystems();
 
         //initTravelCards();
         //initStationSystems();

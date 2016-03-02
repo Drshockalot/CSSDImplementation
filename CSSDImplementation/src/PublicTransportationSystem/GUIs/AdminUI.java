@@ -2640,10 +2640,24 @@ public class AdminUI extends javax.swing.JFrame {
         SetOfJourneys journeys = TravelSystem.getInstance().getJourneys();
 
         for (Journey journey : journeys) {
+            int offPeakJourneys = TravelSystem.getInstance().getTickets().getOffPeakTicketsForJourney(journey);
+            int onPeakJourneys = TravelSystem.getInstance().getTickets().getOnPeakTicketsForJourney(journey);
+
             model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
                 journey.getOffPeakPrice(), journey.getOnPeakPrice(),
-                TravelSystem.getInstance().getTickets().getTicketsForJourney(journey), 0, 0});
+                offPeakJourneys,
+                onPeakJourneys,
+                calculateRevenueForJourneyToday(onPeakJourneys, offPeakJourneys, journey.getOnPeakPrice(), journey.getOffPeakPrice())});
         }
+    }
+
+    private float calculateRevenueForJourneyToday(int peakJourneys, int offPeakJourneys, float onPeakPrice, float offPeakPrice) {
+        float revenue = 0.00f;
+
+        revenue += peakJourneys * onPeakPrice;
+        revenue += offPeakJourneys * offPeakPrice;
+
+        return revenue;
     }
 
     public void populateZoneTable() throws Throwable {

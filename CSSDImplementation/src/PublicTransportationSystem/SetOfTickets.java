@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
@@ -68,16 +69,45 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         return retTickets;
     }
 
-    public int getTicketsForJourney(Journey journey) {
+    public int getOffPeakTicketsForJourney(Journey journey) {
         int count = 0;
 
         for (int i = 0; i < super.size(); i++) {
-            if (super.get(i).getJourney().equals(journey)) {
-                count++;
+            if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                if (!super.get(i).isPeakTicket()) {
+                    if (super.get(i).getJourney().getStartZone().getId() == journey.getStartZone().getId()) {
+                        if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
+                            count++;
+                        }
+                    }
+                }
             }
         }
 
         return count;
+    }
+
+    public int getOnPeakTicketsForJourney(Journey journey) {
+        int count = 0;
+
+        for (int i = 0; i < super.size(); i++) {
+            if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                if (super.get(i).isPeakTicket()) {
+                    if (super.get(i).getJourney().getStartZone().getId() == journey.getStartZone().getId()) {
+                        if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
+                            count++;
+                        }
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+
+    private String getDateFormatted(Date date) {
+        return new SimpleDateFormat("dd-MM-yyyy").format(date);
+
     }
 
     public void addTicket(Ticket ticket) {
