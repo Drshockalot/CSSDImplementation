@@ -60,10 +60,9 @@ public class Gateway implements Serializable {
 
             //Get journey price
             SetOfJourneys list = sys.getJourneys();
-            Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
 
             Ticket currentTicket = new Ticket(TravelSystem.getInstance().getTickets()
-                    .getNextId(), TypeEnums.TicketType.TRAIN, journey, station.isPeak(), currCard.getUser().getId());
+                    .getNextId(), TypeEnums.TicketType.TRAIN, list.getJourneyAndPriceFromZones(departureZone, zone), station.isPeak(), currCard.getUser().getId());
 
             Transaction trans = new Transaction();
             hasPaid = trans.payForTicket(currentTicket, currCard);

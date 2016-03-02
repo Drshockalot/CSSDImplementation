@@ -68,6 +68,18 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         return retTickets;
     }
 
+    public int getTicketsForJourney(Journey journey) {
+        int count = 0;
+
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getJourney().equals(journey)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     public void addTicket(Ticket ticket) {
         this.add(ticket);
     }

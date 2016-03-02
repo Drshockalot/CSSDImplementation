@@ -2630,7 +2630,7 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }
 
-    public void populateJourneyTable() throws Throwable {
+    private void populateJourneyTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIJourneyList.getModel();
         model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
@@ -2641,7 +2641,8 @@ public class AdminUI extends javax.swing.JFrame {
 
         for (Journey journey : journeys) {
             model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
-                journey.getOffPeakPrice(), journey.getOnPeakPrice(), 0, 0, 0});
+                journey.getOffPeakPrice(), journey.getOnPeakPrice(),
+                TravelSystem.getInstance().getTickets().getTicketsForJourney(journey), 0, 0});
         }
     }
 
