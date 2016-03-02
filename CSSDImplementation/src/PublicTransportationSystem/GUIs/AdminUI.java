@@ -910,14 +910,14 @@ public class AdminUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Ticket Id", "Departure", "Arrival", "Purchase Date", "Ticket Type", "Peak"
+                "Ticket Id", "Departure", "Arrival", "Purchase Date", "Ticket Type", "Peak", "Price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -3349,7 +3349,7 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_dlg_adminStationAddWindowOpened
 
     private void btn_adminStationAddCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationAddCancelActionPerformed
-        // TODO add your handling code here:
+        dlg_adminStationAdd.setVisible(false);
     }//GEN-LAST:event_btn_adminStationAddCancelActionPerformed
 
     private void btn_adminStationAddAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationAddAddActionPerformed
@@ -3533,7 +3533,7 @@ public class AdminUI extends javax.swing.JFrame {
             for (Ticket ticket : TravelSystem.getInstance().getTickets().getTicketsForUser(userId)) {
                 model.addRow(new Object[]{ticket.getTicketId(), ticket.getJourney().getStartZone(),
                     ticket.getJourney().getEndZone(), ticket.getPurchasedTime(),
-                    ticket.getTicketType(), ticket.isPeakTicket()
+                    ticket.getTicketType(), ticket.isPeakTicket(), ticket.getJourney().getPriceBasedOnPeak(ticket.isPeakTicket())
                 });
             }
         } catch (Throwable ex) {

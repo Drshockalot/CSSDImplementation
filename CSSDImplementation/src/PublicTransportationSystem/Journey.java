@@ -13,6 +13,8 @@ import java.io.Serializable;
  */
 public class Journey implements Serializable {
 
+    private static final long serialVersionUID = 1045132110637312097L;
+
     private float offPeakPrice;
     private float onPeakPrice;
     private Zone startZone;
@@ -31,6 +33,14 @@ public class Journey implements Serializable {
 
     public float getOnPeakPrice() {
         return this.onPeakPrice;
+    }
+
+    public float getPriceBasedOnPeak(boolean peak) {
+        if (peak) {
+            return getOnPeakPrice();
+        }
+
+        return getOffPeakPrice();
     }
 
     public void setOffPeakPrice(float price) {
