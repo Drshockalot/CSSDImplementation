@@ -893,6 +893,8 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        dlg_adminUserViewTickets.setResizable(false);
+
         btn_adminUserViewTicketsClose.setText("Close");
         btn_adminUserViewTicketsClose.setSize(new java.awt.Dimension(75, 29));
         btn_adminUserViewTicketsClose.addActionListener(new java.awt.event.ActionListener() {
@@ -945,13 +947,11 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(pnl_adminUserViewTicketsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserViewTicketsLayout.createSequentialGroup()
-                        .addComponent(lbl_adminUserViewTicketsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10))
-                    .addGroup(pnl_adminUserViewTicketsLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addComponent(lbl_adminUserViewTicketsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserViewTicketsLayout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         pnl_adminUserViewTicketsLayout.setVerticalGroup(
             pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
