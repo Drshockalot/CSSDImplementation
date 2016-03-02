@@ -7,7 +7,12 @@ package PublicTransportationSystem;
 
 import Interfaces.SetOfUsersInterface;
 import java.text.DecimalFormat;
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -179,12 +184,23 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param password
      * @param newSysRole
      */
-    public void registerUser(Integer id, String forename, String surname, String username, String email, Integer travelCardId, String password, SystemRole newSysRole, Date dob) {
+    public void registerUser(Integer id, String forename, String surname, String username, String email, Integer travelCardId, String password, SystemRole newSysRole, String dob) {
         // if no id is passed through, get next id
         if (id == null) {
             id = systemUsers.getNextId();
         }
-        User newUser = new User(id, forename, surname, username, email, travelCardId, password, newSysRole, new Date());
+
+        Calendar cal = Calendar.getInstance();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+
+        try {
+            cal.setTime(sdf.parse(dob));
+        } catch (ParseException ex) {
+            Logger.getLogger(TravelSystem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        User newUser = new User(id, forename, surname, username, email, travelCardId, password, newSysRole, cal.getTime());
 
         if (newUser.getSystemRole().isUser()) {
             TravelCard travelCard = createTravelCardForUser(newUser);

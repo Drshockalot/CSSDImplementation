@@ -2616,6 +2616,7 @@ public class AdminUI extends javax.swing.JFrame {
     public void populateUserTable() throws Throwable {
 
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIUserList.getModel();
+        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
         tbl_adminGUIUserList.setCellSelectionEnabled(false);
         tbl_adminGUIUserList.setRowSelectionAllowed(true);
@@ -2631,6 +2632,7 @@ public class AdminUI extends javax.swing.JFrame {
 
     public void populateJourneyTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIJourneyList.getModel();
+        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
         tbl_adminGUIJourneyList.setCellSelectionEnabled(false);
         tbl_adminGUIJourneyList.setRowSelectionAllowed(true);
@@ -2645,6 +2647,8 @@ public class AdminUI extends javax.swing.JFrame {
 
     public void populateZoneTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIZoneList.getModel();
+        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
+
         tbl_adminGUIZoneList.setCellSelectionEnabled(false);
         tbl_adminGUIZoneList.setRowSelectionAllowed(true);
 
@@ -2660,6 +2664,7 @@ public class AdminUI extends javax.swing.JFrame {
 
     public void populateStationTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIStationList.getModel();
+        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
         tbl_adminGUIStationList.setCellSelectionEnabled(false);
         tbl_adminGUIStationList.setRowSelectionAllowed(true);
@@ -2827,8 +2832,6 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserAddEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddEditSaveActionPerformed
         try {
-            Calendar cal = Calendar.getInstance();
-
             String userId = txt_adminUserAddEditId.getText();
             String forename = txt_adminUserAddEditForename.getText();
             String surname = txt_adminUserAddEditSurname.getText();
@@ -2837,15 +2840,16 @@ public class AdminUI extends javax.swing.JFrame {
             String password = txt_adminUserAddEditPassword.getText();
 
             // replace slash format if present
-            String dobString = txt_adminUserAddEditDob.getText().replace("/", "-");
-
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-
-            cal.setTime(sdf.parse(dobString));
+            String dob = txt_adminUserAddEditDob.getText().replace("/", "-");
 
             TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
 
             if (lbl_adminUserAddEditTitle.getText().equals("Edit User")) {
+                Calendar cal = Calendar.getInstance();
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+
+                cal.setTime(sdf.parse(dob));
                 try {
                     User user = TravelSystem.getInstance().getUsers().getUserById(Integer.parseInt(userId));
                     user.setForename(forename);
@@ -2860,7 +2864,7 @@ public class AdminUI extends javax.swing.JFrame {
                 }
             } else {
                 TravelSystem.getInstance().registerUser(null, forename, surname, username, email,
-                        null, password, new SystemRole(userRole), cal.getTime());
+                        null, password, new SystemRole(userRole), dob);
                 TravelSystem.getInstance().getUsers().serializeUsers();
             }
 
