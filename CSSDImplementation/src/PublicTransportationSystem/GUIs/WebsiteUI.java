@@ -348,7 +348,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_registerDobError.setForeground(new java.awt.Color(255, 0, 0));
         lbl_registerDobError.setText("Required");
 
-        lbl_registerDob.setText("Password");
+        lbl_registerDob.setText("DOB");
 
         javax.swing.GroupLayout pnl_registerContainerLayout = new javax.swing.GroupLayout(pnl_registerContainer);
         pnl_registerContainer.setLayout(pnl_registerContainerLayout);
@@ -686,7 +686,7 @@ public class WebsiteUI extends javax.swing.JFrame {
 
     // sets error states inside register form if there is any issues
     private boolean checkUsersRegistrationInput(String firstName, String surname,
-            String username, String email, String password, SystemRole newSysRole) {
+            String username, String email, String password, SystemRole newSysRole, String dob) {
 
         boolean isValid = true;
 
@@ -749,6 +749,13 @@ public class WebsiteUI extends javax.swing.JFrame {
             lbl_registerPasswordError.setVisible(false);
         }
 
+        if (dob.isEmpty()) {
+            lbl_registerDobError.setVisible(true);
+            isValid = false;
+        } else {
+            lbl_registerDobError.setVisible(false);
+        }
+
         // returns true allowing user to register if everything checks out
         if (isValid) {
             return true;
@@ -767,7 +774,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.USER);
 
         boolean isValid = checkUsersRegistrationInput(firstName, surname,
-                username, email, password, newSysRole);
+                username, email, password, newSysRole, dob);
 
         if (isValid) {
             try {
@@ -798,6 +805,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         txt_registerUsername.setText("");
         txt_registerEmail.setText("");
         pass_registerPassword.setText("");
+        txt_registerDob.setText("");
 
         // re-hide register error messages
         lbl_registerFirstNameError.setVisible(false);
@@ -805,6 +813,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_registerPasswordError.setVisible(false);
         lbl_registerUsernameError.setVisible(false);
         lbl_registerEmailError.setVisible(false);
+        lbl_registerDobError.setVisible(false);
 
         registerPopup.pack();
         registerPopup.setLocationRelativeTo(null);

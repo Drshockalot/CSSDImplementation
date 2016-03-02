@@ -36,13 +36,11 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeJourneys();
         deserializeZones();
         deserializeStationSystems();
-
+        deserializeTravelCards();
         deserializeTickets();
 
-        initTravelCard();
-
-        initStationSystems();
-
+        //initTravelCards();
+        //initStationSystems();
         //deserializeTravelCard();
     }
 
@@ -58,15 +56,24 @@ public class TravelSystem implements SetOfUsersInterface {
         systemZones.removeAllElements();
         systemUsers.removeAllElements();
         systemJourneys.removeAllElements();
-        initUsers();
-        initTravelCard();
-        serializeUsers();
+        systemTravelCards.removeAllElements();
+        systemTickets.removeAllElements();
+        systemStationSystems.removeAllElements();
+
         initZones();
-        serializeZones();
-        initJourneyList();
-        serializeJourneys();
+        initUsers();
+        initJourneys();
+        initTravelCards();
         initTickets();
+        initStationSystems();
+
+        serializeZones();
+        serializeUsers();
+        serializeJourneys();
+        serializeTravelCards();
         serializeTickets();
+        serializeStationSystems();
+
     }
 
     public void initTickets() {
@@ -95,7 +102,7 @@ public class TravelSystem implements SetOfUsersInterface {
         return travelCard;
     }
 
-    public void initTravelCard() {
+    public void initTravelCards() {
         registerTravelCard(systemUsers.getUserById(6), 1.00f, 9.00f, 7.00f);
         registerTravelCard(systemUsers.getUserById(3), 1.00f, 9.00f, 7.00f);
         registerTravelCard(systemUsers.getUserById(2), 1.00f, 9.00f, 1.00f);
@@ -111,7 +118,7 @@ public class TravelSystem implements SetOfUsersInterface {
         registerZone(5, "Zone E");
     }
 
-    public void initJourneyList() {
+    public void initJourneys() {
         systemJourneys.removeAllElements();
         registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(1), systemZones.getZoneById(1));
         registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(1), systemZones.getZoneById(2));

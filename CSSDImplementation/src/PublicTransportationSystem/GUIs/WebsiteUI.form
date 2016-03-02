@@ -514,7 +514,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_registerDob">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Password"/>
+                <Property name="text" type="java.lang.String" value="DOB"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_registerDob">
