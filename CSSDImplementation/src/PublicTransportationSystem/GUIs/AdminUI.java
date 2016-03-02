@@ -912,7 +912,7 @@ public class AdminUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Ticket Id", "Departure", "Arrival", "Purchase Date", "Ticket Type", "Peak", "Price"
+                "Ticket Id", "Departure Zone", "Arrival Zone", "Purchase Date", "Ticket Type", "Peak", "Price"
             }
         ) {
             Class[] types = new Class [] {
@@ -941,16 +941,15 @@ public class AdminUI extends javax.swing.JFrame {
         pnl_adminUserViewTickets.setLayout(pnl_adminUserViewTicketsLayout);
         pnl_adminUserViewTicketsLayout.setHorizontalGroup(
             pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserViewTicketsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_adminUserViewTicketsClose)
-                .addContainerGap())
             .addGroup(pnl_adminUserViewTicketsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_adminUserViewTicketsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                .addComponent(lbl_adminUserViewTicketsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserViewTicketsLayout.createSequentialGroup()
-                .addComponent(jScrollPane1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_adminUserViewTicketsClose, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         pnl_adminUserViewTicketsLayout.setVerticalGroup(
@@ -962,7 +961,7 @@ public class AdminUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_adminUserViewTicketsClose)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dlg_adminUserViewTicketsLayout = new javax.swing.GroupLayout(dlg_adminUserViewTickets.getContentPane());
@@ -3538,7 +3537,7 @@ public class AdminUI extends javax.swing.JFrame {
         try {
             for (Ticket ticket : TravelSystem.getInstance().getTickets().getTicketsForUser(userId)) {
                 model.addRow(new Object[]{ticket.getTicketId(), ticket.getJourney().getStartZone(),
-                    ticket.getJourney().getEndZone(), ticket.getPurchasedTime(),
+                    ticket.getJourney().getEndZone(), getDateFormatted("date", ticket.getPurchasedTime()) + " " + getDateFormatted("time", ticket.getPurchasedTime()),
                     ticket.getTicketType(), ticket.isPeakTicket(), ticket.getJourney().getPriceBasedOnPeak(ticket.isPeakTicket())
                 });
             }
