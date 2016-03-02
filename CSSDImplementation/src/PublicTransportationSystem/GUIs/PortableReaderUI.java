@@ -640,6 +640,11 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 String currentBalance = String.format("%.2f", this.currentCard.getBalance());
                 this.passUserBalance.setText(currentBalance);
                 this.paymentUserBalance.setText(currentBalance);
+                // End transaction
+                this.validPassPanel.setVisible(false);
+                this.payForTicketPanel.setVisible(false);
+                this.scanPanel.setVisible(true);
+
             } else {
                 addFunds();
             }
@@ -679,8 +684,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 currentCard.getUser().getId());
 
         // Pay for the ticket, returns true if the payment was successful
-        return transaction.payForTicket(system.getTickets()
-                .getTicketsForUser(currentCard.getUser().getId()), newTicket, this.currentCard);
+        return transaction.payForTicket(newTicket, this.currentCard);
 
     }
 
@@ -719,13 +723,15 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }
 
     private void setUpToZones() {
-        ZoneList toZones = system.getJourneys()
-                .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
+        if (this.fromZone.getItemAt(0) != null) {
+            ZoneList toZones = system.getJourneys()
+                    .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
 
-        // Add the potential destination zones to the list
-        toZones.stream().forEach((zone) -> {
-            this.toZone.addItem(zone);
-        });
+            // Add the potential destination zones to the list
+            toZones.stream().forEach((zone) -> {
+                this.toZone.addItem(zone);
+            });
+        }
     }
 
     /**

@@ -18,7 +18,7 @@ public class Transaction {
 // Methods Begin
 // <editor-fold>
     // This method will handle the payment of a ticket
-    public boolean payForTicket(SetOfTickets ticketHistory, Ticket currentTicket, TravelCard currentTravelCard) {
+    public boolean payForTicket(Ticket currentTicket, TravelCard currentTravelCard) {
         // Create a new instance of 'PaymentManager', this will handle payment calculations
         PaymentManager payManager = new PaymentManager();
 
@@ -29,10 +29,17 @@ public class Transaction {
         // Takes the current ticket and applies the discount, returns the result
         float discountedPrice = payManager.calculatePrice(currentTicket, discount);
 
+        float todaysTotal = 0;
         // If the user has enough to pay for the ticket
         if (currentTravelCard.getBalance() > 0) {
-            // Returns the sum of the ticket prices purchased today
-            float todaysTotal = ticketHistory.calculateTodaysTotal(discount, currentTravelCard.getUser(), new Date());
+            try {
+                // Returns the sum of the ticket prices purchased today
+                todaysTotal = TravelSystem.getInstance().getTickets().calculateTodaysTotal(discount, currentTravelCard.getUser(), new Date());
+            } catch (Throwable ex) {
+                Logger.getLogger(Transaction.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            //float todaysTotal = ticketHistory.calculateTodaysTotal(discount, currentTravelCard.getUser(), new Date());
             // Gets the cap for daily transactions
             float dailyCap = currentTravelCard.getDailyCap();
 

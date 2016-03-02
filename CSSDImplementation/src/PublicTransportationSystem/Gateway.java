@@ -56,9 +56,6 @@ public class Gateway {
         } else {
             boolean hasPaid = false;
 
-            SetOfTickets userTickets = TravelSystem.getInstance().getTickets()
-                    .getTicketsForUser(currCard.getUser().getId());
-
             //Get journey price
             JourneyList list = sys.getJourneys();
             Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
@@ -67,7 +64,7 @@ public class Gateway {
                     .createNewTicket(journey, TypeEnums.TicketType.TRAIN, false, currCard.getUser().getId());
 
             Transaction trans = new Transaction();
-            hasPaid = trans.payForTicket(userTickets, currentTicket, currCard);
+            hasPaid = trans.payForTicket(currentTicket, currCard);
 
             if (hasPaid) {
                 this.approve();
