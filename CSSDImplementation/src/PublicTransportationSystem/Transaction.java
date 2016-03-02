@@ -47,12 +47,17 @@ public class Transaction {
             currentTravelCard.subtractFromBalance(discountedPrice);
             // User has paid for the ticket, flag it as 'paid'
             currentTicket.setPaid(true);
+
             // Add the ticket to their tickets
+            TravelSystem system = null;
             try {
-                TravelSystem.getInstance().getTickets().add(currentTicket);
+                system = TravelSystem.getInstance();
             } catch (Throwable ex) {
                 Logger.getLogger(Transaction.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            system.getTickets().add(currentTicket);
+            system.getTickets().serializeTickets();
 
             // If the total has reached/gone over the daily cap...
             if (todaysTotal >= dailyCap) {

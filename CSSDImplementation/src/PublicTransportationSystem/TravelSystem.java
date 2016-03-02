@@ -59,6 +59,13 @@ public class TravelSystem implements SetOfUsersInterface {
         serializeZones();
         initJourneyList();
         serializeJourneys();
+        initTickets();
+        serializeTickets();
+    }
+
+    public void initTickets() {
+        this.systemTickets.createNewTicket(this.systemJourneys.get(1), TypeEnums.TicketType.TRAIN, true, 1);
+        this.systemTickets.createNewTicket(this.systemJourneys.get(2), TypeEnums.TicketType.TRAIN, true, 2);
     }
 
     public void initUsers() {
@@ -66,10 +73,10 @@ public class TravelSystem implements SetOfUsersInterface {
         SystemRole normalUser = new SystemRole(TypeEnums.UserType.USER);
 
         registerUser(1, "Test", "Loser", "User", "test@test.com", null, "password", normalUser);
-        registerUser(2, "Chadwick", "Skimpson", "Freedom", "test@test.com", null, "FromAmericaWithLove", admin);
+        registerUser(2, "Chadwick", "Skimpson", "Freedom", "test@testing.com", null, "FromAmericaWithLove", admin);
         registerUser(null, "Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", admin);
-        registerUser(null, "lil'", "Jack", "snapback", "stanky_memes@test.org", null, "ch ch ch checkin' it out", admin);
-        registerUser(6, "Joshua", "Bates", "JoBa", "JoBa@uniqa.com", 1, "p", admin);
+        registerUser(null, "lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", admin);
+        registerUser(6, "Joshua", "Bates", "JoBa", "test@test.fr", 1, "p", admin);
     }
 
     public void initTravelCard() {
