@@ -1094,7 +1094,7 @@
     <Container class="javax.swing.JDialog" name="dlg_adminUserSearch">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[470, 257]"/>
+          <Dimension value="[470, 188]"/>
         </Property>
         <Property name="modal" type="boolean" value="true"/>
         <Property name="modalityType" type="java.awt.Dialog$ModalityType" editor="org.netbeans.modules.form.editors.EnumEditor">
@@ -1110,29 +1110,24 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="btn_adminUserSearchCancel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btn_adminUserSearchSearch" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jSeparatorMemSearchHeader" pref="13" max="32767" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="lbl_adminUserDeleteTitle1" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lbl_adminUserSearchSearchBy" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lbl_adminUserSearchSearchValue" alignment="0" pref="140" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="cmb_adminUserSearchSearchBy" alignment="0" pref="236" max="32767" attributes="0"/>
-                                      <Component id="txt_adminUserSearchValue" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="lbl_adminUserDeleteTitle1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lbl_adminUserSearchSearchBy" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lbl_adminUserSearchSearchValue" alignment="0" pref="140" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cmb_adminUserSearchSearchBy" alignment="0" pref="236" max="32767" attributes="0"/>
+                                  <Component id="txt_adminUserSearchValue" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1145,11 +1140,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSeparatorMemSearchHeader" min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="lbl_adminUserDeleteTitle1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <Component id="lbl_adminUserDeleteTitle1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_adminUserSearchSearchBy" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmb_adminUserSearchSearchBy" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1164,14 +1156,12 @@
                       <Component id="btn_adminUserSearchSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_adminUserSearchCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JSeparator" name="jSeparatorMemSearchHeader">
-        </Component>
         <Component class="javax.swing.JLabel" name="lbl_adminUserSearchSearchBy">
           <Properties>
             <Property name="text" type="java.lang.String" value="Search By"/>

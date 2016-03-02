@@ -5,6 +5,12 @@
  */
 package PublicTransportationSystem;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
@@ -13,7 +19,7 @@ import java.util.Vector;
  *
  * @author JoBa
  */
-public class SetOfTickets extends Vector<Ticket> {
+public class SetOfTickets extends Vector<Ticket> implements Serializable {
 
     float calculateTodaysTotal(float discount, User user, Date date) {
         // Create a PaymentManager to help us with calculating costs
@@ -33,7 +39,7 @@ public class SetOfTickets extends Vector<Ticket> {
 
     public Ticket createNewTicket(Journey journey, TypeEnums.TicketType type, boolean peak, int userId) {
         // Create a new ticket based upon journey
-        return new Ticket(this.nextId(), type, journey, peak, userId);
+        return new Ticket(this.getNextId(), type, journey, peak, userId);
     }
 
     public SetOfTickets getTicketsForUser(int userId) {
@@ -69,8 +75,39 @@ public class SetOfTickets extends Vector<Ticket> {
         this.add(ticket);
     }
 
-    public int nextId() {
+    public int getNextId() {
         // Return the next available ID
         return super.isEmpty() ? 1 : super.lastElement().getTicketId() + 1;
+    }
+
+    public SetOfTickets deserializeTickets() throws ClassNotFoundException {
+        try {
+            FileInputStream fileIn = new FileInputStream("files/tickets.ser");
+            ObjectInputStream objIn = new ObjectInputStream(fileIn);
+
+            SetOfTickets obj = (SetOfTickets) objIn.readObject();
+
+            fileIn.close();
+            objIn.close();
+            return obj;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void serializeTickets() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("files/tickets.ser");
+            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+            objOut.writeObject(this);
+
+            objOut.close();
+            fileOut.close();
+            System.out.println("Serialised tickets");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

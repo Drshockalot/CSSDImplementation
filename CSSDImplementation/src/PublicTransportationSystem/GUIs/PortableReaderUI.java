@@ -15,7 +15,7 @@ import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
-import PublicTransportationSystem.ZoneList;
+import PublicTransportationSystem.SetOfZones;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -424,42 +424,41 @@ public class PortableReaderUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setBackground(new java.awt.Color(51, 255, 0));
-        jLabel15.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(51, 255, 0));
-        jLabel15.setText("$$$");
+        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel15.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Add Funds");
 
         javax.swing.GroupLayout addFundsPanelLayout = new javax.swing.GroupLayout(addFundsPanel);
         addFundsPanel.setLayout(addFundsPanelLayout);
         addFundsPanelLayout.setHorizontalGroup(
             addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(addFundsPanelLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
                 .addGroup(addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addFundsPanelLayout.createSequentialGroup()
-                        .addGap(171, 171, 171)
+                        .addGap(39, 39, 39)
                         .addComponent(addFundsButton))
                     .addGroup(addFundsPanelLayout.createSequentialGroup()
-                        .addGap(132, 132, 132)
                         .addComponent(jLabel14)
                         .addGap(1, 1, 1)
-                        .addComponent(addFundsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addFundsPanelLayout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jLabel15)))
-                .addContainerGap(143, Short.MAX_VALUE))
+                        .addComponent(addFundsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         addFundsPanelLayout.setVerticalGroup(
             addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addFundsPanelLayout.createSequentialGroup()
-                .addContainerGap(168, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel15)
-                .addGap(107, 107, 107)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                 .addGroup(addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addFundsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addComponent(addFundsButton)
-                .addGap(117, 117, 117))
+                .addGap(183, 183, 183))
         );
 
         jLayeredPane1.add(addFundsPanel);
@@ -640,6 +639,11 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 String currentBalance = String.format("%.2f", this.currentCard.getBalance());
                 this.passUserBalance.setText(currentBalance);
                 this.paymentUserBalance.setText(currentBalance);
+                // End transaction
+                this.validPassPanel.setVisible(false);
+                this.payForTicketPanel.setVisible(false);
+                this.scanPanel.setVisible(true);
+
             } else {
                 addFunds();
             }
@@ -679,8 +683,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 currentCard.getUser().getId());
 
         // Pay for the ticket, returns true if the payment was successful
-        return transaction.payForTicket(system.getTickets()
-                .getTicketsForUser(currentCard.getUser().getId()), newTicket, this.currentCard);
+        return transaction.payForTicket(newTicket, this.currentCard);
 
     }
 
@@ -719,13 +722,15 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }
 
     private void setUpToZones() {
-        ZoneList toZones = system.getJourneys()
-                .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
+        if (this.fromZone.getItemAt(0) != null) {
+            SetOfZones toZones = system.getJourneys()
+                    .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
 
-        // Add the potential destination zones to the list
-        toZones.stream().forEach((zone) -> {
-            this.toZone.addItem(zone);
-        });
+            // Add the potential destination zones to the list
+            toZones.stream().forEach((zone) -> {
+                this.toZone.addItem(zone);
+            });
+        }
     }
 
     /**

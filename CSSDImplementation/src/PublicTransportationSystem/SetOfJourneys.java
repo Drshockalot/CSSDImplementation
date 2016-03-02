@@ -17,7 +17,7 @@ import java.util.Vector;
  *
  * @author JoBa
  */
-public class JourneyList extends Vector<Journey> implements Serializable {
+public class SetOfJourneys extends Vector<Journey> implements Serializable {
 
     private static final long serialVersionUID = 6001781469688361443L;
 
@@ -50,8 +50,8 @@ public class JourneyList extends Vector<Journey> implements Serializable {
         return null;
     }
 
-    public JourneyList getAllJourneysContainingZone(Zone zone) {
-        JourneyList journeys = new JourneyList();
+    public SetOfJourneys getAllJourneysContainingZone(Zone zone) {
+        SetOfJourneys journeys = new SetOfJourneys();
         for (int i = 0; i < super.size(); i++) {
             if ((super.get(i).getStartZone().getId() == zone.getId())
                     || (super.get(i).getEndZone().getId() == zone.getId())) {
@@ -62,8 +62,8 @@ public class JourneyList extends Vector<Journey> implements Serializable {
         return journeys;
     }
 
-    public ZoneList getAllZonesDepartingFromStartZone(Zone zone) {
-        ZoneList zoneList = new ZoneList();
+    public SetOfZones getAllZonesDepartingFromStartZone(Zone zone) {
+        SetOfZones zoneList = new SetOfZones();
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getStartZone().getId() == zone.getId()) {
                 zoneList.add(super.get(i).getEndZone());
@@ -95,12 +95,12 @@ public class JourneyList extends Vector<Journey> implements Serializable {
         return count;
     }
 
-    public JourneyList deserializeJourneys() throws ClassNotFoundException {
+    public SetOfJourneys deserializeJourneys() throws ClassNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("files/journeys.ser");
             ObjectInputStream objIn = new ObjectInputStream(fileIn);
 
-            JourneyList obj = (JourneyList) objIn.readObject();
+            SetOfJourneys obj = (SetOfJourneys) objIn.readObject();
 
             fileIn.close();
             objIn.close();
@@ -111,8 +111,8 @@ public class JourneyList extends Vector<Journey> implements Serializable {
         }
     }
 
-    public ZoneList getDestinationsForDepartureZone(int zoneId) {
-        ZoneList zoneList = new ZoneList();
+    public SetOfZones getDestinationsForDepartureZone(int zoneId) {
+        SetOfZones zoneList = new SetOfZones();
 
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getStartZone().getId() == zoneId) {
@@ -123,8 +123,8 @@ public class JourneyList extends Vector<Journey> implements Serializable {
         return zoneList;
     }
 
-    public ZoneList getDeparturesForDestinationZone(int zoneId) {
-        ZoneList zoneList = new ZoneList();
+    public SetOfZones getDeparturesForDestinationZone(int zoneId) {
+        SetOfZones zoneList = new SetOfZones();
 
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getEndZone().getId() == zoneId) {

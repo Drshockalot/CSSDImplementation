@@ -476,6 +476,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         txt_websiteMainTitle.setText("The Public Transport System");
 
         btn_websiteMainAccount.setText("My Account");
+        btn_websiteMainAccount.setEnabled(false);
 
         pnl_websiteHistoryContainer.setBackground(new java.awt.Color(204, 255, 255));
 

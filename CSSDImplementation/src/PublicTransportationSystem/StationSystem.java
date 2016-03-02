@@ -5,23 +5,24 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JoBa
  */
-public class StationSystem {
+public class StationSystem implements Serializable {
 
     private int stationID;
     private String name;
-    private String stationType;
+    private TypeEnums.StationType stationType;
     private String location;
     private GPSCoordinates gps;
     private Zone zone;
     private SetOfGateways gateways;
-    private boolean peak;
 
     // Abbreviated Station System to Ss for the following constructor
-    public StationSystem(Integer newSsId, String newSsName, String newSsType, String newSsLocation, GPSCoordinates newSsGPSCoords, Zone newSsZone, SetOfGateways gateways, boolean newSsPeak) {
+    public StationSystem(Integer newSsId, String newSsName, TypeEnums.StationType newSsType, String newSsLocation, GPSCoordinates newSsGPSCoords, Zone newSsZone, SetOfGateways gateways) {
         stationID = newSsId;
         name = newSsName;
         stationType = newSsType;
@@ -29,7 +30,6 @@ public class StationSystem {
         gps = newSsGPSCoords;
         zone = newSsZone;
         this.gateways = gateways;
-        peak = newSsPeak;
     }
 
     public int getId() {
@@ -40,7 +40,7 @@ public class StationSystem {
         return this.name;
     }
 
-    public String getType() {
+    public TypeEnums.StationType getType() {
         return this.stationType;
     }
 
@@ -62,9 +62,5 @@ public class StationSystem {
 
     public void setZone(Zone zone) {
         this.zone = zone;
-    }
-
-    public boolean getPeak() {
-        return this.peak;
     }
 }

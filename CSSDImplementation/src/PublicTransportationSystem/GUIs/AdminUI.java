@@ -5,9 +5,10 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.GPSCoordinates;
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.Journey;
-import PublicTransportationSystem.JourneyList;
+import PublicTransportationSystem.SetOfJourneys;
 import PublicTransportationSystem.SetOfStationSystems;
 import PublicTransportationSystem.SetOfUsers;
 import PublicTransportationSystem.StationSystem;
@@ -18,7 +19,7 @@ import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
-import PublicTransportationSystem.ZoneList;
+import PublicTransportationSystem.SetOfZones;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -129,7 +130,6 @@ public class AdminUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_adminUserViewTickets = new javax.swing.JTable();
         dlg_adminUserSearch = new javax.swing.JDialog();
-        jSeparatorMemSearchHeader = new javax.swing.JSeparator();
         lbl_adminUserSearchSearchBy = new javax.swing.JLabel();
         lbl_adminUserSearchSearchValue = new javax.swing.JLabel();
         cmb_adminUserSearchSearchBy = new javax.swing.JComboBox();
@@ -982,7 +982,7 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        dlg_adminUserSearch.setMinimumSize(new java.awt.Dimension(470, 257));
+        dlg_adminUserSearch.setMinimumSize(new java.awt.Dimension(470, 188));
         dlg_adminUserSearch.setModal(true);
         dlg_adminUserSearch.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
         dlg_adminUserSearch.setResizable(false);
@@ -1027,36 +1027,30 @@ public class AdminUI extends javax.swing.JFrame {
         dlg_adminUserSearchLayout.setHorizontalGroup(
             dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminUserSearchLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_adminUserSearchCancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_adminUserSearchSearch))
-                    .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
-                        .addComponent(jSeparatorMemSearchHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lbl_adminUserDeleteTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
-                                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lbl_adminUserSearchSearchBy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbl_adminUserSearchSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-                                .addGap(44, 44, 44)
-                                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmb_adminUserSearchSearchBy, 0, 236, Short.MAX_VALUE)
-                                    .addComponent(txt_adminUserSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(lbl_adminUserDeleteTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
+                            .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lbl_adminUserSearchSearchBy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_adminUserSearchSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                            .addGap(44, 44, 44)
+                            .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmb_adminUserSearchSearchBy, 0, 236, Short.MAX_VALUE)
+                                .addComponent(txt_adminUserSearchValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(25, 25, 25))
         );
         dlg_adminUserSearchLayout.setVerticalGroup(
             dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dlg_adminUserSearchLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparatorMemSearchHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_adminUserDeleteTitle1))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(lbl_adminUserDeleteTitle1)
+                .addGap(18, 18, 18)
                 .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_adminUserSearchSearchBy)
                     .addComponent(cmb_adminUserSearchSearchBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1068,7 +1062,7 @@ public class AdminUI extends javax.swing.JFrame {
                 .addGroup(dlg_adminUserSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_adminUserSearchSearch)
                     .addComponent(btn_adminUserSearchCancel))
-                .addGap(20, 20, 20))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         dlg_adminZoneAdd.setModal(true);
@@ -2645,7 +2639,7 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIJourneyList.setCellSelectionEnabled(false);
         tbl_adminGUIJourneyList.setRowSelectionAllowed(true);
 
-        JourneyList journeys = TravelSystem.getInstance().getJourneys();
+        SetOfJourneys journeys = TravelSystem.getInstance().getJourneys();
 
         for (Journey journey : journeys) {
             model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
@@ -2660,7 +2654,7 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIZoneList.setCellSelectionEnabled(false);
         tbl_adminGUIZoneList.setRowSelectionAllowed(true);
 
-        ZoneList zones = TravelSystem.getInstance().getZones();
+        SetOfZones zones = TravelSystem.getInstance().getZones();
 
         for (Zone zone : zones) {
             model.addRow(new Object[]{zone.getId(), zone.getName(),
@@ -3330,7 +3324,7 @@ public class AdminUI extends javax.swing.JFrame {
             try {
                 Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
                 TravelSystem.getInstance().getZones().remove(zone);
-                JourneyList journeysToRemove = TravelSystem.getInstance().getJourneys()
+                SetOfJourneys journeysToRemove = TravelSystem.getInstance().getJourneys()
                         .getAllJourneysContainingZone(zone);
 
                 for (Journey journey : journeysToRemove) {
@@ -3361,8 +3355,37 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminStationAddCancelActionPerformed
 
     private void btn_adminStationAddAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationAddAddActionPerformed
-        // TODO add your handling code here:
+        addNewStation();
     }//GEN-LAST:event_btn_adminStationAddAddActionPerformed
+
+    private void addNewStation() {
+        int stationId = Integer.valueOf(txt_adminStationAddId.getText());
+        String stationName = txt_adminStationAddName.getText();
+        TypeEnums.StationType stationType = (TypeEnums.StationType) cmb_adminStationAddType.getSelectedItem();
+        String stationLocation = txt_adminStationAddLocation.getText();
+        String stationGps = txt_adminStationAddGPS.getText();
+        String stationZoneStr = (String) cmb_adminStationAddZone.getSelectedItem();
+
+        GPSCoordinates coordinates = generateGPSCoordinate(stationGps);
+
+        try {
+            Zone stationZone = TravelSystem.getInstance().getZones().getZoneByName(stationZoneStr);
+            StationSystem newStation = new StationSystem(stationId, stationName, stationType, stationLocation, coordinates, stationZone, null);
+            TravelSystem.getInstance().getStationSystems().add(newStation);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private GPSCoordinates generateGPSCoordinate(String gpsCoordinates) {
+        String[] gps = gpsCoordinates.split(",", -1);
+        float longitude = Float.valueOf(gps[0]);
+        float latitude = Float.valueOf(gps[1]);
+
+        GPSCoordinates coordinates = new GPSCoordinates(longitude, latitude);
+
+        return coordinates;
+    }
 
     private void txt_adminStationAddIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminStationAddIdActionPerformed
         // TODO add your handling code here:
@@ -3430,9 +3453,21 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminStationsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsAddActionPerformed
         // TODO add your handling code here:
+        initAddStationsView();
         dlg_adminStationAdd.pack();
         dlg_adminStationAdd.show();
     }//GEN-LAST:event_btn_adminStationsAddActionPerformed
+
+    private void initAddStationsView() {
+        try {
+            txt_adminStationAddId.setText(String.valueOf(TravelSystem.getInstance()
+                    .getStationSystems().getNextId()));
+            cmb_adminStationAddType.setModel(new DefaultComboBoxModel(TypeEnums.StationType.values()));
+            cmb_adminStationAddZone.setModel(new DefaultComboBoxModel(TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void btn_adminStationsDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsDeleteActionPerformed
         // TODO add your handling code here:
@@ -3477,10 +3512,10 @@ public class AdminUI extends javax.swing.JFrame {
             // Get the departure zone
             Zone zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
             // Get all destinations that the departure zone goes to
-            ZoneList destinations = TravelSystem.getInstance()
+            SetOfZones destinations = TravelSystem.getInstance()
                     .getJourneys().getDestinationsForDepartureZone(zone.getId());
             // Get all the zones not included in destinations
-            ZoneList availableDestinations = TravelSystem.getInstance().getZones().getZonesNotInList(destinations);
+            SetOfZones availableDestinations = TravelSystem.getInstance().getZones().getZonesNotInList(destinations);
             // Convert into string array for combo
             String[] destinationsForCombo = TravelSystem.getInstance().getZones().getZonesAsStringArray(availableDestinations);
             cmb_adminJourneyAddArrZone.setModel(new DefaultComboBoxModel(destinationsForCombo));
@@ -3722,7 +3757,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSeparator jSeparatorMemSearchHeader;
     private javax.swing.JLabel lbl_adminJourneyAddArrZone;
     private javax.swing.JLabel lbl_adminJourneyAddDepZone;
     private javax.swing.JLabel lbl_adminJourneyAddError;

@@ -6,9 +6,8 @@
 package PublicTransportationSystem;
 
 import Interfaces.SetOfUsersInterface;
+import java.text.DecimalFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,8 +19,8 @@ public class TravelSystem implements SetOfUsersInterface {
     private SetOfTravelCards systemTravelCards = new SetOfTravelCards();
     private SetOfTickets systemTickets = new SetOfTickets();
     private SetOfStationSystems systemStationSystems = new SetOfStationSystems();
-    private JourneyList systemJourneys = new JourneyList();
-    private ZoneList systemZones = new ZoneList();
+    private SetOfJourneys systemJourneys = new SetOfJourneys();
+    private SetOfZones systemZones = new SetOfZones();
     private static TravelSystem INSTANCE;
 
     /**
@@ -31,8 +30,14 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeUsers();
         deserializeJourneys();
         deserializeZones();
+
+//        deserializeTickets();
         initTravelCard();
+
         initStationSystems();
+
+        //deserializeTravelCard();
+        //deserializeStationSystems();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -54,10 +59,17 @@ public class TravelSystem implements SetOfUsersInterface {
         serializeZones();
         initJourneyList();
         serializeJourneys();
+        initTickets();
+        serializeTickets();
+    }
+
+    public void initTickets() {
+        this.systemTickets.createNewTicket(this.systemJourneys.get(1), TypeEnums.TicketType.TRAIN, true, 1);
+        this.systemTickets.createNewTicket(this.systemJourneys.get(2), TypeEnums.TicketType.TRAIN, true, 2);
     }
 
     public void initUsers() {
-        SystemRole newSysRole = new SystemRole(TypeEnums.UserType.ADMIN);
+        SystemRole admin = new SystemRole(TypeEnums.UserType.ADMIN);
         SystemRole normalUser = new SystemRole(TypeEnums.UserType.USER);
 
         registerUser(1, "Test", "Loser", "User", "test@test.com", null, "password", normalUser);
@@ -68,22 +80,11 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initTravelCard() {
-        User user = null;
-        float discount = 1.00f;
-        float dailyCap = 9.00f;
-
-        try {
-            user = systemUsers.getUserById(6);
-        } catch (Throwable ex) {
-            Logger.getLogger(TravelSystem.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        registerTravelCard(user, "test", discount, dailyCap, 7.00f);
-
-        user = systemUsers.getUserById(3);
-        registerTravelCard(user, "nothing", discount, dailyCap, 7.00f);
-        registerTravelCard(systemUsers.getUserById(2), "nothing", discount, dailyCap, 1.00f);
-        registerTravelCard(systemUsers.getUserById(1), "Nothing", discount, dailyCap, -1.00f);
-        registerTravelCard(systemUsers.getUserById(4), "nothing", discount, dailyCap, 5.00f);
+        registerTravelCard(systemUsers.getUserById(6), 1.00f, 9.00f, 7.00f);
+        registerTravelCard(systemUsers.getUserById(3), 1.00f, 9.00f, 7.00f);
+        registerTravelCard(systemUsers.getUserById(2), 1.00f, 9.00f, 1.00f);
+        registerTravelCard(systemUsers.getUserById(1), 1.00f, 9.00f, -1.00f);
+        registerTravelCard(systemUsers.getUserById(4), 1.00f, 9.00f, 5.00f);
     }
 
     public void initZones() {
@@ -132,7 +133,7 @@ public class TravelSystem implements SetOfUsersInterface {
         gateways.addGateway(1);
         gateways.addGateway(1);
 
-        registerStationSystem("Kings Cross", "Train", "London", gps, zone, gateways, false);
+        registerStationSystem("Kings Cross", TypeEnums.StationType.TRAIN, "London", gps, zone, gateways, false);
 
         zone = this.systemZones.getZoneById(2);
 
@@ -142,7 +143,7 @@ public class TravelSystem implements SetOfUsersInterface {
         gateways.addGateway(2);
         gateways.addGateway(2);
 
-        registerStationSystem("Sheffield Station", "Train", "Sheffield", gps, zone, gateways, false);
+        registerStationSystem("Sheffield Station", TypeEnums.StationType.BUS, "Sheffield", gps, zone, gateways, false);
 
         zone = this.systemZones.getZoneById(3);
 
@@ -152,7 +153,7 @@ public class TravelSystem implements SetOfUsersInterface {
         gateways.addGateway(3);
         gateways.addGateway(3);
 
-        registerStationSystem("Manchester Piccadilly", "Train", "Manchester", gps, zone, gateways, false);
+        registerStationSystem("Manchester Piccadilly", TypeEnums.StationType.TRAIN, "Manchester", gps, zone, gateways, false);
     }
 
     /**
@@ -187,8 +188,8 @@ public class TravelSystem implements SetOfUsersInterface {
         systemJourneys.add(newJourney);
     }
 
-    public void registerTravelCard(User user, String cardType, float discount, float dailyCap, float funds) {
-        TravelCard newTravelCard = new TravelCard(systemTravelCards.getNextId(), user, cardType, discount, dailyCap);
+    public void registerTravelCard(User user, float discount, float dailyCap, float funds) {
+        TravelCard newTravelCard = new TravelCard(systemTravelCards.getNextId(), user, discount, dailyCap);
         newTravelCard.addFunds(funds);
         systemTravelCards.add(newTravelCard);
     }
@@ -203,8 +204,8 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param scanners
      * @param peak
      */
-    public void registerStationSystem(String name, String stationType, String location, GPSCoordinates gps, Zone zone, SetOfGateways scanners, boolean peak) {
-        StationSystem newStationSystem = new StationSystem(systemStationSystems.getNextId(), name, stationType, location, gps, zone, scanners, peak);
+    public void registerStationSystem(String name, TypeEnums.StationType stationType, String location, GPSCoordinates gps, Zone zone, SetOfGateways scanners, boolean peak) {
+        StationSystem newStationSystem = new StationSystem(systemStationSystems.getNextId(), name, stationType, location, gps, zone, scanners);
 
         systemStationSystems.add(newStationSystem);
     }
@@ -222,7 +223,8 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public float convertToTwoDecimalPlaces(float number) {
-        return Math.round(number * 100) / 100;
+        DecimalFormat decim = new DecimalFormat("0.00");
+        return Float.parseFloat(decim.format(number));
     }
 
     public SetOfTravelCards getTravelCards() {
@@ -233,11 +235,11 @@ public class TravelSystem implements SetOfUsersInterface {
         return systemStationSystems;
     }
 
-    public JourneyList getJourneys() {
+    public SetOfJourneys getJourneys() {
         return systemJourneys;
     }
 
-    public ZoneList getZones() {
+    public SetOfZones getZones() {
         return systemZones;
     }
 
@@ -261,8 +263,32 @@ public class TravelSystem implements SetOfUsersInterface {
         systemZones.serializeZones();
     }
 
+    public void serializeTickets() {
+        systemTickets.serializeTickets();
+    }
+
+    public void serializeStationSystems() {
+        systemStationSystems.serializeStationSystems();
+    }
+
+    public void serializeTravelCards() {
+        systemTravelCards.serializeTravelCards();
+    }
+
     public void deserializeZones() throws ClassNotFoundException {
         systemZones = systemZones.deserializeZones();
+    }
+
+    public void deserializeStationSystems() throws ClassNotFoundException {
+        systemStationSystems = systemStationSystems.deserializeStationSystems();
+    }
+
+    public void deserializeTravelCards() throws ClassNotFoundException {
+        systemTravelCards = systemTravelCards.deserializeTravelCards();
+    }
+
+    public void deserializeTickets() throws ClassNotFoundException {
+        systemTickets = systemTickets.deserializeTickets();
     }
 
     public void deserializeJourneys() throws ClassNotFoundException {
