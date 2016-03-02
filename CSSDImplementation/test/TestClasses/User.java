@@ -22,6 +22,8 @@ public class User {
     public User() {
     }
 
+    static float manual_todays_total;
+
     @BeforeClass
     public static void setUpClass() throws Throwable {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
@@ -34,12 +36,13 @@ public class User {
 
         gateway.PerformScanIn(travel_card);
         gateway.PerformScanOut(travel_card);
-
+        manual_todays_total += travel_system.getJourneys().getJourney(station_system.getZone(), station_system.getZone()).getOffPeakPrice();
         gateway.PerformScanIn(travel_card);
         gateway.PerformScanOut(travel_card);
-
+        manual_todays_total += travel_system.getJourneys().getJourney(station_system.getZone(), station_system.getZone()).getOffPeakPrice();
         gateway.PerformScanIn(travel_card);
         gateway.PerformScanOut(travel_card);
+        manual_todays_total += travel_system.getJourneys().getJourney(station_system.getZone(), station_system.getZone()).getOffPeakPrice();
     }
 
     @AfterClass
@@ -79,5 +82,42 @@ public class User {
         userTickets.stream().forEach((ticket) -> {
             assertTrue(DateManipulationUtil.isOnSameDay(ticket.getPurchasedTime(), new Date()));
         });
+    }
+
+    ///////////////////
+    // Test Case 2.3 //
+    ///////////////////
+    @Test
+    public void checkUserSearchMethods() throws Throwable {
+        PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
+        SetOfUsers users = travel_system.getUsers();
+
+        String test_email = "test@test.com";
+        String test_username = "JoBa";
+        int test_id = 3;
+
+        PublicTransportationSystem.User email_user = users.getUserByEmail(test_email);
+        PublicTransportationSystem.User username_user = users.getUserByUsername(test_username);
+        PublicTransportationSystem.User id_user = users.getUserById(test_id);
+
+        assertTrue(email_user.getEmail().equals(test_email));
+        assertTrue(username_user.getUsername().equals(test_username));
+        assertTrue(id_user.getId() == test_id);
+    }
+
+    ///////////////////
+    // Test Case 2.4 //
+    ///////////////////
+    @Test
+    public void s() {
+
+    }
+
+    ///////////////////
+    // Test Case 2.5 //
+    ///////////////////
+    @Test
+    public void a() {
+
     }
 }
