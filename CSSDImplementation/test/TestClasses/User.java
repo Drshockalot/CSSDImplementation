@@ -27,7 +27,7 @@ public class User {
     @BeforeClass
     public static void setUpClass() throws Throwable {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
-        StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
+        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
         SetOfGateways gateways = station_system.getStationGateways();
         PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(1);
 

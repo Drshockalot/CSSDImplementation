@@ -35,7 +35,7 @@ public class Gateway {
     @Test
     public void checkPerformScanInApprove() throws Throwable {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
-        StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
+        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
         SetOfGateways gateways = station_system.getStationGateways();
         PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(1);
 
@@ -53,7 +53,7 @@ public class Gateway {
     @Test
     public void checkPerformScanInReject() throws Throwable {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
-        StationSystem station_system = travel_system.getStationSystems().getStationSystemById(2);
+        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(2);
         SetOfGateways gateways = station_system.getStationGateways();
         PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(2);
 
@@ -71,7 +71,7 @@ public class Gateway {
     @Test
     public void checkPerformScanOutApprove() throws Throwable {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
-        StationSystem station_system = travel_system.getStationSystems().getStationSystemById(2);
+        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(2);
         SetOfGateways gateways = station_system.getStationGateways();
         PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(2);
 
@@ -89,7 +89,7 @@ public class Gateway {
     @Test
     public void checkPerformScanOutReject() throws Throwable {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
-        StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
+        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
         SetOfGateways gateways = station_system.getStationGateways();
         PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(1);
 
@@ -113,7 +113,7 @@ public class Gateway {
     @Test
     public void checkPerformScanOutWithPass() throws Throwable {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
-        StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
+        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
         SetOfGateways gateways = station_system.getStationGateways();
         PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(1);
 
