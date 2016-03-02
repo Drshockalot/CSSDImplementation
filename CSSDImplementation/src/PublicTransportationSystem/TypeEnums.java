@@ -30,4 +30,9 @@ public final class TypeEnums {
         BUSJOURNEY, BUSDAY, TRAINJOURNEY, TRAINDAY, BUSANDTRAINJOURNEY, BUSANDTRAINDAY
     };
 
+    public enum StationType {
+
+        BUS, TRAIN, SPACE
+    };
+
 }

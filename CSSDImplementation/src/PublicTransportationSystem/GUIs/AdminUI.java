@@ -5,9 +5,10 @@
  */
 package PublicTransportationSystem.GUIs;
 
+import PublicTransportationSystem.GPSCoordinates;
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
 import PublicTransportationSystem.Journey;
-import PublicTransportationSystem.JourneyList;
+import PublicTransportationSystem.SetOfJourneys;
 import PublicTransportationSystem.SetOfStationSystems;
 import PublicTransportationSystem.SetOfUsers;
 import PublicTransportationSystem.StationSystem;
@@ -18,7 +19,7 @@ import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
-import PublicTransportationSystem.ZoneList;
+import PublicTransportationSystem.SetOfZones;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -2638,7 +2639,7 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIJourneyList.setCellSelectionEnabled(false);
         tbl_adminGUIJourneyList.setRowSelectionAllowed(true);
 
-        JourneyList journeys = TravelSystem.getInstance().getJourneys();
+        SetOfJourneys journeys = TravelSystem.getInstance().getJourneys();
 
         for (Journey journey : journeys) {
             model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
@@ -2653,7 +2654,7 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIZoneList.setCellSelectionEnabled(false);
         tbl_adminGUIZoneList.setRowSelectionAllowed(true);
 
-        ZoneList zones = TravelSystem.getInstance().getZones();
+        SetOfZones zones = TravelSystem.getInstance().getZones();
 
         for (Zone zone : zones) {
             model.addRow(new Object[]{zone.getId(), zone.getName(),
@@ -3323,7 +3324,7 @@ public class AdminUI extends javax.swing.JFrame {
             try {
                 Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
                 TravelSystem.getInstance().getZones().remove(zone);
-                JourneyList journeysToRemove = TravelSystem.getInstance().getJourneys()
+                SetOfJourneys journeysToRemove = TravelSystem.getInstance().getJourneys()
                         .getAllJourneysContainingZone(zone);
 
                 for (Journey journey : journeysToRemove) {
@@ -3354,8 +3355,37 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminStationAddCancelActionPerformed
 
     private void btn_adminStationAddAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationAddAddActionPerformed
-        // TODO add your handling code here:
+        addNewStation();
     }//GEN-LAST:event_btn_adminStationAddAddActionPerformed
+
+    private void addNewStation() {
+        int stationId = Integer.valueOf(txt_adminStationAddId.getText());
+        String stationName = txt_adminStationAddName.getText();
+        TypeEnums.StationType stationType = (TypeEnums.StationType) cmb_adminStationAddType.getSelectedItem();
+        String stationLocation = txt_adminStationAddLocation.getText();
+        String stationGps = txt_adminStationAddGPS.getText();
+        String stationZoneStr = (String) cmb_adminStationAddZone.getSelectedItem();
+
+        GPSCoordinates coordinates = generateGPSCoordinate(stationGps);
+
+        try {
+            Zone stationZone = TravelSystem.getInstance().getZones().getZoneByName(stationZoneStr);
+            StationSystem newStation = new StationSystem(stationId, stationName, stationType, stationLocation, coordinates, stationZone, null);
+            TravelSystem.getInstance().getStationSystems().add(newStation);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private GPSCoordinates generateGPSCoordinate(String gpsCoordinates) {
+        String[] gps = gpsCoordinates.split(",", -1);
+        float longitude = Float.valueOf(gps[0]);
+        float latitude = Float.valueOf(gps[1]);
+
+        GPSCoordinates coordinates = new GPSCoordinates(longitude, latitude);
+
+        return coordinates;
+    }
 
     private void txt_adminStationAddIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminStationAddIdActionPerformed
         // TODO add your handling code here:
@@ -3423,9 +3453,21 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminStationsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsAddActionPerformed
         // TODO add your handling code here:
+        initAddStationsView();
         dlg_adminStationAdd.pack();
         dlg_adminStationAdd.show();
     }//GEN-LAST:event_btn_adminStationsAddActionPerformed
+
+    private void initAddStationsView() {
+        try {
+            txt_adminStationAddId.setText(String.valueOf(TravelSystem.getInstance()
+                    .getStationSystems().getNextId()));
+            cmb_adminStationAddType.setModel(new DefaultComboBoxModel(TypeEnums.StationType.values()));
+            cmb_adminStationAddZone.setModel(new DefaultComboBoxModel(TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void btn_adminStationsDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsDeleteActionPerformed
         // TODO add your handling code here:
@@ -3470,10 +3512,10 @@ public class AdminUI extends javax.swing.JFrame {
             // Get the departure zone
             Zone zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
             // Get all destinations that the departure zone goes to
-            ZoneList destinations = TravelSystem.getInstance()
+            SetOfZones destinations = TravelSystem.getInstance()
                     .getJourneys().getDestinationsForDepartureZone(zone.getId());
             // Get all the zones not included in destinations
-            ZoneList availableDestinations = TravelSystem.getInstance().getZones().getZonesNotInList(destinations);
+            SetOfZones availableDestinations = TravelSystem.getInstance().getZones().getZonesNotInList(destinations);
             // Convert into string array for combo
             String[] destinationsForCombo = TravelSystem.getInstance().getZones().getZonesAsStringArray(availableDestinations);
             cmb_adminJourneyAddArrZone.setModel(new DefaultComboBoxModel(destinationsForCombo));

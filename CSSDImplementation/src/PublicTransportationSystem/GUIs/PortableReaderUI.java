@@ -15,7 +15,7 @@ import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
-import PublicTransportationSystem.ZoneList;
+import PublicTransportationSystem.SetOfZones;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -723,7 +723,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
     private void setUpToZones() {
         if (this.fromZone.getItemAt(0) != null) {
-            ZoneList toZones = system.getJourneys()
+            SetOfZones toZones = system.getJourneys()
                     .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
 
             // Add the potential destination zones to the list

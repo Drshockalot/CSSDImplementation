@@ -5,6 +5,7 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
@@ -13,7 +14,7 @@ import java.util.Vector;
  *
  * @author JoBa
  */
-public class TravelCard {
+public class TravelCard implements Serializable {
 
     private int travelCardID;
     private User user;

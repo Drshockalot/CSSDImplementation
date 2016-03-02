@@ -19,8 +19,8 @@ public class TravelSystem implements SetOfUsersInterface {
     private SetOfTravelCards systemTravelCards = new SetOfTravelCards();
     private SetOfTickets systemTickets = new SetOfTickets();
     private SetOfStationSystems systemStationSystems = new SetOfStationSystems();
-    private JourneyList systemJourneys = new JourneyList();
-    private ZoneList systemZones = new ZoneList();
+    private SetOfJourneys systemJourneys = new SetOfJourneys();
+    private SetOfZones systemZones = new SetOfZones();
     private static TravelSystem INSTANCE;
 
     /**
@@ -31,12 +31,13 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeJourneys();
         deserializeZones();
 
-        //deserializeTickets();
-        //deserializeTravelCard();
+//        deserializeTickets();
         initTravelCard();
 
-        //deserializeStationSystems();
         initStationSystems();
+
+        //deserializeTravelCard();
+        //deserializeStationSystems();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -132,7 +133,7 @@ public class TravelSystem implements SetOfUsersInterface {
         gateways.addGateway(1);
         gateways.addGateway(1);
 
-        registerStationSystem("Kings Cross", "Train", "London", gps, zone, gateways, false);
+        registerStationSystem("Kings Cross", TypeEnums.StationType.TRAIN, "London", gps, zone, gateways, false);
 
         zone = this.systemZones.getZoneById(2);
 
@@ -142,7 +143,7 @@ public class TravelSystem implements SetOfUsersInterface {
         gateways.addGateway(2);
         gateways.addGateway(2);
 
-        registerStationSystem("Sheffield Station", "Train", "Sheffield", gps, zone, gateways, false);
+        registerStationSystem("Sheffield Station", TypeEnums.StationType.BUS, "Sheffield", gps, zone, gateways, false);
 
         zone = this.systemZones.getZoneById(3);
 
@@ -152,7 +153,7 @@ public class TravelSystem implements SetOfUsersInterface {
         gateways.addGateway(3);
         gateways.addGateway(3);
 
-        registerStationSystem("Manchester Piccadilly", "Train", "Manchester", gps, zone, gateways, false);
+        registerStationSystem("Manchester Piccadilly", TypeEnums.StationType.TRAIN, "Manchester", gps, zone, gateways, false);
     }
 
     /**
@@ -203,8 +204,8 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param scanners
      * @param peak
      */
-    public void registerStationSystem(String name, String stationType, String location, GPSCoordinates gps, Zone zone, SetOfGateways scanners, boolean peak) {
-        StationSystem newStationSystem = new StationSystem(systemStationSystems.getNextId(), name, stationType, location, gps, zone, scanners, peak);
+    public void registerStationSystem(String name, TypeEnums.StationType stationType, String location, GPSCoordinates gps, Zone zone, SetOfGateways scanners, boolean peak) {
+        StationSystem newStationSystem = new StationSystem(systemStationSystems.getNextId(), name, stationType, location, gps, zone, scanners);
 
         systemStationSystems.add(newStationSystem);
     }
@@ -234,11 +235,11 @@ public class TravelSystem implements SetOfUsersInterface {
         return systemStationSystems;
     }
 
-    public JourneyList getJourneys() {
+    public SetOfJourneys getJourneys() {
         return systemJourneys;
     }
 
-    public ZoneList getZones() {
+    public SetOfZones getZones() {
         return systemZones;
     }
 
@@ -265,13 +266,13 @@ public class TravelSystem implements SetOfUsersInterface {
     public void serializeTickets() {
         systemTickets.serializeTickets();
     }
-//
-//        public void serializeStationSystems() {
-//        systemStationSystems.serializeStationSystems();
-//    }
+
+    public void serializeStationSystems() {
+        systemStationSystems.serializeStationSystems();
+    }
 
     public void serializeTravelCards() {
-        //systemTravelCards.serializeTravelCards();
+        systemTravelCards.serializeTravelCards();
     }
 
     public void deserializeZones() throws ClassNotFoundException {
@@ -279,11 +280,11 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void deserializeStationSystems() throws ClassNotFoundException {
-        //systemStationSystems = systemZones.deserializeStationSystems();
+        systemStationSystems = systemStationSystems.deserializeStationSystems();
     }
 
     public void deserializeTravelCards() throws ClassNotFoundException {
-        //systemTravelCards = systemTravelCards.deserializeTravelCards();
+        systemTravelCards = systemTravelCards.deserializeTravelCards();
     }
 
     public void deserializeTickets() throws ClassNotFoundException {
