@@ -5,13 +5,14 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author JoBa
  */
-public class Ticket {
+public class Ticket implements Serializable {
 
     private final TypeEnums.TicketType ticketType;
     private final int ticketID;

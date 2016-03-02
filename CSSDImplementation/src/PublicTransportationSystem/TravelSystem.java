@@ -8,8 +8,6 @@ package PublicTransportationSystem;
 import Interfaces.SetOfUsersInterface;
 import java.text.DecimalFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -32,7 +30,11 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeUsers();
         deserializeJourneys();
         deserializeZones();
+
+        //deserializeTravelCard();
         initTravelCard();
+
+        //deserializeStationSystems();
         initStationSystems();
     }
 
@@ -58,33 +60,22 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void initUsers() {
-        SystemRole newSysRole = new SystemRole(TypeEnums.UserType.ADMIN);
+        SystemRole admin = new SystemRole(TypeEnums.UserType.ADMIN);
         SystemRole normalUser = new SystemRole(TypeEnums.UserType.USER);
 
         registerUser(1, "Test", "Loser", "User", "test@test.com", null, "password", normalUser);
-        registerUser(2, "Chadwick", "Skimpson", "Freedom", "test@test.com", null, "FromAmericaWithLove", newSysRole);
-        registerUser(null, "Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", newSysRole);
-        registerUser(null, "lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", newSysRole);
-        registerUser(6, "Joshua", "Bates", "JoBa", "test@test.fr", 1, "p", newSysRole);
+        registerUser(2, "Chadwick", "Skimpson", "Freedom", "test@test.com", null, "FromAmericaWithLove", admin);
+        registerUser(null, "Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", admin);
+        registerUser(null, "lil'", "Jack", "snapback", "stanky_memes@test.org", null, "ch ch ch checkin' it out", admin);
+        registerUser(6, "Joshua", "Bates", "JoBa", "JoBa@uniqa.com", 1, "p", admin);
     }
 
     public void initTravelCard() {
-        User user = null;
-        float discount = 1.00f;
-        float dailyCap = 9.00f;
-
-        try {
-            user = systemUsers.getUserById(6);
-        } catch (Throwable ex) {
-            Logger.getLogger(TravelSystem.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        registerTravelCard(user, "test", discount, dailyCap, 7.00f);
-
-        user = systemUsers.getUserById(3);
-        registerTravelCard(user, "nothing", discount, dailyCap, 7.00f);
-        registerTravelCard(systemUsers.getUserById(2), "nothing", discount, dailyCap, 1.00f);
-        registerTravelCard(systemUsers.getUserById(1), "Nothing", discount, dailyCap, -1.00f);
-        registerTravelCard(systemUsers.getUserById(4), "nothing", discount, dailyCap, 5.00f);
+        registerTravelCard(systemUsers.getUserById(6), 1.00f, 9.00f, 7.00f);
+        registerTravelCard(systemUsers.getUserById(3), 1.00f, 9.00f, 7.00f);
+        registerTravelCard(systemUsers.getUserById(2), 1.00f, 9.00f, 1.00f);
+        registerTravelCard(systemUsers.getUserById(1), 1.00f, 9.00f, -1.00f);
+        registerTravelCard(systemUsers.getUserById(4), 1.00f, 9.00f, 5.00f);
     }
 
     public void initZones() {
@@ -188,8 +179,8 @@ public class TravelSystem implements SetOfUsersInterface {
         systemJourneys.add(newJourney);
     }
 
-    public void registerTravelCard(User user, String cardType, float discount, float dailyCap, float funds) {
-        TravelCard newTravelCard = new TravelCard(systemTravelCards.getNextId(), user, cardType, discount, dailyCap);
+    public void registerTravelCard(User user, float discount, float dailyCap, float funds) {
+        TravelCard newTravelCard = new TravelCard(systemTravelCards.getNextId(), user, discount, dailyCap);
         newTravelCard.addFunds(funds);
         systemTravelCards.add(newTravelCard);
     }
@@ -263,8 +254,32 @@ public class TravelSystem implements SetOfUsersInterface {
         systemZones.serializeZones();
     }
 
+    public void serializeTickets() {
+        systemTickets.serializeTickets();
+    }
+//
+//        public void serializeStationSystems() {
+//        systemStationSystems.serializeStationSystems();
+//    }
+
+    public void serializeTravelCards() {
+        //systemTravelCards.serializeTravelCards();
+    }
+
     public void deserializeZones() throws ClassNotFoundException {
         systemZones = systemZones.deserializeZones();
+    }
+
+    public void deserializeStationSystems() throws ClassNotFoundException {
+        //systemStationSystems = systemZones.deserializeStationSystems();
+    }
+
+    public void deserializeTravelCards() throws ClassNotFoundException {
+        //systemTravelCards = systemTravelCards.deserializeTravelCards();
+    }
+
+    public void deserializeTickets() throws ClassNotFoundException {
+        systemTickets = systemTickets.deserializeTickets();
     }
 
     public void deserializeJourneys() throws ClassNotFoundException {

@@ -29,13 +29,12 @@ public class TravelCard {
 
 // Methods Begin
 // <editor-fold>
-    TravelCard(int travelCardID, User user, String cardType, float discount, float dailyCap) {
+    TravelCard(int travelCardID, User user, float discount, float dailyCap) {
         this.travelCardID = travelCardID;
         this.user = user;
         this.balance = 0.0f;
         this.startDate = new Date();
         this.expiryDate = calculateExpiryDate();
-//        this.cardType = cardType;
         this.discount = discount;
         this.pass = null;
         this.lastDepartedStation = null;
