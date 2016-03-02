@@ -34,15 +34,24 @@ public class User {
         PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
         PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(1);
 
+        SetOfTickets sysList = travel_system.getTickets();
+
+        boolean peak = station_system.isPeak();
+
         gateway.PerformScanIn(travel_card);
         gateway.PerformScanOut(travel_card);
-        manual_todays_total += travel_system.getJourneys().getJourney(station_system.getZone(), station_system.getZone()).getOffPeakPrice();
+
         gateway.PerformScanIn(travel_card);
         gateway.PerformScanOut(travel_card);
-        manual_todays_total += travel_system.getJourneys().getJourney(station_system.getZone(), station_system.getZone()).getOffPeakPrice();
+
         gateway.PerformScanIn(travel_card);
         gateway.PerformScanOut(travel_card);
-        manual_todays_total += travel_system.getJourneys().getJourney(station_system.getZone(), station_system.getZone()).getOffPeakPrice();
+
+        SetOfTickets ticketList = sysList.getTicketsForUserOnDay(travel_card.getUser().getId(), new Date());
+        PaymentManager pMgr = new PaymentManager();
+        for (Ticket ticket : ticketList) {
+            manual_todays_total += pMgr.calculatePrice(ticket, travel_card.getDiscount());
+        }
     }
 
     @AfterClass
@@ -109,7 +118,18 @@ public class User {
     // Test Case 2.4 //
     ///////////////////
     @Test
-    public void s() {
+    public void checkCumulativeUserTicketPrice() throws Throwable {
+        PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
+        PublicTransportationSystem.SetOfTickets tickets = travel_system.getTickets();
+        PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
+        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(1);
+        PublicTransportationSystem.User user = travel_card.getUser();
 
+        SetOfTickets userTickets = tickets.getTicketsForUserOnDay(user.getId(), new Date());
+
+        float auto_todays_total = userTickets.calculateTodaysTotal(travel_card.getDiscount(), user, new Date());
+        System.out.println(manual_todays_total);
+        System.out.println(auto_todays_total);
+        assertTrue(manual_todays_total == auto_todays_total);
     }
 }

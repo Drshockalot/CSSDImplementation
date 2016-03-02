@@ -21,7 +21,7 @@ import java.util.Vector;
  */
 public class SetOfTickets extends Vector<Ticket> implements Serializable {
 
-    float calculateTodaysTotal(float discount, User user, Date date) {
+    public float calculateTodaysTotal(float discount, User user, Date date) {
         // Create a PaymentManager to help us with calculating costs
         PaymentManager paymentManager = new PaymentManager();
         float todaysTotal = 0.00f;
