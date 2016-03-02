@@ -5,13 +5,19 @@
  */
 package PublicTransportationSystem;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
  *
  * @author SackFat
  */
-public class SetOfTravelCards extends Vector<TravelCard> {
+public class SetOfTravelCards extends Vector<TravelCard> implements Serializable {
 
     public void addTravelCard(TravelCard card) {
         //  Add valid TravelCard to system
@@ -42,5 +48,36 @@ public class SetOfTravelCards extends Vector<TravelCard> {
 
     public int getNextId() {
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
+    }
+
+    public SetOfTravelCards deserializeTravelCards() throws ClassNotFoundException {
+        try {
+            FileInputStream fileIn = new FileInputStream("files/travelCards.ser");
+            ObjectInputStream objIn = new ObjectInputStream(fileIn);
+
+            SetOfTravelCards obj = (SetOfTravelCards) objIn.readObject();
+
+            fileIn.close();
+            objIn.close();
+            return obj;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void serializeTravelCards() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("files/travelCards.ser");
+            ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+            objOut.writeObject(this);
+
+            objOut.close();
+            fileOut.close();
+            System.out.println("Serialised Travel Cards");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

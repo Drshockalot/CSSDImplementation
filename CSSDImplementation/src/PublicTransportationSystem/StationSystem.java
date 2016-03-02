@@ -5,11 +5,13 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JoBa
  */
-public class StationSystem {
+public class StationSystem implements Serializable {
 
     private int stationID;
     private String name;

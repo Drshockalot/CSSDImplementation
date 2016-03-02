@@ -66,7 +66,7 @@ public class TravelCard {
     public void hasCorrectPass() throws Throwable {
         PublicTransportationSystem.TravelSystem database = PublicTransportationSystem.TravelSystem.getInstance();
         PublicTransportationSystem.SetOfTravelCards card_list = database.getTravelCards();
-        PublicTransportationSystem.ZoneList zone_list = database.getZones();
+        PublicTransportationSystem.SetOfZones zone_list = database.getZones();
         PublicTransportationSystem.TravelCard test_card = card_list.getTravelCardById(1);
 
         // Add suitable Pass for testing purposes

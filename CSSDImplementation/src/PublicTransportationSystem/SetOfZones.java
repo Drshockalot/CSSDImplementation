@@ -17,7 +17,7 @@ import java.util.Vector;
  *
  * @author jonathondickson
  */
-public class ZoneList extends Vector<Zone> implements Serializable {
+public class SetOfZones extends Vector<Zone> implements Serializable {
 
     private static final long serialVersionUID = 7852571661854962706L;
 
@@ -65,7 +65,7 @@ public class ZoneList extends Vector<Zone> implements Serializable {
         return zoneList;
     }
 
-    public String[] getZonesAsStringArray(ZoneList zones) {
+    public String[] getZonesAsStringArray(SetOfZones zones) {
         String[] zoneList = new String[zones.size()];
 
         for (int i = 0; i < zones.size(); i++) {
@@ -85,8 +85,8 @@ public class ZoneList extends Vector<Zone> implements Serializable {
         return null;
     }
 
-    public ZoneList getZonesNotInList(ZoneList zones) {
-        ZoneList list = new ZoneList();
+    public SetOfZones getZonesNotInList(SetOfZones zones) {
+        SetOfZones list = new SetOfZones();
 
         for (int i = 0; i < super.size(); i++) {
             if (zones.getZoneById(super.get(i).getId()) == null) {
@@ -112,12 +112,12 @@ public class ZoneList extends Vector<Zone> implements Serializable {
         }
     }
 
-    public ZoneList deserializeZones() throws ClassNotFoundException {
+    public SetOfZones deserializeZones() throws ClassNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("files/zones.ser");
             ObjectInputStream objIn = new ObjectInputStream(fileIn);
 
-            ZoneList obj = (ZoneList) objIn.readObject();
+            SetOfZones obj = (SetOfZones) objIn.readObject();
 
             fileIn.close();
             objIn.close();

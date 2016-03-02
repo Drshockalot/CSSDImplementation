@@ -10,13 +10,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
  *
  * @author DrPoopAlotz // Blame the Tacos
  */
-public class SetOfStationSystems extends Vector<StationSystem> {
+public class SetOfStationSystems extends Vector<StationSystem> implements Serializable {
 
     public void addStationSystem(StationSystem station) {
         super.add(station);
@@ -49,12 +50,12 @@ public class SetOfStationSystems extends Vector<StationSystem> {
         return count;
     }
 
-    public SetOfUsers deserializeStationSystem() throws ClassNotFoundException {
+    public SetOfStationSystems deserializeStationSystems() throws ClassNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("files/stationSystems.ser");
             ObjectInputStream objIn = new ObjectInputStream(fileIn);
 
-            SetOfUsers obj = (SetOfUsers) objIn.readObject();
+            SetOfStationSystems obj = (SetOfStationSystems) objIn.readObject();
 
             fileIn.close();
             objIn.close();
@@ -65,7 +66,7 @@ public class SetOfStationSystems extends Vector<StationSystem> {
         }
     }
 
-    public void serializeStationSystem() {
+    public void serializeStationSystems() {
         try {
             FileOutputStream fileOut = new FileOutputStream("files/stationSystems.ser");
             ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
@@ -73,7 +74,7 @@ public class SetOfStationSystems extends Vector<StationSystem> {
 
             objOut.close();
             fileOut.close();
-            System.out.println("Serialised users");
+            System.out.println("Serialised Station Systems");
 
         } catch (IOException e) {
             e.printStackTrace();
