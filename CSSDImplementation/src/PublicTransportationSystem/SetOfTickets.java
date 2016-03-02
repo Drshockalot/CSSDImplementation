@@ -37,11 +37,6 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         return todaysTotal;
     }
 
-    public Ticket createNewTicket(Journey journey, TypeEnums.TicketType type, boolean peak, int userId) {
-        // Create a new ticket based upon journey
-        return new Ticket(this.getNextId(), type, journey, peak, userId);
-    }
-
     public SetOfTickets getTicketsForUser(int userId) {
         SetOfTickets userTickets = new SetOfTickets();
         for (int i = 0; i < super.size(); i++) {
