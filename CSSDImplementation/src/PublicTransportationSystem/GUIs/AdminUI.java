@@ -928,6 +928,7 @@ public class AdminUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbl_adminUserViewTickets.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tbl_adminUserViewTickets);
         if (tbl_adminUserViewTickets.getColumnModel().getColumnCount() > 0) {
             tbl_adminUserViewTickets.getColumnModel().getColumn(0).setPreferredWidth(70);
@@ -3283,10 +3284,15 @@ public class AdminUI extends javax.swing.JFrame {
         // set values here?
         int row = tbl_adminGUIUserList.getSelectedRow();
         int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
+
+        tbl_adminUserViewTickets.setCellSelectionEnabled(false);
+        tbl_adminUserViewTickets.setRowSelectionAllowed(true);
+
         initUserTicketView(userId);
 
         dlg_adminUserViewTickets.pack();
         dlg_adminUserViewTickets.show();
+
     }//GEN-LAST:event_btn_adminUserViewTicketsActionPerformed
 
     private void btn_adminZoneEditAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditAddActionPerformed
