@@ -15,6 +15,8 @@ import java.util.Date;
  */
 public class StationSystem implements Serializable {
 
+    private static final long serialVersionUID = 8478671689357505568L;
+
     private int stationID;
     private String name;
     private TypeEnums.StationType stationType;

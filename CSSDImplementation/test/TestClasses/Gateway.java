@@ -53,9 +53,10 @@ public class Gateway {
     @Test
     public void checkPerformScanInReject() throws Throwable {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
-        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(2);
+        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
         SetOfGateways gateways = station_system.getStationGateways();
-        PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(2);
+
+        PublicTransportationSystem.Gateway gateway = station_system.getStationGateways().getGatewayById(1);
 
         PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
         PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(4);
@@ -71,9 +72,9 @@ public class Gateway {
     @Test
     public void checkPerformScanOutApprove() throws Throwable {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
-        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(2);
+        PublicTransportationSystem.StationSystem station_system = travel_system.getStationSystems().getStationSystemById(1);
         SetOfGateways gateways = station_system.getStationGateways();
-        PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(2);
+        PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(1);
 
         PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
         PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(5);
