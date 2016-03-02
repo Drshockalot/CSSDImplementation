@@ -19,8 +19,8 @@ public class TravelSystem implements SetOfUsersInterface {
     private SetOfTravelCards systemTravelCards = new SetOfTravelCards();
     private SetOfTickets systemTickets = new SetOfTickets();
     private SetOfStationSystems systemStationSystems = new SetOfStationSystems();
-    private JourneyList systemJourneys = new JourneyList();
-    private ZoneList systemZones = new ZoneList();
+    private SetOfJourneys systemJourneys = new SetOfJourneys();
+    private SetOfZones systemZones = new SetOfZones();
     private static TravelSystem INSTANCE;
 
     /**
@@ -31,13 +31,13 @@ public class TravelSystem implements SetOfUsersInterface {
         deserializeJourneys();
         deserializeZones();
 
-        deserializeTickets();
-
-        //deserializeTravelCard();
+//        deserializeTickets();
         initTravelCard();
 
-        //deserializeStationSystems();
         initStationSystems();
+
+        //deserializeTravelCard();
+        //deserializeStationSystems();
     }
 
     public static TravelSystem getInstance() throws Throwable {
@@ -228,11 +228,11 @@ public class TravelSystem implements SetOfUsersInterface {
         return systemStationSystems;
     }
 
-    public JourneyList getJourneys() {
+    public SetOfJourneys getJourneys() {
         return systemJourneys;
     }
 
-    public ZoneList getZones() {
+    public SetOfZones getZones() {
         return systemZones;
     }
 
@@ -259,13 +259,13 @@ public class TravelSystem implements SetOfUsersInterface {
     public void serializeTickets() {
         systemTickets.serializeTickets();
     }
-//
-//        public void serializeStationSystems() {
-//        systemStationSystems.serializeStationSystems();
-//    }
+
+    public void serializeStationSystems() {
+        systemStationSystems.serializeStationSystems();
+    }
 
     public void serializeTravelCards() {
-        //systemTravelCards.serializeTravelCards();
+        systemTravelCards.serializeTravelCards();
     }
 
     public void deserializeZones() throws ClassNotFoundException {
@@ -273,11 +273,11 @@ public class TravelSystem implements SetOfUsersInterface {
     }
 
     public void deserializeStationSystems() throws ClassNotFoundException {
-        //systemStationSystems = systemZones.deserializeStationSystems();
+        systemStationSystems = systemStationSystems.deserializeStationSystems();
     }
 
     public void deserializeTravelCards() throws ClassNotFoundException {
-        //systemTravelCards = systemTravelCards.deserializeTravelCards();
+        systemTravelCards = systemTravelCards.deserializeTravelCards();
     }
 
     public void deserializeTickets() throws ClassNotFoundException {

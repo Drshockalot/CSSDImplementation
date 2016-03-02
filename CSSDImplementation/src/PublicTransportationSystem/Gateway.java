@@ -57,7 +57,7 @@ public class Gateway {
             boolean hasPaid = false;
 
             //Get journey price
-            JourneyList list = sys.getJourneys();
+            SetOfJourneys list = sys.getJourneys();
             Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
 
             Ticket currentTicket = TravelSystem.getInstance().getTickets()
