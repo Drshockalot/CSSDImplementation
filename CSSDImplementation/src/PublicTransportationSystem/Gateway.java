@@ -35,7 +35,8 @@ public class Gateway implements Serializable {
         int cardID = scanner.read(travelCard);
         TravelSystem sys = TravelSystem.getInstance();
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
-        Zone zone = sys.getStationSystems().getStationSystemById(this.stationID).getZone();
+        StationSystem station = sys.getStationSystems().getStationSystemById(this.stationID);
+        Zone zone = station.getZone();
 
         if (currCard == null) {
             this.reject();
@@ -62,7 +63,7 @@ public class Gateway implements Serializable {
             Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
 
             Ticket currentTicket = new Ticket(TravelSystem.getInstance().getTickets()
-                    .getNextId(), TypeEnums.TicketType.TRAIN, journey, false, currCard.getUser().getId());
+                    .getNextId(), TypeEnums.TicketType.TRAIN, journey, station.isPeak(), currCard.getUser().getId());
 
             Transaction trans = new Transaction();
             hasPaid = trans.payForTicket(currentTicket, currCard);
