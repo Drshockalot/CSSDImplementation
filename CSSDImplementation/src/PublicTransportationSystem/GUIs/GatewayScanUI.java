@@ -233,7 +233,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     private void scanInCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard2ActionPerformed
         StationSystem station = stations.getStationSystemById(2);
         SetOfGateways gateways = station.getStationGateways();
-        Gateway gateway = gateways.getGatewayById(2);
+        Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
         TravelCard travelCard = travelCards.getTravelCardById(2);
 
@@ -260,7 +260,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     private void scanInCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard3ActionPerformed
         StationSystem station = stations.getStationSystemById(3);
         SetOfGateways gateways = station.getStationGateways();
-        Gateway gateway = gateways.getGatewayById(3);
+        Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
         TravelCard travelCard = travelCards.getTravelCardById(3);
 
@@ -314,7 +314,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     private void scanOutCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard2ActionPerformed
         StationSystem station = stations.getStationSystemById(2);
         SetOfGateways gateways = station.getStationGateways();
-        Gateway gateway = gateways.getGatewayById(2);
+        Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
         TravelCard travelCard = travelCards.getTravelCardById(2);
 
@@ -341,7 +341,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     private void scanOutCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard3ActionPerformed
         StationSystem station = stations.getStationSystemById(3);
         SetOfGateways gateways = station.getStationGateways();
-        Gateway gateway = gateways.getGatewayById(3);
+        Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
         TravelCard travelCard = travelCards.getTravelCardById(3);
 

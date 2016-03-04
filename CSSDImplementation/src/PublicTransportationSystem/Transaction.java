@@ -31,7 +31,7 @@ public class Transaction {
 
         float todaysTotal = 0;
         // If the user has enough to pay for the ticket
-        if (currentTravelCard.getBalance() > 0) {
+        if (currentTravelCard.getBalance() >= 0) {
             try {
                 // Returns the sum of the ticket prices purchased today
                 todaysTotal = TravelSystem.getInstance().getTickets().calculateTodaysTotal(discount, currentTravelCard.getUser(), new Date());
