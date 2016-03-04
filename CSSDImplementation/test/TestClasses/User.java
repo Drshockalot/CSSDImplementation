@@ -33,6 +33,7 @@ public class User {
 
         PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
         PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(1);
+        travel_card.addFunds(7.00f);
 
         SetOfTickets sysList = travel_system.getTickets();
 
@@ -50,7 +51,9 @@ public class User {
         SetOfTickets ticketList = sysList.getTicketsForUserOnDay(travel_card.getUser().getId(), new Date());
         PaymentManager pMgr = new PaymentManager();
         for (Ticket ticket : ticketList) {
-            manual_todays_total += pMgr.calculatePrice(ticket, travel_card.getDiscount());
+            if (ticket.getIsPaid()) {
+                manual_todays_total += pMgr.calculatePrice(ticket, travel_card.getDiscount());
+            }
         }
     }
 

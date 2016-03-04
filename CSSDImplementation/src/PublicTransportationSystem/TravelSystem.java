@@ -106,7 +106,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public void initTravelCards() {
         registerTravelCard(systemUsers.getUserById(6), 1.00f, 9.00f, 7.00f);
-        registerTravelCard(systemUsers.getUserById(3), 1.00f, 9.00f, 7.00f);
+        registerTravelCard(systemUsers.getUserById(3), 1.00f, 9.00f, 1.00f);
         registerTravelCard(systemUsers.getUserById(2), 1.00f, 9.00f, 1.00f);
         registerTravelCard(systemUsers.getUserById(1), 1.00f, 9.00f, -1.00f);
         registerTravelCard(systemUsers.getUserById(4), 1.00f, 9.00f, 5.00f);
