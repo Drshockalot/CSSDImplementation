@@ -64,7 +64,7 @@ public class TravelSystem implements SetOfUsersInterface {
         initZones();
         initUsers();
         initJourneys();
-        initTravelCards();
+        //initTravelCards();
         initTickets();
         initStationSystems();
 
@@ -93,7 +93,8 @@ public class TravelSystem implements SetOfUsersInterface {
         registerUser(2, "Chadwick", "Skimpson", "Freedom", "test@testing.com", null, "FromAmericaWithLove", admin, "28-12-1992");
         registerUser(null, "Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", admin, "09-12-1992");
         registerUser(null, "lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", admin, "07-05-1993");
-        registerUser(6, "Joshua", "Bates", "JoBa", "test@test.fr", 2, "p", admin, "28-08-1992");
+        registerUser(6, "Joshua", "Bates", "JoBaUser", "test@test.fr", null, "p", normalUser, "28-08-1992");
+        registerUser(null, "Joshua", "Bates", "JoBa", "test@test.fr", null, "p", admin, "28-08-1992");
     }
 
     private TravelCard createTravelCardForUser(User user) {
