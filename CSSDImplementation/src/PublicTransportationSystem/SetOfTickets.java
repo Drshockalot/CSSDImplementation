@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
@@ -23,7 +24,7 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
 
     private static final long serialVersionUID = 8865672849740829174L;
 
-    float calculateTodaysTotal(float discount, User user, Date date) {
+    public float calculateTodaysTotal(float discount, User user, Date date) {
         // Create a PaymentManager to help us with calculating costs
         PaymentManager paymentManager = new PaymentManager();
         float todaysTotal = 0.00f;
@@ -78,6 +79,46 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
             }
         }
         return unusedTickets;
+    }
+
+    public int getOffPeakTicketsForJourney(Journey journey) {
+        int count = 0;
+
+        for (int i = 0; i < super.size(); i++) {
+            if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                if (!super.get(i).isPeakTicket()) {
+                    if (super.get(i).getJourney().getStartZone().getId() == journey.getStartZone().getId()) {
+                        if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
+                            count++;
+                        }
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+
+    public int getOnPeakTicketsForJourney(Journey journey) {
+        int count = 0;
+
+        for (int i = 0; i < super.size(); i++) {
+            if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                if (super.get(i).isPeakTicket()) {
+                    if (super.get(i).getJourney().getStartZone().getId() == journey.getStartZone().getId()) {
+                        if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
+                            count++;
+                        }
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+
+    private String getDateFormatted(Date date) {
+        return new SimpleDateFormat("dd-MM-yyyy").format(date);
     }
 
     public void addTicket(Ticket ticket) {

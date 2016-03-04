@@ -7,7 +7,12 @@ package PublicTransportationSystem;
 
 import Interfaces.SetOfUsersInterface;
 import java.text.DecimalFormat;
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,17 +32,16 @@ public class TravelSystem implements SetOfUsersInterface {
      *
      */
     private TravelSystem() throws ClassNotFoundException {
+
+        deserializeZones();
         deserializeUsers();
         deserializeJourneys();
-        deserializeZones();
+        deserializeTravelCards();
+        deserializeTickets();
         deserializeStationSystems();
 
-        deserializeTickets();
-
-        initTravelCard();
-
-        initStationSystems();
-
+        //initTravelCards();
+        //initStationSystems();
         //deserializeTravelCard();
     }
 
@@ -53,15 +57,24 @@ public class TravelSystem implements SetOfUsersInterface {
         systemZones.removeAllElements();
         systemUsers.removeAllElements();
         systemJourneys.removeAllElements();
-        initUsers();
-        initTravelCard();
-        serializeUsers();
+        systemTravelCards.removeAllElements();
+        systemTickets.removeAllElements();
+        systemStationSystems.removeAllElements();
+
         initZones();
-        serializeZones();
-        initJourneyList();
-        serializeJourneys();
+        initUsers();
+        initJourneys();
+        initTravelCards();
         initTickets();
+        initStationSystems();
+
+        serializeZones();
+        serializeUsers();
+        serializeJourneys();
+        serializeTravelCards();
         serializeTickets();
+        serializeStationSystems();
+
     }
 
     public void initTickets() {
@@ -76,14 +89,21 @@ public class TravelSystem implements SetOfUsersInterface {
         SystemRole admin = new SystemRole(TypeEnums.UserType.ADMIN);
         SystemRole normalUser = new SystemRole(TypeEnums.UserType.USER);
 
-        registerUser(1, "Test", "Loser", "User", "test@test.com", null, "password", normalUser);
-        registerUser(2, "Chadwick", "Skimpson", "Freedom", "test@testing.com", null, "FromAmericaWithLove", admin);
-        registerUser(null, "Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", admin);
-        registerUser(null, "lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", admin);
-        registerUser(6, "Joshua", "Bates", "JoBa", "test@test.fr", 1, "p", admin);
+        registerUser(1, "Test", "Loser", "User", "test@test.com", null, "password", normalUser, "08-12-1992");
+        registerUser(2, "Chadwick", "Skimpson", "Freedom", "test@testing.com", null, "FromAmericaWithLove", admin, "28-12-1992");
+        registerUser(null, "Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", admin, "09-12-1992");
+        registerUser(null, "lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", admin, "07-05-1993");
+        registerUser(6, "Joshua", "Bates", "JoBa", "test@test.fr", 2, "p", admin, "28-08-1992");
     }
 
-    public void initTravelCard() {
+    private TravelCard createTravelCardForUser(User user) {
+        TravelCard travelCard = null;
+        travelCard = new TravelCard(systemTravelCards.getNextId(), user, 0.00f, 8.00f);
+
+        return travelCard;
+    }
+
+    public void initTravelCards() {
         registerTravelCard(systemUsers.getUserById(6), 1.00f, 9.00f, 7.00f);
         registerTravelCard(systemUsers.getUserById(3), 1.00f, 9.00f, 7.00f);
         registerTravelCard(systemUsers.getUserById(2), 1.00f, 9.00f, 1.00f);
@@ -99,7 +119,7 @@ public class TravelSystem implements SetOfUsersInterface {
         registerZone(5, "Zone E");
     }
 
-    public void initJourneyList() {
+    public void initJourneys() {
         systemJourneys.removeAllElements();
         registerJourney((float) 1.99, (float) 2.46, systemZones.getZoneById(1), systemZones.getZoneById(1));
         registerJourney((float) 2.99, (float) 3.46, systemZones.getZoneById(1), systemZones.getZoneById(2));
@@ -172,12 +192,30 @@ public class TravelSystem implements SetOfUsersInterface {
      * @param password
      * @param newSysRole
      */
-    public void registerUser(Integer id, String forename, String surname, String username, String email, Integer travelCardId, String password, SystemRole newSysRole) {
+    public void registerUser(Integer id, String forename, String surname, String username, String email, Integer travelCardId, String password, SystemRole newSysRole, String dob) {
         // if no id is passed through, get next id
         if (id == null) {
             id = systemUsers.getNextId();
         }
-        User newUser = new User(id, forename, surname, username, email, travelCardId, password, newSysRole, new Date());
+
+        Calendar cal = Calendar.getInstance();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+
+        try {
+            cal.setTime(sdf.parse(dob));
+        } catch (ParseException ex) {
+            Logger.getLogger(TravelSystem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        User newUser = new User(id, forename, surname, username, email, travelCardId, password, newSysRole, cal.getTime());
+
+        if (newUser.getSystemRole().isUser()) {
+            TravelCard travelCard = createTravelCardForUser(newUser);
+            newUser.setTravelCardId(travelCard.getId());
+            systemTravelCards.add(travelCard);
+            systemTravelCards.serializeTravelCards();
+        }
 
         systemUsers.add(newUser);
     }

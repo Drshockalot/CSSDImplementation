@@ -70,6 +70,9 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_registerFirstNameError = new javax.swing.JLabel();
         lbl_registerLastNameError = new javax.swing.JLabel();
         lbl_registerPasswordError = new javax.swing.JLabel();
+        lbl_registerDobError = new javax.swing.JLabel();
+        lbl_registerDob = new javax.swing.JLabel();
+        txt_registerDob = new javax.swing.JTextField();
         pnl_websiteContainer = new javax.swing.JPanel();
         txt_websiteURL = new javax.swing.JTextField();
         btn_websiteURLGo = new javax.swing.JButton();
@@ -342,6 +345,11 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_registerPasswordError.setForeground(new java.awt.Color(255, 0, 0));
         lbl_registerPasswordError.setText("Required");
 
+        lbl_registerDobError.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_registerDobError.setText("Required");
+
+        lbl_registerDob.setText("DOB");
+
         javax.swing.GroupLayout pnl_registerContainerLayout = new javax.swing.GroupLayout(pnl_registerContainer);
         pnl_registerContainer.setLayout(pnl_registerContainerLayout);
         pnl_registerContainerLayout.setHorizontalGroup(
@@ -364,14 +372,6 @@ public class WebsiteUI extends javax.swing.JFrame {
                         .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_registerUsername)
                             .addGroup(pnl_registerContainerLayout.createSequentialGroup()
-                                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lbl_registerEmail)
-                                    .addComponent(pass_registerPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                                    .addComponent(lbl_registerPassword)
-                                    .addComponent(txt_registerUsername))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbl_registerUsernameError))
-                            .addGroup(pnl_registerContainerLayout.createSequentialGroup()
                                 .addComponent(txt_registerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lbl_registerEmailError))
@@ -382,8 +382,18 @@ public class WebsiteUI extends javax.swing.JFrame {
                                 .addComponent(lbl_registerLastNameError))
                             .addComponent(lbl_registerFirstName)
                             .addGroup(pnl_registerContainerLayout.createSequentialGroup()
-                                .addGap(261, 261, 261)
-                                .addComponent(lbl_registerPasswordError)))
+                                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbl_registerEmail)
+                                    .addComponent(pass_registerPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                                    .addComponent(lbl_registerPassword)
+                                    .addComponent(txt_registerUsername)
+                                    .addComponent(lbl_registerDob)
+                                    .addComponent(txt_registerDob))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_registerUsernameError)
+                                    .addComponent(lbl_registerPasswordError)
+                                    .addComponent(lbl_registerDobError))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -404,7 +414,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_registerLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_registerLastNameError))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_registerUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -422,7 +432,13 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pass_registerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_registerPasswordError))
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_registerDob)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_registerDobError)
+                    .addComponent(txt_registerDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_registerContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_RegisterSubmit)
                     .addComponent(btn_RegisterCancel))
@@ -670,7 +686,7 @@ public class WebsiteUI extends javax.swing.JFrame {
 
     // sets error states inside register form if there is any issues
     private boolean checkUsersRegistrationInput(String firstName, String surname,
-            String username, String email, String password, SystemRole newSysRole) {
+            String username, String email, String password, SystemRole newSysRole, String dob) {
 
         boolean isValid = true;
 
@@ -733,6 +749,13 @@ public class WebsiteUI extends javax.swing.JFrame {
             lbl_registerPasswordError.setVisible(false);
         }
 
+        if (dob.isEmpty()) {
+            lbl_registerDobError.setVisible(true);
+            isValid = false;
+        } else {
+            lbl_registerDobError.setVisible(false);
+        }
+
         // returns true allowing user to register if everything checks out
         if (isValid) {
             return true;
@@ -747,15 +770,16 @@ public class WebsiteUI extends javax.swing.JFrame {
         String username = txt_registerUsername.getText();
         String email = txt_registerEmail.getText();
         String password = new String(pass_registerPassword.getPassword());
+        String dob = txt_registerDob.getText().replace("/", "-");
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.USER);
 
         boolean isValid = checkUsersRegistrationInput(firstName, surname,
-                username, email, password, newSysRole);
+                username, email, password, newSysRole, dob);
 
         if (isValid) {
             try {
                 TravelSystem.getInstance()
-                        .registerUser(null, firstName, surname, username, email, null, password, newSysRole);
+                        .registerUser(null, firstName, surname, username, email, null, password, newSysRole, dob);
                 TravelSystem.getInstance().serializeUsers(); // save users with new user
             } catch (Throwable ex) {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -781,6 +805,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         txt_registerUsername.setText("");
         txt_registerEmail.setText("");
         pass_registerPassword.setText("");
+        txt_registerDob.setText("");
 
         // re-hide register error messages
         lbl_registerFirstNameError.setVisible(false);
@@ -788,6 +813,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_registerPasswordError.setVisible(false);
         lbl_registerUsernameError.setVisible(false);
         lbl_registerEmailError.setVisible(false);
+        lbl_registerDobError.setVisible(false);
 
         registerPopup.pack();
         registerPopup.setLocationRelativeTo(null);
@@ -951,6 +977,8 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_loginErrorMsg;
     private javax.swing.JLabel lbl_loginTitle;
     private javax.swing.JLabel lbl_password;
+    private javax.swing.JLabel lbl_registerDob;
+    private javax.swing.JLabel lbl_registerDobError;
     private javax.swing.JLabel lbl_registerEmail;
     private javax.swing.JLabel lbl_registerEmailError;
     private javax.swing.JLabel lbl_registerFirstName;
@@ -973,6 +1001,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_websiteTicketsContainer;
     private javax.swing.JPanel pnl_websiteTravelCardContainer;
     private javax.swing.JDialog registerPopup;
+    private javax.swing.JTextField txt_registerDob;
     private javax.swing.JTextField txt_registerEmail;
     private javax.swing.JTextField txt_registerFirstName;
     private javax.swing.JTextField txt_registerLastName;

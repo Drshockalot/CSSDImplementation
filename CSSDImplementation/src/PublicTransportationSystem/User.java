@@ -140,5 +140,9 @@ public class User implements Serializable {
         this.dateOfBirth = newDob;
     }
 
+    public void setTravelCardId(int travelCardId) {
+        this.travelCardId = travelCardId;
+    }
+
     // </editor-fold>
 }

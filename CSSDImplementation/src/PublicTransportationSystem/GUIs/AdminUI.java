@@ -893,6 +893,8 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        dlg_adminUserViewTickets.setResizable(false);
+
         btn_adminUserViewTicketsClose.setText("Close");
         btn_adminUserViewTicketsClose.setSize(new java.awt.Dimension(75, 29));
         btn_adminUserViewTicketsClose.addActionListener(new java.awt.event.ActionListener() {
@@ -910,14 +912,14 @@ public class AdminUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Ticket Id", "Departure", "Arrival", "Purchase Date", "Ticket Type", "Peak"
+                "Ticket Id", "Departure Zone", "Arrival Zone", "Purchase Date", "Ticket Type", "Peak", "Price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -928,6 +930,7 @@ public class AdminUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbl_adminUserViewTickets.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tbl_adminUserViewTickets);
         if (tbl_adminUserViewTickets.getColumnModel().getColumnCount() > 0) {
             tbl_adminUserViewTickets.getColumnModel().getColumn(0).setPreferredWidth(70);
@@ -938,19 +941,16 @@ public class AdminUI extends javax.swing.JFrame {
         pnl_adminUserViewTickets.setLayout(pnl_adminUserViewTicketsLayout);
         pnl_adminUserViewTicketsLayout.setHorizontalGroup(
             pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserViewTicketsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_adminUserViewTicketsClose)
-                .addContainerGap())
             .addGroup(pnl_adminUserViewTicketsLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(lbl_adminUserViewTicketsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserViewTicketsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminUserViewTicketsLayout.createSequentialGroup()
-                        .addComponent(lbl_adminUserViewTicketsTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10))
-                    .addGroup(pnl_adminUserViewTicketsLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
-                        .addContainerGap())))
+                    .addComponent(btn_adminUserViewTicketsClose, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         pnl_adminUserViewTicketsLayout.setVerticalGroup(
             pnl_adminUserViewTicketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -961,7 +961,7 @@ public class AdminUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_adminUserViewTicketsClose)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout dlg_adminUserViewTicketsLayout = new javax.swing.GroupLayout(dlg_adminUserViewTickets.getContentPane());
@@ -2630,7 +2630,7 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }
 
-    public void populateJourneyTable() throws Throwable {
+    private void populateJourneyTable() throws Throwable {
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIJourneyList.getModel();
         model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
@@ -2640,9 +2640,24 @@ public class AdminUI extends javax.swing.JFrame {
         SetOfJourneys journeys = TravelSystem.getInstance().getJourneys();
 
         for (Journey journey : journeys) {
+            int offPeakJourneys = TravelSystem.getInstance().getTickets().getOffPeakTicketsForJourney(journey);
+            int onPeakJourneys = TravelSystem.getInstance().getTickets().getOnPeakTicketsForJourney(journey);
+
             model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
-                journey.getOffPeakPrice(), journey.getOnPeakPrice(), 0, 0, 0});
+                journey.getOffPeakPrice(), journey.getOnPeakPrice(),
+                offPeakJourneys,
+                onPeakJourneys,
+                calculateRevenueForJourneyToday(onPeakJourneys, offPeakJourneys, journey.getOnPeakPrice(), journey.getOffPeakPrice())});
         }
+    }
+
+    private float calculateRevenueForJourneyToday(int peakJourneys, int offPeakJourneys, float onPeakPrice, float offPeakPrice) {
+        float revenue = 0.00f;
+
+        revenue += peakJourneys * onPeakPrice;
+        revenue += offPeakJourneys * offPeakPrice;
+
+        return revenue;
     }
 
     public void populateZoneTable() throws Throwable {
@@ -2818,10 +2833,9 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserEditActionPerformed
         if (tbl_adminGUIUserList.getSelectedRowCount() > 0) {
             initEditUserView();
+            cmd_adminUserAddEditUserRole.setEnabled(false);
             dlg_adminUserAddEdit.pack();
             dlg_adminUserAddEdit.setVisible(true);
-//            dlg_adminUserAddEdit.setEnabled(true);
-//            this.setEnabled(false);
         }
     }//GEN-LAST:event_btn_adminUserEditActionPerformed
 
@@ -2833,8 +2847,6 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserAddEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddEditSaveActionPerformed
         try {
-            Calendar cal = Calendar.getInstance();
-
             String userId = txt_adminUserAddEditId.getText();
             String forename = txt_adminUserAddEditForename.getText();
             String surname = txt_adminUserAddEditSurname.getText();
@@ -2843,15 +2855,16 @@ public class AdminUI extends javax.swing.JFrame {
             String password = txt_adminUserAddEditPassword.getText();
 
             // replace slash format if present
-            String dobString = txt_adminUserAddEditDob.getText().replace("/", "-");
-
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-
-            cal.setTime(sdf.parse(dobString));
+            String dob = txt_adminUserAddEditDob.getText().replace("/", "-");
 
             TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
 
             if (lbl_adminUserAddEditTitle.getText().equals("Edit User")) {
+                Calendar cal = Calendar.getInstance();
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+
+                cal.setTime(sdf.parse(dob));
                 try {
                     User user = TravelSystem.getInstance().getUsers().getUserById(Integer.parseInt(userId));
                     user.setForename(forename);
@@ -2865,8 +2878,9 @@ public class AdminUI extends javax.swing.JFrame {
                     Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                User user = new User(TravelSystem.getInstance().getUsers().getNextId(), forename, surname, username, email, null, password, new SystemRole(userRole), cal.getTime());
-                TravelSystem.getInstance().getUsers().add(user);
+                TravelSystem.getInstance().registerUser(null, forename, surname, username, email,
+                        null, password, new SystemRole(userRole), dob);
+                TravelSystem.getInstance().getUsers().serializeUsers();
             }
 
             try {
@@ -2956,7 +2970,7 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddActionPerformed
         // TODO add your handling code here:
         initAddUserView();
-
+        cmd_adminUserAddEditUserRole.setEnabled(true);
         dlg_adminUserAddEdit.pack();
         dlg_adminUserAddEdit.setVisible(true);
     }//GEN-LAST:event_btn_adminUserAddActionPerformed
@@ -3283,10 +3297,15 @@ public class AdminUI extends javax.swing.JFrame {
         // set values here?
         int row = tbl_adminGUIUserList.getSelectedRow();
         int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
+
+        tbl_adminUserViewTickets.setCellSelectionEnabled(false);
+        tbl_adminUserViewTickets.setRowSelectionAllowed(true);
+
         initUserTicketView(userId);
 
         dlg_adminUserViewTickets.pack();
         dlg_adminUserViewTickets.show();
+
     }//GEN-LAST:event_btn_adminUserViewTicketsActionPerformed
 
     private void btn_adminZoneEditAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditAddActionPerformed
@@ -3349,7 +3368,7 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_dlg_adminStationAddWindowOpened
 
     private void btn_adminStationAddCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationAddCancelActionPerformed
-        // TODO add your handling code here:
+        dlg_adminStationAdd.setVisible(false);
     }//GEN-LAST:event_btn_adminStationAddCancelActionPerformed
 
     private void btn_adminStationAddAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationAddAddActionPerformed
@@ -3532,8 +3551,8 @@ public class AdminUI extends javax.swing.JFrame {
         try {
             for (Ticket ticket : TravelSystem.getInstance().getTickets().getTicketsForUser(userId)) {
                 model.addRow(new Object[]{ticket.getTicketId(), ticket.getJourney().getStartZone(),
-                    ticket.getJourney().getEndZone(), ticket.getPurchasedTime(),
-                    ticket.getTicketType(), ticket.isPeakTicket()
+                    ticket.getJourney().getEndZone(), getDateFormatted("date", ticket.getPurchasedTime()) + " " + getDateFormatted("time", ticket.getPurchasedTime()),
+                    ticket.getTicketType(), ticket.isPeakTicket(), ticket.getJourney().getPriceBasedOnPeak(ticket.isPeakTicket())
                 });
             }
         } catch (Throwable ex) {
