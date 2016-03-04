@@ -89,7 +89,7 @@ public class TravelSystem implements SetOfUsersInterface {
         SystemRole admin = new SystemRole(TypeEnums.UserType.ADMIN);
         SystemRole normalUser = new SystemRole(TypeEnums.UserType.USER);
 
-        registerUser(1, "Test", "Loser", "User", "test@test.com", null, "password", normalUser, "08-12-1992");
+        registerUser(1, "Test", "User", "TestUser", "test@test.com", null, "password", normalUser, "08-12-1992");
         registerUser(2, "Chadwick", "Skimpson", "Freedom", "test@testing.com", null, "FromAmericaWithLove", admin, "28-12-1992");
         registerUser(null, "Jonathon", "LoveTheDickSon", "JD", "test@test.co.uk", null, "p", admin, "09-12-1992");
         registerUser(null, "lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", admin, "07-05-1993");

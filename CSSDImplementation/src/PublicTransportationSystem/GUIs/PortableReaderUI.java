@@ -65,13 +65,12 @@ public class PortableReaderUI extends javax.swing.JFrame {
         scanCardBusButton = new javax.swing.JButton();
         travelCardsComboBox = new javax.swing.JComboBox();
         scanPanelTravelCardLabel = new javax.swing.JLabel();
+        pnl_portableReaderScanTitle = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
         validPassPanel = new javax.swing.JPanel();
         passUserImage = new javax.swing.JPanel();
         validPassUserImagelabel = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Images/user_image.png")));
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         passUserName = new javax.swing.JLabel();
@@ -79,12 +78,11 @@ public class PortableReaderUI extends javax.swing.JFrame {
         passUserID = new javax.swing.JLabel();
         passUserBalance = new javax.swing.JLabel();
         passConfirmInspection = new javax.swing.JButton();
+        pnl_portableReaderPassTitle = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         payForTicketPanel = new javax.swing.JPanel();
         paymentUserImage = new javax.swing.JPanel();
         paymentUserImagelabel = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Images/user_image.png")));
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         paymentUserName = new javax.swing.JLabel();
@@ -96,12 +94,16 @@ public class PortableReaderUI extends javax.swing.JFrame {
         toZone = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        pnl_portableReaderScanTitle2 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
         addFundsPanel = new javax.swing.JPanel();
         addFundsTextField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         addFundsButton = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
+        pnl_portableReaderPassTitle1 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
 
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -130,35 +132,59 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
         scanPanelTravelCardLabel.setText("Travel Card:");
 
+        pnl_portableReaderScanTitle.setBackground(new java.awt.Color(192, 221, 253));
+
+        jLabel16.setBackground(new java.awt.Color(192, 221, 253));
+        jLabel16.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu.png"))); // NOI18N
+        jLabel16.setText("               Scanner");
+
+        javax.swing.GroupLayout pnl_portableReaderScanTitleLayout = new javax.swing.GroupLayout(pnl_portableReaderScanTitle);
+        pnl_portableReaderScanTitle.setLayout(pnl_portableReaderScanTitleLayout);
+        pnl_portableReaderScanTitleLayout.setHorizontalGroup(
+            pnl_portableReaderScanTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_portableReaderScanTitleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_portableReaderScanTitleLayout.setVerticalGroup(
+            pnl_portableReaderScanTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_portableReaderScanTitleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout scanPanelLayout = new javax.swing.GroupLayout(scanPanel);
         scanPanel.setLayout(scanPanelLayout);
         scanPanelLayout.setHorizontalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scanPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(scanCardTrainButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(146, 146, 146))
+            .addComponent(pnl_portableReaderScanTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(scanPanelLayout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(98, 98, 98)
                 .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scanPanelTravelCardLabel)
-                    .addComponent(travelCardsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                    .addComponent(travelCardsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(scanPanelLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scanCardTrainButton))))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         scanPanelLayout.setVerticalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(scanPanelLayout.createSequentialGroup()
-                .addGap(159, 159, 159)
+                .addComponent(pnl_portableReaderScanTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
                 .addComponent(scanPanelTravelCardLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(travelCardsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(48, 48, 48)
                 .addComponent(scanCardTrainButton)
                 .addGap(18, 18, 18)
                 .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(scanPanel);
@@ -175,108 +201,128 @@ public class PortableReaderUI extends javax.swing.JFrame {
         );
         passUserImageLayout.setVerticalGroup(
             passUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(validPassUserImagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(validPassUserImagelabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
         );
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("User Details");
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Valid Pass");
 
-        jLabel3.setText("Name: ");
-
-        jLabel4.setText("DoB: ");
-
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("ID: ");
 
-        jLabel6.setText("Balance: ");
+        jLabel6.setText("Credit:");
 
+        passUserName.setFont(new java.awt.Font("Lucida Grande", 0, 22)); // NOI18N
         passUserName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        passUserName.setText("placeholder");
+        passUserName.setText("user name");
 
+        passUserDob.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         passUserDob.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        passUserDob.setText("placeholder");
+        passUserDob.setText("dob");
 
+        passUserID.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         passUserID.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        passUserID.setText("placeholder");
+        passUserID.setText("userid");
 
         passUserBalance.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passUserBalance.setText("placeholder");
 
-        passConfirmInspection.setText("Confirm Inspection");
+        passConfirmInspection.setBackground(new java.awt.Color(192, 221, 253));
+        passConfirmInspection.setText("Save");
         passConfirmInspection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passConfirmInspectionActionPerformed(evt);
             }
         });
 
+        pnl_portableReaderPassTitle.setBackground(new java.awt.Color(192, 221, 253));
+
+        jLabel17.setBackground(new java.awt.Color(192, 221, 253));
+        jLabel17.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu.png"))); // NOI18N
+        jLabel17.setText("        Customer Account");
+
+        javax.swing.GroupLayout pnl_portableReaderPassTitleLayout = new javax.swing.GroupLayout(pnl_portableReaderPassTitle);
+        pnl_portableReaderPassTitle.setLayout(pnl_portableReaderPassTitleLayout);
+        pnl_portableReaderPassTitleLayout.setHorizontalGroup(
+            pnl_portableReaderPassTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_portableReaderPassTitleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_portableReaderPassTitleLayout.setVerticalGroup(
+            pnl_portableReaderPassTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_portableReaderPassTitleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout validPassPanelLayout = new javax.swing.GroupLayout(validPassPanel);
         validPassPanel.setLayout(validPassPanelLayout);
         validPassPanelLayout.setHorizontalGroup(
             validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(validPassPanelLayout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(passConfirmInspection)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_portableReaderPassTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(validPassPanelLayout.createSequentialGroup()
                 .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(validPassPanelLayout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(validPassPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(passUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, validPassPanelLayout.createSequentialGroup()
+                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(validPassPanelLayout.createSequentialGroup()
+                                .addComponent(passUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(passUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(validPassPanelLayout.createSequentialGroup()
+                                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(passUserDob, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(validPassPanelLayout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(passUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 43, Short.MAX_VALUE))))
+                            .addGroup(validPassPanelLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(passUserBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, validPassPanelLayout.createSequentialGroup()
-                                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(passUserID, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                                    .addComponent(passUserDob, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                                    .addComponent(passUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                                .addComponent(passUserBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(validPassPanelLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(validPassPanelLayout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(passConfirmInspection, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         validPassPanelLayout.setVerticalGroup(
             validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(validPassPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addComponent(pnl_portableReaderPassTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(validPassPanelLayout.createSequentialGroup()
-                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(passUserName))
+                        .addComponent(passUserName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(passUserDob))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(passUserDob)
+                        .addGap(12, 12, 12)
                         .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(passUserID))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(passUserBalance))))
-                .addGap(109, 109, 109)
+                            .addComponent(passUserID))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(passUserBalance))
+                .addGap(102, 102, 102)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(passConfirmInspection)
-                .addGap(52, 52, 52))
+                .addGap(76, 76, 76))
         );
 
         jLayeredPane1.add(validPassPanel);
@@ -293,24 +339,22 @@ public class PortableReaderUI extends javax.swing.JFrame {
         );
         paymentUserImageLayout.setVerticalGroup(
             paymentUserImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(paymentUserImagelabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(paymentUserImagelabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
-        jLabel7.setText("User Details");
-
-        jLabel9.setText("Name: ");
-
-        jLabel10.setText("DoB: ");
-
+        jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel11.setText("ID: ");
 
-        jLabel12.setText("Balance: ");
+        jLabel12.setText("Credit:");
 
-        paymentUserName.setText("placeholder");
+        paymentUserName.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        paymentUserName.setText("user name");
 
-        paymentUserDob.setText("placeholder");
+        paymentUserDob.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        paymentUserDob.setText("dob");
 
-        paymentUserID.setText("placeholder");
+        paymentUserID.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        paymentUserID.setText("userid");
 
         paymentUserBalance.setText("placeholder");
 
@@ -333,85 +377,97 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
         jLabel13.setText("To:");
 
+        pnl_portableReaderScanTitle2.setBackground(new java.awt.Color(192, 221, 253));
+
+        jLabel18.setBackground(new java.awt.Color(192, 221, 253));
+        jLabel18.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu.png"))); // NOI18N
+        jLabel18.setText("        Customer Account");
+
+        javax.swing.GroupLayout pnl_portableReaderScanTitle2Layout = new javax.swing.GroupLayout(pnl_portableReaderScanTitle2);
+        pnl_portableReaderScanTitle2.setLayout(pnl_portableReaderScanTitle2Layout);
+        pnl_portableReaderScanTitle2Layout.setHorizontalGroup(
+            pnl_portableReaderScanTitle2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_portableReaderScanTitle2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+        );
+        pnl_portableReaderScanTitle2Layout.setVerticalGroup(
+            pnl_portableReaderScanTitle2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_portableReaderScanTitle2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout payForTicketPanelLayout = new javax.swing.GroupLayout(payForTicketPanel);
         payForTicketPanel.setLayout(payForTicketPanelLayout);
         payForTicketPanelLayout.setHorizontalGroup(
             payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_portableReaderScanTitle2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(payForTicketPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(payForTicketPanelLayout.createSequentialGroup()
-                        .addComponent(paymentUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(116, 116, 116)
+                        .addComponent(paymentConfirmInspection)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(payForTicketPanelLayout.createSequentialGroup()
+                        .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payForTicketPanelLayout.createSequentialGroup()
+                                .addComponent(paymentUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(paymentUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(paymentUserDob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(payForTicketPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(paymentUserID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(fromZone, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(toZone, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(payForTicketPanelLayout.createSequentialGroup()
                         .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(payForTicketPanelLayout.createSequentialGroup()
-                                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel9))
-                                .addGap(22, 22, 22)
-                                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(paymentUserDob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(paymentUserID, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                                    .addComponent(paymentUserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(payForTicketPanelLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addComponent(jLabel12)
-                                .addGap(18, 18, 18)
-                                .addComponent(paymentUserBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payForTicketPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addGap(192, 192, 192)))
-                .addContainerGap())
-            .addGroup(payForTicketPanelLayout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(paymentConfirmInspection)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(payForTicketPanelLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel8)
-                    .addComponent(toZone, 0, 240, Short.MAX_VALUE)
-                    .addComponent(fromZone, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(95, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(paymentUserBalance))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel13))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         payForTicketPanelLayout.setVerticalGroup(
             payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(payForTicketPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paymentUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(payForTicketPanelLayout.createSequentialGroup()
-                        .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(paymentUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnl_portableReaderScanTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, payForTicketPanelLayout.createSequentialGroup()
+                        .addComponent(paymentUserName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(paymentUserDob)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(paymentUserDob))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(paymentUserID))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(paymentUserBalance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(76, 76, 76)
+                            .addComponent(paymentUserID)
+                            .addComponent(jLabel11)))
+                    .addComponent(paymentUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(payForTicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(paymentUserBalance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fromZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGap(104, 104, 104)
                 .addComponent(paymentConfirmInspection)
-                .addGap(52, 52, 52))
+                .addGap(60, 60, 60))
         );
 
         jLayeredPane1.add(payForTicketPanel);
@@ -425,41 +481,54 @@ public class PortableReaderUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel15.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Add Funds");
+        pnl_portableReaderPassTitle1.setBackground(new java.awt.Color(192, 221, 253));
+
+        jLabel19.setBackground(new java.awt.Color(192, 221, 253));
+        jLabel19.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu.png"))); // NOI18N
+        jLabel19.setText("             Add Funds");
+
+        javax.swing.GroupLayout pnl_portableReaderPassTitle1Layout = new javax.swing.GroupLayout(pnl_portableReaderPassTitle1);
+        pnl_portableReaderPassTitle1.setLayout(pnl_portableReaderPassTitle1Layout);
+        pnl_portableReaderPassTitle1Layout.setHorizontalGroup(
+            pnl_portableReaderPassTitle1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_portableReaderPassTitle1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+        );
+        pnl_portableReaderPassTitle1Layout.setVerticalGroup(
+            pnl_portableReaderPassTitle1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_portableReaderPassTitle1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout addFundsPanelLayout = new javax.swing.GroupLayout(addFundsPanel);
         addFundsPanel.setLayout(addFundsPanelLayout);
         addFundsPanelLayout.setHorizontalGroup(
             addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(addFundsPanelLayout.createSequentialGroup()
                 .addGap(130, 130, 130)
-                .addGroup(addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addFundsPanelLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(addFundsButton))
-                    .addGroup(addFundsPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(1, 1, 1)
-                        .addComponent(addFundsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addComponent(jLabel14)
+                .addGap(1, 1, 1)
+                .addGroup(addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addFundsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addFundsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(pnl_portableReaderPassTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         addFundsPanelLayout.setVerticalGroup(
             addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addFundsPanelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addComponent(pnl_portableReaderPassTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addGroup(addFundsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addFundsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addComponent(addFundsButton)
-                .addGap(183, 183, 183))
+                .addGap(256, 256, 256))
         );
 
         jLayeredPane1.add(addFundsPanel);
@@ -721,14 +790,14 @@ public class PortableReaderUI extends javax.swing.JFrame {
 
     private void setUpUserDetails(User user, TravelCard card) {
         // Set up the user details on the UI panels
-        this.passUserName.setText(user.getUsername());
+        this.passUserName.setText(user.getForename() + " " + user.getSurname());
         this.passUserBalance.setText(Float.toString(card.getBalance()));
-        this.passUserDob.setText(user.getDateOfBirth().toString());
+        this.passUserDob.setText(user.getDobFormatted("date").toString().replace("-", "/"));
         this.passUserID.setText(Integer.toString(user.getId()));
 
-        this.paymentUserName.setText(user.getUsername());
+        this.paymentUserName.setText(user.getForename() + " " + user.getSurname());
         this.paymentUserBalance.setText(String.format("%.2f", card.getBalance()));
-        this.paymentUserDob.setText(user.getDateOfBirth().toString());
+        this.paymentUserDob.setText(user.getDobFormatted("date").toString().replace("-", "/"));
         this.paymentUserID.setText(Integer.toString(user.getId()));
 
         this.validPassPanel.setVisible(false);
@@ -806,20 +875,17 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JTextField addFundsTextField;
     private javax.swing.JComboBox fromZone;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton passConfirmInspection;
     private javax.swing.JLabel passUserBalance;
@@ -835,6 +901,10 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JPanel paymentUserImage;
     private javax.swing.JLabel paymentUserImagelabel;
     private javax.swing.JLabel paymentUserName;
+    private javax.swing.JPanel pnl_portableReaderPassTitle;
+    private javax.swing.JPanel pnl_portableReaderPassTitle1;
+    private javax.swing.JPanel pnl_portableReaderScanTitle;
+    private javax.swing.JPanel pnl_portableReaderScanTitle2;
     private javax.swing.JButton scanCardBusButton;
     private javax.swing.JButton scanCardTrainButton;
     private javax.swing.JPanel scanPanel;
