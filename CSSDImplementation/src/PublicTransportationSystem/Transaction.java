@@ -68,8 +68,10 @@ public class Transaction {
                 currentTravelCard.setPass(newPass);
                 // Calculate how far over the cap 'todaysTotal' is
                 float refundAmount = payManager.calculateRefund(dailyCap, todaysTotal);
-                // Refund the difference
-                currentTravelCard.addFunds(refundAmount);
+                if (refundAmount <= discountedPrice) {
+                    // Refund the difference
+                    currentTravelCard.addFunds(refundAmount);
+                }
             }
             // Ticket paid for
             return true;

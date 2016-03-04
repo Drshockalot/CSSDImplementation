@@ -8,6 +8,7 @@ package PublicTransportationSystem.GUIs;
 import PublicTransportationSystem.Journey;
 import PublicTransportationSystem.Pass;
 import PublicTransportationSystem.PortableReader;
+import PublicTransportationSystem.SetOfTickets;
 import PublicTransportationSystem.SetOfZones;
 import PublicTransportationSystem.Ticket;
 import PublicTransportationSystem.Transaction;
@@ -627,25 +628,51 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }
 
     private void handleInvalidPass() {
-        // Catch the which button the user presses and handle th result
-        String[] buttons = {"Pay for Journey", "Cancel"};
-        int buttonIndex = JOptionPane.showOptionDialog(null, "Pass not valid for journey", "Invalid Pass",
-                JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[1]);
-        // If the 'Pay for Journey' button is pressed
-        if (buttonIndex == 0) {
-            if (handleTransaction()) {
-                // Payment has been successful, notify the user
-                JOptionPane.showMessageDialog(payForTicketPanel, "Ticket Inspection Confirmed", "Success", 1);
-                String currentBalance = String.format("%.2f", this.currentCard.getBalance());
-                this.passUserBalance.setText(currentBalance);
-                this.paymentUserBalance.setText(currentBalance);
-                // End transaction
-                this.validPassPanel.setVisible(false);
-                this.payForTicketPanel.setVisible(false);
-                this.scanPanel.setVisible(true);
+        // Check the users tickets for any 'unused' tickets that may cover this
+        // journey
+        boolean unusedTicketFound = false;
+        SetOfTickets unusedTickets = this.system.getTickets().getUnusedTicketsForUser(this.currentCard.getUser().getId());
+        // Get the journey that the passenger wishes to take
+        Journey journey = system.getJourneys().getJourney(
+                (Zone) this.fromZone.getSelectedItem(),
+                (Zone) this.toZone.getSelectedItem());
 
-            } else {
-                addFunds();
+        for (Ticket unusedTicket : unusedTickets) {
+            if (unusedTicket.getJourney().getStartZone().getId() == journey.getStartZone().getId()
+                    && unusedTicket.getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
+                // A ticket the user owns matches they journey they want to make
+                unusedTicketFound = true;
+                break;
+            }
+        }
+        if (unusedTicketFound) {
+            // If they have an unused ticket that matches the journey they wish to take,
+            // trigger a 'valid inspection'
+            JOptionPane.showMessageDialog(payForTicketPanel, "Valid Ticket Found", "Success", 1);
+            this.validPassPanel.setVisible(false);
+            this.payForTicketPanel.setVisible(false);
+            this.scanPanel.setVisible(true);
+        } else {
+            // Catch the which button the user presses and handle the result
+            String[] buttons = {"Pay for Journey", "Cancel"};
+            int buttonIndex = JOptionPane.showOptionDialog(null, "Pass not valid for journey", "Invalid Pass",
+                    JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[1]);
+            // If the 'Pay for Journey' button is pressed
+            if (buttonIndex == 0) {
+                if (handleTransaction()) {
+                    // Payment has been successful, notify the user
+                    JOptionPane.showMessageDialog(payForTicketPanel, "Ticket Inspection Confirmed", "Success", 1);
+                    String currentBalance = String.format("%.2f", this.currentCard.getBalance());
+                    this.passUserBalance.setText(currentBalance);
+                    this.paymentUserBalance.setText(currentBalance);
+                    // End transaction
+                    this.validPassPanel.setVisible(false);
+                    this.payForTicketPanel.setVisible(false);
+                    this.scanPanel.setVisible(true);
+
+                } else {
+                    addFunds();
+                }
             }
         }
     }
@@ -682,7 +709,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         Ticket newTicket = null;
         try {
             newTicket = new Ticket(TravelSystem.getInstance().getTickets()
-                    .getNextId(), ticketType, journey, false, currentCard.getUser().getId());
+                    .getNextId(), ticketType, journey, journey.getStartZone().isPeak(), currentCard.getUser().getId(), false);
         } catch (Throwable ex) {
             Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
         }

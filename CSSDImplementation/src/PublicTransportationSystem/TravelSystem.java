@@ -66,9 +66,9 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public void initTickets() {
 
-        Ticket ticket = new Ticket(systemTickets.getNextId(), TypeEnums.TicketType.TRAIN, systemJourneys.firstElement(), true, 1);
+        Ticket ticket = new Ticket(systemTickets.getNextId(), TypeEnums.TicketType.TRAIN, systemJourneys.firstElement(), true, 1, true);
         systemTickets.add(ticket);
-        Ticket ticket2 = new Ticket(systemTickets.getNextId(), TypeEnums.TicketType.TRAIN, systemJourneys.firstElement(), true, 2);
+        Ticket ticket2 = new Ticket(systemTickets.getNextId(), TypeEnums.TicketType.TRAIN, systemJourneys.firstElement(), true, 2, true);
         systemTickets.add(ticket2);
     }
 

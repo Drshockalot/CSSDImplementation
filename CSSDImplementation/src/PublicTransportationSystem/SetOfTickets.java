@@ -21,6 +21,8 @@ import java.util.Vector;
  */
 public class SetOfTickets extends Vector<Ticket> implements Serializable {
 
+    private static final long serialVersionUID = 8865672849740829174L;
+
     float calculateTodaysTotal(float discount, User user, Date date) {
         // Create a PaymentManager to help us with calculating costs
         PaymentManager paymentManager = new PaymentManager();
@@ -64,6 +66,18 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         }
 
         return retTickets;
+    }
+
+    public SetOfTickets getUnusedTicketsForUser(int userId) {
+        // Return a users 'unused' tickets
+        SetOfTickets userTickets = getTicketsForUser(userId);
+        SetOfTickets unusedTickets = new SetOfTickets();
+        for (Ticket userTicket : userTickets) {
+            if (!userTicket.getIsUsed()) {
+                unusedTickets.add(userTicket);
+            }
+        }
+        return unusedTickets;
     }
 
     public void addTicket(Ticket ticket) {

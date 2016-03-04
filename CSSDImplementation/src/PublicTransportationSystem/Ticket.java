@@ -14,6 +14,8 @@ import java.util.Date;
  */
 public class Ticket implements Serializable {
 
+    private static final long serialVersionUID = 5471294714658826587L;
+
     private final TypeEnums.TicketType ticketType;
     private final int ticketID;
     private final Journey theJourney;
@@ -21,6 +23,7 @@ public class Ticket implements Serializable {
     private final Date purchaseTime;
     private final boolean peak;
     private int userId;
+    private boolean used;
 
     /**
      *
@@ -28,14 +31,17 @@ public class Ticket implements Serializable {
      * @param ticketTypeEnum
      * @param journey
      * @param peak
+     * @param userId
+     * @param used
      */
-    public Ticket(int ticketID, TypeEnums.TicketType ticketTypeEnum, Journey journey, boolean peak, int userId) {
+    public Ticket(int ticketID, TypeEnums.TicketType ticketTypeEnum, Journey journey, boolean peak, int userId, boolean used) {
         this.ticketID = ticketID;
         this.theJourney = journey;
         this.purchaseTime = new Date();
         this.ticketType = ticketTypeEnum;
         this.peak = peak;
         this.userId = userId;
+        this.used = used;
     }
 
     public Journey getJourney() {
@@ -68,5 +74,13 @@ public class Ticket implements Serializable {
 
     public boolean isPeakTicket() {
         return this.peak;
+    }
+
+    public void setUsed() {
+        this.used = true;
+    }
+
+    public boolean getIsUsed() {
+        return this.used;
     }
 }

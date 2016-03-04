@@ -45,7 +45,9 @@ public class Gateway implements Serializable {
 
         Zone departureZone = currCard.getDepartureDetails().getZone();
         boolean hasPass = currCard.checkForPass(zone, departureZone);
+        // If the passenger does not have a journey pass
         if (!hasPass) {
+            // Check for day pass
             Vector<TypeEnums.PassType> list = new Vector<>();
             list.add(TypeEnums.PassType.TRAINDAY);
             list.add(TypeEnums.PassType.BUSANDTRAINDAY);
@@ -56,25 +58,45 @@ public class Gateway implements Serializable {
             this.approve();
             return true;
         } else {
-            boolean hasPaid = false;
-
-            //Get journey price
+            // Get the journey that the user has taken
             SetOfJourneys list = sys.getJourneys();
             Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
 
-            Ticket currentTicket = new Ticket(TravelSystem.getInstance().getTickets()
-                    .getNextId(), TypeEnums.TicketType.TRAIN, journey, station.isPeak(), currCard.getUser().getId());
+            Ticket validUnusedTicket = null;
+            // Get the unused tickets that the user owns
+            SetOfTickets unusedTickets = TravelSystem.getInstance().getTickets().getUnusedTicketsForUser(currCard.getUser().getId());
 
-            Transaction trans = new Transaction();
-            hasPaid = trans.payForTicket(currentTicket, currCard);
-
-            if (hasPaid) {
-                this.approve();
-                currCard.setLastDepartedStationNull();
+            for (Ticket unusedTicket : unusedTickets) {
+                if (unusedTicket.getJourney() == journey) {
+                    // A ticket the user owns matches they journey they want to make
+                    validUnusedTicket = unusedTicket;
+                    break;
+                }
+            }
+            // If a user has a ticket that could be used for this journey
+            if (validUnusedTicket != null) {
+                // Flag it as used and allow them through the gate
+                validUnusedTicket.setUsed();
                 return true;
             } else {
-                this.reject();
-                return false;
+                // If they have no pass or a valid ticket, charge them for the
+                // journey they have just made
+                Ticket currentTicket = new Ticket(TravelSystem.getInstance().getTickets()
+                        .getNextId(), TypeEnums.TicketType.TRAIN, journey, station.isPeak(), currCard.getUser().getId(), true);
+
+                // Pay for the new ticket
+                Transaction trans = new Transaction();
+                boolean hasPaid = trans.payForTicket(currentTicket, currCard);
+                // If payment was successful, allow them through the gate
+                if (hasPaid) {
+                    this.approve();
+                    currCard.setLastDepartedStationNull();
+                    return true;
+                } else {
+                    // User must top-up their card
+                    this.reject();
+                    return false;
+                }
             }
         }
     }
