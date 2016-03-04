@@ -40,7 +40,7 @@ public class Gateway {
         PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(1);
 
         PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
-        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(5);
+        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(1);
 
         boolean result = gateway.PerformScanIn(travel_card);
 
@@ -59,7 +59,8 @@ public class Gateway {
         PublicTransportationSystem.Gateway gateway = station_system.getStationGateways().getGatewayById(1);
 
         PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
-        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(4);
+        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(1);
+        travel_card.addFunds(-2.00f);
 
         boolean result = gateway.PerformScanIn(travel_card);
 
@@ -77,7 +78,8 @@ public class Gateway {
         PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(1);
 
         PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
-        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(5);
+        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(1);
+        travel_card.addFunds(2.00f);
 
         boolean result = gateway.PerformScanOut(travel_card);
 
@@ -95,7 +97,9 @@ public class Gateway {
         PublicTransportationSystem.Gateway gateway = gateways.getGatewayById(1);
 
         PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
-        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(3);
+        PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(2);
+        travel_card.setPass(null);
+        travel_card.addFunds(0.50f);
 
         gateway.PerformScanIn(travel_card);
 
@@ -104,8 +108,9 @@ public class Gateway {
         assertTrue(result);
 
         float current_balance = travel_card.getBalance();
-
+        System.out.println(current_balance);
         assertTrue(current_balance < 0);
+
     }
 
     ///////////////////
