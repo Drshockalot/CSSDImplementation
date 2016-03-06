@@ -83,12 +83,24 @@ public class WebsiteUI extends javax.swing.JFrame {
         pnl_websiteHistoryContainer = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         pnl_websiteTicketsContainer = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         pnl_websiteTravelCardContainer = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbl_websiteTCBalance = new javax.swing.JLabel();
+        lbl_websiteTCStartDate = new javax.swing.JLabel();
+        lbl_websiteTCExpiryDate = new javax.swing.JLabel();
+        lbl_websiteTCDiscount = new javax.swing.JLabel();
+        lbl_websiteTCDailyCap = new javax.swing.JLabel();
+        lbl_websiteTCStartDateInput = new javax.swing.JLabel();
+        lbl_websiteTCBalanceInput = new javax.swing.JLabel();
+        lbl_websiteTCExpiryDateInput = new javax.swing.JLabel();
+        lbl_websiteTCDiscountInput = new javax.swing.JLabel();
+        lbl_websiteTCDailyCapInput = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
         loginPopup.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -502,17 +514,33 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         jLabel5.setText("List here of the users journeys");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout pnl_websiteHistoryContainerLayout = new javax.swing.GroupLayout(pnl_websiteHistoryContainer);
         pnl_websiteHistoryContainer.setLayout(pnl_websiteHistoryContainerLayout);
         pnl_websiteHistoryContainerLayout.setHorizontalGroup(
             pnl_websiteHistoryContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_websiteHistoryContainerLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_websiteHistoryContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnl_websiteHistoryContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnl_websiteHistoryContainerLayout.createSequentialGroup()
+                .addGroup(pnl_websiteHistoryContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl_websiteHistoryContainerLayout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(0, 172, Short.MAX_VALUE)))
+                        .addGap(0, 176, Short.MAX_VALUE))
+                    .addGroup(pnl_websiteHistoryContainerLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnl_websiteHistoryContainerLayout.setVerticalGroup(
@@ -522,7 +550,9 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -530,15 +560,22 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         jLabel9.setText("Couple of inputs for user to buy a ticket");
 
+        jLabel2.setText("Need to discuss this tomorrow");
+
         javax.swing.GroupLayout pnl_websiteTicketsContainerLayout = new javax.swing.GroupLayout(pnl_websiteTicketsContainer);
         pnl_websiteTicketsContainer.setLayout(pnl_websiteTicketsContainerLayout);
         pnl_websiteTicketsContainerLayout.setHorizontalGroup(
             pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel9))
+                    .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9)))
+                    .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_websiteTicketsContainerLayout.setVerticalGroup(
@@ -548,13 +585,33 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(jLabel2)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel7.setText("Your Travel Card");
 
-        jLabel8.setText("information about users travel card");
+        lbl_websiteTCBalance.setText("Balance: ");
+
+        lbl_websiteTCStartDate.setText("Start Date:");
+
+        lbl_websiteTCExpiryDate.setText("Expiry Date:");
+
+        lbl_websiteTCDiscount.setText("Active Discount: ");
+
+        lbl_websiteTCDailyCap.setText("Daily Cap:");
+
+        lbl_websiteTCStartDateInput.setText("Input");
+
+        lbl_websiteTCBalanceInput.setText("Input");
+
+        lbl_websiteTCExpiryDateInput.setText("Input");
+
+        lbl_websiteTCDiscountInput.setText("Input");
+
+        lbl_websiteTCDailyCapInput.setText("Input");
 
         javax.swing.GroupLayout pnl_websiteTravelCardContainerLayout = new javax.swing.GroupLayout(pnl_websiteTravelCardContainer);
         pnl_websiteTravelCardContainer.setLayout(pnl_websiteTravelCardContainerLayout);
@@ -567,7 +624,27 @@ public class WebsiteUI extends javax.swing.JFrame {
                         .addComponent(jLabel7))
                     .addGroup(pnl_websiteTravelCardContainerLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel8)))
+                        .addGroup(pnl_websiteTravelCardContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_websiteTravelCardContainerLayout.createSequentialGroup()
+                                .addComponent(lbl_websiteTCBalance)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_websiteTCBalanceInput))
+                            .addGroup(pnl_websiteTravelCardContainerLayout.createSequentialGroup()
+                                .addComponent(lbl_websiteTCStartDate)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_websiteTCStartDateInput)
+                                .addGap(118, 118, 118)
+                                .addComponent(lbl_websiteTCExpiryDate)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_websiteTCExpiryDateInput))
+                            .addGroup(pnl_websiteTravelCardContainerLayout.createSequentialGroup()
+                                .addComponent(lbl_websiteTCDiscount)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_websiteTCDiscountInput))
+                            .addGroup(pnl_websiteTravelCardContainerLayout.createSequentialGroup()
+                                .addComponent(lbl_websiteTCDailyCap)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_websiteTCDailyCapInput)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_websiteTravelCardContainerLayout.setVerticalGroup(
@@ -576,8 +653,24 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addGroup(pnl_websiteTravelCardContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_websiteTCBalance)
+                    .addComponent(lbl_websiteTCBalanceInput))
+                .addGap(18, 18, 18)
+                .addGroup(pnl_websiteTravelCardContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_websiteTCStartDate)
+                    .addComponent(lbl_websiteTCExpiryDate)
+                    .addComponent(lbl_websiteTCStartDateInput)
+                    .addComponent(lbl_websiteTCExpiryDateInput))
+                .addGap(18, 18, 18)
+                .addGroup(pnl_websiteTravelCardContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_websiteTCDiscount)
+                    .addComponent(lbl_websiteTCDiscountInput))
+                .addGap(18, 18, 18)
+                .addGroup(pnl_websiteTravelCardContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_websiteTCDailyCap)
+                    .addComponent(lbl_websiteTCDailyCapInput))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnl_websiteMainContainerLayout = new javax.swing.GroupLayout(pnl_websiteMainContainer);
@@ -597,7 +690,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                         .addGroup(pnl_websiteMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnl_websiteTicketsContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnl_websiteTravelCardContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(pnl_websiteHistoryContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -629,16 +722,15 @@ public class WebsiteUI extends javax.swing.JFrame {
         pnl_websiteContainerLayout.setHorizontalGroup(
             pnl_websiteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_websiteContainerLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnl_websiteContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnl_websiteMainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnl_websiteContainerLayout.createSequentialGroup()
-                        .addGap(0, 4, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_websiteURL, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_websiteURLGo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_websiteURLGo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnl_websiteMainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnl_websiteContainerLayout.setVerticalGroup(
@@ -965,15 +1057,17 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_websiteURLGo;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_loginErrorMsg;
     private javax.swing.JLabel lbl_loginTitle;
     private javax.swing.JLabel lbl_password;
@@ -991,6 +1085,16 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_registerUsername;
     private javax.swing.JLabel lbl_registerUsernameError;
     private javax.swing.JLabel lbl_username;
+    private javax.swing.JLabel lbl_websiteTCBalance;
+    private javax.swing.JLabel lbl_websiteTCBalanceInput;
+    private javax.swing.JLabel lbl_websiteTCDailyCap;
+    private javax.swing.JLabel lbl_websiteTCDailyCapInput;
+    private javax.swing.JLabel lbl_websiteTCDiscount;
+    private javax.swing.JLabel lbl_websiteTCDiscountInput;
+    private javax.swing.JLabel lbl_websiteTCExpiryDate;
+    private javax.swing.JLabel lbl_websiteTCExpiryDateInput;
+    private javax.swing.JLabel lbl_websiteTCStartDate;
+    private javax.swing.JLabel lbl_websiteTCStartDateInput;
     private javax.swing.JDialog loginPopup;
     private javax.swing.JPasswordField pass_password;
     private javax.swing.JPasswordField pass_registerPassword;

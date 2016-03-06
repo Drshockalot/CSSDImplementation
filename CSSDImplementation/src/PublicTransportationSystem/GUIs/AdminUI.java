@@ -215,6 +215,21 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminStationDeleteMsg = new javax.swing.JLabel();
         btn_adminStationDeleteConfirm = new javax.swing.JButton();
         btn_adminStationDeleteCancel = new javax.swing.JButton();
+        dlg_adminJourneySearch = new javax.swing.JDialog();
+        lbl_adminJourneySearchTitle = new javax.swing.JLabel();
+        pnl_adminJourneySearchContainer = new javax.swing.JPanel();
+        lbl_adminJourneySearchDep = new javax.swing.JLabel();
+        lbl_adminJourneySearchArrival = new javax.swing.JLabel();
+        cmb_adminJourneySearchDep = new javax.swing.JComboBox();
+        btn_adminJourneySearchCancel = new javax.swing.JButton();
+        btn_adminJourneySearchSubmit = new javax.swing.JButton();
+        lbl_adminJourneySearchZoneHead = new javax.swing.JLabel();
+        cmb_adminJourneySearchArr = new javax.swing.JComboBox();
+        lbl_adminJourneySearchDateHead = new javax.swing.JLabel();
+        lbl_adminJourneySearchFromDate = new javax.swing.JLabel();
+        lbl_adminJourneySearchToDate = new javax.swing.JLabel();
+        txt_adminJourneySearchFrom = new javax.swing.JTextField();
+        txt_adminJourneySearchTo = new javax.swing.JTextField();
         pnl_adminGUITitle = new javax.swing.JPanel();
         lbl_managementUITitle = new javax.swing.JLabel();
         pnl_adminGUITabs = new javax.swing.JPanel();
@@ -1778,6 +1793,140 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        dlg_adminJourneySearch.setBackground(new java.awt.Color(201, 228, 253));
+        dlg_adminJourneySearch.setMinimumSize(new java.awt.Dimension(470, 188));
+        dlg_adminJourneySearch.setModal(true);
+        dlg_adminJourneySearch.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
+        dlg_adminJourneySearch.setResizable(false);
+        dlg_adminJourneySearch.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                dlg_adminJourneySearchWindowActivated(evt);
+            }
+        });
+
+        lbl_adminJourneySearchTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lbl_adminJourneySearchTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_adminJourneySearchTitle.setText("Search for Statistics");
+
+        pnl_adminJourneySearchContainer.setBackground(new java.awt.Color(201, 228, 253));
+
+        lbl_adminJourneySearchDep.setText("Departure Zone");
+
+        lbl_adminJourneySearchArrival.setText("Arrival Zone");
+
+        btn_adminJourneySearchCancel.setText("Cancel");
+        btn_adminJourneySearchCancel.setSize(new java.awt.Dimension(75, 29));
+        btn_adminJourneySearchCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneySearchCancelActionPerformed(evt);
+            }
+        });
+
+        btn_adminJourneySearchSubmit.setText("Search");
+        btn_adminJourneySearchSubmit.setSize(new java.awt.Dimension(75, 29));
+        btn_adminJourneySearchSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminJourneySearchSubmitActionPerformed(evt);
+            }
+        });
+
+        lbl_adminJourneySearchZoneHead.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        lbl_adminJourneySearchZoneHead.setText("Enter journey details search data");
+
+        lbl_adminJourneySearchDateHead.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        lbl_adminJourneySearchDateHead.setText("Enter journey time/date range");
+
+        lbl_adminJourneySearchFromDate.setText("From");
+
+        lbl_adminJourneySearchToDate.setText("To");
+
+        javax.swing.GroupLayout pnl_adminJourneySearchContainerLayout = new javax.swing.GroupLayout(pnl_adminJourneySearchContainer);
+        pnl_adminJourneySearchContainer.setLayout(pnl_adminJourneySearchContainerLayout);
+        pnl_adminJourneySearchContainerLayout.setHorizontalGroup(
+            pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminJourneySearchContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnl_adminJourneySearchContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_adminJourneySearchArrival, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_adminJourneySearchDep, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmb_adminJourneySearchDep, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_adminJourneySearchArr, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbl_adminJourneySearchZoneHead)
+                    .addComponent(lbl_adminJourneySearchDateHead)
+                    .addGroup(pnl_adminJourneySearchContainerLayout.createSequentialGroup()
+                        .addComponent(lbl_adminJourneySearchFromDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_adminJourneySearchFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnl_adminJourneySearchContainerLayout.createSequentialGroup()
+                        .addComponent(lbl_adminJourneySearchToDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_adminJourneySearchTo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(185, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminJourneySearchContainerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_adminJourneySearchCancel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_adminJourneySearchSubmit)
+                .addContainerGap())
+        );
+        pnl_adminJourneySearchContainerLayout.setVerticalGroup(
+            pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_adminJourneySearchContainerLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lbl_adminJourneySearchZoneHead)
+                .addGap(18, 18, 18)
+                .addGroup(pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_adminJourneySearchDep)
+                    .addComponent(cmb_adminJourneySearchDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_adminJourneySearchArrival)
+                    .addComponent(cmb_adminJourneySearchArr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(lbl_adminJourneySearchDateHead)
+                .addGap(18, 18, 18)
+                .addGroup(pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_adminJourneySearchFromDate)
+                    .addComponent(txt_adminJourneySearchFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_adminJourneySearchToDate)
+                    .addComponent(txt_adminJourneySearchTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(pnl_adminJourneySearchContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_adminJourneySearchSubmit)
+                    .addComponent(btn_adminJourneySearchCancel))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout dlg_adminJourneySearchLayout = new javax.swing.GroupLayout(dlg_adminJourneySearch.getContentPane());
+        dlg_adminJourneySearch.getContentPane().setLayout(dlg_adminJourneySearchLayout);
+        dlg_adminJourneySearchLayout.setHorizontalGroup(
+            dlg_adminJourneySearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlg_adminJourneySearchLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(dlg_adminJourneySearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminJourneySearchLayout.createSequentialGroup()
+                        .addComponent(pnl_adminJourneySearchContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlg_adminJourneySearchLayout.createSequentialGroup()
+                        .addComponent(lbl_adminJourneySearchTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        dlg_adminJourneySearchLayout.setVerticalGroup(
+            dlg_adminJourneySearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlg_adminJourneySearchLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(lbl_adminJourneySearchTitle)
+                .addGap(41, 41, 41)
+                .addComponent(pnl_adminJourneySearchContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Management UI");
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
@@ -2928,6 +3077,8 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminJourneySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchActionPerformed
         // TODO add your handling code here:
+        dlg_adminJourneySearch.pack();
+        dlg_adminJourneySearch.setVisible(true);
     }//GEN-LAST:event_btn_adminJourneySearchActionPerformed
 
     private void tbl_adminGUIUserListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIUserListMouseReleased
@@ -3528,6 +3679,18 @@ public class AdminUI extends javax.swing.JFrame {
         populateComboWithAvailableDestinations(zoneName);
     }//GEN-LAST:event_cmb_adminJourneyAddDepZoneActionPerformed
 
+    private void btn_adminJourneySearchSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchSubmitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_adminJourneySearchSubmitActionPerformed
+
+    private void btn_adminJourneySearchCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_adminJourneySearchCancelActionPerformed
+
+    private void dlg_adminJourneySearchWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneySearchWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dlg_adminJourneySearchWindowActivated
+
     private void populateComboWithAvailableDestinations(String zoneName) {
         try {
             // Get the departure zone
@@ -3692,7 +3855,9 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_adminJourneyEditClose;
     private javax.swing.JButton btn_adminJourneyEditSave;
     private javax.swing.JButton btn_adminJourneySearch;
+    private javax.swing.JButton btn_adminJourneySearchCancel;
     private javax.swing.JButton btn_adminJourneySearchClear;
+    private javax.swing.JButton btn_adminJourneySearchSubmit;
     private javax.swing.JButton btn_adminStationAddAdd;
     private javax.swing.JButton btn_adminStationAddCancel;
     private javax.swing.JButton btn_adminStationDeleteCancel;
@@ -3735,6 +3900,8 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_logout;
     private javax.swing.JComboBox<String> cmb_adminJourneyAddArrZone;
     private javax.swing.JComboBox<String> cmb_adminJourneyAddDepZone;
+    private javax.swing.JComboBox cmb_adminJourneySearchArr;
+    private javax.swing.JComboBox cmb_adminJourneySearchDep;
     private javax.swing.JComboBox<String> cmb_adminStationAddType;
     private javax.swing.JComboBox<String> cmb_adminStationAddZone;
     private javax.swing.JComboBox<String> cmb_adminStationEditType;
@@ -3744,6 +3911,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JDialog dlg_adminJourneyAdd;
     private javax.swing.JDialog dlg_adminJourneyDelete;
     private javax.swing.JDialog dlg_adminJourneyEdit;
+    private javax.swing.JDialog dlg_adminJourneySearch;
     private javax.swing.JDialog dlg_adminStationAdd;
     private javax.swing.JDialog dlg_adminStationDelete;
     private javax.swing.JDialog dlg_adminStationEdit;
@@ -3792,6 +3960,13 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_adminJourneyEditOffPeakPrice;
     private javax.swing.JLabel lbl_adminJourneyEditOnPeakPrice;
     private javax.swing.JLabel lbl_adminJourneyEditTitle;
+    private javax.swing.JLabel lbl_adminJourneySearchArrival;
+    private javax.swing.JLabel lbl_adminJourneySearchDateHead;
+    private javax.swing.JLabel lbl_adminJourneySearchDep;
+    private javax.swing.JLabel lbl_adminJourneySearchFromDate;
+    private javax.swing.JLabel lbl_adminJourneySearchTitle;
+    private javax.swing.JLabel lbl_adminJourneySearchToDate;
+    private javax.swing.JLabel lbl_adminJourneySearchZoneHead;
     private javax.swing.JLabel lbl_adminOverviewTitle;
     private javax.swing.JLabel lbl_adminOverviewUsername;
     private javax.swing.JLabel lbl_adminStationAddGPS;
@@ -3849,6 +4024,7 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_adminHome;
     private javax.swing.JPanel pnl_adminJourneyDeleteContainer;
     private javax.swing.JPanel pnl_adminJourneyManagement;
+    private javax.swing.JPanel pnl_adminJourneySearchContainer;
     private javax.swing.JPanel pnl_adminStationDeleteContainer;
     private javax.swing.JPanel pnl_adminUserAddEditContainer;
     private javax.swing.JPanel pnl_adminUserDeleteContainer;
@@ -3871,6 +4047,8 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_adminJourneyAddOnPeakPrice;
     private javax.swing.JTextField txt_adminJourneyEditArrival;
     private javax.swing.JTextField txt_adminJourneyEditDeparture;
+    private javax.swing.JTextField txt_adminJourneySearchFrom;
+    private javax.swing.JTextField txt_adminJourneySearchTo;
     private javax.swing.JTextField txt_adminStationAddGPS;
     private javax.swing.JTextField txt_adminStationAddId;
     private javax.swing.JTextField txt_adminStationAddLocation;
