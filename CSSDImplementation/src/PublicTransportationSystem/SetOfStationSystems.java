@@ -92,4 +92,8 @@ public class SetOfStationSystems extends Vector<StationSystem> implements Serial
             e.printStackTrace();
         }
     }
+
+    public boolean nameIsUnique(String name) {
+        return this.stream().noneMatch((system) -> (system.getName().equals(name)));
+    }
 }

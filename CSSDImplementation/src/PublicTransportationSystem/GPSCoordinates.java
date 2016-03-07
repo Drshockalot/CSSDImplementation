@@ -13,6 +13,8 @@ import java.io.Serializable;
  */
 public class GPSCoordinates implements Serializable {
 
+    private static final long serialVersionUID = 186341637222937232L;
+
     public float longitude;
     public float latitude;
 
@@ -27,5 +29,10 @@ public class GPSCoordinates implements Serializable {
 
     public float getLatitude() {
         return this.latitude;
+    }
+
+    @Override
+    public String toString() {
+        return this.longitude + ", " + this.latitude;
     }
 }

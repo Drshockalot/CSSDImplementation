@@ -2924,9 +2924,42 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminStationsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsEditActionPerformed
         // TODO add your handling code here:
+        initialiseEditStationDialog();
         dlg_adminStationEdit.pack();
         dlg_adminStationEdit.show();
     }//GEN-LAST:event_btn_adminStationsEditActionPerformed
+
+    private void initialiseEditStationDialog() {
+        try {
+            StationSystem stationSystem = TravelSystem.getInstance().getStationSystems()
+                    .getStationSystemById((int) this.tbl_adminGUIStationList
+                            .getValueAt(this.tbl_adminGUIStationList.getSelectedRow(), 0));
+
+            this.txt_adminStationEditId.setText(Integer.toString(stationSystem.getId()));
+            this.txt_adminStationEditName.setText(stationSystem.getName());
+            this.txt_adminStationEditLocation.setText(stationSystem.getLocation());
+            this.txt_adminStationEditGPS.setText(stationSystem.getGPSPos().toString());
+
+            this.cmb_adminStationEditType.removeAllItems();
+            for (TypeEnums.StationType type : TypeEnums.StationType.values()) {
+                this.cmb_adminStationEditType.addItem(type.toString());
+                if (stationSystem.getType() == type) {
+                    this.cmb_adminStationEditType.setSelectedItem((String) type.toString());
+                }
+            }
+
+            this.cmb_adminStationEditZone.removeAllItems();
+            for (Zone zone : TravelSystem.getInstance().getZones()) {
+                this.cmb_adminStationEditZone.addItem(zone.toString());
+                if (stationSystem.getZone().getName().equals(zone.getName())) {
+                    this.cmb_adminStationEditZone.setSelectedItem((String) zone.toString());
+                }
+            }
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     private void btn_adminJourneyEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyEditActionPerformed
         initEditJourneyView();
@@ -3540,6 +3573,7 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminStationAddAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationAddAddActionPerformed
         addNewStation();
+        this.dlg_adminStationAdd.setVisible(false);
     }//GEN-LAST:event_btn_adminStationAddAddActionPerformed
 
     private void addNewStation() {
@@ -3584,11 +3618,42 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_adminStationAddLocationActionPerformed
 
     private void btn_adminStationEditAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationEditAddActionPerformed
-        // TODO add your handling code here:
+        int stationID = Integer.parseInt(this.txt_adminStationEditId.getText());
+        String stationName = this.txt_adminStationEditName.getText();
+        GPSCoordinates stationGPS = generateGPSCoordinate(this.txt_adminStationEditGPS.getText());
+        String stationLocation = this.txt_adminStationEditLocation.getText();
+        String stationZone = (String) this.cmb_adminStationEditZone.getSelectedItem();
+        String stationType = (String) this.cmb_adminStationEditType.getSelectedItem();
+
+        try {
+            SetOfStationSystems stationSystems = TravelSystem.getInstance().getStationSystems();
+            StationSystem trueStation = stationSystems.getStationSystemById(stationID);
+            SetOfZones zones = TravelSystem.getInstance().getZones();
+
+            if (!stationName.isEmpty() && stationSystems.nameIsUnique(stationName)) {
+                trueStation.setName(stationName);
+            }
+
+            trueStation.setGPSPos(stationGPS);
+
+            if (!stationLocation.isEmpty()) {
+                trueStation.setName(stationLocation);
+            }
+
+            trueStation.setZone(zones.getZoneByName(stationZone));
+            trueStation.setType(TypeEnums.StationType.valueOf(stationType));
+
+            this.populateStationTable();
+            this.dlg_adminStationEdit.setVisible(false);
+            this.btn_adminStationsEdit.setEnabled(false);
+            this.btn_adminStationsDelete.setEnabled(false);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_adminStationEditAddActionPerformed
 
     private void btn_adminStationEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationEditCancelActionPerformed
-        // TODO add your handling code here:
+        this.dlg_adminStationEdit.setVisible(false);
     }//GEN-LAST:event_btn_adminStationEditCancelActionPerformed
 
     private void txt_adminStationEditLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminStationEditLocationActionPerformed
@@ -3604,11 +3669,22 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_dlg_adminStationEditWindowOpened
 
     private void btn_adminStationDeleteConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationDeleteConfirmActionPerformed
-        // TODO add your handling code here:
+        try {
+            StationSystem stationSystem = TravelSystem.getInstance().getStationSystems()
+                    .getStationSystemById((int) this.tbl_adminGUIStationList
+                            .getValueAt(this.tbl_adminGUIStationList.getSelectedRow(), 0));
+
+            SetOfStationSystems stationSystems = TravelSystem.getInstance().getStationSystems();
+            stationSystems.remove(stationSystem);
+            this.populateStationTable();
+            this.dlg_adminStationDelete.setVisible(false);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_adminStationDeleteConfirmActionPerformed
 
     private void btn_adminStationDeleteCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationDeleteCancelActionPerformed
-        // TODO add your handling code here:
+        this.dlg_adminStationDelete.setVisible(false);
     }//GEN-LAST:event_btn_adminStationDeleteCancelActionPerformed
 
     private void tbl_adminGUIZoneListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIZoneListMouseReleased
