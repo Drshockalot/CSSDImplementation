@@ -668,6 +668,9 @@ public class PortableReaderUI extends javax.swing.JFrame {
         // Get the amount of funds to be added and add it to a travel card
         int amountToAdd = Integer.parseInt(this.addFundsTextField.getText());
         this.currentCard.addFunds(amountToAdd);
+        // Save the changes to the travel card
+        this.system.getTravelCards().serializeTravelCards();
+
         JOptionPane.showMessageDialog(validPassPanel, "You have added: £" + amountToAdd);
         String currentBalance = String.format("%.2f", this.currentCard.getBalance());
         // Return to the ticket payment screen
