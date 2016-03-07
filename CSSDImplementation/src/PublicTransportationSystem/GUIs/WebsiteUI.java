@@ -6,19 +6,24 @@
 package PublicTransportationSystem.GUIs;
 
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
+import PublicTransportationSystem.SetOfTickets;
 import PublicTransportationSystem.SystemRole;
+import PublicTransportationSystem.TravelCard;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author jonathondickson
  */
 public class WebsiteUI extends javax.swing.JFrame {
+
+    User user = null;
 
     /**
      * Creates new form WebsiteUI
@@ -84,7 +89,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_websiteUserJourneysTaken = new javax.swing.JTable();
         pnl_websiteTicketsContainer = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -174,16 +179,6 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_loginErrorMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_loginErrorMsg.setText("Something went wrong");
 
-        jLayeredPane2.setLayer(lbl_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(txt_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(lbl_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(pass_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(lbl_loginTitle, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(btn_loginPopup, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(btn_register, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(btn_cancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(lbl_loginErrorMsg, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
         jLayeredPane2Layout.setHorizontalGroup(
@@ -197,7 +192,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
                         .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 88, Short.MAX_VALUE)
+                        .addComponent(btn_register, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_loginPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6))
@@ -231,12 +226,18 @@ public class WebsiteUI extends javax.swing.JFrame {
                     .addComponent(btn_cancel))
                 .addContainerGap())
         );
+        jLayeredPane2.setLayer(lbl_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(txt_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(lbl_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(pass_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(lbl_loginTitle, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(btn_loginPopup, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(btn_register, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(btn_cancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(lbl_loginErrorMsg, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LDN_Underground.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-
-        jLayeredPane3.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane3.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane3Layout = new javax.swing.GroupLayout(jLayeredPane3);
         jLayeredPane3.setLayout(jLayeredPane3Layout);
@@ -262,8 +263,8 @@ public class WebsiteUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGap(0, 9, Short.MAX_VALUE)))
         );
-
-        jLayeredPane1.setLayer(jLayeredPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -280,6 +281,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addComponent(jLayeredPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jLayeredPane1.setLayer(jLayeredPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout loginPopupLayout = new javax.swing.GroupLayout(loginPopup.getContentPane());
         loginPopup.getContentPane().setLayout(loginPopupLayout);
@@ -513,18 +515,19 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         jLabel5.setText("List here of the users journeys");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_websiteUserJourneysTaken.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "From", "To", "Cost"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbl_websiteUserJourneysTaken.setEnabled(false);
+        jScrollPane1.setViewportView(tbl_websiteUserJourneysTaken);
 
         javax.swing.GroupLayout pnl_websiteHistoryContainerLayout = new javax.swing.GroupLayout(pnl_websiteHistoryContainer);
         pnl_websiteHistoryContainer.setLayout(pnl_websiteHistoryContainerLayout);
@@ -551,7 +554,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -866,6 +869,13 @@ public class WebsiteUI extends javax.swing.JFrame {
             } catch (Throwable ex) {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            try {
+                this.user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
+            } catch (Throwable ex) {
+                Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             openWebsiteUI();
         }
     }//GEN-LAST:event_btn_RegisterSubmitActionPerformed
@@ -912,7 +922,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         String password = new String(pass_password.getPassword());
 
         try {
-            User user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
+            user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
             if (user != null) {
                 if (user.authenticateUser(password)) {
                     if (user.getSystemRole().isAdmin()) {
@@ -999,6 +1009,54 @@ public class WebsiteUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setEnabled(true);
 //        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUpTravelCardDetails();
+    }
+
+    private void setUpTravelCardDetails() {
+        TravelCard currentTravelCard = null;
+
+        // Get the travel card corresponding to the current user
+        try {
+            currentTravelCard = TravelSystem.getInstance().getTravelCards().getTravelCardById(this.user.getTravelCardId());
+        } catch (Throwable ex) {
+            Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Read the data from a travel card and display it on the UI
+        this.lbl_websiteTCBalanceInput.setText(String.format("%.2f", currentTravelCard.getBalance()));
+        this.lbl_websiteTCDailyCapInput.setText(Float.toString(currentTravelCard.getDailyCap()));
+        this.lbl_websiteTCDiscountInput.setText(Float.toString(currentTravelCard.getDiscount()));
+        this.lbl_websiteTCExpiryDateInput.setText(currentTravelCard.getExpiryDate().toString());
+        this.lbl_websiteTCStartDateInput.setText(currentTravelCard.getCreationDate().toString());
+
+        // Populate the user journey table
+        setUpUserJourneyTable();
+    }
+
+    private void setUpUserJourneyTable() {
+        DefaultTableModel model = (DefaultTableModel) this.tbl_websiteUserJourneysTaken.getModel();
+        // Reset table before setting it up
+        model.setRowCount(0);
+
+        tbl_websiteUserJourneysTaken.setCellSelectionEnabled(false);
+        tbl_websiteUserJourneysTaken.setRowSelectionAllowed(true);
+
+        TravelSystem system = null;
+
+        // Get the travel card corresponding to the current user
+        try {
+            system = TravelSystem.getInstance();
+        } catch (Throwable ex) {
+            Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Get the users tickets
+        SetOfTickets userTickets = system.getTickets().getTicketsForUser(this.user.getId());
+        // Extract useful information and add it to the table
+        userTickets.stream().forEach((ticket) -> {
+            model.addRow(new Object[]{
+                ticket.getJourney().getStartZone(),
+                ticket.getJourney().getEndZone(),
+                String.format("%.2f", ticket.getJourney().getPriceBasedOnPeak(ticket.isPeakTicket()))});
+        });
     }
 
     /**
@@ -1056,7 +1114,6 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_loginErrorMsg;
     private javax.swing.JLabel lbl_loginTitle;
     private javax.swing.JLabel lbl_password;
@@ -1094,6 +1151,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_websiteTicketsContainer;
     private javax.swing.JPanel pnl_websiteTravelCardContainer;
     private javax.swing.JDialog registerPopup;
+    private javax.swing.JTable tbl_websiteUserJourneysTaken;
     private javax.swing.JTextField txt_registerDob;
     private javax.swing.JTextField txt_registerEmail;
     private javax.swing.JTextField txt_registerFirstName;

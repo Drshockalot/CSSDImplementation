@@ -637,7 +637,6 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private void passConfirmInspectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passConfirmInspectionActionPerformed
         // The user has a valid pass, display a confirmation message
         JOptionPane.showMessageDialog(validPassPanel, "Ticket Inspection Confirmed");
-        // V Have this stuff firing off the 'okay' botton press V
         this.validPassPanel.setVisible(false);
         this.payForTicketPanel.setVisible(false);
         this.scanPanel.setVisible(true);
