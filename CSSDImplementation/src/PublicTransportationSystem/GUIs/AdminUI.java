@@ -236,10 +236,23 @@ public class AdminUI extends javax.swing.JFrame {
         tab_admin = new javax.swing.JTabbedPane();
         pnl_adminHome = new javax.swing.JPanel();
         lbl_adminOverviewTitle = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        pnl_adminOverviewContainer = new javax.swing.JPanel();
+        lbl_adminOverviewDailyStatisticsTitle = new javax.swing.JLabel();
+        pnl_adminOverviewPeakJourneyRatio = new javax.swing.JPanel();
+        lbl_adminOverviewPeakJourneyTitle = new javax.swing.JLabel();
+        lbl_adminOverviewPeakJourney = new javax.swing.JLabel();
+        pnl_adminOverviewPaperTcRatio = new javax.swing.JPanel();
+        lbl_adminOverviewPaperTCRatioTitle = new javax.swing.JLabel();
+        lbl_adminOverviewPaperTCRatio = new javax.swing.JLabel();
+        pnl_adminOverviewJourneyToday = new javax.swing.JPanel();
+        lbl_adminOverviewJourneyMadeTitle = new javax.swing.JLabel();
+        lbl_adminOverviewJourneyMade = new javax.swing.JLabel();
+        pnl_adminOverviewTodayRev = new javax.swing.JPanel();
+        lbl_adminOverviewTodayRevTitle = new javax.swing.JLabel();
+        lbl_adminOverviewTodayRev = new javax.swing.JLabel();
+        pnl_adminOverviewBusiestZone = new javax.swing.JPanel();
+        lbl_adminOverviewBusiestZoneTitle = new javax.swing.JLabel();
+        lbl_adminOverviewBusiestZone = new javax.swing.JLabel();
         lbl_adminOverviewUsername = new javax.swing.JLabel();
         pnl_adminUserManagement = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1971,45 +1984,193 @@ public class AdminUI extends javax.swing.JFrame {
         lbl_adminOverviewTitle.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lbl_adminOverviewTitle.setText("Welcome");
 
-        jLabel1.setText("Left Panel");
+        lbl_adminOverviewDailyStatisticsTitle.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        lbl_adminOverviewDailyStatisticsTitle.setText("Daily Statistics");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        lbl_adminOverviewPeakJourneyTitle.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        lbl_adminOverviewPeakJourneyTitle.setText("Off/On Peak Journey Ratio");
+
+        lbl_adminOverviewPeakJourney.setFont(new java.awt.Font("Lucida Grande", 0, 72)); // NOI18N
+        lbl_adminOverviewPeakJourney.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_adminOverviewPeakJourney.setText("0:0");
+
+        javax.swing.GroupLayout pnl_adminOverviewPeakJourneyRatioLayout = new javax.swing.GroupLayout(pnl_adminOverviewPeakJourneyRatio);
+        pnl_adminOverviewPeakJourneyRatio.setLayout(pnl_adminOverviewPeakJourneyRatioLayout);
+        pnl_adminOverviewPeakJourneyRatioLayout.setHorizontalGroup(
+            pnl_adminOverviewPeakJourneyRatioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewPeakJourneyRatioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(366, Short.MAX_VALUE))
+                .addGroup(pnl_adminOverviewPeakJourneyRatioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_adminOverviewPeakJourneyTitle)
+                    .addComponent(lbl_adminOverviewPeakJourney, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnl_adminOverviewPeakJourneyRatioLayout.setVerticalGroup(
+            pnl_adminOverviewPeakJourneyRatioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewPeakJourneyRatioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lbl_adminOverviewPeakJourneyTitle)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_adminOverviewPeakJourney, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(340, 392));
-        jPanel2.setSize(new java.awt.Dimension(100, 100));
+        lbl_adminOverviewPaperTCRatioTitle.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        lbl_adminOverviewPaperTCRatioTitle.setText("Paper/TC Tickets Ratio");
 
-        jLabel3.setText("Right Panel");
+        lbl_adminOverviewPaperTCRatio.setFont(new java.awt.Font("Lucida Grande", 0, 72)); // NOI18N
+        lbl_adminOverviewPaperTCRatio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_adminOverviewPaperTCRatio.setText("0:0");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_adminOverviewPaperTcRatioLayout = new javax.swing.GroupLayout(pnl_adminOverviewPaperTcRatio);
+        pnl_adminOverviewPaperTcRatio.setLayout(pnl_adminOverviewPaperTcRatioLayout);
+        pnl_adminOverviewPaperTcRatioLayout.setHorizontalGroup(
+            pnl_adminOverviewPaperTcRatioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewPaperTcRatioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addGroup(pnl_adminOverviewPaperTcRatioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_adminOverviewPaperTcRatioLayout.createSequentialGroup()
+                        .addComponent(lbl_adminOverviewPaperTCRatioTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 99, Short.MAX_VALUE))
+                    .addComponent(lbl_adminOverviewPaperTCRatio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnl_adminOverviewPaperTcRatioLayout.setVerticalGroup(
+            pnl_adminOverviewPaperTcRatioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewPaperTcRatioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addComponent(lbl_adminOverviewPaperTCRatioTitle)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_adminOverviewPaperTCRatio, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lbl_adminOverviewJourneyMadeTitle.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        lbl_adminOverviewJourneyMadeTitle.setText("Total Journeys Made Today");
+
+        lbl_adminOverviewJourneyMade.setFont(new java.awt.Font("Lucida Grande", 0, 72)); // NOI18N
+        lbl_adminOverviewJourneyMade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_adminOverviewJourneyMade.setText("0");
+
+        javax.swing.GroupLayout pnl_adminOverviewJourneyTodayLayout = new javax.swing.GroupLayout(pnl_adminOverviewJourneyToday);
+        pnl_adminOverviewJourneyToday.setLayout(pnl_adminOverviewJourneyTodayLayout);
+        pnl_adminOverviewJourneyTodayLayout.setHorizontalGroup(
+            pnl_adminOverviewJourneyTodayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewJourneyTodayLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_adminOverviewJourneyTodayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_adminOverviewJourneyTodayLayout.createSequentialGroup()
+                        .addComponent(lbl_adminOverviewJourneyMadeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 33, Short.MAX_VALUE))
+                    .addComponent(lbl_adminOverviewJourneyMade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnl_adminOverviewJourneyTodayLayout.setVerticalGroup(
+            pnl_adminOverviewJourneyTodayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewJourneyTodayLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_adminOverviewJourneyMadeTitle)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_adminOverviewJourneyMade, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        lbl_adminOverviewTodayRevTitle.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        lbl_adminOverviewTodayRevTitle.setText("Todays Total Revenue ");
+
+        lbl_adminOverviewTodayRev.setFont(new java.awt.Font("Lucida Grande", 0, 72)); // NOI18N
+        lbl_adminOverviewTodayRev.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_adminOverviewTodayRev.setText("£0.00");
+
+        javax.swing.GroupLayout pnl_adminOverviewTodayRevLayout = new javax.swing.GroupLayout(pnl_adminOverviewTodayRev);
+        pnl_adminOverviewTodayRev.setLayout(pnl_adminOverviewTodayRevLayout);
+        pnl_adminOverviewTodayRevLayout.setHorizontalGroup(
+            pnl_adminOverviewTodayRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewTodayRevLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_adminOverviewTodayRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_adminOverviewTodayRevLayout.createSequentialGroup()
+                        .addComponent(lbl_adminOverviewTodayRevTitle)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lbl_adminOverviewTodayRev, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnl_adminOverviewTodayRevLayout.setVerticalGroup(
+            pnl_adminOverviewTodayRevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewTodayRevLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_adminOverviewTodayRevTitle)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_adminOverviewTodayRev, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        lbl_adminOverviewBusiestZoneTitle.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        lbl_adminOverviewBusiestZoneTitle.setText("Busiest Zone");
+
+        lbl_adminOverviewBusiestZone.setFont(new java.awt.Font("Lucida Grande", 0, 72)); // NOI18N
+        lbl_adminOverviewBusiestZone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_adminOverviewBusiestZone.setText("Zone A");
+
+        javax.swing.GroupLayout pnl_adminOverviewBusiestZoneLayout = new javax.swing.GroupLayout(pnl_adminOverviewBusiestZone);
+        pnl_adminOverviewBusiestZone.setLayout(pnl_adminOverviewBusiestZoneLayout);
+        pnl_adminOverviewBusiestZoneLayout.setHorizontalGroup(
+            pnl_adminOverviewBusiestZoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewBusiestZoneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_adminOverviewBusiestZoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_adminOverviewBusiestZoneTitle)
+                    .addComponent(lbl_adminOverviewBusiestZone, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_adminOverviewBusiestZoneLayout.setVerticalGroup(
+            pnl_adminOverviewBusiestZoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewBusiestZoneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_adminOverviewBusiestZoneTitle)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_adminOverviewBusiestZone, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnl_adminOverviewContainerLayout = new javax.swing.GroupLayout(pnl_adminOverviewContainer);
+        pnl_adminOverviewContainer.setLayout(pnl_adminOverviewContainerLayout);
+        pnl_adminOverviewContainerLayout.setHorizontalGroup(
+            pnl_adminOverviewContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_adminOverviewContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_adminOverviewContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_adminOverviewContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(pnl_adminOverviewTodayRev, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnl_adminOverviewContainerLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(pnl_adminOverviewPeakJourneyRatio, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnl_adminOverviewContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_adminOverviewContainerLayout.createSequentialGroup()
+                                .addComponent(pnl_adminOverviewPaperTcRatio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(pnl_adminOverviewJourneyToday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pnl_adminOverviewBusiestZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbl_adminOverviewDailyStatisticsTitle))
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
+        pnl_adminOverviewContainerLayout.setVerticalGroup(
+            pnl_adminOverviewContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_adminOverviewContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_adminOverviewDailyStatisticsTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnl_adminOverviewContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnl_adminOverviewJourneyToday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_adminOverviewPaperTcRatio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_adminOverviewPeakJourneyRatio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addGroup(pnl_adminOverviewContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_adminOverviewTodayRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_adminOverviewBusiestZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lbl_adminOverviewUsername.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
@@ -2022,16 +2183,13 @@ public class AdminUI extends javax.swing.JFrame {
             .addGroup(pnl_adminHomeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnl_adminHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_adminHomeLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 190, Short.MAX_VALUE))
+                    .addComponent(pnl_adminOverviewContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnl_adminHomeLayout.createSequentialGroup()
                         .addComponent(lbl_adminOverviewTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_adminOverviewUsername)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnl_adminHomeLayout.setVerticalGroup(
             pnl_adminHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2041,10 +2199,8 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(lbl_adminOverviewTitle)
                     .addComponent(lbl_adminOverviewUsername))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnl_adminHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
+                .addComponent(pnl_adminOverviewContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         tab_admin.addTab("Overview", pnl_adminHome);
@@ -2190,7 +2346,7 @@ public class AdminUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_adminUserAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnl_adminUserManagementLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1053, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -2209,7 +2365,7 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(btn_adminUserSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminUserDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminUserSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         tab_admin.addTab("Users", pnl_adminUserManagement);
@@ -2309,7 +2465,7 @@ public class AdminUI extends javax.swing.JFrame {
                         .addComponent(btn_adminJourneySearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_adminJourneySearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 531, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 675, Short.MAX_VALUE)
                         .addComponent(btn_adminJourneyDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_adminJourneyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2344,7 +2500,7 @@ public class AdminUI extends javax.swing.JFrame {
             .addGroup(pnl_adminJourneyManagementLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnl_adminUserManagement1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         tab_admin.addTab("Journeys", pnl_adminJourneyManagement);
@@ -2457,7 +2613,7 @@ public class AdminUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_adminZoneAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnl_adminUserManagement2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -2476,14 +2632,14 @@ public class AdminUI extends javax.swing.JFrame {
                     .addComponent(btn_adminZoneSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminZoneDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_adminZoneSearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1062, Short.MAX_VALUE)
+            .addGap(0, 1206, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addComponent(pnl_adminUserManagement2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2491,7 +2647,7 @@ public class AdminUI extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 482, Short.MAX_VALUE)
+            .addGap(0, 503, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addComponent(pnl_adminUserManagement2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2598,7 +2754,7 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnl_adminUserManagement3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_adminUserManagement3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnl_adminUserManagement3Layout.createSequentialGroup()
@@ -2642,7 +2798,7 @@ public class AdminUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(pnl_adminUserManagement3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
         tab_admin.addTab("Stations", jPanel4);
@@ -2663,7 +2819,7 @@ public class AdminUI extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel10)))
-                .addContainerGap(415, Short.MAX_VALUE))
+                .addContainerGap(559, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2672,7 +2828,7 @@ public class AdminUI extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addContainerGap(377, Short.MAX_VALUE))
         );
 
         tab_admin.addTab("Permissions", jPanel5);
@@ -2699,7 +2855,7 @@ public class AdminUI extends javax.swing.JFrame {
             pnl_adminGUITabsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_adminGUITabsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tab_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tab_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_logout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -3952,17 +4108,13 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JDialog dlg_adminZoneAdd;
     private javax.swing.JDialog dlg_adminZoneDelete;
     private javax.swing.JDialog dlg_adminZoneEdit;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -3994,7 +4146,18 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_adminJourneySearchTitle;
     private javax.swing.JLabel lbl_adminJourneySearchToDate;
     private javax.swing.JLabel lbl_adminJourneySearchZoneHead;
+    private javax.swing.JLabel lbl_adminOverviewBusiestZone;
+    private javax.swing.JLabel lbl_adminOverviewBusiestZoneTitle;
+    private javax.swing.JLabel lbl_adminOverviewDailyStatisticsTitle;
+    private javax.swing.JLabel lbl_adminOverviewJourneyMade;
+    private javax.swing.JLabel lbl_adminOverviewJourneyMadeTitle;
+    private javax.swing.JLabel lbl_adminOverviewPaperTCRatio;
+    private javax.swing.JLabel lbl_adminOverviewPaperTCRatioTitle;
+    private javax.swing.JLabel lbl_adminOverviewPeakJourney;
+    private javax.swing.JLabel lbl_adminOverviewPeakJourneyTitle;
     private javax.swing.JLabel lbl_adminOverviewTitle;
+    private javax.swing.JLabel lbl_adminOverviewTodayRev;
+    private javax.swing.JLabel lbl_adminOverviewTodayRevTitle;
     private javax.swing.JLabel lbl_adminOverviewUsername;
     private javax.swing.JLabel lbl_adminStationAddGPS;
     private javax.swing.JLabel lbl_adminStationAddId;
@@ -4052,6 +4215,12 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_adminJourneyDeleteContainer;
     private javax.swing.JPanel pnl_adminJourneyManagement;
     private javax.swing.JPanel pnl_adminJourneySearchContainer;
+    private javax.swing.JPanel pnl_adminOverviewBusiestZone;
+    private javax.swing.JPanel pnl_adminOverviewContainer;
+    private javax.swing.JPanel pnl_adminOverviewJourneyToday;
+    private javax.swing.JPanel pnl_adminOverviewPaperTcRatio;
+    private javax.swing.JPanel pnl_adminOverviewPeakJourneyRatio;
+    private javax.swing.JPanel pnl_adminOverviewTodayRev;
     private javax.swing.JPanel pnl_adminStationDeleteContainer;
     private javax.swing.JPanel pnl_adminUserAddEditContainer;
     private javax.swing.JPanel pnl_adminUserDeleteContainer;
