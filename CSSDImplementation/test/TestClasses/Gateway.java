@@ -108,7 +108,7 @@ public class Gateway {
         assertTrue(result);
 
         float current_balance = travel_card.getBalance();
-        System.out.println(current_balance);
+
         assertTrue(current_balance < 0);
 
     }

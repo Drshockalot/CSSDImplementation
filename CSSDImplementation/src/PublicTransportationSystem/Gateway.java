@@ -15,6 +15,7 @@ import java.util.Vector;
  */
 public class Gateway implements Serializable {
 
+    private static final long serialVersionUID = 3763011420896048629L;
     private int gatewayID;
     private Scanner scanner;
     private GateController gateController;
@@ -118,6 +119,52 @@ public class Gateway implements Serializable {
             }
         }
         return false;
+    }
+
+    public boolean PerformScanInTicket(Ticket ticket) throws Throwable {
+        // Scan the ticket and retrieve the id
+        int ticketID = scanner.readTicket(ticket);
+        TravelSystem sys = TravelSystem.getInstance();
+        // Get the ticket software object from the system based on the Id
+        Ticket currentTicket = sys.getTickets().getTicketById(ticketID);
+
+        if (currentTicket == null) {
+            // if the ticket cannot be found, don't open the gate
+            this.reject();
+            return false;
+        } else {
+            this.approve();
+            return true;
+        }
+    }
+
+    public boolean PerformScanOutTicket(Ticket ticket) throws Throwable {
+        // Scan the ticket and retrieve the id
+        int ticketID = scanner.readTicket(ticket);
+        TravelSystem sys = TravelSystem.getInstance();
+        // Get the ticket software object from the system based on the Id
+        Ticket currentTicket = sys.getTickets().getTicketById(ticketID);
+        // Get the current zone we are in to compare with the ticket
+        StationSystem station = sys.getStationSystems().getStationSystemById(this.stationID);
+        Zone zone = station.getZone();
+
+        if (currentTicket == null) {
+            this.reject();
+            return false;
+        } else {
+            // Check that the ticket arrival matches the actual arrival
+            if (zone.getId() == currentTicket.getJourney().getEndZone().getId()) {
+                // Flag the ticket as used and allow them through the gate
+                currentTicket.setUsed();
+                this.approve();
+                return true;
+            } else {
+                // The end zone of the ticket does not match the zone of the
+                // gateway
+                this.reject();
+                return false;
+            }
+        }
     }
 
     public void approve() {

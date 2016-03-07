@@ -40,6 +40,17 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         return todaysTotal;
     }
 
+    public Ticket getTicketById(int ticketId) {
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getTicketId() == ticketId) {
+                // Ticket with matching Id found, return it
+                return super.get(i);
+            }
+        }
+        // No ticket found, return null
+        return null;
+    }
+
     public SetOfTickets getTicketsForUser(int userId) {
         SetOfTickets userTickets = new SetOfTickets();
         for (int i = 0; i < super.size(); i++) {

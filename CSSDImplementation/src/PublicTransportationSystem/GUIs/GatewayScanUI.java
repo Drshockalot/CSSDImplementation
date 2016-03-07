@@ -9,9 +9,11 @@ import PublicTransportationSystem.Gateway;
 import PublicTransportationSystem.SetOfGateways;
 import PublicTransportationSystem.SetOfStationSystems;
 import PublicTransportationSystem.SetOfTravelCards;
+import PublicTransportationSystem.SetOfZones;
 import PublicTransportationSystem.StationSystem;
 import PublicTransportationSystem.TravelCard;
 import PublicTransportationSystem.TravelSystem;
+import PublicTransportationSystem.Zone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,6 +38,27 @@ public class GatewayScanUI extends javax.swing.JFrame {
         this.scanOutCard1.setEnabled(false);
         this.scanOutCard2.setEnabled(false);
         this.scanOutCard3.setEnabled(false);
+
+        this.fromZone.removeAllItems();
+        // @TODO::: Only add zones that have a station!
+
+        system.getZones().stream().forEach((zone) -> {
+            if (!system.getJourneys().getAllZonesDepartingFromStartZone(zone).isEmpty()) {
+                this.fromZone.addItem(zone);
+            }
+        });
+    }
+
+    private void setUpToZones() {
+        if (this.fromZone.getItemAt(0) != null) {
+            SetOfZones toZones = system.getJourneys()
+                    .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
+
+            // Add the potential destination zones to the list
+            toZones.stream().forEach((zone) -> {
+                this.toZone.addItem(zone);
+            });
+        }
     }
 
     /**
@@ -58,6 +81,8 @@ public class GatewayScanUI extends javax.swing.JFrame {
         approvedMessage = new javax.swing.JLabel();
         scanInHeader = new javax.swing.JLabel();
         scanOutHeader = new javax.swing.JLabel();
+        fromZone = new javax.swing.JComboBox();
+        toZone = new javax.swing.JComboBox();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -130,24 +155,19 @@ public class GatewayScanUI extends javax.swing.JFrame {
 
         scanOutHeader.setText("Scan Out");
 
+        fromZone.setModel(new javax.swing.DefaultComboBoxModel());
+        fromZone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromZoneActionPerformed(evt);
+            }
+        });
+
+        toZone.setModel(new javax.swing.DefaultComboBoxModel());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scanInCard1)
-                    .addComponent(scanInCard3)
-                    .addComponent(scanInCard2)
-                    .addComponent(rejectedMessage))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scanOutCard3)
-                    .addComponent(scanOutCard2)
-                    .addComponent(scanOutCard1)
-                    .addComponent(approvedMessage, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(66, 66, 66))
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,6 +179,32 @@ public class GatewayScanUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(scanOutHeader)
                         .addGap(96, 96, 96))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scanInCard1)
+                            .addComponent(scanInCard3)
+                            .addComponent(scanInCard2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(rejectedMessage)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(fromZone, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(toZone, 0, 95, Short.MAX_VALUE))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scanOutCard3)
+                            .addComponent(scanOutCard2)
+                            .addComponent(scanOutCard1))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(approvedMessage)
+                        .addGap(65, 65, 65))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,14 +215,16 @@ public class GatewayScanUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scanInHeader)
                     .addComponent(scanOutHeader))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scanOutCard1)
-                    .addComponent(scanInCard1))
+                    .addComponent(scanInCard1)
+                    .addComponent(fromZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scanInCard2)
-                    .addComponent(scanOutCard2))
+                    .addComponent(scanOutCard2)
+                    .addComponent(toZone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scanInCard3)
@@ -185,7 +233,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rejectedMessage)
                     .addComponent(approvedMessage))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -365,6 +413,11 @@ public class GatewayScanUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_scanOutCard3ActionPerformed
 
+    private void fromZoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromZoneActionPerformed
+        this.toZone.removeAllItems();
+        setUpToZones();
+    }//GEN-LAST:event_fromZoneActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -406,6 +459,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel approvedMessage;
+    private javax.swing.JComboBox fromZone;
     private javax.swing.JLabel gatewayTitle;
     private javax.swing.JLabel rejectedMessage;
     private javax.swing.JButton scanInCard1;
@@ -416,5 +470,6 @@ public class GatewayScanUI extends javax.swing.JFrame {
     private javax.swing.JButton scanOutCard2;
     private javax.swing.JButton scanOutCard3;
     private javax.swing.JLabel scanOutHeader;
+    private javax.swing.JComboBox toZone;
     // End of variables declaration//GEN-END:variables
 }
