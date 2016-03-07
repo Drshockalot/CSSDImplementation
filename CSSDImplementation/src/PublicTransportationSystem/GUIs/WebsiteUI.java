@@ -6,12 +6,18 @@
 package PublicTransportationSystem.GUIs;
 
 import static PublicTransportationSystem.GUIs.AppSwitchboard.mainUI;
+import PublicTransportationSystem.Journey;
 import PublicTransportationSystem.SetOfTickets;
+import PublicTransportationSystem.SetOfZones;
 import PublicTransportationSystem.SystemRole;
+import PublicTransportationSystem.Ticket;
+import PublicTransportationSystem.Transaction;
 import PublicTransportationSystem.TravelCard;
 import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
+import PublicTransportationSystem.Zone;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -93,6 +99,14 @@ public class WebsiteUI extends javax.swing.JFrame {
         pnl_websiteTicketsContainer = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        cmb_websiteToZoneList = new javax.swing.JComboBox();
+        cmb_websiteFromZoneList = new javax.swing.JComboBox();
+        btn_websitePurchaseTicket = new javax.swing.JButton();
+        lbl_websiteToTag = new javax.swing.JLabel();
+        lbl_websiteFromTag = new javax.swing.JLabel();
+        cmb_websiteTicketType = new javax.swing.JComboBox();
+        lbl_websiteToTag1 = new javax.swing.JLabel();
+        lbl_websitePurchaseMessage = new javax.swing.JLabel();
         pnl_websiteTravelCardContainer = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         lbl_websiteTCBalance = new javax.swing.JLabel();
@@ -517,13 +531,13 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         tbl_websiteUserJourneysTaken.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "From", "To", "Cost"
+                "From", "To", "Cost", "Type", "Used"
             }
         ));
         tbl_websiteUserJourneysTaken.setEnabled(false);
@@ -562,6 +576,33 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         jLabel9.setText("Couple of inputs for user to buy a ticket");
 
+        cmb_websiteToZoneList.setModel(new javax.swing.DefaultComboBoxModel());
+        cmb_websiteToZoneList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_websiteToZoneListActionPerformed(evt);
+            }
+        });
+
+        cmb_websiteFromZoneList.setModel(new javax.swing.DefaultComboBoxModel());
+        cmb_websiteFromZoneList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_websiteFromZoneListActionPerformed(evt);
+            }
+        });
+
+        btn_websitePurchaseTicket.setText("Purchase");
+        btn_websitePurchaseTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_websitePurchaseTicketActionPerformed(evt);
+            }
+        });
+
+        lbl_websiteToTag.setText("To");
+
+        lbl_websiteFromTag.setText("From");
+
+        lbl_websiteToTag1.setText("Type");
+
         javax.swing.GroupLayout pnl_websiteTicketsContainerLayout = new javax.swing.GroupLayout(pnl_websiteTicketsContainer);
         pnl_websiteTicketsContainer.setLayout(pnl_websiteTicketsContainerLayout);
         pnl_websiteTicketsContainerLayout.setHorizontalGroup(
@@ -570,7 +611,21 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(btn_websitePurchaseTicket)
+                    .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmb_websiteFromZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_websiteFromTag))
+                        .addGap(115, 115, 115)
+                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmb_websiteToZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_websiteToTag))
+                        .addGap(110, 110, 110)
+                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmb_websiteTicketType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_websiteToTag1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbl_websitePurchaseMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_websiteTicketsContainerLayout.setVerticalGroup(
@@ -580,7 +635,21 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_websiteToTag)
+                    .addComponent(lbl_websiteFromTag)
+                    .addComponent(lbl_websiteToTag1))
+                .addGap(7, 7, 7)
+                .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmb_websiteFromZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_websiteToZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_websiteTicketType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addComponent(btn_websitePurchaseTicket)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_websitePurchaseMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -992,6 +1061,28 @@ public class WebsiteUI extends javax.swing.JFrame {
         registerPopup.setVisible(false);
     }//GEN-LAST:event_btn_RegisterCancelActionPerformed
 
+    private void cmb_websiteToZoneListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_websiteToZoneListActionPerformed
+
+    }//GEN-LAST:event_cmb_websiteToZoneListActionPerformed
+
+    private void cmb_websiteFromZoneListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_websiteFromZoneListActionPerformed
+        // When the index of the from zone list is changed, update the 'to zone'
+        // list
+        setUpToJourneyList();
+    }//GEN-LAST:event_cmb_websiteFromZoneListActionPerformed
+
+    private void btn_websitePurchaseTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_websitePurchaseTicketActionPerformed
+        if (handleTransaction()) {
+            this.lbl_websitePurchaseMessage.setText("Purchase Successful");
+            this.lbl_websitePurchaseMessage.setForeground(Color.GREEN);
+        } else {
+            this.lbl_websitePurchaseMessage.setText("Purchase Unsuccessful");
+            this.lbl_websitePurchaseMessage.setForeground(Color.RED);
+        }
+
+        setUpTravelCardDetails();
+    }//GEN-LAST:event_btn_websitePurchaseTicketActionPerformed
+
     private void openAdminUI(String username) {
         loginPopup.dispose();
         this.setEnabled(false);
@@ -1030,6 +1121,103 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         // Populate the user journey table
         setUpUserJourneyTable();
+        // Set up the zone combo boxes
+        setUpZoneLists();
+        // Set up ticket type list
+        setUpTicketTypes();
+    }
+
+    private void setUpTicketTypes() {
+        // Clear the list first
+        this.cmb_websiteTicketType.removeAllItems();
+
+        // Then add the potential ticket types to the list
+        for (TypeEnums.TicketType ticketType : TypeEnums.TicketType.values()) {
+            this.cmb_websiteTicketType.addItem(ticketType.toString());
+        }
+    }
+
+    private void setUpZoneLists() {
+        TravelSystem system = null;
+        try {
+            system = TravelSystem.getInstance();
+        } catch (Throwable ex) {
+            Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Display all of the potential departure zones
+        this.cmb_websiteFromZoneList.removeAllItems();
+        SetOfZones zoneList = system.getZones();
+        for (Zone zone : zoneList) {
+            if (!system.getJourneys().getAllZonesDepartingFromStartZone(zone).isEmpty()) {
+                this.cmb_websiteFromZoneList.addItem(zone);
+            }
+        }
+
+        setUpToJourneyList();
+    }
+
+    private void setUpToJourneyList() {
+        TravelSystem system = null;
+        try {
+            system = TravelSystem.getInstance();
+        } catch (Throwable ex) {
+            Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Make sure the combo box is clear before re-populating
+        this.cmb_websiteToZoneList.removeAllItems();
+
+        // If the selected from zone is not null
+        if (this.cmb_websiteFromZoneList.getItemAt(0) != null) {
+            // Get all of the zones that the user can travel to from the selected
+            // zone
+            SetOfZones toZones = system.getJourneys()
+                    .getAllZonesDepartingFromStartZone((Zone) this.cmb_websiteFromZoneList.getSelectedItem());
+
+            // Add the potential destination zones to the list
+            toZones.stream().forEach((zone) -> {
+                this.cmb_websiteToZoneList.addItem(zone);
+            });
+        }
+    }
+
+    private boolean handleTransaction() {
+        TravelSystem system = null;
+        try {
+            system = TravelSystem.getInstance();
+        } catch (Throwable ex) {
+            Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Create a new Transaction so that we can handle ticket payment
+        Transaction transaction = new Transaction();
+        // The users pass does not cover their desired journey,
+        // so create a ticket
+        Journey journey = system.getJourneys().getJourney(
+                (Zone) this.cmb_websiteFromZoneList.getSelectedItem(),
+                (Zone) this.cmb_websiteToZoneList.getSelectedItem());
+
+        TypeEnums.TicketType ticketType = null;
+        // Discern whether the user wants a bus or train ticket
+        if ("TRAIN".equals(this.cmb_websiteTicketType.getSelectedItem())) {
+            ticketType = TypeEnums.TicketType.TRAIN;
+        } else if ("BUS".equals(this.cmb_websiteTicketType.getSelectedItem())) {
+            ticketType = TypeEnums.TicketType.BUS;
+        }
+
+        // Create a new 'ticket' for this journey
+        Ticket newTicket = null;
+        try {
+            // Create a new ticket, set it as not used
+            newTicket = new Ticket(TravelSystem.getInstance().getTickets()
+                    .getNextId(), ticketType, journey, journey.getStartZone().isPeak(), user.getId(), false);
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Pay for the ticket, returns true if the payment was successful
+        return transaction.payForTicket(newTicket, system.getTravelCards().getTravelCardById(user.getTravelCardId()));
     }
 
     private void setUpUserJourneyTable() {
@@ -1055,7 +1243,10 @@ public class WebsiteUI extends javax.swing.JFrame {
             model.addRow(new Object[]{
                 ticket.getJourney().getStartZone(),
                 ticket.getJourney().getEndZone(),
-                String.format("%.2f", ticket.getJourney().getPriceBasedOnPeak(ticket.isPeakTicket()))});
+                String.format("%.2f", ticket.getJourney().getPriceBasedOnPeak(ticket.isPeakTicket())),
+                ticket.getTicketType(),
+                ticket.getIsUsed()
+            });
         });
     }
 
@@ -1102,7 +1293,11 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_register;
     private javax.swing.JButton btn_websiteMainAccount;
     private javax.swing.JButton btn_websiteMainLogout;
+    private javax.swing.JButton btn_websitePurchaseTicket;
     private javax.swing.JButton btn_websiteURLGo;
+    private javax.swing.JComboBox cmb_websiteFromZoneList;
+    private javax.swing.JComboBox cmb_websiteTicketType;
+    private javax.swing.JComboBox cmb_websiteToZoneList;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
@@ -1131,6 +1326,8 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_registerUsername;
     private javax.swing.JLabel lbl_registerUsernameError;
     private javax.swing.JLabel lbl_username;
+    private javax.swing.JLabel lbl_websiteFromTag;
+    private javax.swing.JLabel lbl_websitePurchaseMessage;
     private javax.swing.JLabel lbl_websiteTCBalance;
     private javax.swing.JLabel lbl_websiteTCBalanceInput;
     private javax.swing.JLabel lbl_websiteTCDailyCap;
@@ -1141,6 +1338,8 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_websiteTCExpiryDateInput;
     private javax.swing.JLabel lbl_websiteTCStartDate;
     private javax.swing.JLabel lbl_websiteTCStartDateInput;
+    private javax.swing.JLabel lbl_websiteToTag;
+    private javax.swing.JLabel lbl_websiteToTag1;
     private javax.swing.JDialog loginPopup;
     private javax.swing.JPasswordField pass_password;
     private javax.swing.JPasswordField pass_registerPassword;

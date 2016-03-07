@@ -711,9 +711,11 @@ public class PortableReaderUI extends javax.swing.JFrame {
         for (Ticket unusedTicket : unusedTickets) {
             if (unusedTicket.getJourney().getStartZone().getId() == journey.getStartZone().getId()
                     && unusedTicket.getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
-                // A ticket the user owns matches they journey they want to make
-                unusedTicketFound = true;
-                break;
+                if (unusedTicket.getTicketType().toString().equals(this.travelType)) {
+                    // A ticket the user owns matches they journey they want to make
+                    unusedTicketFound = true;
+                    break;
+                }
             }
         }
         if (unusedTicketFound) {
@@ -724,7 +726,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
             this.payForTicketPanel.setVisible(false);
             this.scanPanel.setVisible(true);
         } else {
-            // Catch the which button the user presses and handle the result
+            // Catch which button the user presses and handle the result
             String[] buttons = {"Pay for Journey", "Cancel"};
             int buttonIndex = JOptionPane.showOptionDialog(null, "Pass not valid for journey", "Invalid Pass",
                     JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[1]);
@@ -773,7 +775,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
         if ("TRAIN".equals(this.travelType)) {
             ticketType = TypeEnums.TicketType.TRAIN;
         } else if ("BUS".equals(this.travelType)) {
-            ticketType = TypeEnums.TicketType.TRAIN;
+            ticketType = TypeEnums.TicketType.BUS;
         }
 
         // Create a new 'ticket' for this journey

@@ -5,6 +5,7 @@
  */
 package PublicTransportationSystem;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  *
  * @author JoBa
  */
-public class Pass {
+public class Pass implements Serializable {
 
     private TypeEnums.PassType passType;
     private final Date expiryDate;
