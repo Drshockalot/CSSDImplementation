@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Scanner implements Serializable {
 
-    private static final long serialVersionUID = 8162005939343697380L;
+    private static final long serialVersionUID = -8162005939343697380L;
 
     public int read(TravelCard travelCard) {
         return travelCard.getId();
