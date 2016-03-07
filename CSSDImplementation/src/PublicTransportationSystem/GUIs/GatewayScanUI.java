@@ -40,8 +40,6 @@ public class GatewayScanUI extends javax.swing.JFrame {
         this.scanOutCard3.setEnabled(false);
 
         this.fromZone.removeAllItems();
-        // @TODO::: Only add zones that have a station!
-
         system.getZones().stream().forEach((zone) -> {
             if (!system.getJourneys().getAllZonesDepartingFromStartZone(zone).isEmpty()) {
                 this.fromZone.addItem(zone);
@@ -252,7 +250,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void scanInCard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scanInCard1MouseClicked
-        StationSystem station = stations.getStationSystemById(1);
+        StationSystem station = stations.getStationFromZone((Zone) this.fromZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
@@ -279,7 +277,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanInCard1MouseClicked
 
     private void scanInCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard2ActionPerformed
-        StationSystem station = stations.getStationSystemById(2);
+        StationSystem station = stations.getStationFromZone((Zone) this.fromZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
@@ -306,7 +304,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanInCard2ActionPerformed
 
     private void scanInCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard3ActionPerformed
-        StationSystem station = stations.getStationSystemById(3);
+        StationSystem station = stations.getStationFromZone((Zone) this.fromZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
@@ -333,7 +331,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanInCard3ActionPerformed
 
     private void scanOutCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard1ActionPerformed
-        StationSystem station = stations.getStationSystemById(1);
+        StationSystem station = stations.getStationFromZone((Zone) this.toZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
@@ -360,7 +358,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanOutCard1ActionPerformed
 
     private void scanOutCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard2ActionPerformed
-        StationSystem station = stations.getStationSystemById(2);
+        StationSystem station = stations.getStationFromZone((Zone) this.toZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
@@ -387,7 +385,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanOutCard2ActionPerformed
 
     private void scanOutCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard3ActionPerformed
-        StationSystem station = stations.getStationSystemById(3);
+        StationSystem station = stations.getStationFromZone((Zone) this.toZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();

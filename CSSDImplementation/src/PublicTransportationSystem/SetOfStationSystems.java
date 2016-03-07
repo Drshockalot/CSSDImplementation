@@ -19,6 +19,8 @@ import java.util.Vector;
  */
 public class SetOfStationSystems extends Vector<StationSystem> implements Serializable {
 
+    private static final long serialVersionUID = 98925643773034062L;
+
     public void addStationSystem(StationSystem station) {
         super.add(station);
     }
@@ -48,6 +50,16 @@ public class SetOfStationSystems extends Vector<StationSystem> implements Serial
         }
 
         return count;
+    }
+
+    public StationSystem getStationFromZone(Zone zone) {
+        for (StationSystem system : this) {
+            if (system.getZone().getName().equals(zone.getName())) {
+                return system;
+            }
+        }
+
+        return null;
     }
 
     public SetOfStationSystems deserializeStationSystems() throws ClassNotFoundException {
