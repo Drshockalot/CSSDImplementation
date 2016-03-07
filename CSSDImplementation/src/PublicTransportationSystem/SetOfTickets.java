@@ -128,6 +128,20 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         return count;
     }
 
+    public SetOfJourneys getSearchedJourneys(Journey journey, Date startDateTime, Date endDateTime) {
+        SetOfJourneys journeys = new SetOfJourneys();
+
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getPurchasedTime().after(startDateTime)) {
+                if (super.get(i).getPurchasedTime().before(endDateTime)) {
+                    journeys.add(super.get(i).getJourney());
+                }
+            }
+        }
+
+        return journeys;
+    }
+
     private String getDateFormatted(Date date) {
         return new SimpleDateFormat("dd-MM-yyyy").format(date);
     }

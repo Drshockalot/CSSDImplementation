@@ -21,6 +21,7 @@ import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -2780,6 +2781,28 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }
 
+    private void populateJourneyTableWithSearchedJourneys(SetOfJourneys journeys) {
+        DefaultTableModel model = (DefaultTableModel) tbl_adminGUIJourneyList.getModel();
+        model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
+
+        tbl_adminGUIJourneyList.setCellSelectionEnabled(false);
+        tbl_adminGUIJourneyList.setRowSelectionAllowed(true);
+
+        for (Journey journey : journeys) {
+            try {
+                int offPeakJourneys = TravelSystem.getInstance().getTickets().getOffPeakTicketsForJourney(journey);
+                int onPeakJourneys = TravelSystem.getInstance().getTickets().getOnPeakTicketsForJourney(journey);
+                model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
+                    journey.getOffPeakPrice(), journey.getOnPeakPrice(),
+                    offPeakJourneys,
+                    onPeakJourneys,
+                    calculateRevenueForJourneyToday(onPeakJourneys, offPeakJourneys, journey.getOnPeakPrice(), journey.getOffPeakPrice())});
+            } catch (Throwable ex) {
+                Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     private float calculateRevenueForJourneyToday(int peakJourneys, int offPeakJourneys, float onPeakPrice, float offPeakPrice) {
         float revenue = 0.00f;
 
@@ -3072,10 +3095,22 @@ public class AdminUI extends javax.swing.JFrame {
             cmb_adminJourneySearchDep.setModel(new DefaultComboBoxModel(
                     TravelSystem.getInstance().getZones().getZonesAsStringArray()));
 //            String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
-            cmb_adminJourneySearchArr.setModel(new DefaultComboBoxModel(
-                    TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+            if (cmb_adminJourneySearchDep.getSelectedItem() != null) {
+                String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+                populateJourneySearchComboWithAvailableDestinations(zoneName);
+            }
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-//            populateJourneySearchComboWithAvailableDestinations(zoneName);
+    private void populateJourneySearchComboWithAvailableDestinations(String zoneName) {
+        Zone zone;
+        try {
+            zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
+            cmb_adminJourneySearchArr.setModel(new DefaultComboBoxModel(
+                    TravelSystem.getInstance().getJourneys()
+                    .getAllZonesDepartingFromStartZone(zone)));
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3691,7 +3726,7 @@ public class AdminUI extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             populateJourneyTable();
-            btn_adminJourneySearchClear.setEnabled(true);
+            btn_adminJourneySearchClear.setEnabled(false);
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3702,8 +3737,36 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_cmb_adminJourneyAddDepZoneActionPerformed
 
     private void btn_adminJourneySearchSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchSubmitActionPerformed
-        // TODO add your handling code here:
+        String depZoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+        Zone arrZone = (Zone) cmb_adminJourneySearchArr.getSelectedItem();
+        String startDateTime = txt_adminJourneySearchFrom.getText();
+        String endDateTime = txt_adminJourneySearchTo.getText();
+
+        try {
+            Zone depZone = TravelSystem.getInstance().getZones().getZoneByName(depZoneName);
+            Journey journey = TravelSystem.getInstance().getJourneys().getJourney(depZone, arrZone);
+            SetOfJourneys journeys = TravelSystem.getInstance().getTickets()
+                    .getSearchedJourneys(journey, formatStringToDate(startDateTime), formatStringToDate(endDateTime));
+            populateJourneyTableWithSearchedJourneys(journeys);
+            dlg_adminJourneySearch.setVisible(false);
+            btn_adminJourneySearchClear.setEnabled(true);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_adminJourneySearchSubmitActionPerformed
+
+    private Date formatStringToDate(String date) {
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH);
+        Date formattedDate;
+        try {
+            formattedDate = format.parse(date);
+            return formattedDate;
+        } catch (ParseException ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
 
     private void btn_adminJourneySearchCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchCancelActionPerformed
         // TODO add your handling code here:
@@ -3716,8 +3779,10 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void cmb_adminJourneySearchDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_adminJourneySearchDepActionPerformed
         // TODO add your handling code here:
-//        String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
-//        populateJourneySearchComboWithAvailableDestinations(zoneName);
+        if (cmb_adminJourneySearchDep.getSelectedItem() != null) {
+            String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+            populateJourneySearchComboWithAvailableDestinations(zoneName);
+        }
     }//GEN-LAST:event_cmb_adminJourneySearchDepActionPerformed
 
     private void populateJourneyAddEditComboWithAvailableDestinations(String zoneName) {
