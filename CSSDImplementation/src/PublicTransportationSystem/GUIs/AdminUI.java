@@ -3900,9 +3900,9 @@ public class AdminUI extends javax.swing.JFrame {
 
         try {
             Zone depZone = TravelSystem.getInstance().getZones().getZoneByName(depZoneName);
-            Journey journey = TravelSystem.getInstance().getJourneys().getJourney(depZone, arrZone);
             SetOfJourneys journeys = TravelSystem.getInstance().getTickets()
-                    .getSearchedJourneys(journey, formatStringToDate(startDateTime), formatStringToDate(endDateTime));
+                    .getSearchedJourneys(TravelSystem.getInstance().getJourneys().getJourney(depZone, arrZone),
+                            formatStringToDate(startDateTime), formatStringToDate(endDateTime));
             populateJourneyTableWithSearchedJourneys(journeys);
             dlg_adminJourneySearch.setVisible(false);
             btn_adminJourneySearchClear.setEnabled(true);
