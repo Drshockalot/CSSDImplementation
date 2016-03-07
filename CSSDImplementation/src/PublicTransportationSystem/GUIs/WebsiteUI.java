@@ -88,7 +88,6 @@ public class WebsiteUI extends javax.swing.JFrame {
         pnl_websiteTicketsContainer = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         pnl_websiteTravelCardContainer = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         lbl_websiteTCBalance = new javax.swing.JLabel();
@@ -510,7 +509,7 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Your Recent Transactions");
+        jLabel4.setText("Your Transactions");
 
         jLabel5.setText("List here of the users journeys");
 
@@ -560,22 +559,15 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         jLabel9.setText("Couple of inputs for user to buy a ticket");
 
-        jLabel2.setText("Need to discuss this tomorrow");
-
         javax.swing.GroupLayout pnl_websiteTicketsContainerLayout = new javax.swing.GroupLayout(pnl_websiteTicketsContainer);
         pnl_websiteTicketsContainer.setLayout(pnl_websiteTicketsContainerLayout);
         pnl_websiteTicketsContainerLayout.setHorizontalGroup(
             pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel9)))
-                    .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(jLabel2)))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel9))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_websiteTicketsContainerLayout.setVerticalGroup(
@@ -585,9 +577,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addGap(58, 58, 58)
-                .addComponent(jLabel2)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -1057,7 +1047,6 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_websiteURLGo;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

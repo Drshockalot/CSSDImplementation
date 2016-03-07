@@ -1814,6 +1814,12 @@ public class AdminUI extends javax.swing.JFrame {
 
         lbl_adminJourneySearchArrival.setText("Arrival Zone");
 
+        cmb_adminJourneySearchDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_adminJourneySearchDepActionPerformed(evt);
+            }
+        });
+
         btn_adminJourneySearchCancel.setText("Cancel");
         btn_adminJourneySearchCancel.setSize(new java.awt.Dimension(75, 29));
         btn_adminJourneySearchCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -3076,11 +3082,47 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserAddEditSaveActionPerformed
 
     private void btn_adminJourneySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchActionPerformed
-        // TODO add your handling code here:
+        initSearchJourneyView();
+
         dlg_adminJourneySearch.pack();
         dlg_adminJourneySearch.setVisible(true);
+
+        // cmb_adminJourneySearchArr
     }//GEN-LAST:event_btn_adminJourneySearchActionPerformed
 
+    private void initSearchJourneyView() {
+        try {
+            txt_adminJourneySearchFrom.setText(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date()));
+            txt_adminJourneySearchTo.setText(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date()));
+
+            cmb_adminJourneySearchDep.setModel(new DefaultComboBoxModel(
+                    TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+//            String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+            cmb_adminJourneySearchArr.setModel(new DefaultComboBoxModel(
+                    TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+
+//            populateJourneySearchComboWithAvailableDestinations(zoneName);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+//    private void populateJourneySearchComboWithAvailableDestinations(String zoneName) {
+//        try {
+//            // Get the departure zone
+//            Zone zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
+//            // Get all destinations that the departure zone goes to
+//            SetOfZones destinations = TravelSystem.getInstance()
+//                    .getJourneys().getDestinationsForDepartureZone(zone.getId());
+//            // Get all the zones not included in destinations
+//            SetOfZones availableDestinations = TravelSystem.getInstance().getZones().getZonesNotInList(destinations);
+//            // Convert into string array for combo
+//            String[] destinationsForCombo = TravelSystem.getInstance().getZones().getZonesAsStringArray(availableDestinations);
+//            cmb_adminJourneySearchArr.setModel(new DefaultComboBoxModel(destinationsForCombo));
+//        } catch (Throwable ex) {
+//            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     private void tbl_adminGUIUserListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIUserListMouseReleased
         try {
             // TODO add your handling code here:
@@ -3438,7 +3480,7 @@ public class AdminUI extends javax.swing.JFrame {
             cmb_adminJourneyAddDepZone.setModel(new DefaultComboBoxModel(
                     TravelSystem.getInstance().getZones().getZonesAsStringArray()));
             String zoneName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
-            populateComboWithAvailableDestinations(zoneName);
+            populateJourneyAddEditComboWithAvailableDestinations(zoneName);
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3672,11 +3714,17 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_adminUserViewTCDiscountFocusLost
 
     private void btn_adminJourneySearchClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchClearActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            populateJourneyTable();
+            btn_adminJourneySearchClear.setEnabled(true);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_adminJourneySearchClearActionPerformed
     private void cmb_adminJourneyAddDepZoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_adminJourneyAddDepZoneActionPerformed
         String zoneName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
-        populateComboWithAvailableDestinations(zoneName);
+        populateJourneyAddEditComboWithAvailableDestinations(zoneName);
     }//GEN-LAST:event_cmb_adminJourneyAddDepZoneActionPerformed
 
     private void btn_adminJourneySearchSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchSubmitActionPerformed
@@ -3685,13 +3733,20 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminJourneySearchCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchCancelActionPerformed
         // TODO add your handling code here:
+        dlg_adminJourneySearch.setVisible(false);
     }//GEN-LAST:event_btn_adminJourneySearchCancelActionPerformed
 
     private void dlg_adminJourneySearchWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneySearchWindowActivated
         // TODO add your handling code here:
     }//GEN-LAST:event_dlg_adminJourneySearchWindowActivated
 
-    private void populateComboWithAvailableDestinations(String zoneName) {
+    private void cmb_adminJourneySearchDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_adminJourneySearchDepActionPerformed
+        // TODO add your handling code here:
+//        String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+//        populateJourneySearchComboWithAvailableDestinations(zoneName);
+    }//GEN-LAST:event_cmb_adminJourneySearchDepActionPerformed
+
+    private void populateJourneyAddEditComboWithAvailableDestinations(String zoneName) {
         try {
             // Get the departure zone
             Zone zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
