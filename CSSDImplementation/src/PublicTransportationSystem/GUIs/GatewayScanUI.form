@@ -25,23 +25,6 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scanInCard1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="scanInCard3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="scanInCard2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="rejectedMessage" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="63" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scanOutCard3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="scanOutCard2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="scanOutCard1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="approvedMessage" alignment="1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -53,6 +36,42 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="scanOutHeader" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scanInCard1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="scanInCard3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="scanInCard2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="rejectedMessage" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="fromZone" max="32767" attributes="0"/>
+                          <Component id="toZone" pref="95" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scanOutCard3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="scanOutCard2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="scanOutCard1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="approvedMessage" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -68,15 +87,17 @@
                   <Component id="scanInHeader" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="scanOutHeader" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="scanOutCard1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="scanInCard1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fromZone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="scanInCard2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="scanOutCard2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="toZone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -88,7 +109,7 @@
                   <Component id="rejectedMessage" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="approvedMessage" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -181,6 +202,23 @@
     <Component class="javax.swing.JLabel" name="scanOutHeader">
       <Properties>
         <Property name="text" type="java.lang.String" value="Scan Out"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="fromZone">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fromZoneActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="toZone">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>
