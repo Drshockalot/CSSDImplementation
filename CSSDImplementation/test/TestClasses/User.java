@@ -131,8 +131,7 @@ public class User {
         SetOfTickets userTickets = tickets.getTicketsForUserOnDay(user.getId(), new Date());
 
         float auto_todays_total = userTickets.calculateTodaysTotal(travel_card.getDiscount(), user, new Date());
-        System.out.println(manual_todays_total);
-        System.out.println(auto_todays_total);
+
         assertTrue(manual_todays_total == auto_todays_total);
     }
 }
