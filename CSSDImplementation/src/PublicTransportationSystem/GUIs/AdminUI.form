@@ -2671,8 +2671,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tab_admin" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="tab_admin" min="-2" pref="549" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="btn_logout" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -2702,19 +2702,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jPanel2" min="-2" pref="421" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="190" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="pnl_adminOverviewContainer" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="lbl_adminOverviewTitle" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lbl_adminOverviewUsername" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2727,11 +2723,8 @@
                               <Component id="lbl_adminOverviewUsername" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel1" max="32767" attributes="0"/>
-                              <Component id="jPanel2" pref="404" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="pnl_adminOverviewContainer" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="26" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2745,15 +2738,35 @@
                     <Property name="text" type="java.lang.String" value="Welcome"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="jPanel1">
+                <Container class="javax.swing.JPanel" name="pnl_adminOverviewContainer">
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="366" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="pnl_adminOverviewTodayRev" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                              <Component id="pnl_adminOverviewPeakJourneyRatio" min="-2" pref="315" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="pnl_adminOverviewPaperTcRatio" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Component id="pnl_adminOverviewJourneyToday" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="pnl_adminOverviewBusiestZone" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="lbl_adminOverviewDailyStatisticsTitle" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="240" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2761,56 +2774,276 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_adminOverviewDailyStatisticsTitle" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="pnl_adminOverviewJourneyToday" max="32767" attributes="0"/>
+                                  <Component id="pnl_adminOverviewPaperTcRatio" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="pnl_adminOverviewPeakJourneyRatio" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pnl_adminOverviewTodayRev" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnl_adminOverviewBusiestZone" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel1">
+                    <Component class="javax.swing.JLabel" name="lbl_adminOverviewDailyStatisticsTitle">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Left Panel"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Lucida Grande" size="18" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Daily Statistics"/>
                       </Properties>
                     </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JPanel" name="jPanel2">
-                  <Properties>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[340, 392]"/>
-                    </Property>
-                    <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 100]"/>
-                    </Property>
-                  </Properties>
+                    <Container class="javax.swing.JPanel" name="pnl_adminOverviewPeakJourneyRatio">
 
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="345" max="32767" attributes="0"/>
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbl_adminOverviewPeakJourneyTitle" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbl_adminOverviewPeakJourney" alignment="0" min="-2" pref="308" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="382" max="32767" attributes="0"/>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewPeakJourneyTitle" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewPeakJourney" min="-2" pref="66" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel3">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Right Panel"/>
-                      </Properties>
-                    </Component>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewPeakJourneyTitle">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="16" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Off/On Peak Journey Ratio"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewPeakJourney">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="72" style="0"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="0:0"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="pnl_adminOverviewPaperTcRatio">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="lbl_adminOverviewPaperTCRatioTitle" min="-2" pref="201" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="99" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="lbl_adminOverviewPaperTCRatio" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewPaperTCRatioTitle" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewPaperTCRatio" min="-2" pref="66" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewPaperTCRatioTitle">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="16" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Paper/TC Tickets Ratio"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewPaperTCRatio">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="72" style="0"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="0:0"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="pnl_adminOverviewJourneyToday">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="lbl_adminOverviewJourneyMadeTitle" min="-2" pref="228" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="lbl_adminOverviewJourneyMade" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewJourneyMadeTitle" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewJourneyMade" min="-2" pref="66" max="-2" attributes="0"/>
+                                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewJourneyMadeTitle">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="16" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Total Journeys Made Today"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewJourneyMade">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="72" style="0"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="0"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="pnl_adminOverviewTodayRev">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lbl_adminOverviewTodayRevTitle" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="lbl_adminOverviewTodayRev" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewTodayRevTitle" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewTodayRev" min="-2" pref="66" max="-2" attributes="0"/>
+                                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewTodayRevTitle">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="16" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Todays Total Revenue "/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewTodayRev">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="72" style="0"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="&#xa3;0.00"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="pnl_adminOverviewBusiestZone">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbl_adminOverviewBusiestZoneTitle" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbl_adminOverviewBusiestZone" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewBusiestZoneTitle" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lbl_adminOverviewBusiestZone" min="-2" pref="66" max="-2" attributes="0"/>
+                                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewBusiestZoneTitle">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="16" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Busiest Zone"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lbl_adminOverviewBusiestZone">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Lucida Grande" size="72" style="0"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="Zone A"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="lbl_adminOverviewUsername">
@@ -2850,7 +3083,7 @@
                                   <Component id="btn_adminUserAdd" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jScrollPane2" pref="909" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" pref="1053" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2875,7 +3108,7 @@
                               <Component id="btn_adminUserDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_adminUserSearch1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="30" max="32767" attributes="0"/>
+                          <EmptySpace pref="51" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3091,7 +3324,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pnl_adminUserManagement1" min="-2" pref="464" max="-2" attributes="0"/>
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                          <EmptySpace pref="33" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3110,7 +3343,7 @@
                                       <Component id="btn_adminJourneySearch" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btn_adminJourneySearchClear" min="-2" pref="107" max="-2" attributes="0"/>
-                                      <EmptySpace pref="531" max="32767" attributes="0"/>
+                                      <EmptySpace pref="675" max="32767" attributes="0"/>
                                       <Component id="btn_adminJourneyDelete" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btn_adminJourneyEdit" min="-2" max="-2" attributes="0"/>
@@ -3293,7 +3526,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1062" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="1206" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="pnl_adminUserManagement2" max="32767" attributes="0"/>
@@ -3304,7 +3537,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="482" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="503" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="pnl_adminUserManagement2" max="32767" attributes="0"/>
@@ -3335,7 +3568,7 @@
                                       <Component id="btn_adminZoneAdd" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="jScrollPane4" pref="903" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane4" pref="1047" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -3360,7 +3593,7 @@
                                   <Component id="btn_adminZoneDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_adminZoneSearchClear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <EmptySpace pref="36" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3535,7 +3768,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="pnl_adminUserManagement3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3550,7 +3783,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jScrollPane5" pref="903" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane5" pref="1047" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -3768,7 +4001,7 @@
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="415" max="32767" attributes="0"/>
+                          <EmptySpace pref="559" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3779,7 +4012,7 @@
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="356" max="32767" attributes="0"/>
+                          <EmptySpace pref="377" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

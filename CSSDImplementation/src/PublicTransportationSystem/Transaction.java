@@ -55,8 +55,11 @@ public class Transaction {
             } catch (Throwable ex) {
                 Logger.getLogger(Transaction.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            // Serialize the travel cards after subtracting balance
+            system.getTravelCards().serializeTravelCards();
+            // Add the purchased ticket to the set of tickets
             system.getTickets().add(currentTicket);
+            // Serialize to persist the change
             system.getTickets().serializeTickets();
 
             // If the total has reached/gone over the daily cap...

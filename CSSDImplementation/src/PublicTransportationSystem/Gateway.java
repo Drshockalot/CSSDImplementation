@@ -57,6 +57,11 @@ public class Gateway implements Serializable {
 
         if (hasPass) {
             this.approve();
+            // Reset the last departed station data to null, ready for the next
+            // journey
+            currCard.setLastDepartedStationNull();
+            // Persist the change to the travel card
+            sys.getTravelCards().serializeTravelCards();
             return true;
         } else {
             // Get the journey that the user has taken
@@ -78,6 +83,8 @@ public class Gateway implements Serializable {
             if (validUnusedTicket != null) {
                 // Flag it as used and allow them through the gate
                 validUnusedTicket.setUsed();
+                // Persist the change to the ticket
+                sys.getTickets().serializeTickets();
                 return true;
             } else {
                 // If they have no pass or a valid ticket, charge them for the
@@ -92,6 +99,8 @@ public class Gateway implements Serializable {
                 if (hasPaid) {
                     this.approve();
                     currCard.setLastDepartedStationNull();
+                    // Persist the changes to the travel card
+                    sys.getTravelCards().serializeTravelCards();
                     return true;
                 } else {
                     // User must top-up their card
@@ -103,15 +112,24 @@ public class Gateway implements Serializable {
     }
 
     public boolean PerformScanIn(TravelCard travelCard) throws Throwable {
+        // Read the travel card
         int cardID = scanner.read(travelCard);
         TravelSystem sys = TravelSystem.getInstance();
+        // Find the scanned card in the system
         TravelCard currCard = sys.getTravelCards().getTravelCardById(cardID);
 
+        // If the current card has been found
         if (currCard != null) {
+            // Make sure they have a positive balance
             if (currCard.getBalance() >= 0) {
+                // Allow the user to pass the gate
                 this.approve();
+                // Set the users last departed station as the current one
                 currCard.setLastDepartedStation(sys.getStationSystems().getStationSystemById(stationID));
+                // Set the last departed date as today
                 currCard.setLastDepartedTime(new Date());
+                // Persist the changes to the travel card
+                sys.getTravelCards().serializeTravelCards();
                 return true;
             } else {
                 this.reject();
@@ -157,6 +175,8 @@ public class Gateway implements Serializable {
                 // Flag the ticket as used and allow them through the gate
                 currentTicket.setUsed();
                 this.approve();
+                // Persist the changes to the ticket
+                sys.getTickets().serializeTickets();
                 return true;
             } else {
                 // The end zone of the ticket does not match the zone of the

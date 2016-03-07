@@ -95,6 +95,7 @@ public class TravelSystem implements SetOfUsersInterface {
         registerUser(null, "lil'", "Jack", "snapback", "test@test.org", null, "ch ch ch checkin' it out", admin, "07-05-1993");
         registerUser(6, "Joshua", "Bates", "JoBaUser", "test@test.fr", null, "p", normalUser, "28-08-1992");
         registerUser(null, "Joshua", "Bates", "JoBa", "test@test.fr", null, "p", admin, "28-08-1992");
+        registerUser(null, "Wade", "Wilson", "Deadpool", "mercwithamouth@hotmail.com", null, "p", normalUser, "28-08-1992");
     }
 
     private TravelCard createTravelCardForUser(User user) {
@@ -169,7 +170,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
         newStationSystem = registerStationSystem(
                 "Sheffield Station", TypeEnums.StationType.BUS, "Sheffield", gps, zone, gateways, false);
-        gateway = new Gateway(newStationSystem.getStationGateways().getNextId(), 1);
+        gateway = new Gateway(newStationSystem.getStationGateways().getNextId(), 2);
         newStationSystem.getStationGateways().add(gateway);
 
         zone = this.systemZones.getZoneById(3);
@@ -179,7 +180,27 @@ public class TravelSystem implements SetOfUsersInterface {
 
         newStationSystem = registerStationSystem(
                 "Manchester Piccadilly", TypeEnums.StationType.TRAIN, "Manchester", gps, zone, gateways, false);
-        gateway = new Gateway(newStationSystem.getStationGateways().getNextId(), 1);
+        gateway = new Gateway(newStationSystem.getStationGateways().getNextId(), 3);
+        newStationSystem.getStationGateways().add(gateway);
+
+        zone = this.systemZones.getZoneById(4);
+
+        gps = new GPSCoordinates(53.314798f, -0.948438f);
+        gateways = new SetOfGateways();
+
+        newStationSystem = registerStationSystem(
+                "Retford Station", TypeEnums.StationType.TRAIN, "Retford", gps, zone, gateways, false);
+        gateway = new Gateway(newStationSystem.getStationGateways().getNextId(), 4);
+        newStationSystem.getStationGateways().add(gateway);
+
+        zone = this.systemZones.getZoneById(5);
+
+        gps = new GPSCoordinates(53.522012f, -1.138745f);
+        gateways = new SetOfGateways();
+
+        newStationSystem = registerStationSystem(
+                "Doncaster Station", TypeEnums.StationType.TRAIN, "Doncaster", gps, zone, gateways, false);
+        gateway = new Gateway(newStationSystem.getStationGateways().getNextId(), 5);
         newStationSystem.getStationGateways().add(gateway);
     }
 
