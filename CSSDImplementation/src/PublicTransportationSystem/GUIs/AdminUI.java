@@ -258,8 +258,6 @@ public class AdminUI extends javax.swing.JFrame {
         btn_adminJourneyEdit = new javax.swing.JButton();
         btn_adminJourneySearch = new javax.swing.JButton();
         btn_adminJourneyDelete = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_adminGUIJourneyList = new javax.swing.JTable();
         btn_adminJourneySearchClear = new javax.swing.JButton();
@@ -1814,6 +1812,12 @@ public class AdminUI extends javax.swing.JFrame {
 
         lbl_adminJourneySearchArrival.setText("Arrival Zone");
 
+        cmb_adminJourneySearchDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_adminJourneySearchDepActionPerformed(evt);
+            }
+        });
+
         btn_adminJourneySearchCancel.setText("Cancel");
         btn_adminJourneySearchCancel.setSize(new java.awt.Dimension(75, 29));
         btn_adminJourneySearchCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -2244,38 +2248,19 @@ public class AdminUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setText("btns");
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel13)
-                .addContainerGap(377, Short.MAX_VALUE))
-        );
-
         tbl_adminGUIJourneyList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Start Zone", "End Zone", "Off Peak", "On Peak", "Todays Journeys Off-Peak", "Todays Journeys On-Peak", "Todays Revenue"
+                "Start Zone", "End Zone", "Off Peak", "On Peak", "Todays Passes Issued", "Todays Journeys Off-Peak", "Todays Journeys On-Peak", "Todays Revenue"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2319,28 +2304,23 @@ public class AdminUI extends javax.swing.JFrame {
             .addGroup(pnl_adminUserManagement1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnl_adminUserManagement1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
                     .addGroup(pnl_adminUserManagement1Layout.createSequentialGroup()
                         .addComponent(btn_adminJourneySearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_adminJourneySearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 531, Short.MAX_VALUE)
                         .addComponent(btn_adminJourneyDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_adminJourneyEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_adminJourneyAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnl_adminUserManagement1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_adminJourneyAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnl_adminUserManagement1Layout.setVerticalGroup(
             pnl_adminUserManagement1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_adminUserManagement1Layout.createSequentialGroup()
-                .addGroup(pnl_adminUserManagement1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(pnl_adminUserManagement1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_adminJourneyAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3076,11 +3056,47 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserAddEditSaveActionPerformed
 
     private void btn_adminJourneySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchActionPerformed
-        // TODO add your handling code here:
+        initSearchJourneyView();
+
         dlg_adminJourneySearch.pack();
         dlg_adminJourneySearch.setVisible(true);
+
+        // cmb_adminJourneySearchArr
     }//GEN-LAST:event_btn_adminJourneySearchActionPerformed
 
+    private void initSearchJourneyView() {
+        try {
+            txt_adminJourneySearchFrom.setText(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date()));
+            txt_adminJourneySearchTo.setText(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date()));
+
+            cmb_adminJourneySearchDep.setModel(new DefaultComboBoxModel(
+                    TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+//            String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+            cmb_adminJourneySearchArr.setModel(new DefaultComboBoxModel(
+                    TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+
+//            populateJourneySearchComboWithAvailableDestinations(zoneName);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+//    private void populateJourneySearchComboWithAvailableDestinations(String zoneName) {
+//        try {
+//            // Get the departure zone
+//            Zone zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
+//            // Get all destinations that the departure zone goes to
+//            SetOfZones destinations = TravelSystem.getInstance()
+//                    .getJourneys().getDestinationsForDepartureZone(zone.getId());
+//            // Get all the zones not included in destinations
+//            SetOfZones availableDestinations = TravelSystem.getInstance().getZones().getZonesNotInList(destinations);
+//            // Convert into string array for combo
+//            String[] destinationsForCombo = TravelSystem.getInstance().getZones().getZonesAsStringArray(availableDestinations);
+//            cmb_adminJourneySearchArr.setModel(new DefaultComboBoxModel(destinationsForCombo));
+//        } catch (Throwable ex) {
+//            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     private void tbl_adminGUIUserListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIUserListMouseReleased
         try {
             // TODO add your handling code here:
@@ -3438,7 +3454,7 @@ public class AdminUI extends javax.swing.JFrame {
             cmb_adminJourneyAddDepZone.setModel(new DefaultComboBoxModel(
                     TravelSystem.getInstance().getZones().getZonesAsStringArray()));
             String zoneName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
-            populateComboWithAvailableDestinations(zoneName);
+            populateJourneyAddEditComboWithAvailableDestinations(zoneName);
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3672,11 +3688,17 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_adminUserViewTCDiscountFocusLost
 
     private void btn_adminJourneySearchClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchClearActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            populateJourneyTable();
+            btn_adminJourneySearchClear.setEnabled(true);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_adminJourneySearchClearActionPerformed
     private void cmb_adminJourneyAddDepZoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_adminJourneyAddDepZoneActionPerformed
         String zoneName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
-        populateComboWithAvailableDestinations(zoneName);
+        populateJourneyAddEditComboWithAvailableDestinations(zoneName);
     }//GEN-LAST:event_cmb_adminJourneyAddDepZoneActionPerformed
 
     private void btn_adminJourneySearchSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchSubmitActionPerformed
@@ -3685,13 +3707,20 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminJourneySearchCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchCancelActionPerformed
         // TODO add your handling code here:
+        dlg_adminJourneySearch.setVisible(false);
     }//GEN-LAST:event_btn_adminJourneySearchCancelActionPerformed
 
     private void dlg_adminJourneySearchWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneySearchWindowActivated
         // TODO add your handling code here:
     }//GEN-LAST:event_dlg_adminJourneySearchWindowActivated
 
-    private void populateComboWithAvailableDestinations(String zoneName) {
+    private void cmb_adminJourneySearchDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_adminJourneySearchDepActionPerformed
+        // TODO add your handling code here:
+//        String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+//        populateJourneySearchComboWithAvailableDestinations(zoneName);
+    }//GEN-LAST:event_cmb_adminJourneySearchDepActionPerformed
+
+    private void populateJourneyAddEditComboWithAvailableDestinations(String zoneName) {
         try {
             // Get the departure zone
             Zone zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
@@ -3926,7 +3955,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -3939,7 +3967,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
