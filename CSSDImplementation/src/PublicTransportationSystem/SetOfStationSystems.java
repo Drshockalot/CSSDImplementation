@@ -15,7 +15,7 @@ import java.util.Vector;
 
 /**
  *
- * @author DrPoopAlotz // Blame the Tacos
+ * @author DrShockalotz
  */
 public class SetOfStationSystems extends Vector<StationSystem> implements Serializable {
 
@@ -38,9 +38,12 @@ public class SetOfStationSystems extends Vector<StationSystem> implements Serial
     }
 
     public int getNextId() {
+        // if set is empty, return 1, else return next id
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 
+    // get number of stations associated with the zone parameter,
+    // checks against zone id and incremements count accordingly
     public int getNumberOfStationsInZone(Zone zone) {
         int count = 0;
         for (int i = 0; i < super.size(); i++) {
@@ -48,10 +51,11 @@ public class SetOfStationSystems extends Vector<StationSystem> implements Serial
                 count++;
             }
         }
-
         return count;
     }
 
+    // get specific station from zone passed through,
+    // checks against name of zone
     public StationSystem getStationFromZone(Zone zone) {
         for (StationSystem system : this) {
             if (system.getZone().getName().equals(zone.getName())) {
@@ -62,6 +66,12 @@ public class SetOfStationSystems extends Vector<StationSystem> implements Serial
         return null;
     }
 
+    // check for if name is already present within set
+    public boolean nameIsUnique(String name) {
+        return this.stream().noneMatch((system) -> (system.getName().equals(name)));
+    }
+
+    // load in serialized class
     public SetOfStationSystems deserializeStationSystems() throws ClassNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("files/stationSystems.ser");
@@ -78,6 +88,7 @@ public class SetOfStationSystems extends Vector<StationSystem> implements Serial
         }
     }
 
+    // save serialized class
     public void serializeStationSystems() {
         try {
             FileOutputStream fileOut = new FileOutputStream("files/stationSystems.ser");
@@ -91,9 +102,5 @@ public class SetOfStationSystems extends Vector<StationSystem> implements Serial
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public boolean nameIsUnique(String name) {
-        return this.stream().noneMatch((system) -> (system.getName().equals(name)));
     }
 }

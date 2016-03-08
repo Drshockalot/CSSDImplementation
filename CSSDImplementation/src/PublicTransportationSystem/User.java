@@ -51,6 +51,7 @@ public class User implements Serializable {
         return this.userId + " - " + this.forename + " " + this.surname;
     }
 
+    // checks user provided against stored password, called from login
     public boolean authenticateUser(String password) {
         return this.password.equals(password);
     }

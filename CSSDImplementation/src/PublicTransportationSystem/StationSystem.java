@@ -26,7 +26,8 @@ public class StationSystem implements Serializable {
     private SetOfGateways gateways;
 
     // Abbreviated Station System to Ss for the following constructor
-    public StationSystem(Integer newSsId, String newSsName, TypeEnums.StationType newSsType, String newSsLocation, GPSCoordinates newSsGPSCoords, Zone newSsZone, SetOfGateways gateways) {
+    public StationSystem(Integer newSsId, String newSsName, TypeEnums.StationType newSsType,
+            String newSsLocation, GPSCoordinates newSsGPSCoords, Zone newSsZone, SetOfGateways gateways) {
         stationID = newSsId;
         name = newSsName;
         stationType = newSsType;
@@ -84,17 +85,22 @@ public class StationSystem implements Serializable {
         this.zone = zone;
     }
 
+    // checks whether station is currently within the peak hours
     public boolean isPeak() {
         Date t = new Date();
         Calendar peakFloor = Calendar.getInstance();
         Calendar peakCeiling = Calendar.getInstance();
         Calendar now = Calendar.getInstance();
 
+        // set now, and peaks to current datetimes
         now.setTime(t);
         peakFloor.setTime(t);
         peakCeiling.setTime(t);
+        // sets floor of peak to 4pm for that day
         peakFloor.set(peakFloor.get(Calendar.YEAR), peakFloor.get(Calendar.MONTH), peakFloor.get(Calendar.DAY_OF_MONTH), 16, 0);
+        // sets ceiling of peak to 7pm for that day
         peakCeiling.set(peakCeiling.get(Calendar.YEAR), peakCeiling.get(Calendar.MONTH), peakCeiling.get(Calendar.DAY_OF_MONTH), 19, 0);
+        // checks whether now is between these goalposts
         return (peakFloor.get(Calendar.HOUR) <= now.get(Calendar.HOUR) && peakFloor.get(Calendar.MINUTE) <= now.get(Calendar.MINUTE)
                 && peakCeiling.get(Calendar.HOUR) >= now.get(Calendar.HOUR) && peakCeiling.get(Calendar.MINUTE) >= now.get(Calendar.MINUTE));
     }

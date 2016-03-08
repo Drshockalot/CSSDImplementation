@@ -152,7 +152,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_switchInspectorUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchInspectorUIActionPerformed
-        // TODO add your handling code here:
+        // Initialise portable reader user interface, and set location to centre screen
         JFrame portableReader = new PortableReaderUI();
         mainUI.setEnabled(false);
         portableReader.setLocationRelativeTo(null);
@@ -160,6 +160,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_switchInspectorUIActionPerformed
 
     private void btn_switchScannerUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_switchScannerUIActionPerformed
+        // initialise gateway scanner ui, set location to centre screen
         JFrame gatewayScanUI = null;
         try {
             gatewayScanUI = new GatewayScanUI();
@@ -172,7 +173,7 @@ public class AppSwitchboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_switchScannerUIActionPerformed
 
     private void btn_loginUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginUIActionPerformed
-        // Opens the website ui
+        // initialise website ui, set location to centre screen
         JFrame websiteUI = new WebsiteUI();
         mainUI.setEnabled(false);
         websiteUI.setLocationRelativeTo(null);
@@ -180,6 +181,8 @@ public class AppSwitchboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginUIActionPerformed
 
     private void btn_resetDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetDataActionPerformed
+        // function purely for debugging, resets data back to a standard base inside
+        // travel system
         try {
             TravelSystem.getInstance().resetData();
         } catch (Throwable ex) {

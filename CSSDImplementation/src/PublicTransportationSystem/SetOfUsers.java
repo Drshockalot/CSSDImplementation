@@ -25,7 +25,8 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         super.add(user);
     }
 
-    // searches through set of users and gets anything containing the String passed through
+    // search through set of users and returns a list of any members that
+    // contain the passed through String
     public SetOfUsers searchUsersByUsername(String username) {
         SetOfUsers searchResult = new SetOfUsers();
         for (int i = 0; i < super.size(); i++) {
@@ -36,6 +37,8 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         return searchResult;
     }
 
+    // search through set of users and returns single members that
+    // matches the passed through username, returns null if not found
     public User getUserByUsername(String username) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getUsername().equals(username)) {
@@ -46,6 +49,9 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         return null;
     }
 
+    // search through set of users and returns single members that
+    // matches the passed through email, ignoring letter-casing,
+    // returns null if not found
     public User getUserByEmail(String email) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getEmail().equalsIgnoreCase(email)) {
@@ -55,6 +61,8 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         return null;
     }
 
+    // search through set of users and returns user role when
+    // userId matches, returns null if not found
     public TypeEnums.UserType getUserSystemEnum(int userId) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getId() == userId) {
@@ -65,6 +73,8 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         return null;
     }
 
+    // search through set of users and returns user with matching userId
+    // returns null if not found
     public User getUserById(int id) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getId() == id) {
@@ -75,7 +85,9 @@ public class SetOfUsers extends Vector<User> implements Serializable {
         return null;
     }
 
+    // get next available ID, used when registering/creating user
     public int getNextId() {
+        // if set is empty, return 1, else return next id
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 

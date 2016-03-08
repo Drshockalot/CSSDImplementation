@@ -36,6 +36,8 @@ public class SetOfTravelCards extends Vector<TravelCard> implements Serializable
         return null;
     }
 
+    // get travel card by id, search through set of and check for a match on the
+    // id. Return if found, else return null
     public TravelCard getUserTravelCard(int travelCardId) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getId() == travelCardId) {
@@ -47,6 +49,7 @@ public class SetOfTravelCards extends Vector<TravelCard> implements Serializable
     }
 
     public int getNextId() {
+        // if set is empty, return 1, else return next id
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 

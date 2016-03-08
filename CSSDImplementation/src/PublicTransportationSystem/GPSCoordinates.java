@@ -18,6 +18,8 @@ public class GPSCoordinates implements Serializable {
     public float longitude;
     public float latitude;
 
+    // getters and setters; used with stationSystem to provide coordinate location
+    // for stations
     public GPSCoordinates(float newLongitude, float newLatitude) {
         longitude = newLongitude;
         latitude = newLatitude;
@@ -29,6 +31,14 @@ public class GPSCoordinates implements Serializable {
 
     public float getLatitude() {
         return this.latitude;
+    }
+
+    public void setLongitude(float newLongitude) {
+        this.longitude = newLongitude;
+    }
+
+    public void setLatitude(float newLatitude) {
+        this.latitude = newLatitude;
     }
 
     @Override

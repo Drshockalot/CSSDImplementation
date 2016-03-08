@@ -18,6 +18,7 @@ public final class CurrentDateTime {
     private CurrentDateTime() {
     }
 
+    // functions to format dates as required
     public static String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();

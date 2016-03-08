@@ -43,10 +43,12 @@ public class TravelCard implements Serializable {
         this.dailyCap = dailyCap;
     }
 
+    // adds 3 years onto todays date, for setting of expiry date
     private final Date calculateExpiryDate() {
         Date now = new Date();
         Calendar expiry = Calendar.getInstance();
         expiry.setTime(now);
+        // adds 3 years onto todays date
         expiry.add(Calendar.DATE, 1095);
         return expiry.getTime();
     }
@@ -73,6 +75,8 @@ public class TravelCard implements Serializable {
         return this.pass != null;
     }
 
+    // if pass does not equal null, set pass to the passed through passtype,
+    // else, set pass to false
     public boolean checkForPass(Vector<TypeEnums.PassType> types) {
         return this.pass != null ? types.stream().anyMatch((type) -> (this.pass.passType() == type)) : false;
     }
@@ -125,17 +129,21 @@ public class TravelCard implements Serializable {
         this.dailyCap = dailyCap;
     }
 
+    // check for if travel card has pass associated with it.
     public boolean checkForPass(Zone arrivingZone, Zone departureZone) {
         if (this.pass != null) {
+            // if pass departure/arrival zones aren't null, send back current pass
             if (this.pass.departureZone() != null && this.pass.arrivalZone() != null) {
                 return this.pass.departureZone().getName().equals(departureZone.getName())
                         && this.pass.arrivalZone().getName().equals(arrivingZone.getName());
             }
+            // else return false
             return false;
         }
         return false;
     }
 
+    // returns whether travel card has been used to scan into a station
     public boolean checkForScannedStation() {
         return this.lastDepartedStation == null;
     }

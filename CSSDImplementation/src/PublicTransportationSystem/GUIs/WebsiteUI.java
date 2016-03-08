@@ -147,11 +147,6 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_username.setText("Username");
 
         txt_username.setText("JD");
-        txt_username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_usernameActionPerformed(evt);
-            }
-        });
         txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_usernameKeyReleased(evt);
@@ -198,6 +193,16 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_loginErrorMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_loginErrorMsg.setText("Something went wrong");
 
+        jLayeredPane2.setLayer(lbl_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(txt_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(lbl_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(pass_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(lbl_loginTitle, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(btn_loginPopup, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(btn_register, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(btn_cancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(lbl_loginErrorMsg, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
         jLayeredPane2Layout.setHorizontalGroup(
@@ -211,7 +216,7 @@ public class WebsiteUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
                         .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_register, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                        .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 88, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_loginPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6))
@@ -245,18 +250,12 @@ public class WebsiteUI extends javax.swing.JFrame {
                     .addComponent(btn_cancel))
                 .addContainerGap())
         );
-        jLayeredPane2.setLayer(lbl_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(txt_username, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(lbl_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(pass_password, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(lbl_loginTitle, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(btn_loginPopup, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(btn_register, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(btn_cancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane2.setLayer(lbl_loginErrorMsg, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LDN_Underground.png"))); // NOI18N
         jLabel1.setText("jLabel1");
+
+        jLayeredPane3.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane3.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane3Layout = new javax.swing.GroupLayout(jLayeredPane3);
         jLayeredPane3.setLayout(jLayeredPane3Layout);
@@ -282,8 +281,8 @@ public class WebsiteUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGap(0, 9, Short.MAX_VALUE)))
         );
-        jLayeredPane3.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane3.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLayeredPane1.setLayer(jLayeredPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -300,7 +299,6 @@ public class WebsiteUI extends javax.swing.JFrame {
                 .addComponent(jLayeredPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jLayeredPane1.setLayer(jLayeredPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout loginPopupLayout = new javax.swing.GroupLayout(loginPopup.getContentPane());
         loginPopup.getContentPane().setLayout(loginPopupLayout);
@@ -322,19 +320,8 @@ public class WebsiteUI extends javax.swing.JFrame {
         registerPopup.setAlwaysOnTop(true);
         registerPopup.setModal(true);
         registerPopup.setModalityType(java.awt.Dialog.ModalityType.TOOLKIT_MODAL);
-        registerPopup.addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                registerPopupWindowClosing(evt);
-            }
-        });
 
         lbl_registerFirstName.setText("First Name");
-
-        txt_registerFirstName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_registerFirstNameActionPerformed(evt);
-            }
-        });
 
         lbl_registerUsername.setText("Username");
 
@@ -503,11 +490,6 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         txt_websiteURL.setText("  http://www.publictransportsystem.com?l=true&userid=2&frame=websiteui");
         txt_websiteURL.setEnabled(false);
-        txt_websiteURL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_websiteURLActionPerformed(evt);
-            }
-        });
 
         btn_websiteURLGo.setText("Go");
         btn_websiteURLGo.setEnabled(false);
@@ -582,11 +564,6 @@ public class WebsiteUI extends javax.swing.JFrame {
         jLabel9.setText("Couple of inputs for user to buy a ticket");
 
         cmb_websiteToZoneList.setModel(new javax.swing.DefaultComboBoxModel());
-        cmb_websiteToZoneList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_websiteToZoneListActionPerformed(evt);
-            }
-        });
 
         cmb_websiteFromZoneList.setModel(new javax.swing.DefaultComboBoxModel());
         cmb_websiteFromZoneList.addActionListener(new java.awt.event.ActionListener() {
@@ -874,16 +851,14 @@ public class WebsiteUI extends javax.swing.JFrame {
         loginPopup.setVisible(true);
     }//GEN-LAST:event_formWindowOpened
 
-    private void txt_registerFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_registerFirstNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_registerFirstNameActionPerformed
-
     // sets error states inside register form if there is any issues
     private boolean checkUsersRegistrationInput(String firstName, String surname,
             String username, String email, String password, SystemRole newSysRole, String dob) {
 
+        // initially set flag to true, will be set false if any validation fails
         boolean isValid = true;
-        // Minor set of validation for user registration
+
+        // Forename is a required field, check that it is present
         if (firstName.isEmpty()) {
             lbl_registerFirstNameError.setVisible(true);
             isValid = false;
@@ -891,6 +866,7 @@ public class WebsiteUI extends javax.swing.JFrame {
             lbl_registerFirstNameError.setVisible(false);
         }
 
+        // Surname is a required field, check that it is present
         if (surname.isEmpty()) {
             lbl_registerLastNameError.setVisible(true);
             isValid = false;
@@ -898,18 +874,20 @@ public class WebsiteUI extends javax.swing.JFrame {
             lbl_registerLastNameError.setVisible(false);
         }
 
+        // Username is a required field, check that it is present
         if (username.isEmpty()) {
             lbl_registerUsernameError.setText("Required");
             lbl_registerUsernameError.setVisible(true);
             isValid = false;
         } else {
             try {
-                // if username is already taken
+                // if username is already taken, show error message
                 if (TravelSystem.getInstance().getUsers().getUserByUsername(username) != null) {
                     lbl_registerUsernameError.setText("Username already exists!");
                     lbl_registerUsernameError.setVisible(true);
                     isValid = false;
                 } else {
+                    // else, hide error message
                     lbl_registerUsernameError.setVisible(false);
                 }
             } catch (Throwable ex) {
@@ -917,6 +895,7 @@ public class WebsiteUI extends javax.swing.JFrame {
             }
         }
 
+        // Email is a required field, check that it is present
         if (email.isEmpty()) {
             // If an email hasn't been provided, notify the user that it is a
             // required field
@@ -925,18 +904,20 @@ public class WebsiteUI extends javax.swing.JFrame {
             isValid = false;
         } else {
             try {
-                // if email is already taken
+                // if email is already taken, show error message
                 if (TravelSystem.getInstance().getUsers().getUserByEmail(email) != null) {
                     lbl_registerEmailError.setText("Email already exists!");
                     lbl_registerEmailError.setVisible(true);
                     isValid = false;
                 } else {
+                    // else hide error message
                     lbl_registerEmailError.setVisible(false);
                 }
             } catch (Throwable ex) {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
         // Password is a required field, check that it is present
         if (password.isEmpty()) {
             lbl_registerPasswordError.setVisible(true);
@@ -944,6 +925,7 @@ public class WebsiteUI extends javax.swing.JFrame {
         } else {
             lbl_registerPasswordError.setVisible(false);
         }
+
         // Date of birth is a required field, check that it is present
         if (dob.isEmpty()) {
             lbl_registerDobError.setVisible(true);
@@ -952,12 +934,8 @@ public class WebsiteUI extends javax.swing.JFrame {
             lbl_registerDobError.setVisible(false);
         }
 
-        // returns true allowing user to register if everything checks out
-        if (isValid) {
-            return true;
-        }
-        return false;
-
+        // if all inputs are valid, returns true, else false
+        return isValid;
     }
 
     private void btn_RegisterSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterSubmitActionPerformed
@@ -970,12 +948,12 @@ public class WebsiteUI extends javax.swing.JFrame {
         String dob = txt_registerDob.getText().replace("/", "-");
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.USER);
 
-        // Validate the user input
+        // Validate the registration inputs
         boolean isValid = checkUsersRegistrationInput(firstName, surname,
                 username, email, password, newSysRole, dob);
 
         if (isValid) {
-
+            // if registration inputs are valid, register user
             try {
                 TravelSystem.getInstance()
                         .registerUser(null, firstName, surname, username, email, null, password, newSysRole, dob);
@@ -983,24 +961,22 @@ public class WebsiteUI extends javax.swing.JFrame {
             } catch (Throwable ex) {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            // set current user to the user that has just registered for website ui
             try {
                 this.user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
             } catch (Throwable ex) {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            // set website ui as the main window
             openWebsiteUI();
         }
     }//GEN-LAST:event_btn_RegisterSubmitActionPerformed
 
-    private void registerPopupWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_registerPopupWindowClosing
-//        loginPopup.setEnabled(true);
-    }//GEN-LAST:event_registerPopupWindowClosing
-
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        // if user cancels on login form, hide login and dispose of website ui
         loginPopup.dispose();
         this.dispose();
+        // reset focus back to app switchboard
         mainUI.setEnabled(true);
     }//GEN-LAST:event_btn_cancelActionPerformed
 
@@ -1021,24 +997,32 @@ public class WebsiteUI extends javax.swing.JFrame {
         lbl_registerEmailError.setVisible(false);
         lbl_registerDobError.setVisible(false);
 
+        // setup register window
         registerPopup.pack();
         registerPopup.setLocationRelativeTo(null);
         registerPopup.setVisible(true);
     }//GEN-LAST:event_btn_registerActionPerformed
 
+    // shows message on login screen if an error occurs whilst logging in
     private void throwLoginError(String error) {
         lbl_loginErrorMsg.setText(error);
         lbl_loginErrorMsg.setVisible(true);
     }
 
+    // function for authorising login credentials
     private void login() {
+        // get credentials from inputs
         String username = txt_username.getText();
         String password = new String(pass_password.getPassword());
 
+        // authorise against travel system SetOfUsers
         try {
+            // try find user in system collection class
             user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
             if (user != null) {
+                // if user with username exists, check password
                 if (user.authenticateUser(password)) {
+                    // check user system role, directing user where they have access to
                     if (user.getSystemRole().isAdmin()) {
                         lbl_loginErrorMsg.setVisible(false);
                         openAdminUI(username);
@@ -1059,56 +1043,47 @@ public class WebsiteUI extends javax.swing.JFrame {
         } catch (Throwable ex) {
             System.out.println(ex);
             throwLoginError("Something went wrong");
-
         }
     }
 
     private void btn_loginPopupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginPopupActionPerformed
         // seperated from keypress so it can be used on input key listeners for
-        // enter key click
+        // 'enter' key press
         login();
     }//GEN-LAST:event_btn_loginPopupActionPerformed
 
-    private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_usernameActionPerformed
-
     private void loginPopupWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_loginPopupWindowClosing
-        // TODO add your handling code here:
+        // dispose of frame when form is closed
         this.dispose();
     }//GEN-LAST:event_loginPopupWindowClosing
 
-    private void txt_websiteURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_websiteURLActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_websiteURLActionPerformed
-
     private void btn_websiteMainLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_websiteMainLogoutActionPerformed
+        // dispose of frame when form is closed with logout button,
+        // and set focus back on app switchboard
         this.dispose();
         mainUI.setEnabled(true);
     }//GEN-LAST:event_btn_websiteMainLogoutActionPerformed
 
     private void txt_usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyReleased
-        // attach keyListener, listening for 'enter' key presses to fire login
+        // attach keyListener to username input,
+        // listening for 'enter' key presses to fire login
         if (evt.getKeyCode() == 10) {
             login();
         }
     }//GEN-LAST:event_txt_usernameKeyReleased
 
     private void pass_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass_passwordKeyReleased
-        // attach keyListener, listening for 'enter' key presses to fire login
+        // attach keyListener to password input,
+        // listening for 'enter' key presses to fire login
         if (evt.getKeyCode() == 10) {
             login();
         }
     }//GEN-LAST:event_pass_passwordKeyReleased
 
     private void btn_RegisterCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterCancelActionPerformed
-        // TODO add your handling code here:
+        // hide register jdialog
         registerPopup.setVisible(false);
     }//GEN-LAST:event_btn_RegisterCancelActionPerformed
-
-    private void cmb_websiteToZoneListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_websiteToZoneListActionPerformed
-
-    }//GEN-LAST:event_cmb_websiteToZoneListActionPerformed
 
     private void cmb_websiteFromZoneListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_websiteFromZoneListActionPerformed
         // When the index of the from zone list is changed, update the 'to zone'
@@ -1117,6 +1092,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     }//GEN-LAST:event_cmb_websiteFromZoneListActionPerformed
 
     private void btn_websitePurchaseTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_websitePurchaseTicketActionPerformed
+        // check purchase ticket form inputs and set text to state of process
         if (handleTransaction()) {
             this.lbl_websitePurchaseMessage.setText("Purchase Successful");
             this.lbl_websitePurchaseMessage.setForeground(Color.GREEN);
@@ -1144,10 +1120,12 @@ public class WebsiteUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_websitePurchaseTicket1ActionPerformed
 
     private void openAdminUI(String username) {
+        // hide websiteUI & included components
         loginPopup.dispose();
         this.setEnabled(false);
         this.setVisible(false);
 
+        // initialise adminUI frame, and set position on screen
         JFrame adminUI = new AdminUI(username);
         adminUI.setLocationRelativeTo(null);
         adminUI.setVisible(true);
@@ -1155,11 +1133,13 @@ public class WebsiteUI extends javax.swing.JFrame {
     }
 
     private void openWebsiteUI() {
+        // hide websiteUI popup components
         registerPopup.dispose();
         loginPopup.dispose();
+
+        // set websiteUI position on screen
         this.setLocationRelativeTo(null);
         this.setEnabled(true);
-//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUpTravelCardDetails();
     }
 
@@ -1199,6 +1179,7 @@ public class WebsiteUI extends javax.swing.JFrame {
 
     private void setUpZoneLists() {
         TravelSystem system = null;
+
         try {
             system = TravelSystem.getInstance();
         } catch (Throwable ex) {
@@ -1230,8 +1211,8 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         // If the selected from zone is not null
         if (this.cmb_websiteFromZoneList.getItemAt(0) != null) {
-            // Get all of the zones that the user can travel to from the selected
-            // zone
+            // Get all of the zones that the user can travel to from
+            // the selected zone
             SetOfZones toZones = system.getJourneys()
                     .getAllZonesDepartingFromStartZone((Zone) this.cmb_websiteFromZoneList.getSelectedItem());
 

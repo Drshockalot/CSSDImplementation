@@ -178,7 +178,6 @@
                         <Property name="text" type="java.lang.String" value="JD"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_usernameActionPerformed"/>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_usernameKeyReleased"/>
                       </Events>
                     </Component>
@@ -265,9 +264,6 @@
           <Value id="TOOLKIT_MODAL"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="registerPopupWindowClosing"/>
-      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -407,9 +403,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_registerFirstName">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_registerFirstNameActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_registerUsername">
               <Properties>
@@ -610,9 +603,6 @@
             <Property name="text" type="java.lang.String" value="  http://www.publictransportsystem.com?l=true&amp;userid=2&amp;frame=websiteui"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_websiteURLActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_websiteURLGo">
           <Properties>
@@ -891,9 +881,6 @@
                       <Connection code="new javax.swing.DefaultComboBoxModel()" type="code"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_websiteToZoneListActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cmb_websiteFromZoneList">
                   <Properties>
