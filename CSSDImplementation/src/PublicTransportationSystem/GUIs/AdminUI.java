@@ -2886,7 +2886,6 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-//            this.setFocusable(true);
             this.setLocationRelativeTo(mainUI);
             populateUserTable();
             populateJourneyTable();
@@ -2908,10 +2907,13 @@ public class AdminUI extends javax.swing.JFrame {
         setMostPopularZone();
     }
 
+    // Gets the most popular zone and sets the label on admin ui
     private void setMostPopularZone() {
         try {
+            // Gets the most popular zone
             Zone mostPopularZone = TravelSystem.getInstance().getTickets().getMostPopularZone();
             if (mostPopularZone != null) {
+                // Sets the label with the most popular zone name
                 lbl_adminOverviewBusiestZone.setText(mostPopularZone.getName());
             }
         } catch (Throwable ex) {
@@ -2921,7 +2923,9 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void setTodaysRevenueLabel() {
         try {
+            // Gets the revenue total for today
             float revenue = TravelSystem.getInstance().getTickets().calculateTodaysRevenue();
+            // Sets the revenue label with todays revenue
             lbl_adminOverviewTodayRev.setText("£" + TravelSystem.getInstance().convertToTwoDecimalPlace(revenue));
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2930,9 +2934,13 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void setPaperTicketTravelCardRatioLabel() {
         try {
+            // Gets the number of paper tickets for today
             int paperTickets = TravelSystem.getInstance().getTickets().getNumberOfPaperTicketsForToday();
+            // Gets the number of travel card tickets for today
             int travelCardTickets = TravelSystem.getInstance().getTickets().getNumberOfTravelCardTicketsForToday();
+            // Calculate the ratio between paper tickets and travel card tickets
             int[] ratio = TravelSystem.getInstance().ratio(paperTickets, travelCardTickets);
+            // Sets the label with the ratio
             lbl_adminOverviewPaperTCRatio.setText(ratio[0] + " : " + ratio[1]);
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2941,9 +2949,13 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void setTotalJourneysLabel() {
         try {
+            // Gets the number of off peak tickets for today
             int offPeakJourneyCount = TravelSystem.getInstance().getTickets().getOffPeakTicketsForToday();
+            // Gets the number of on peak tickets for today
             int onPeakJourneyCount = TravelSystem.getInstance().getTickets().getOnPeakTicketsForToday();
+            // Sum of off/on peak tickets to get total Journeys today
             int totalJourneys = offPeakJourneyCount + onPeakJourneyCount;
+            // Sets the label with the total journeys for today
             lbl_adminOverviewJourneyMade.setText(String.valueOf(totalJourneys));
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2952,9 +2964,13 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void setOnPeakOffPeakRatioLabel() {
         try {
+            // Gets the number of off peak journeys for today
             int offPeakJourneyCount = TravelSystem.getInstance().getTickets().getOffPeakTicketsForToday();
+            // Gets the number of on peak journeys for today
             int onPeakJourneyCount = TravelSystem.getInstance().getTickets().getOnPeakTicketsForToday();
+            // Calculates the ratio between off/on peak journeys
             int[] ratio = TravelSystem.getInstance().ratio(offPeakJourneyCount, onPeakJourneyCount);
+            // Sets the label on the front end with the ratio
             lbl_adminOverviewPeakJourney.setText(ratio[0] + " : " + ratio[1]);
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2962,15 +2978,17 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     public void populateUserTable() throws Throwable {
-
+        // Creates the model for the table
         DefaultTableModel model = (DefaultTableModel) tbl_adminGUIUserList.getModel();
         model.setRowCount(0); // reset table back to 0 rows, so data isn't appended
 
         tbl_adminGUIUserList.setCellSelectionEnabled(false);
         tbl_adminGUIUserList.setRowSelectionAllowed(true);
 
+        // Gets the users in the system
         SetOfUsers users = TravelSystem.getInstance().getUsers();
 
+        // Loops through the set of users and populates the user table
         for (User user : users) {
             model.addRow(new Object[]{user.getId(), user.getForename(), user.getSurname(),
                 user.getTravelCardId(), user.getUsername(), user.getSystemRole().getName(),
@@ -2985,12 +3003,17 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIJourneyList.setCellSelectionEnabled(false);
         tbl_adminGUIJourneyList.setRowSelectionAllowed(true);
 
+        // Gets the journeys in the system
         SetOfJourneys journeys = TravelSystem.getInstance().getJourneys();
 
+        // Loops through the set of journeys and populates the journey table
         for (Journey journey : journeys) {
+            // Gets the number of off peak tickets for the journey
             int offPeakJourneys = TravelSystem.getInstance().getTickets().getOffPeakTicketsForJourney(journey);
+            // Gets the number of on peak tickets for the journey
             int onPeakJourneys = TravelSystem.getInstance().getTickets().getOnPeakTicketsForJourney(journey);
 
+            // Populates the table rows with the journeys
             model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
                 journey.getOffPeakPrice(), journey.getOnPeakPrice(),
                 offPeakJourneys,
@@ -3006,10 +3029,14 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIJourneyList.setCellSelectionEnabled(false);
         tbl_adminGUIJourneyList.setRowSelectionAllowed(true);
 
+        // Loops through the journeys passed into the function
         for (Journey journey : journeys) {
             try {
+                // Gets the number of off peak journeys
                 int offPeakJourneys = TravelSystem.getInstance().getTickets().getOffPeakTicketsForJourney(journey);
+                // Gets the number of on peak journeys
                 int onPeakJourneys = TravelSystem.getInstance().getTickets().getOnPeakTicketsForJourney(journey);
+                // Set the rows of the table with the journey data
                 model.addRow(new Object[]{journey.getStartZone(), journey.getEndZone(),
                     journey.getOffPeakPrice(), journey.getOnPeakPrice(),
                     offPeakJourneys,
@@ -3023,8 +3050,9 @@ public class AdminUI extends javax.swing.JFrame {
 
     private float calculateRevenueForJourney(int peakJourneys, int offPeakJourneys, float onPeakPrice, float offPeakPrice) {
         float revenue = 0.00f;
-
+        // Multiplies the number of on peak journeys by the on peak price
         revenue += peakJourneys * onPeakPrice;
+        // Multiplies the number of off peak journeys by the off peak price
         revenue += offPeakJourneys * offPeakPrice;
 
         return revenue;
@@ -3037,8 +3065,10 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIZoneList.setCellSelectionEnabled(false);
         tbl_adminGUIZoneList.setRowSelectionAllowed(true);
 
+        // Gets all of the zones in the system
         SetOfZones zones = TravelSystem.getInstance().getZones();
 
+        // Populates the zone table with all of the zone data
         for (Zone zone : zones) {
             model.addRow(new Object[]{zone.getId(), zone.getName(),
                 TravelSystem.getInstance().getJourneys().getTotalJourneysToZone(zone),
@@ -3054,8 +3084,10 @@ public class AdminUI extends javax.swing.JFrame {
         tbl_adminGUIStationList.setCellSelectionEnabled(false);
         tbl_adminGUIStationList.setRowSelectionAllowed(true);
 
+        // Gets all of the station systems
         SetOfStationSystems stationSystems = TravelSystem.getInstance().getStationSystems();
 
+        // Populates the table with the station system information
         for (StationSystem stationSystem : stationSystems) {
             model.addRow(new Object[]{stationSystem.getId(), stationSystem.getName(),
                 stationSystem.getType(), stationSystem.getLocation(),
@@ -3066,10 +3098,12 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void dlg_adminJourneyEditWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneyEditWindowOpened
+        // Hides the error message label from view
         lbl_adminJourneyEditError.setVisible(false);
     }//GEN-LAST:event_dlg_adminJourneyEditWindowOpened
 
     private void btn_adminJourneyEditCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyEditCloseActionPerformed
+        // Disposes of the admin journey dialog box
         dlg_adminJourneyEdit.dispose();
     }//GEN-LAST:event_btn_adminJourneyEditCloseActionPerformed
 
@@ -3088,12 +3122,15 @@ public class AdminUI extends javax.swing.JFrame {
                                 (Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
                                 (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1)
                         );
+                // Sets the off peak price of the journey
                 selectedJourney.setOffPeakPrice(Float.valueOf(txt_offPeakPrice.getText()));
+                // Sets the on peak price of the journey
                 selectedJourney.setOnPeakPrice(Float.valueOf(txt_onPeakPrice.getText()));
-
+                // Serialises the journeys to save the changes
                 TravelSystem.getInstance().serializeJourneys();
+                // Repopulates the journey table
                 populateJourneyTable();
-
+                // Hides the journye edit dialog
                 dlg_adminJourneyEdit.hide();
 
             } catch (Throwable ex) {
@@ -3102,60 +3139,47 @@ public class AdminUI extends javax.swing.JFrame {
         } else {
             lbl_adminJourneyEditError.setVisible(true);
         }
-
-//        if (cmb_departure.getItemCount() > 0 && cmb_arrival.getItemCount() > 0) {
-//            Object departure = cmb_departure.getSelectedItem();
-//            Zone departureZone = ((Zone) departure);
-//            Object arrival = cmb_arrival.getSelectedItem();
-//            Zone arrivalZone = ((Zone) arrival);
-//
-//            try {
-//                float offPeakPrice = Float.valueOf(txt_offPeakPrice.getText());
-//                float onPeakPrice = Float.valueOf(txt_onPeakPrice.getText());
-//                if (offPeakPrice > onPeakPrice) {
-//                    lbl_error.setVisible(true);
-//                } else {
-//                    lbl_error.setVisible(false);
-//                    editJourney(offPeakPrice, onPeakPrice, departureZone, arrivalZone);
-//
-//                }
-//            } catch (Throwable ex) {
-//                Logger.getLogger(AdminUI.class
-//                        .getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
     }//GEN-LAST:event_btn_adminJourneyEditSaveActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
+        // Reenables the UI
         mainUI.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void txt_adminUserAddEditUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUserAddEditUsernameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_adminUserAddEditUsernameActionPerformed
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
         this.dispose();
+        // Reenables the UI
         mainUI.setEnabled(true);
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_adminZoneEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditActionPerformed
         // temp until load is in
         lbl_adminZoneEditErrorMsg.hide();
+        // Populates the view with zone data selected
         populateEditZoneView();
         dlg_adminZoneEdit.pack();
         dlg_adminZoneEdit.show();
     }//GEN-LAST:event_btn_adminZoneEditActionPerformed
 
+    // Populates the edit zone view
     private void populateEditZoneView() {
+        // Checks whether a row is selected
         if (tbl_adminGUIZoneList.getSelectedRowCount() > 0) {
+            // Gets the selected row
             int row = tbl_adminGUIZoneList.getSelectedRow();
+            // Gets the zone id from the table cell
             int zoneId = (int) tbl_adminGUIZoneList.getValueAt(row, 0);
 
             try {
+                // Gets the zone from the zone id
                 Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
+                // Sets zone id field on the edit zone view
                 txt_adminZoneEditId.setText(String.valueOf(zone.getId()));
+                // Sets the zone name field on the edit zone view
                 txt_adminZoneEditName.setText(String.valueOf(zone.getName()));
             } catch (Throwable ex) {
                 Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -3164,14 +3188,17 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void btn_adminStationsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsEditActionPerformed
-        // TODO add your handling code here:
+        // Initialises edit station dialog
         initialiseEditStationDialog();
         dlg_adminStationEdit.pack();
         dlg_adminStationEdit.show();
     }//GEN-LAST:event_btn_adminStationsEditActionPerformed
 
+    // Initialises edit station dialog
     private void initialiseEditStationDialog() {
         try {
+            // Gets the station system by id, uses the id from the selected row
+            // and id cell in table
             StationSystem stationSystem = TravelSystem.getInstance().getStationSystems()
                     .getStationSystemById((int) this.tbl_adminGUIStationList
                             .getValueAt(this.tbl_adminGUIStationList.getSelectedRow(), 0));
@@ -3181,18 +3208,27 @@ public class AdminUI extends javax.swing.JFrame {
             this.txt_adminStationEditLocation.setText(stationSystem.getLocation());
             this.txt_adminStationEditGPS.setText(stationSystem.getGPSPos().toString());
 
+            // Removes all items from combo box
             this.cmb_adminStationEditType.removeAllItems();
+
+            // Loops through all of the station types
             for (TypeEnums.StationType type : TypeEnums.StationType.values()) {
+                // Adds the station system types to the combo box
                 this.cmb_adminStationEditType.addItem(type.toString());
                 if (stationSystem.getType() == type) {
+                    // Selects the system type that that station system already
+                    // has assigned to it
                     this.cmb_adminStationEditType.setSelectedItem((String) type.toString());
                 }
             }
-
+            // Removes all items from the admin station combo box
             this.cmb_adminStationEditZone.removeAllItems();
+            // Loops through all of the zones in the system
             for (Zone zone : TravelSystem.getInstance().getZones()) {
+                // Populates the admin station combo box with the zones
                 this.cmb_adminStationEditZone.addItem(zone.toString());
                 if (stationSystem.getZone().getName().equals(zone.getName())) {
+                    // Selects the zone in the combo box which that station already has
                     this.cmb_adminStationEditZone.setSelectedItem((String) zone.toString());
                 }
             }
@@ -3219,11 +3255,13 @@ public class AdminUI extends javax.swing.JFrame {
                             (Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
                             (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1)
                     );
+            // Sets the text boxes on the edit journey dialog
             txt_adminJourneyEditDeparture.setText(selectedJourney.getStartZone().toString());
             txt_adminJourneyEditArrival.setText(selectedJourney.getEndZone().toString());
             txt_offPeakPrice.setText(Float.toString(selectedJourney.getOffPeakPrice()));
             txt_onPeakPrice.setText(Float.toString(selectedJourney.getOnPeakPrice()));
 
+            // Hides the edit journey error message
             lbl_adminJourneyEditError.hide();
             dlg_adminJourneyEdit.pack();
             dlg_adminJourneyEdit.show();
@@ -3234,6 +3272,7 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void btn_adminUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserEditActionPerformed
+        // Ensures a row in the table is selected
         if (tbl_adminGUIUserList.getSelectedRowCount() > 0) {
             initEditUserView();
             cmd_adminUserAddEditUserRole.setEnabled(false);
@@ -3244,12 +3283,12 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void btn_adminUserAddEditCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddEditCancelActionPerformed
         dlg_adminUserAddEdit.dispose();
-//        this.setEnabled(true);
         this.setVisible(true);
     }//GEN-LAST:event_btn_adminUserAddEditCancelActionPerformed
 
     private void btn_adminUserAddEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddEditSaveActionPerformed
         try {
+            // Assigns the text boxes to variables
             String userId = txt_adminUserAddEditId.getText();
             String forename = txt_adminUserAddEditForename.getText();
             String surname = txt_adminUserAddEditSurname.getText();
@@ -3260,15 +3299,21 @@ public class AdminUI extends javax.swing.JFrame {
             // replace slash format if present
             String dob = txt_adminUserAddEditDob.getText().replace("/", "-");
 
+            // Gets the user role from the combo box and assigns it to a variable
             TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
 
+            // Checks whether a user is being edited
             if (lbl_adminUserAddEditTitle.getText().equals("Edit User")) {
+                // Gets instance of calendar
                 Calendar cal = Calendar.getInstance();
 
+                // Creates a new date formatter
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 
+                // Parses the date of birth with the formatter
                 cal.setTime(sdf.parse(dob));
                 try {
+                    // Edits the users details
                     User user = TravelSystem.getInstance().getUsers().getUserById(Integer.parseInt(userId));
                     user.setForename(forename);
                     user.setSurname(surname);
@@ -3281,14 +3326,18 @@ public class AdminUI extends javax.swing.JFrame {
                     Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
+                // Saves a new user as we aren't editing
                 TravelSystem.getInstance().registerUser(null, forename, surname, username, email,
                         null, password, new SystemRole(userRole), dob);
                 TravelSystem.getInstance().getUsers().serializeUsers();
             }
 
             try {
+                // Serializes users
                 TravelSystem.getInstance().serializeUsers();
+                // Repopulates the user table with the new info
                 populateUserTable();
+                // Hides the dialog
                 dlg_adminUserAddEdit.hide();
             } catch (Throwable ex) {
                 Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -3299,55 +3348,29 @@ public class AdminUI extends javax.swing.JFrame {
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        /*
-            String editedUserId = txt_adminUserAddEditId.getText();
-            String editedForename = txt_adminUserAddEditForename.getText();
-            String editedSurname = txt_adminUserAddEditSurname.getText();
-            String editedUsername = txt_adminUserAddEditUsername.getText();
-            String editedEmail = txt_adminUserAddEditEmail.getText();
-            String editedPassword = txt_adminUserAddEditPassword.getText();
-            String editedDob = txt_adminUserAddEditDob.getText();
-            TypeEnums.UserType userRole = (TypeEnums.UserType) cmd_adminUserAddEditUserRole.getSelectedItem();
-
-            try {
-            User user = TravelSystem.getInstance().getUsers().getUserById(Integer.parseInt(editedUserId));
-            user.setForename(editedForename);
-            user.setSurname(editedSurname);
-            user.setUsername(editedUsername);
-            user.setEmail(editedEmail);
-            user.setPassword(editedPassword);
-            user.setUserRole(new SystemRole(userRole));
-            TravelSystem.getInstance().serializeUsers();
-            DateFormat format = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-            Date date = format.parse(editedDob);
-            user.setDob(date);
-            populateUserTable();
-            dlg_adminUserAddEdit.dispose();
-            } catch (Throwable ex) {
-            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
     }//GEN-LAST:event_btn_adminUserAddEditSaveActionPerformed
 
     private void btn_adminJourneySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchActionPerformed
+        // Initialises search journey view
         initSearchJourneyView();
 
         dlg_adminJourneySearch.pack();
         dlg_adminJourneySearch.setVisible(true);
-
-        // cmb_adminJourneySearchArr
     }//GEN-LAST:event_btn_adminJourneySearchActionPerformed
 
     private void initSearchJourneyView() {
         try {
+            // Sets the text with a formatted date
             txt_adminJourneySearchFrom.setText(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date()));
             txt_adminJourneySearchTo.setText(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date()));
-
+            // Sets the combo box with the zones
             cmb_adminJourneySearchDep.setModel(new DefaultComboBoxModel(
                     TravelSystem.getInstance().getZones().getZonesAsStringArray()));
-//            String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+            // Ensures there is a selected item
             if (cmb_adminJourneySearchDep.getSelectedItem() != null) {
+                // Gets the zone name from the selected item
                 String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+                // Populates the journey search combo box passing the zone name
                 populateJourneySearchComboWithAvailableDestinations(zoneName);
             }
         } catch (Throwable ex) {
@@ -3358,7 +3381,10 @@ public class AdminUI extends javax.swing.JFrame {
     private void populateJourneySearchComboWithAvailableDestinations(String zoneName) {
         Zone zone;
         try {
+            // Gets the zone object by its name
             zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
+            // Gets all arrival zones based on start zone and populates a combo
+            // box with them
             cmb_adminJourneySearchArr.setModel(new DefaultComboBoxModel(
                     TravelSystem.getInstance().getJourneys()
                     .getAllZonesDepartingFromStartZone(zone)));
@@ -3367,31 +3393,17 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }
 
-//    private void populateJourneySearchComboWithAvailableDestinations(String zoneName) {
-//        try {
-//            // Get the departure zone
-//            Zone zone = TravelSystem.getInstance().getZones().getZoneByName(zoneName);
-//            // Get all destinations that the departure zone goes to
-//            SetOfZones destinations = TravelSystem.getInstance()
-//                    .getJourneys().getDestinationsForDepartureZone(zone.getId());
-//            // Get all the zones not included in destinations
-//            SetOfZones availableDestinations = TravelSystem.getInstance().getZones().getZonesNotInList(destinations);
-//            // Convert into string array for combo
-//            String[] destinationsForCombo = TravelSystem.getInstance().getZones().getZonesAsStringArray(availableDestinations);
-//            cmb_adminJourneySearchArr.setModel(new DefaultComboBoxModel(destinationsForCombo));
-//        } catch (Throwable ex) {
-//            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
     private void tbl_adminGUIUserListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIUserListMouseReleased
         try {
-            // TODO add your handling code here:
+            // Gets the selected row
             int row = tbl_adminGUIUserList.getSelectedRow();
+            // Gets the user id from the cell in the selected row
             int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
 
             // if users travel card id is -1 they don't have a travel card, return false, else true
             boolean hasTC = TravelSystem.getInstance().getUsers().getUserById(userId).getTravelCardId() == -1 ? false : true;
 
+            // Sets the travel card view button based on whether user has travel card
             if (hasTC) {
                 btn_adminUserViewTC.setEnabled(true);
             } else {
@@ -3401,19 +3413,13 @@ public class AdminUI extends javax.swing.JFrame {
             btn_adminUserViewTickets.setEnabled(true);
             btn_adminUserEdit.setEnabled(true);
             btn_adminUserDelete.setEnabled(true);
-
-            System.out.println(hasTC);
-            //User selectedUser = TravelSystem.getInstance().getUsers().getUserById(userId);
-            System.out.println(userId);
-
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tbl_adminGUIUserListMouseReleased
 
     private void btn_adminUserDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserDeleteActionPerformed
-//        TODO add your handling code here:
-//        initAddView();
+        // Checks whether there is a selected row
         if (tbl_adminGUIUserList.getSelectedRowCount() > 0) {
             dlg_adminUserDelete.pack();
             dlg_adminUserDelete.setVisible(true);
@@ -3421,7 +3427,7 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserDeleteActionPerformed
 
     private void btn_adminUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserAddActionPerformed
-        // TODO add your handling code here:
+        // Initialises add user view
         initAddUserView();
         cmd_adminUserAddEditUserRole.setEnabled(true);
         dlg_adminUserAddEdit.pack();
@@ -3430,21 +3436,10 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void tbl_adminGUIJourneyListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIJourneyListMouseReleased
         try {
-            int row = tbl_adminGUIJourneyList.getSelectedRow();
-            /* casts two values from first two columns of JTable into Zones
-             * to be then checked against the journeylist. Returns relevant journey
-             * from 'db'. getJourneyAndPriceFromZones function checks the names, not
-             * the literal object references
-             */
-
-            Journey selectedJourney = TravelSystem.getInstance()
-                    .getJourneys().getJourneyAndPriceFromZones(
-                            (Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
-                            (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1)
-                    );
-
-            btn_adminJourneyEdit.setEnabled(true);
-            btn_adminJourneyDelete.setEnabled(true);
+            if (tbl_adminGUIJourneyList.getSelectedRowCount() > 0) {
+                btn_adminJourneyEdit.setEnabled(true);
+                btn_adminJourneyDelete.setEnabled(true);
+            }
 
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -3452,21 +3447,26 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_adminGUIJourneyListMouseReleased
 
     private void txt_adminUserAddEditPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUserAddEditPasswordActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_adminUserAddEditPasswordActionPerformed
 
     private void btn_adminUserDeleteCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserDeleteCancelActionPerformed
-
+        // Hides the user delete dialog
         dlg_adminUserDelete.hide();
     }//GEN-LAST:event_btn_adminUserDeleteCancelActionPerformed
 
     private void btn_adminUserDeleteConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserDeleteConfirmActionPerformed
+        // Gets the selected row
         int row = tbl_adminGUIUserList.getSelectedRow();
+        // Gets the user id from the selected row and column
         int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
 
         try {
+            // Removes the user from the collection class
             TravelSystem.getInstance().getUsers().remove(TravelSystem.getInstance().getUsers().getUserById(userId));
+            // Saves the collection class
             TravelSystem.getInstance().serializeUsers();
+            // Repopulates the user table so the changes are visible
             populateUserTable();
             btn_adminUserDelete.setEnabled(false);
             btn_adminUserEdit.setEnabled(false);
@@ -3477,24 +3477,10 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserDeleteConfirmActionPerformed
 
     private void dlg_adminUserSearchWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminUserSearchWindowActivated
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_dlg_adminUserSearchWindowActivated
 
     private void btn_adminUserSearchSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserSearchSearchActionPerformed
-        // if equals id search by id, else search by name
-//        SetOfUsers users;
-//
-//        try {
-//            if (cmb_adminUserSearchSearchBy.getSelectedIndex() == 0) {
-//                //user = TravelSystem.getInstance().getUsers().getUserById(Integer.valueOf(txt_adminUserSearchValue.getText()));
-//            } else {
-//                users = TravelSystem.getInstance().getUsers().searchUsersByUsername(txt_adminUserSearchValue.getText());
-//            }
-//            System.out.println(users);
-//        } catch (Throwable ex) {
-//            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
     }//GEN-LAST:event_btn_adminUserSearchSearchActionPerformed
 
     private void btn_adminUserSearchCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserSearchCancelActionPerformed
@@ -3505,12 +3491,13 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserSearchCancelActionPerformed
 
     private void btn_adminUserSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserSearchActionPerformed
+        // Shows the user search
         dlg_adminUserSearch.show();
     }//GEN-LAST:event_btn_adminUserSearchActionPerformed
 
     private void btn_adminUserSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserSearch1ActionPerformed
         try {
-            // TODO add your handling code here:
+            // Populates the user table
             populateUserTable();
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -3518,21 +3505,29 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserSearch1ActionPerformed
 
     private void txt_adminUserViewTCStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUserViewTCStartDateActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_adminUserViewTCStartDateActionPerformed
 
     private void btn_adminUserViewTCSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCSaveActionPerformed
+        // Gets the user discount from the text field
         float newDiscount = Float.valueOf(txt_adminUserViewTCDiscount.getText());
+        // Gets the daily cap from the text field
         float newDailyCap = Float.valueOf(txt_adminUserViewTCDailyCap.getText());
+        // Gets the travel card ID
         int tcId = Integer.valueOf(txt_adminUserAddTCId1.getText());
 
         try {
+            // Gets the travel card by the travel card id
             TravelCard travelCard = TravelSystem.getInstance().getTravelCards().getTravelCardById(tcId);
+            // Sets the new daily cap on the travel card
             travelCard.setDailyCap(newDailyCap);
+            // Sets the discount on the travel card
             travelCard.setDisount(newDiscount);
             txt_adminUserViewTCDiscount.setEnabled(false);
             txt_adminUserViewTCDailyCap.setEnabled(false);
+            // Serialises the users
             TravelSystem.getInstance().serializeUsers();
+            // Initialises the travel card view so that the changes can be seen
             initTravelCardView();
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -3540,7 +3535,6 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserViewTCSaveActionPerformed
 
     private void btn_adminUserViewTCCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCCloseActionPerformed
-        // TODO add your handling code here:
         txt_adminUserViewTCDiscount.setEnabled(false);
         txt_adminUserViewTCDailyCap.setEnabled(false);
         dlg_adminUserViewTravelCard.hide();
@@ -3549,15 +3543,20 @@ public class AdminUI extends javax.swing.JFrame {
     private void btn_adminUserViewTCEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCEditActionPerformed
         txt_adminUserViewTCDiscount.setEnabled(true);
         txt_adminUserViewTCDailyCap.setEnabled(true);
+        // Gets the daily cap from the view
         String dailyCap = txt_adminUserViewTCDailyCap.getText();
+        // Removes the £ sign from the daily cap
         dailyCap = dailyCap.replace("£", "");
         txt_adminUserViewTCDailyCap.setText(dailyCap);
+        // Gets the discount
         String discount = txt_adminUserViewTCDiscount.getText();
+        // Removes the % sign from the discount
         discount = discount.replace("%", "");
         txt_adminUserViewTCDiscount.setText(discount);
     }//GEN-LAST:event_btn_adminUserViewTCEditActionPerformed
 
     private void btn_adminJourneyDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyDeleteActionPerformed
+        // Ensures a row is selected
         if (tbl_adminGUIJourneyList.getSelectedRowCount() > 0) {
             dlg_adminJourneyDelete.pack();
             dlg_adminJourneyDelete.setVisible(true);
@@ -3565,16 +3564,22 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminJourneyDeleteActionPerformed
 
     private void btn_adminJourneyDeleteConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyDeleteConfirmActionPerformed
+        // Gets the selected row
         int row = tbl_adminGUIJourneyList.getSelectedRow();
 
         try {
+            // Gets the journey based on the start and end zone
             Journey journey = TravelSystem.getInstance().getJourneys()
                     .getJourney((Zone) tbl_adminGUIJourneyList.getValueAt(row, 0),
                             (Zone) tbl_adminGUIJourneyList.getValueAt(row, 1));
 
+            // Removes the journey from the system
             TravelSystem.getInstance().getJourneys().remove(journey);
+            // Serialises the journeys
             TravelSystem.getInstance().serializeJourneys();
+            // Repopulates the journey table so the changes are visible
             populateJourneyTable();
+            // Repopulates the zone tabe so that the changes are visible
             populateZoneTable();
             btn_adminJourneyDelete.setEnabled(false);
             btn_adminJourneyEdit.setEnabled(false);
@@ -3589,19 +3594,24 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminJourneyDeleteCancelActionPerformed
 
     private void btn_adminUserViewTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTCActionPerformed
-        // TODO add your handling code here:
+        // Initialise card view
         initTravelCardView();
         dlg_adminUserViewTravelCard.pack();
         dlg_adminUserViewTravelCard.show();
     }//GEN-LAST:event_btn_adminUserViewTCActionPerformed
 
     private void initTravelCardView() {
+        // Gets the selected row
         int row = tbl_adminGUIUserList.getSelectedRow();
+        // Gets the user id from the table row and column
         int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
         try {
+            // Gets the user based on the user id
             User user = TravelSystem.getInstance().getUsers().getUserById(userId);
+            // Gets the travel card for that user
             TravelCard travelCard = TravelSystem.getInstance().getTravelCards()
                     .getTravelCardById(user.getTravelCardId());
+            // Sets up the ui text boxes
             txt_adminUserAddTCId1.setText(String.valueOf(travelCard.getId()));
             txt_adminUserViewTCBalance.setText("£" + TravelSystem.getInstance()
                     .convertToTwoDecimalPlace(travelCard.getBalance()));
@@ -3610,16 +3620,21 @@ public class AdminUI extends javax.swing.JFrame {
             txt_adminUserViewTCDiscount.setText(travelCard.getDiscount() + "%");
             txt_adminUserViewTCDailyCap.setText("£" + TravelSystem.getInstance()
                     .convertToTwoDecimalPlace(travelCard.getDailyCap()));
+
+            // Checks if a pass is active and sets the view text box based on this
             if (travelCard.isPassActive()) {
                 txt_adminUserViewTCPass.setText(travelCard.getPass().passType().name());
             } else {
                 txt_adminUserViewTCPass.setText("No active pass");
             }
+
+            // Gets the users last departure details of user and sets the text
             if (travelCard.getDepartureDetails() != null) {
                 txt_adminUserViewTCDepStation.setText(travelCard.getDepartureDetails().getName());
             } else {
                 txt_adminUserViewTCDepStation.setText("No departure details");
             }
+            // Gets the users last departer time of user and sets text
             if (travelCard.getLastDepartedTime() != null) {
                 txt_adminUserViewTCDepTime.setText(getDateFormatted("time", travelCard.getLastDepartedTime()));
             } else {
@@ -3632,20 +3647,26 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void btn_adminZoneAddAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneAddAddActionPerformed
+        // Gets the zone id from the text box
         int zoneId = Integer.valueOf(txt_adminZoneAddId.getText());
+        // Gets the zone name from the text box
         String zoneName = txt_adminZoneAddName.getText();
 
         try {
+            // Ensures the zone name is unique
             if (TravelSystem.getInstance().getZones().isZoneNameUnique(zoneName)) {
+                // Adds the new zone
                 AddNewZone(zoneId, zoneName);
 
                 try {
+                    // Repopulates the zone table so the changes are visible
                     populateZoneTable();
                     dlg_adminZoneAdd.hide();
                 } catch (Throwable ex) {
                     Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
+                // Display error message if the zone name is not unique
                 lbl_zoneErrorMsg.setVisible(true);
             }
         } catch (Throwable ex) {
@@ -3654,9 +3675,12 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminZoneAddAddActionPerformed
 
     private void AddNewZone(int zoneId, String zoneName) {
+        // Instantiates a new zone
         Zone newZone = new Zone(zoneId, zoneName);
         try {
+            // Adds zone to the zone list
             TravelSystem.getInstance().getZones().add(newZone);
+            // Serialises zones
             TravelSystem.getInstance().serializeZones();
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -3664,13 +3688,11 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void btn_adminZoneAddCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneAddCancelActionPerformed
-        // TODO add your handling code here:
         dlg_adminZoneAdd.hide();
     }//GEN-LAST:event_btn_adminZoneAddCancelActionPerformed
 
     private void btn_adminZoneAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneAddActionPerformed
         try {
-            // TODO add your handling code here
             dlg_adminZoneAdd.pack();
             txt_adminZoneAddId.setText(Integer.toString(TravelSystem.getInstance().getZones().getNextId()));
             lbl_zoneErrorMsg.setVisible(false);
@@ -3681,31 +3703,46 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminZoneAddActionPerformed
 
     private void btn_adminUserViewTicketsCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTicketsCloseActionPerformed
-        // TODO add your handling code here:
         dlg_adminUserViewTickets.hide();
 
     }//GEN-LAST:event_btn_adminUserViewTicketsCloseActionPerformed
 
     private void btn_adminJourneyAddSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyAddSaveActionPerformed
+        // Checks there is a selected item
         if (cmb_adminJourneyAddArrZone.getSelectedItem() != null) {
+            // Gets the off peak float from the view
             float offPeak = Float.valueOf(txt_adminJourneyAddOffPeakPrice.getText());
+            // Gets the on peak float from the view
             float onPeak = Float.valueOf(txt_adminJourneyAddOnPeakPrice.getText());
+            // Get the arrival zone from the combo box
             String arrivalName = (String) cmb_adminJourneyAddArrZone.getSelectedItem();
+            // Get the departure zone from the combo box
             String departureName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
 
             try {
+                // Gets the arrival zone using the name
                 Zone arrivalZone = TravelSystem.getInstance().getZones().getZoneByName(arrivalName);
+                // Gets the departure zone using the name
                 Zone departureZone = TravelSystem.getInstance().getZones().getZoneByName(departureName);
 
+                // Ensure that the on/off peak aren't 0 or below
                 if (offPeak > 0 && onPeak > 0) {
+                    // Ensure that that off peak is less than the on peak
                     if (onPeak < offPeak) {
+                        // Show the error if true
                         lbl_adminJourneyAddError.setVisible(true);
                     } else {
+                        // Gets the on peak in 2 dp
                         onPeak = TravelSystem.getInstance().convertToTwoDecimalPlaces(onPeak);
+                        // Gets the off peak in 2dp
                         offPeak = TravelSystem.getInstance().convertToTwoDecimalPlaces(offPeak);
+                        // Instantiates a new journey
                         Journey journey = new Journey(offPeak, onPeak, departureZone, arrivalZone);
+                        // Adds the journey to journey list
                         TravelSystem.getInstance().getJourneys().add(journey);
+                        // Serialises the journeys
                         TravelSystem.getInstance().serializeJourneys();
+                        // Populates the journey table
                         populateJourneyTable();
                         dlg_adminJourneyAdd.setVisible(false);
                     }
@@ -3722,7 +3759,6 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminJourneyAddCancelActionPerformed
 
     private void dlg_adminJourneyAddWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneyAddWindowOpened
-        // TODO add your handling code here:
     }//GEN-LAST:event_dlg_adminJourneyAddWindowOpened
 
     private void btn_adminJourneyAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneyAddActionPerformed
@@ -3735,11 +3771,15 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void initAddJourneyView() {
         try {
+            // Sets text of inputs
             txt_adminJourneyAddOffPeakPrice.setText("0.00");
             txt_adminJourneyAddOnPeakPrice.setText("0.00");
+            // Sets the combo box model
             cmb_adminJourneyAddDepZone.setModel(new DefaultComboBoxModel(
                     TravelSystem.getInstance().getZones().getZonesAsStringArray()));
+            // Gets the zone name
             String zoneName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
+            // Populates the available destinations based on departure zone
             populateJourneyAddEditComboWithAvailableDestinations(zoneName);
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -3747,13 +3787,15 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void btn_adminUserViewTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminUserViewTicketsActionPerformed
-        // set values here?
+        // Gets selected row
         int row = tbl_adminGUIUserList.getSelectedRow();
+        // Gets user id based on row and column
         int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
 
         tbl_adminUserViewTickets.setCellSelectionEnabled(false);
         tbl_adminUserViewTickets.setRowSelectionAllowed(true);
 
+        // Initialises ticket view
         initUserTicketView(userId);
 
         dlg_adminUserViewTickets.pack();
@@ -3762,19 +3804,28 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminUserViewTicketsActionPerformed
 
     private void btn_adminZoneEditAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneEditAddActionPerformed
+        // Gets the zone id
         int zoneId = Integer.valueOf(txt_adminZoneEditId.getText());
+        // Gets the zone name
         String zoneName = txt_adminZoneEditName.getText();
 
         try {
+            // Ensures zone name is unique
             if (TravelSystem.getInstance().getZones().isZoneNameUnique(zoneName, zoneId)) {
+                // Gets the zone based on id
                 Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
+                // Checks the zone name from text box is not empty
                 if (!zoneName.isEmpty()) {
+                    // Sets the zone name of the zone
                     zone.setName(zoneName);
+                    // Serialises the zones
                     TravelSystem.getInstance().serializeZones();
                 }
+                // Repopulates the zone table
                 populateZoneTable();
                 dlg_adminZoneEdit.setVisible(false);
             } else {
+                // Shows error if zone name is not unique
                 lbl_adminZoneEditErrorMsg.setVisible(true);
             }
         } catch (Throwable ex) {
@@ -3787,23 +3838,34 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminZoneEditCancelActionPerformed
 
     private void btn_adminZoneDeleteConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneDeleteConfirmActionPerformed
+        // Checks there is a row selected
         if (tbl_adminGUIZoneList.getSelectedRowCount() > 0) {
+            // Gets the selected view
             int row = tbl_adminGUIZoneList.getSelectedRow();
+            // Gets the zone id from the row and column
             int zoneId = (int) tbl_adminGUIZoneList.getValueAt(row, 0);
 
             try {
+                // Gets the zone based on the id
                 Zone zone = TravelSystem.getInstance().getZones().getZoneById(zoneId);
+                // Removes the zone from the list
                 TravelSystem.getInstance().getZones().remove(zone);
+                // Gets all the journeys containing that zone
                 SetOfJourneys journeysToRemove = TravelSystem.getInstance().getJourneys()
                         .getAllJourneysContainingZone(zone);
 
+                // Removes the journeys containing that zone
                 for (Journey journey : journeysToRemove) {
                     TravelSystem.getInstance().getJourneys().remove(journey);
                 }
 
+                // Serialises journeys
                 TravelSystem.getInstance().serializeJourneys();
+                // Serialises zones
                 TravelSystem.getInstance().serializeZones();
+                // Populates zone table
                 populateZoneTable();
+                // Populates journey table
                 populateJourneyTable();
                 dlg_adminZoneDelete.setVisible(false);
             } catch (Throwable ex) {
@@ -3813,11 +3875,9 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminZoneDeleteConfirmActionPerformed
 
     private void btn_adminZoneDeleteCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneDeleteCancelActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btn_adminZoneDeleteCancelActionPerformed
 
     private void dlg_adminStationAddWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminStationAddWindowOpened
-        // TODO add your handling code here:
     }//GEN-LAST:event_dlg_adminStationAddWindowOpened
 
     private void btn_adminStationAddCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationAddCancelActionPerformed
@@ -3830,21 +3890,34 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminStationAddAddActionPerformed
 
     private void addNewStation() {
+        // Gets the zone id from text box
         int stationId = Integer.valueOf(txt_adminStationAddId.getText());
+        // Gets the station name
         String stationName = txt_adminStationAddName.getText();
+        // Gets the station type
         TypeEnums.StationType stationType = (TypeEnums.StationType) cmb_adminStationAddType.getSelectedItem();
+        // Gets the station location
         String stationLocation = txt_adminStationAddLocation.getText();
+        // Gets the station gps
         String stationGps = txt_adminStationAddGPS.getText();
+        // Gets the station zone
         String stationZoneStr = (String) cmb_adminStationAddZone.getSelectedItem();
 
+        // Generates the coordinates based on gps
         GPSCoordinates coordinates = generateGPSCoordinate(stationGps);
 
         try {
+            // Gets the zone object the station is in
             Zone stationZone = TravelSystem.getInstance().getZones().getZoneByName(stationZoneStr);
+            // Intialises new gateway
             SetOfGateways gateways = new SetOfGateways();
+            // Instantiates a new station
             StationSystem newStation = new StationSystem(stationId, stationName, stationType, stationLocation, coordinates, stationZone, gateways);
+            // Adds the new station to the station system list
             TravelSystem.getInstance().getStationSystems().add(newStation);
+            // Serialises station system
             TravelSystem.getInstance().serializeStationSystems();
+            // Repopulates the table
             populateStationTable();
             dlg_adminStationAdd.setVisible(true);
         } catch (Throwable ex) {
@@ -3853,50 +3926,71 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private GPSCoordinates generateGPSCoordinate(String gpsCoordinates) {
+        // Splits the long from the lat
         String[] gps = gpsCoordinates.split(",", -1);
         float longitude = Float.valueOf(gps[0]);
         float latitude = Float.valueOf(gps[1]);
 
+        // Instantiates a new coordinates object based on these values
         GPSCoordinates coordinates = new GPSCoordinates(longitude, latitude);
 
         return coordinates;
     }
 
     private void txt_adminStationAddIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminStationAddIdActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_adminStationAddIdActionPerformed
 
     private void txt_adminStationAddLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminStationAddLocationActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_adminStationAddLocationActionPerformed
 
     private void btn_adminStationEditAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationEditAddActionPerformed
+        // Gets the station id
         int stationID = Integer.parseInt(this.txt_adminStationEditId.getText());
+        // Gets the station name
         String stationName = this.txt_adminStationEditName.getText();
+        // Gets the gps coordinates
         GPSCoordinates stationGPS = generateGPSCoordinate(this.txt_adminStationEditGPS.getText());
+        // Gets the station location
         String stationLocation = this.txt_adminStationEditLocation.getText();
+        // Gets the station zone
         String stationZone = (String) this.cmb_adminStationEditZone.getSelectedItem();
+        // Gets the station type
         String stationType = (String) this.cmb_adminStationEditType.getSelectedItem();
 
         try {
+            // Gets the station systems from the collection class
             SetOfStationSystems stationSystems = TravelSystem.getInstance().getStationSystems();
+            // Gets the station system by id from the collection
             StationSystem trueStation = stationSystems.getStationSystemById(stationID);
+            // Gets the zones from the collection class
             SetOfZones zones = TravelSystem.getInstance().getZones();
 
+            // Ensure that the station system name is unique and not empty
             if (!stationName.isEmpty() && stationSystems.nameIsUnique(stationName)) {
+                // Sets the name of the station system
                 trueStation.setName(stationName);
             }
 
+            // Sets the gps coordinates of the station system
             trueStation.setGPSPos(stationGPS);
 
+            // Check whether the station location is empty
             if (!stationLocation.isEmpty()) {
-                trueStation.setName(stationLocation);
+                // Set the station name
+                trueStation.setLocation(stationLocation);
             }
 
+            // Set zone of the station
             trueStation.setZone(zones.getZoneByName(stationZone));
+            // Set station type
             trueStation.setType(TypeEnums.StationType.valueOf(stationType));
 
+            // Serialised station systems
+            TravelSystem.getInstance().serializeStationSystems();
+
+            // Repopulate station table
             this.populateStationTable();
+
             this.dlg_adminStationEdit.setVisible(false);
             this.btn_adminStationsEdit.setEnabled(false);
             this.btn_adminStationsDelete.setEnabled(false);
@@ -3910,25 +4004,31 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminStationEditCancelActionPerformed
 
     private void txt_adminStationEditLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminStationEditLocationActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_adminStationEditLocationActionPerformed
 
     private void txt_adminStationEditIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminStationEditIdActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_adminStationEditIdActionPerformed
 
     private void dlg_adminStationEditWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminStationEditWindowOpened
-        // TODO add your handling code here:
     }//GEN-LAST:event_dlg_adminStationEditWindowOpened
 
     private void btn_adminStationDeleteConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationDeleteConfirmActionPerformed
         try {
+            // Get the station system by the selected row and column
             StationSystem stationSystem = TravelSystem.getInstance().getStationSystems()
                     .getStationSystemById((int) this.tbl_adminGUIStationList
                             .getValueAt(this.tbl_adminGUIStationList.getSelectedRow(), 0));
 
+            // Get all station systems
             SetOfStationSystems stationSystems = TravelSystem.getInstance().getStationSystems();
+
+            // Remove station system from the collection class
             stationSystems.remove(stationSystem);
+
+            // Serialised station systems
+            TravelSystem.getInstance().serializeStationSystems();
+
+            // Repopulate station system table
             this.populateStationTable();
             this.dlg_adminStationDelete.setVisible(false);
         } catch (Throwable ex) {
@@ -3941,8 +4041,8 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminStationDeleteCancelActionPerformed
 
     private void tbl_adminGUIZoneListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIZoneListMouseReleased
-        // ADD CODE FOR BTN OPEN HERE
         try {
+            // Get the selected row
             int row = tbl_adminGUIZoneList.getSelectedRow();
 
             Zone selectedZone = TravelSystem.getInstance()
@@ -3959,8 +4059,6 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_adminGUIZoneListMouseReleased
 
     private void tab_adminMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_adminMouseReleased
-        // ADD CODE FOR BTN OPEN HERE
-
     }//GEN-LAST:event_tab_adminMouseReleased
 
     private void btn_adminZoneDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminZoneDeleteActionPerformed
@@ -3969,7 +4067,6 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adminZoneDeleteActionPerformed
 
     private void btn_adminStationsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsAddActionPerformed
-        // TODO add your handling code here:
         initAddStationsView();
         dlg_adminStationAdd.pack();
         dlg_adminStationAdd.show();
@@ -3977,6 +4074,7 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void initAddStationsView() {
         try {
+            // Set the text of the add stations view
             txt_adminStationAddId.setText(String.valueOf(TravelSystem.getInstance()
                     .getStationSystems().getNextId()));
             cmb_adminStationAddType.setModel(new DefaultComboBoxModel(TypeEnums.StationType.values()));
@@ -3987,14 +4085,13 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void btn_adminStationsDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminStationsDeleteActionPerformed
-        // TODO add your handling code here:
         dlg_adminStationDelete.pack();
         dlg_adminStationDelete.show();
     }//GEN-LAST:event_btn_adminStationsDeleteActionPerformed
 
     private void tbl_adminGUIStationListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_adminGUIStationListMouseReleased
-        // TODO add your handling code here:
         try {
+            // Get the selected row
             int row = tbl_adminGUIStationList.getSelectedRow();
 
             StationSystem selectedStation = TravelSystem.getInstance()
@@ -4011,14 +4108,16 @@ public class AdminUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_adminGUIStationListMouseReleased
 
     private void txt_adminUserViewTCDiscountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_adminUserViewTCDiscountFocusLost
+        // Checks whether the travel card discount is empty
         if (txt_adminUserViewTCDiscount.getText().isEmpty()) {
+            // Sets discount to 0 if it is empty
             txt_adminUserViewTCDiscount.setText("0");
         }
     }//GEN-LAST:event_txt_adminUserViewTCDiscountFocusLost
 
     private void btn_adminJourneySearchClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchClearActionPerformed
         try {
-            // TODO add your handling code here:
+            // Populates the journey table
             populateJourneyTable();
             btn_adminJourneySearchClear.setEnabled(false);
         } catch (Throwable ex) {
@@ -4026,21 +4125,29 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_adminJourneySearchClearActionPerformed
     private void cmb_adminJourneyAddDepZoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_adminJourneyAddDepZoneActionPerformed
+        // Gets the zone name from the combo box
         String zoneName = (String) cmb_adminJourneyAddDepZone.getSelectedItem();
+        // Populates arrival zone with possible zones
         populateJourneyAddEditComboWithAvailableDestinations(zoneName);
     }//GEN-LAST:event_cmb_adminJourneyAddDepZoneActionPerformed
 
     private void btn_adminJourneySearchSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchSubmitActionPerformed
+        // Gets the departure zone from combo
         String depZoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+        // Gets the arrival zone from combo
         Zone arrZone = (Zone) cmb_adminJourneySearchArr.getSelectedItem();
+        // Gets the start and end time
         String startDateTime = txt_adminJourneySearchFrom.getText();
         String endDateTime = txt_adminJourneySearchTo.getText();
 
         try {
+            // Gets the departure zone object from name
             Zone depZone = TravelSystem.getInstance().getZones().getZoneByName(depZoneName);
+            // Gets the set of journeys according to search criteria
             SetOfJourneys journeys = TravelSystem.getInstance().getTickets()
                     .getSearchedJourneys(TravelSystem.getInstance().getJourneys().getJourney(depZone, arrZone),
                             formatStringToDate(startDateTime), formatStringToDate(endDateTime));
+            // Repopulates the journey table with the data returned
             populateJourneyTableWithSearchedJourneys(journeys);
             dlg_adminJourneySearch.setVisible(false);
             btn_adminJourneySearchClear.setEnabled(true);
@@ -4049,6 +4156,7 @@ public class AdminUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_adminJourneySearchSubmitActionPerformed
 
+    // Formats string to date
     private Date formatStringToDate(String date) {
         DateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH);
         Date formattedDate;
@@ -4063,18 +4171,18 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void btn_adminJourneySearchCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminJourneySearchCancelActionPerformed
-        // TODO add your handling code here:
         dlg_adminJourneySearch.setVisible(false);
     }//GEN-LAST:event_btn_adminJourneySearchCancelActionPerformed
 
     private void dlg_adminJourneySearchWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlg_adminJourneySearchWindowActivated
-        // TODO add your handling code here:
     }//GEN-LAST:event_dlg_adminJourneySearchWindowActivated
 
     private void cmb_adminJourneySearchDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_adminJourneySearchDepActionPerformed
-        // TODO add your handling code here:
+        // Ensures there is a selected item
         if (cmb_adminJourneySearchDep.getSelectedItem() != null) {
+            // Gets the departure zone name
             String zoneName = (String) cmb_adminJourneySearchDep.getSelectedItem();
+            // Populates the possible arrival zone based on the departure zone
             populateJourneySearchComboWithAvailableDestinations(zoneName);
         }
     }//GEN-LAST:event_cmb_adminJourneySearchDepActionPerformed
@@ -4097,9 +4205,11 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void initUserTicketView(int userId) {
+        // Gets the table model
         DefaultTableModel model = (DefaultTableModel) tbl_adminUserViewTickets.getModel();
 
         try {
+            // Populates the table with user ticket info
             for (Ticket ticket : TravelSystem.getInstance().getTickets().getTicketsForUser(userId)) {
                 model.addRow(new Object[]{ticket.getTicketId(), ticket.getJourney().getStartZone(),
                     ticket.getJourney().getEndZone(), getDateFormatted("date", ticket.getPurchasedTime()) + " " + getDateFormatted("time", ticket.getPurchasedTime()),
@@ -4113,6 +4223,7 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void initAddUserView() {
         try {
+            // Sets the values of the add user view
             lbl_adminUserAddEditTitle.setText("Add User");
 
             txt_adminUserAddEditId.setText(Integer.toString(TravelSystem.getInstance().getUsers().getNextId()));
@@ -4131,13 +4242,14 @@ public class AdminUI extends javax.swing.JFrame {
     }
 
     private void initEditUserView() {
+        // Gets the selected row
         int row = tbl_adminGUIUserList.getSelectedRow();
 
         // get selected row - only occurs when a selection is made
         int userId = (int) tbl_adminGUIUserList.getValueAt(row, 0);
 
         try {
-
+            // Gets the user and populates the view data based on their info
             lbl_adminUserAddEditTitle.setText("Edit User");
 
             User user = TravelSystem.getInstance().getUsers().getUserById(userId);
@@ -4163,30 +4275,6 @@ public class AdminUI extends javax.swing.JFrame {
         }
         return new SimpleDateFormat("dd-MM-yyyy").format(date);
 
-    }
-
-    private void displayPrices() {
-//        Object departure = cmb_departure.getSelectedItem();
-//        Zone departureZone = ((Zone) departure);
-//        Object arrival = cmb_arrival.getSelectedItem();
-//        Zone arrivalZone = ((Zone) arrival);
-//
-//        try {
-//            Journey journey = TravelSystem.getInstance().getJourneys().getJourney(departureZone, arrivalZone);
-//            txt_offPeakPrice.setText(Float.toString(journey.getOffPeakPrice()));
-//            txt_onPeakPrice.setText(Float.toString(journey.getOnPeakPrice()));
-//
-//        } catch (Throwable ex) {
-//            Logger.getLogger(AdminUI.class
-//                    .getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-
-    private void editJourney(float newOffPeakPrice, float newOnPeakPrice, Zone startZone, Zone endZone) throws Throwable {
-        TravelSystem.getInstance().getJourneys().getJourney(startZone, endZone).setOnPeakPrice(newOnPeakPrice);
-        TravelSystem.getInstance().getJourneys().getJourney(startZone, endZone).setOffPeakPrice(newOffPeakPrice);
-        System.out.println(TravelSystem.getInstance().getJourneys().getJourney(startZone, endZone).getOffPeakPrice());
-        System.out.println(TravelSystem.getInstance().getJourneys().getJourney(startZone, endZone).getOnPeakPrice());
     }
 
     /**
