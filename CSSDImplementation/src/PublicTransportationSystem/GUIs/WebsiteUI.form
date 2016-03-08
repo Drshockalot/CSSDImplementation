@@ -785,28 +785,46 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btn_websitePurchaseTicket" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cmb_websiteFromZoneList" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbl_websiteFromTag" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btn_websitePurchaseTicket" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="cmb_websiteTicketType" max="32767" attributes="0"/>
+                                          <Component id="lbl_websiteToTag1" min="-2" pref="31" max="-2" attributes="0"/>
+                                      </Group>
                                       <Component id="cmb_websiteToZoneList" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbl_websiteToTag" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="cmb_websiteTicketType" max="32767" attributes="0"/>
-                                      <Component id="lbl_websiteToTag1" max="32767" attributes="0"/>
-                                  </Group>
                               </Group>
+                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_websitePurchaseMessage" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbl_websiteAmountTag" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="btn_websitePurchaseTicket1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txt_websiteAddFunds" min="-2" pref="111" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="lbl_websiteAddFundsHeader" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -814,23 +832,38 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbl_websiteToTag" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_websiteFromTag" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_websiteToTag1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_websiteAddFundsHeader" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cmb_websiteFromZoneList" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmb_websiteToZoneList" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmb_websiteTicketType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbl_websiteToTag" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbl_websiteFromTag" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbl_websiteAmountTag" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cmb_websiteFromZoneList" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmb_websiteToZoneList" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_websiteAddFunds" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btn_websitePurchaseTicket" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btn_websitePurchaseTicket1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="lbl_websiteToTag1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Component id="cmb_websiteTicketType" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="btn_websitePurchaseTicket" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lbl_websitePurchaseMessage" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace pref="20" max="32767" attributes="0"/>
@@ -903,6 +936,29 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbl_websitePurchaseMessage">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbl_websiteAddFundsHeader">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Lucida Grande" size="18" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Add Funds"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txt_websiteAddFunds">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbl_websiteAmountTag">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Amount"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_websitePurchaseTicket1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Add Funds"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_websitePurchaseTicket1ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -11,7 +11,7 @@ import java.util.Vector;
  *
  * @author JoBa
  */
-public class PermissionList extends Vector<Permission> {
+public class SetOfPermission extends Vector<Permission> {
 
     void addPermission(Permission permission) {
         super.add(permission);

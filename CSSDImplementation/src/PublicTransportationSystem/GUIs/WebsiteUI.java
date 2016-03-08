@@ -21,6 +21,7 @@ import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -107,6 +108,10 @@ public class WebsiteUI extends javax.swing.JFrame {
         cmb_websiteTicketType = new javax.swing.JComboBox();
         lbl_websiteToTag1 = new javax.swing.JLabel();
         lbl_websitePurchaseMessage = new javax.swing.JLabel();
+        lbl_websiteAddFundsHeader = new javax.swing.JLabel();
+        txt_websiteAddFunds = new javax.swing.JTextField();
+        lbl_websiteAmountTag = new javax.swing.JLabel();
+        btn_websitePurchaseTicket1 = new javax.swing.JButton();
         pnl_websiteTravelCardContainer = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         lbl_websiteTCBalance = new javax.swing.JLabel();
@@ -603,6 +608,18 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         lbl_websiteToTag1.setText("Type");
 
+        lbl_websiteAddFundsHeader.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        lbl_websiteAddFundsHeader.setText("Add Funds");
+
+        lbl_websiteAmountTag.setText("Amount");
+
+        btn_websitePurchaseTicket1.setText("Add Funds");
+        btn_websitePurchaseTicket1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_websitePurchaseTicket1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnl_websiteTicketsContainerLayout = new javax.swing.GroupLayout(pnl_websiteTicketsContainer);
         pnl_websiteTicketsContainer.setLayout(pnl_websiteTicketsContainerLayout);
         pnl_websiteTicketsContainerLayout.setHorizontalGroup(
@@ -610,43 +627,65 @@ public class WebsiteUI extends javax.swing.JFrame {
             .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel9)
-                    .addComponent(btn_websitePurchaseTicket)
                     .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
                         .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmb_websiteFromZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_websiteFromTag))
-                        .addGap(115, 115, 115)
+                            .addComponent(lbl_websiteFromTag)
+                            .addComponent(btn_websitePurchaseTicket))
+                        .addGap(63, 63, 63)
                         .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmb_websiteTicketType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_websiteToTag1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cmb_websiteToZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_websiteToTag))
-                        .addGap(110, 110, 110)
-                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmb_websiteTicketType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_websiteToTag1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lbl_websiteToTag)))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel9)
                     .addComponent(lbl_websitePurchaseMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(100, 100, 100)
+                .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
+                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_websiteAmountTag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
+                                .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_websitePurchaseTicket1)
+                                    .addComponent(txt_websiteAddFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(175, 175, 175))
+                    .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
+                        .addComponent(lbl_websiteAddFundsHeader)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnl_websiteTicketsContainerLayout.setVerticalGroup(
             pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_websiteToTag)
-                    .addComponent(lbl_websiteFromTag)
-                    .addComponent(lbl_websiteToTag1))
-                .addGap(7, 7, 7)
-                .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_websiteFromZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_websiteToZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_websiteTicketType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(btn_websitePurchaseTicket)
+                    .addComponent(jLabel6)
+                    .addComponent(lbl_websiteAddFundsHeader))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_websiteToTag)
+                            .addComponent(lbl_websiteFromTag)
+                            .addComponent(lbl_websiteAmountTag))
+                        .addGap(7, 7, 7)
+                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmb_websiteFromZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_websiteToZoneList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_websiteAddFunds, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addGroup(pnl_websiteTicketsContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_websitePurchaseTicket)
+                            .addComponent(btn_websitePurchaseTicket1)))
+                    .addGroup(pnl_websiteTicketsContainerLayout.createSequentialGroup()
+                        .addComponent(lbl_websiteToTag1)
+                        .addGap(7, 7, 7)
+                        .addComponent(cmb_websiteTicketType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_websitePurchaseMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -828,6 +867,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // Set up the start screen
         loginPopup.pack();
         loginPopup.setLocationRelativeTo(null);
         lbl_loginErrorMsg.setVisible(false);
@@ -843,7 +883,7 @@ public class WebsiteUI extends javax.swing.JFrame {
             String username, String email, String password, SystemRole newSysRole, String dob) {
 
         boolean isValid = true;
-
+        // Minor set of validation for user registration
         if (firstName.isEmpty()) {
             lbl_registerFirstNameError.setVisible(true);
             isValid = false;
@@ -878,6 +918,8 @@ public class WebsiteUI extends javax.swing.JFrame {
         }
 
         if (email.isEmpty()) {
+            // If an email hasn't been provided, notify the user that it is a
+            // required field
             lbl_registerEmailError.setText("Required");
             lbl_registerEmailError.setVisible(true);
             isValid = false;
@@ -895,14 +937,14 @@ public class WebsiteUI extends javax.swing.JFrame {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        // Password is a required field, check that it is present
         if (password.isEmpty()) {
             lbl_registerPasswordError.setVisible(true);
             isValid = false;
         } else {
             lbl_registerPasswordError.setVisible(false);
         }
-
+        // Date of birth is a required field, check that it is present
         if (dob.isEmpty()) {
             lbl_registerDobError.setVisible(true);
             isValid = false;
@@ -919,6 +961,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     }
 
     private void btn_RegisterSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterSubmitActionPerformed
+        // Get the inputted data from the form
         String firstName = txt_registerFirstName.getText();
         String surname = txt_registerLastName.getText();
         String username = txt_registerUsername.getText();
@@ -927,10 +970,12 @@ public class WebsiteUI extends javax.swing.JFrame {
         String dob = txt_registerDob.getText().replace("/", "-");
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.USER);
 
+        // Validate the user input
         boolean isValid = checkUsersRegistrationInput(firstName, surname,
                 username, email, password, newSysRole, dob);
 
         if (isValid) {
+
             try {
                 TravelSystem.getInstance()
                         .registerUser(null, firstName, surname, username, email, null, password, newSysRole, dob);
@@ -1082,6 +1127,21 @@ public class WebsiteUI extends javax.swing.JFrame {
 
         setUpTravelCardDetails();
     }//GEN-LAST:event_btn_websitePurchaseTicketActionPerformed
+
+    private void btn_websitePurchaseTicket1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_websitePurchaseTicket1ActionPerformed
+        try {
+            // Get the amount of funds to be added and add it to a travel card
+            int amountToAdd = Integer.parseInt(this.txt_websiteAddFunds.getText());
+            TravelSystem.getInstance().getTravelCards().getTravelCardById(this.user.getTravelCardId()).addFunds(amountToAdd);
+            // Save the changes to the travel card
+            TravelSystem.getInstance().getTravelCards().serializeTravelCards();
+            // Provide information to the user
+            JOptionPane.showMessageDialog(this.pnl_websiteTravelCardContainer, "You have added: £" + amountToAdd);
+        } catch (Throwable ex) {
+            Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setUpTravelCardDetails();
+    }//GEN-LAST:event_btn_websitePurchaseTicket1ActionPerformed
 
     private void openAdminUI(String username) {
         loginPopup.dispose();
@@ -1301,6 +1361,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_websiteMainAccount;
     private javax.swing.JButton btn_websiteMainLogout;
     private javax.swing.JButton btn_websitePurchaseTicket;
+    private javax.swing.JButton btn_websitePurchaseTicket1;
     private javax.swing.JButton btn_websiteURLGo;
     private javax.swing.JComboBox cmb_websiteFromZoneList;
     private javax.swing.JComboBox cmb_websiteTicketType;
@@ -1333,6 +1394,8 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_registerUsername;
     private javax.swing.JLabel lbl_registerUsernameError;
     private javax.swing.JLabel lbl_username;
+    private javax.swing.JLabel lbl_websiteAddFundsHeader;
+    private javax.swing.JLabel lbl_websiteAmountTag;
     private javax.swing.JLabel lbl_websiteFromTag;
     private javax.swing.JLabel lbl_websitePurchaseMessage;
     private javax.swing.JLabel lbl_websiteTCBalance;
@@ -1364,6 +1427,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_registerLastName;
     private javax.swing.JTextField txt_registerUsername;
     private javax.swing.JTextField txt_username;
+    private javax.swing.JTextField txt_websiteAddFunds;
     private javax.swing.JLabel txt_websiteMainTitle;
     private javax.swing.JTextField txt_websiteURL;
     // End of variables declaration//GEN-END:variables
