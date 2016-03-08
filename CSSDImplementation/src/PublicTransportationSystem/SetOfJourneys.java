@@ -29,15 +29,9 @@ public class SetOfJourneys extends Vector<Journey> implements Serializable {
             }
         }
         return null;
-        /*
-
-        //  Add price for corresponding zones - Is this right??
-        float price = 4.20f;
-        float onPeak = 4.20f;
-        Journey ret = new Journey(price, onPeak, departureZone, arrivalZone);
-        return ret;*/
     }
 
+    // Returns a specific journey if it exists
     public Journey getJourney(Zone startZone, Zone endZone) {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getStartZone().getId() == startZone.getId()) {
@@ -50,6 +44,7 @@ public class SetOfJourneys extends Vector<Journey> implements Serializable {
         return null;
     }
 
+    // Gets all journeys that have a zone as either the start or end zone
     public SetOfJourneys getAllJourneysContainingZone(Zone zone) {
         SetOfJourneys journeys = new SetOfJourneys();
         for (int i = 0; i < super.size(); i++) {
@@ -62,6 +57,8 @@ public class SetOfJourneys extends Vector<Journey> implements Serializable {
         return journeys;
     }
 
+    // Returns a list of end zones that a journey starting at a specific zone
+    // starts at
     public SetOfZones getAllZonesDepartingFromStartZone(Zone zone) {
         SetOfZones zoneList = new SetOfZones();
         for (int i = 0; i < super.size(); i++) {
@@ -73,6 +70,7 @@ public class SetOfJourneys extends Vector<Journey> implements Serializable {
         return zoneList;
     }
 
+    // Get number of journeys that end at a zone
     public int getTotalJourneysToZone(Zone zone) {
         int count = 0;
         for (int i = 0; i < super.size(); i++) {
@@ -84,6 +82,7 @@ public class SetOfJourneys extends Vector<Journey> implements Serializable {
         return count;
     }
 
+    // Get number of journeys that start at a zone
     public int getTotalJourneysFromZone(Zone zone) {
         int count = 0;
         for (int i = 0; i < super.size(); i++) {
@@ -111,6 +110,7 @@ public class SetOfJourneys extends Vector<Journey> implements Serializable {
         }
     }
 
+    // Get all zone destinations that a departure zone goes to
     public SetOfZones getDestinationsForDepartureZone(int zoneId) {
         SetOfZones zoneList = new SetOfZones();
 
@@ -123,6 +123,7 @@ public class SetOfJourneys extends Vector<Journey> implements Serializable {
         return zoneList;
     }
 
+    // Get all zones that depart from a zone and go to the zone passed in
     public SetOfZones getDeparturesForDestinationZone(int zoneId) {
         SetOfZones zoneList = new SetOfZones();
 

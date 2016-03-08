@@ -31,8 +31,10 @@ public class SetOfZones extends Vector<Zone> implements Serializable {
         return null;
     }
 
+    // Returns boolean as to whether a zone name is unique
     public boolean isZoneNameUnique(String zoneName) {
         for (int i = 0; i < super.size(); i++) {
+            // Checks whether the zone name exists
             if (super.get(i).getName().equalsIgnoreCase(zoneName)) {
                 return false;
             }
@@ -55,16 +57,21 @@ public class SetOfZones extends Vector<Zone> implements Serializable {
         return true;
     }
 
+    // Converts a zone list to a string array
     public String[] getZonesAsStringArray() {
+        // Instantiates a string array to the size of the number of zones
         String[] zoneList = new String[super.size()];
 
+        // Loops through all zones
         for (int i = 0; i < super.size(); i++) {
+            // Adds the zone name to the zone string array
             zoneList[i] = super.get(i).getName();
         }
 
         return zoneList;
     }
 
+    // Overload of previous method but a set of zones can be passed in
     public String[] getZonesAsStringArray(SetOfZones zones) {
         String[] zoneList = new String[zones.size()];
 
@@ -85,6 +92,7 @@ public class SetOfZones extends Vector<Zone> implements Serializable {
         return null;
     }
 
+    // Gets all existing zones not in the list passed in
     public SetOfZones getZonesNotInList(SetOfZones zones) {
         SetOfZones list = new SetOfZones();
 

@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 /**
+ * Class is used to help find the most popular zone
  *
  * @author jonathondickson
  */
