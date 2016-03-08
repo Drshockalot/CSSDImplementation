@@ -9,12 +9,12 @@ package PublicTransportationSystem;
  *
  * @author jonathondickson
  */
-public class MostPopularZone {
+public class ZoneFrequency {
 
     private Zone zone;
     private int travelCount;
 
-    public MostPopularZone(Zone zone, int travelCount) {
+    public ZoneFrequency(Zone zone, int travelCount) {
         this.zone = zone;
         this.travelCount = travelCount;
     }
@@ -29,5 +29,13 @@ public class MostPopularZone {
 
     public void incrementTravelCount() {
         this.travelCount++;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
+
+    public void setTravelCount(int travelCount) {
+        this.travelCount = travelCount;
     }
 }

@@ -264,7 +264,6 @@ public class TravelSystem implements SetOfUsersInterface {
      *
      * @param name
      * @param stationType
-     * @param stationType
      * @param gps
      * @param zone
      * @param scanners

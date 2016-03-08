@@ -2905,8 +2905,15 @@ public class AdminUI extends javax.swing.JFrame {
         setTotalJourneysLabel();
         setPaperTicketTravelCardRatioLabel();
         setTodaysRevenueLabel();
+        setMostPopularZone();
+    }
+
+    private void setMostPopularZone() {
         try {
-            TravelSystem.getInstance().getTickets().getMostPopularZone();
+            Zone mostPopularZone = TravelSystem.getInstance().getTickets().getMostPopularZone();
+            if (mostPopularZone != null) {
+                lbl_adminOverviewBusiestZone.setText(mostPopularZone.getName());
+            }
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }

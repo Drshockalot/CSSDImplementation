@@ -60,20 +60,18 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
 
         for (int i = 0; i < super.size(); i++) {
             if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
-                if (!super.get(i).getIsPaid()) {
-                    if (super.get(i).isPeakTicket()) {
-                        if (super.get(i).getUserId() != 0) {
-                            revenue += super.get(i).getJourney().getOnPeakPrice() - calculateDiscountToSubtract(
-                                    super.get(i).getUserId(), super.get(i).getJourney().getOnPeakPrice());
-                        } else {
-                            revenue += super.get(i).getJourney().getOnPeakPrice();
-                        }
-                    } else if (super.get(i).getUserId() != 0) {
-                        revenue += super.get(i).getJourney().getOffPeakPrice() - calculateDiscountToSubtract(
-                                super.get(i).getUserId(), super.get(i).getJourney().getOffPeakPrice());
+                if (super.get(i).isPeakTicket()) {
+                    if (super.get(i).getUserId() != 0) {
+                        revenue += super.get(i).getJourney().getOnPeakPrice() - calculateDiscountToSubtract(
+                                super.get(i).getUserId(), super.get(i).getJourney().getOnPeakPrice());
                     } else {
-                        revenue += super.get(i).getJourney().getOffPeakPrice();
+                        revenue += super.get(i).getJourney().getOnPeakPrice();
                     }
+                } else if (super.get(i).getUserId() != 0) {
+                    revenue += super.get(i).getJourney().getOffPeakPrice() - calculateDiscountToSubtract(
+                            super.get(i).getUserId(), super.get(i).getJourney().getOffPeakPrice());
+                } else {
+                    revenue += super.get(i).getJourney().getOffPeakPrice();
                 }
             }
         }
@@ -81,19 +79,19 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         return revenue;
     }
 
-    public ArrayList<MostPopularZone> getMostPopularZone() {
-        ArrayList<MostPopularZone> popularZones = new ArrayList();
+    public Zone getMostPopularZone() {
+        ArrayList<ZoneFrequency> popularZones = new ArrayList();
         try {
             SetOfZones zones = TravelSystem.getInstance().getZones();
 
             for (Zone zone : zones) {
-                MostPopularZone popularZone = new MostPopularZone(zone, 0);
+                ZoneFrequency popularZone = new ZoneFrequency(zone, 0);
                 popularZones.add(popularZone);
             }
 
             for (int i = 0; i < super.size(); i++) {
                 if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
-                    for (MostPopularZone popularZone : popularZones) {
+                    for (ZoneFrequency popularZone : popularZones) {
                         if (super.get(i).getJourney().getStartZone().getId() == popularZone.getZone().getId()) {
                             popularZone.incrementTravelCount();
                         }
@@ -108,7 +106,21 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
             Logger.getLogger(SetOfTickets.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return popularZones;
+        ZoneFrequency zoneToReturn = new ZoneFrequency(null, 0);
+        for (ZoneFrequency popZone : popularZones) {
+            if (zoneToReturn.getZone() != null) {
+                if (popZone.getTravelCount() > zoneToReturn.getTravelCount()) {
+                    zoneToReturn.setZone(popZone.getZone());
+                    zoneToReturn.setTravelCount(popZone.getTravelCount());
+                }
+            } else {
+                zoneToReturn.setZone(popZone.getZone());
+                zoneToReturn.setTravelCount(popZone.getTravelCount());
+            }
+
+        }
+
+        return zoneToReturn.getZone();
     }
 
     public Ticket getTicketById(int ticketId) {
