@@ -14,7 +14,9 @@ public class PortableReader {
     public Scanner scanner = new Scanner();
 
     public TravelCard readTravelCard(TravelCard travelCard) throws Throwable {
+        // Simulate the reading of a travel card
         int cardID = scanner.read(travelCard);
+        // Get the travel card from the system and return it
         return TravelSystem.getInstance().getTravelCards().getTravelCardById(cardID);
     }
 }

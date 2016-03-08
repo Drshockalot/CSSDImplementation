@@ -658,7 +658,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 switch (passType) {
                     case BUSDAY:
                     case BUSANDTRAINDAY: {
-                        // VALID PASS SCREEN
+                        // Display the valid pass interface
                         this.validPassPanel.setVisible(true);
                     }
                     case BUSJOURNEY:
@@ -672,7 +672,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 switch (passType) {
                     case TRAINDAY:
                     case BUSANDTRAINDAY: {
-                        // VALID PASS SCREEN
+                        // Display the valid pass interface
                         this.validPassPanel.setVisible(true);
                     }
                     case TRAINJOURNEY:
@@ -756,22 +756,29 @@ public class PortableReaderUI extends javax.swing.JFrame {
     }//GEN-LAST:event_fromZoneActionPerformed
 
     private void loginPanelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPanelButtonActionPerformed
+        // Run the login valididation, check that the user is an admin or
+        // travel inspector and also that their credentials are correct
         login();
     }//GEN-LAST:event_loginPanelButtonActionPerformed
 
     private void throwLoginError(String error) {
+        // Generic error message display for the login interface
         loginErrorLabel.setText(error);
         loginErrorLabel.setVisible(true);
     }
 
     private void login() {
+        // Get the user details
         String username = this.loginUsernameTxt.getText();
         String password = new String(loginPasswordTxt.getPassword());
 
         try {
+            // Search for the user by username
             User user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
             if (user != null) {
+                // If a user is found, check that the given password matches
                 if (user.authenticateUser(password)) {
+                    // Finally, check that the user has clearance for this interface
                     if (user.getSystemRole().isTravelInspector() || user.getSystemRole().isAdmin()) {
                         loginErrorLabel.setVisible(false);
                         this.loginPanel.setVisible(false);

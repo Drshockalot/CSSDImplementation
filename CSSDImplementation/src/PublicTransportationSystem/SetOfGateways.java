@@ -27,6 +27,8 @@ public class SetOfGateways extends Vector<Gateway> implements Serializable {
     }
 
     public int getNextId() {
+        // Get the last element in the vector, get the id and add one in order
+        // to get the next available ID
         return super.isEmpty() ? 1 : super.lastElement().getId() + 1;
     }
 }

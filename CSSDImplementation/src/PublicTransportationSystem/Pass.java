@@ -21,6 +21,7 @@ public class Pass implements Serializable {
     private Zone arrivalZone;
 
     public Pass(TypeEnums.PassType passTypeEnum) {
+        // Set up the pass with a type and expiry date
         this.expiryDate = setExpiryDate();
         this.passType = passTypeEnum;
     }

@@ -11,8 +11,10 @@ package PublicTransportationSystem;
  */
 public final class TypeEnums {
 
+    // A collection of Enums used throughout the system, used to identify the type
+    // of different objects
+    // i.e: User, Ticket, Pass and Station types
     private TypeEnums() {
-
     }
 
     public enum UserType {

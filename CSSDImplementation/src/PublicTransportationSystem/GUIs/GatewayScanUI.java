@@ -23,22 +23,26 @@ import java.util.logging.Logger;
  */
 public class GatewayScanUI extends javax.swing.JFrame {
 
-    TravelSystem system;
-    SetOfStationSystems stations;
+    private TravelSystem system;
+    private SetOfStationSystems stations;
 
     /**
      * Creates new form GatewayScanUI
      */
     public GatewayScanUI() throws Throwable {
+        // Set up a global instance of system for later use
         this.system = TravelSystem.getInstance();
         stations = system.getStationSystems();
         initComponents();
+        // Set all of the 'scan out' buttons to disabled, It doesn't make sense
+        // for a user to scan out with out scanning in first
         this.rejectedMessage.setVisible(false);
         this.approvedMessage.setVisible(false);
         this.scanOutCard1.setEnabled(false);
         this.scanOutCard2.setEnabled(false);
         this.scanOutCard3.setEnabled(false);
 
+        // Reset the 'fromZone' list and add the latest Zones
         this.fromZone.removeAllItems();
         system.getZones().stream().forEach((zone) -> {
             if (!system.getJourneys().getAllZonesDepartingFromStartZone(zone).isEmpty()) {
@@ -48,6 +52,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }
 
     private void setUpToZones() {
+        // Tailors the 'to' zones to the selected 'from' zone
         if (this.fromZone.getItemAt(0) != null) {
             SetOfZones toZones = system.getJourneys()
                     .getAllZonesDepartingFromStartZone((Zone) this.fromZone.getSelectedItem());
@@ -246,22 +251,28 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // Return to the main switchboard upon closing
         AppSwitchboard.mainUI.setEnabled(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void scanInCard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scanInCard1MouseClicked
+        // Scanning in: get the corresponding station for the selected zone and
+        // the gateways that belong to the station
         StationSystem station = stations.getStationFromZone((Zone) this.fromZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
+        // Get a travel card to scan in with
         TravelCard travelCard = travelCards.getTravelCardById(1);
 
         try {
             boolean result = gateway.PerformScanIn(travelCard);
-
+            // Check the status of PerformScanIn and display a suitable message
             if (result) {
                 this.approvedMessage.setVisible(true);
                 this.rejectedMessage.setVisible(false);
+                // Disable the scan in button and enable the scan out button
+                // for use
                 this.scanInCard1.setEnabled(false);
                 this.scanOutCard1.setEnabled(true);
             } else {
@@ -277,18 +288,23 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanInCard1MouseClicked
 
     private void scanInCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard2ActionPerformed
+        // Scanning in: get the corresponding station for the selected zone and
+        // the gateways that belong to the station
         StationSystem station = stations.getStationFromZone((Zone) this.fromZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
+        // Get a travel card to scan in with
         TravelCard travelCard = travelCards.getTravelCardById(2);
 
         try {
             boolean result = gateway.PerformScanIn(travelCard);
-
+            // Check the status of PerformScanIn and display a suitable message
             if (result) {
                 this.approvedMessage.setVisible(true);
                 this.rejectedMessage.setVisible(false);
+                // Disable the scan in button and enable the scan out button
+                // for use
                 this.scanInCard2.setEnabled(false);
                 this.scanOutCard2.setEnabled(true);
             } else {
@@ -304,18 +320,23 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanInCard2ActionPerformed
 
     private void scanInCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInCard3ActionPerformed
+        // Scanning in: get the corresponding station for the selected zone and
+        // the gateways that belong to the station
         StationSystem station = stations.getStationFromZone((Zone) this.fromZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
+        // Get a travel card to scan in with
         TravelCard travelCard = travelCards.getTravelCardById(3);
 
         try {
             boolean result = gateway.PerformScanIn(travelCard);
-
+            // Check the status of PerformScanIn and display a suitable message
             if (result) {
                 this.approvedMessage.setVisible(true);
                 this.rejectedMessage.setVisible(false);
+                // Disable the scan in button and enable the scan out button
+                // for use
                 this.scanInCard3.setEnabled(false);
                 this.scanOutCard3.setEnabled(true);
             } else {
@@ -331,18 +352,23 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanInCard3ActionPerformed
 
     private void scanOutCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard1ActionPerformed
+        // Scanning out: get the corresponding station for the selected zone and
+        // the gateways that belong to the station
         StationSystem station = stations.getStationFromZone((Zone) this.toZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
+        // Get a travel card to scan out with
         TravelCard travelCard = travelCards.getTravelCardById(1);
 
         try {
             boolean result = gateway.PerformScanOut(travelCard);
-
+            // Check the status of PerformScanOut and display a suitable message
             if (result) {
                 this.approvedMessage.setVisible(true);
                 this.rejectedMessage.setVisible(false);
+                // Disable the scan out button and enable the scan in button
+                // for use
                 this.scanOutCard1.setEnabled(false);
                 this.scanInCard1.setEnabled(true);
             } else {
@@ -358,18 +384,23 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanOutCard1ActionPerformed
 
     private void scanOutCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard2ActionPerformed
+        // Scanning out: get the corresponding station for the selected zone and
+        // the gateways that belong to the station
         StationSystem station = stations.getStationFromZone((Zone) this.toZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
+        // Get a travel card to scan out with
         TravelCard travelCard = travelCards.getTravelCardById(2);
 
         try {
             boolean result = gateway.PerformScanOut(travelCard);
-
+            // Check the status of PerformScanOut and display a suitable message
             if (result) {
                 this.approvedMessage.setVisible(true);
                 this.rejectedMessage.setVisible(false);
+                // Disable the scan out button and enable the scan in button
+                // for use
                 this.scanOutCard2.setEnabled(false);
                 this.scanInCard2.setEnabled(true);
             } else {
@@ -385,18 +416,23 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanOutCard2ActionPerformed
 
     private void scanOutCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanOutCard3ActionPerformed
+        // Scanning out: get the corresponding station for the selected zone and
+        // the gateways that belong to the station
         StationSystem station = stations.getStationFromZone((Zone) this.toZone.getSelectedItem());
         SetOfGateways gateways = station.getStationGateways();
         Gateway gateway = gateways.getGatewayById(1);
         SetOfTravelCards travelCards = system.getTravelCards();
+        // Get a travel card to scan out with
         TravelCard travelCard = travelCards.getTravelCardById(3);
 
         try {
             boolean result = gateway.PerformScanOut(travelCard);
-
+            // Check the status of PerformScanOut and display a suitable message
             if (result) {
                 this.approvedMessage.setVisible(true);
                 this.rejectedMessage.setVisible(false);
+                // Disable the scan out button and enable the scan in button
+                // for use
                 this.scanOutCard3.setEnabled(false);
                 this.scanInCard3.setEnabled(true);
             } else {
@@ -412,6 +448,8 @@ public class GatewayScanUI extends javax.swing.JFrame {
     }//GEN-LAST:event_scanOutCard3ActionPerformed
 
     private void fromZoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromZoneActionPerformed
+        // Re-populate the 'to' zone combo box when the selected item in the
+        // 'from' combo box is changed
         this.toZone.removeAllItems();
         setUpToZones();
     }//GEN-LAST:event_fromZoneActionPerformed

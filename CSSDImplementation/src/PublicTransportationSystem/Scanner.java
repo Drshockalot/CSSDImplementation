@@ -16,6 +16,7 @@ public class Scanner implements Serializable {
     private static final long serialVersionUID = -8162005939343697380L;
 
     public int read(TravelCard travelCard) {
+        // Simulate the reading of a physical travel card
         return travelCard.getId();
     }
 

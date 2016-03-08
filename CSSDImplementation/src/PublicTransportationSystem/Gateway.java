@@ -187,10 +187,12 @@ public class Gateway implements Serializable {
     }
 
     public void approve() {
+        // Open the gate
         gateController.open();
     }
 
     public void reject() {
+        // Close the gate
         gateController.close();
     }
 
