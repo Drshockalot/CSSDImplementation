@@ -42,7 +42,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
         this.addFundsPanel.setVisible(false);
         this.payForTicketPanel.setVisible(false);
         this.validPassPanel.setVisible(false);
-        this.scanPanel.setVisible(true);
+        this.scanPanel.setVisible(false);
+        this.loginPanel.setVisible(true);
         // Get a list of travel cards to scan
         setUpTravelSystemInstance();
         system.getTravelCards().stream().forEach((card) -> {
@@ -102,6 +103,14 @@ public class PortableReaderUI extends javax.swing.JFrame {
         addFundsButton = new javax.swing.JButton();
         pnl_portableReaderPassTitle1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
+        loginPanel = new javax.swing.JPanel();
+        loginUsernameTxt = new javax.swing.JTextField();
+        loginPanelButton = new javax.swing.JButton();
+        loginHeaderLabel = new javax.swing.JLabel();
+        loginUsernameLabel = new javax.swing.JLabel();
+        loginPasswordLabel = new javax.swing.JLabel();
+        loginErrorLabel = new javax.swing.JLabel();
+        loginPasswordTxt = new javax.swing.JPasswordField();
 
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -152,16 +161,16 @@ public class PortableReaderUI extends javax.swing.JFrame {
             .addGroup(pnl_portableReaderScanTitleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel16)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout scanPanelLayout = new javax.swing.GroupLayout(scanPanel);
         scanPanel.setLayout(scanPanelLayout);
         scanPanelLayout.setHorizontalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_portableReaderScanTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_portableReaderScanTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(scanPanelLayout.createSequentialGroup()
-                .addGap(98, 98, 98)
+                .addGap(112, 112, 112)
                 .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scanPanelTravelCardLabel)
                     .addComponent(travelCardsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,7 +179,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                         .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(scanCardTrainButton))))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         scanPanelLayout.setVerticalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +266,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
             .addGroup(pnl_portableReaderPassTitleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout validPassPanelLayout = new javax.swing.GroupLayout(validPassPanel);
@@ -315,7 +324,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(passUserID))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(validPassPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(passUserBalance))
                 .addGap(102, 102, 102)
@@ -397,7 +406,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
             .addGroup(pnl_portableReaderScanTitle2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout payForTicketPanelLayout = new javax.swing.GroupLayout(payForTicketPanel);
@@ -501,7 +510,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
             .addGroup(pnl_portableReaderPassTitle1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addFundsPanelLayout = new javax.swing.GroupLayout(addFundsPanel);
@@ -532,6 +541,65 @@ public class PortableReaderUI extends javax.swing.JFrame {
         );
 
         jLayeredPane1.add(addFundsPanel);
+
+        loginPanelButton.setText("Login");
+        loginPanelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginPanelButtonActionPerformed(evt);
+            }
+        });
+
+        loginHeaderLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        loginHeaderLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginHeaderLabel.setText("Log In");
+
+        loginUsernameLabel.setText("Username");
+
+        loginPasswordLabel.setText("Password");
+
+        loginErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loginHeaderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(loginUsernameTxt)
+                            .addComponent(loginUsernameLabel)
+                            .addComponent(loginPasswordLabel)
+                            .addComponent(loginPasswordTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(loginPanelButton)))
+                .addContainerGap(116, Short.MAX_VALUE))
+            .addComponent(loginErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(loginHeaderLabel)
+                .addGap(86, 86, 86)
+                .addComponent(loginUsernameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loginUsernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(loginPasswordLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loginPasswordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(loginPanelButton)
+                .addGap(56, 56, 56)
+                .addComponent(loginErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.add(loginPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -687,6 +755,47 @@ public class PortableReaderUI extends javax.swing.JFrame {
         setUpToZones();
     }//GEN-LAST:event_fromZoneActionPerformed
 
+    private void loginPanelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPanelButtonActionPerformed
+        login();
+    }//GEN-LAST:event_loginPanelButtonActionPerformed
+
+    private void throwLoginError(String error) {
+        loginErrorLabel.setText(error);
+        loginErrorLabel.setVisible(true);
+    }
+
+    private void login() {
+        String username = this.loginUsernameTxt.getText();
+        String password = new String(loginPasswordTxt.getPassword());
+
+        try {
+            User user = TravelSystem.getInstance().getUsers().getUserByUsername(username);
+            if (user != null) {
+                if (user.authenticateUser(password)) {
+                    if (user.getSystemRole().isTravelInspector() || user.getSystemRole().isAdmin()) {
+                        loginErrorLabel.setVisible(false);
+                        this.loginPanel.setVisible(false);
+                        this.scanPanel.setVisible(true);
+                    } else {
+                        throwLoginError("User Type Not Valid");
+                    }
+                } else {
+                    /* don't want anymore information
+                     * telling the user that a user exists with this information
+                     * would potentially enable security flaws
+                     */
+                    throwLoginError("Credentials Invalid");
+                }
+            } else {
+                throwLoginError("Credentials Invalid");
+            }
+        } catch (Throwable ex) {
+            System.out.println(ex);
+            throwLoginError("Something went wrong");
+
+        }
+    }
+
     private void handleValidPass() {
         // Confirm that the pass is valid and return to the home screen
         // for another scan
@@ -782,7 +891,14 @@ public class PortableReaderUI extends javax.swing.JFrame {
         Ticket newTicket = null;
         try {
             newTicket = new Ticket(TravelSystem.getInstance().getTickets()
-                    .getNextId(), ticketType, journey, journey.getStartZone().isPeak(), currentCard.getUser().getId(), false);
+                    .getNextId(), ticketType,
+                    system.getJourneys().getJourney(
+                            (Zone) this.fromZone.getSelectedItem(),
+                            (Zone) this.toZone.getSelectedItem()),
+                    system.getJourneys().getJourney(
+                            (Zone) this.fromZone.getSelectedItem(),
+                            (Zone) this.toZone.getSelectedItem()).getStartZone().isPeak(),
+                    currentCard.getUser().getId(), false);
         } catch (Throwable ex) {
             Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -891,6 +1007,14 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLabel loginErrorLabel;
+    private javax.swing.JLabel loginHeaderLabel;
+    private javax.swing.JPanel loginPanel;
+    private javax.swing.JButton loginPanelButton;
+    private javax.swing.JLabel loginPasswordLabel;
+    private javax.swing.JPasswordField loginPasswordTxt;
+    private javax.swing.JLabel loginUsernameLabel;
+    private javax.swing.JTextField loginUsernameTxt;
     private javax.swing.JButton passConfirmInspection;
     private javax.swing.JLabel passUserBalance;
     private javax.swing.JLabel passUserDob;

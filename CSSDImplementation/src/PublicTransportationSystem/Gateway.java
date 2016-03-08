@@ -66,14 +66,13 @@ public class Gateway implements Serializable {
         } else {
             // Get the journey that the user has taken
             SetOfJourneys list = sys.getJourneys();
-            Journey journey = list.getJourneyAndPriceFromZones(departureZone, zone);
 
             Ticket validUnusedTicket = null;
             // Get the unused tickets that the user owns
             SetOfTickets unusedTickets = TravelSystem.getInstance().getTickets().getUnusedTicketsForUser(currCard.getUser().getId());
 
             for (Ticket unusedTicket : unusedTickets) {
-                if (unusedTicket.getJourney() == journey) {
+                if (unusedTicket.getJourney() == list.getJourneyAndPriceFromZones(departureZone, zone)) {
                     // A ticket the user owns matches they journey they want to make
                     validUnusedTicket = unusedTicket;
                     break;
@@ -90,7 +89,7 @@ public class Gateway implements Serializable {
                 // If they have no pass or a valid ticket, charge them for the
                 // journey they have just made
                 Ticket currentTicket = new Ticket(TravelSystem.getInstance().getTickets()
-                        .getNextId(), TypeEnums.TicketType.TRAIN, journey, station.isPeak(), currCard.getUser().getId(), true);
+                        .getNextId(), TypeEnums.TicketType.TRAIN, list.getJourneyAndPriceFromZones(departureZone, zone), station.isPeak(), currCard.getUser().getId(), true);
 
                 // Pay for the new ticket
                 Transaction trans = new Transaction();
