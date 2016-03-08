@@ -39,12 +39,14 @@ public class StationSystem {
         PublicTransportationSystem.SetOfStationSystems station_systems = travel_system.getStationSystems();
         PublicTransportationSystem.StationSystem station_system = station_systems.getStationSystemById(1);
 
+        // Ascertain whether the station system is in peak mode
         boolean result = station_system.isPeak();
         Date t = new Date();
         Calendar peakFloor = Calendar.getInstance();
         Calendar peakCeiling = Calendar.getInstance();
         Calendar now = Calendar.getInstance();
 
+        // Determine whether the current time is within peak boundaries
         now.setTime(t);
         peakFloor.setTime(t);
         peakCeiling.setTime(t);
@@ -53,6 +55,7 @@ public class StationSystem {
         boolean peak = (peakFloor.get(Calendar.HOUR) <= now.get(Calendar.HOUR) && peakFloor.get(Calendar.MINUTE) <= now.get(Calendar.MINUTE)
                 && peakCeiling.get(Calendar.HOUR) >= now.get(Calendar.HOUR) && peakCeiling.get(Calendar.MINUTE) >= now.get(Calendar.MINUTE));
 
+        // Perform the correct assert depending on the current time
         if (peak) {
             assertTrue(result);
         } else {
