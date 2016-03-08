@@ -243,8 +243,8 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         for (int i = 0; i < super.size(); i++) {
             if (super.get(i).getJourney().getStartZone().getId() == journey.getStartZone().getId()) {
                 if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
-                    if (super.get(i).getPurchasedTime().after(startDateTime)) {
-                        if (super.get(i).getPurchasedTime().before(endDateTime)) {
+                    if (super.get(i).getPurchasedTime().after(startDateTime) || super.get(i).getPurchasedTime().equals(startDateTime)) {
+                        if (super.get(i).getPurchasedTime().before(endDateTime) || super.get(i).getPurchasedTime().equals(endDateTime)) {
                             if (journeys.size() > 0) {
                                 for (Journey existingJourney : journeys) {
                                     if (existingJourney.getStartZone().getId() != super.get(i).getJourney().getStartZone().getId()) {
