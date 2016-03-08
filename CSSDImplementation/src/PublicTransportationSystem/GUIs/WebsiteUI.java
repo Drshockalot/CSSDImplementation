@@ -867,6 +867,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // Set up the start screen
         loginPopup.pack();
         loginPopup.setLocationRelativeTo(null);
         lbl_loginErrorMsg.setVisible(false);
@@ -882,7 +883,7 @@ public class WebsiteUI extends javax.swing.JFrame {
             String username, String email, String password, SystemRole newSysRole, String dob) {
 
         boolean isValid = true;
-
+        // Minor set of validation for user registration
         if (firstName.isEmpty()) {
             lbl_registerFirstNameError.setVisible(true);
             isValid = false;
@@ -917,6 +918,8 @@ public class WebsiteUI extends javax.swing.JFrame {
         }
 
         if (email.isEmpty()) {
+            // If an email hasn't been provided, notify the user that it is a
+            // required field
             lbl_registerEmailError.setText("Required");
             lbl_registerEmailError.setVisible(true);
             isValid = false;
@@ -934,14 +937,14 @@ public class WebsiteUI extends javax.swing.JFrame {
                 Logger.getLogger(WebsiteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        // Password is a required field, check that it is present
         if (password.isEmpty()) {
             lbl_registerPasswordError.setVisible(true);
             isValid = false;
         } else {
             lbl_registerPasswordError.setVisible(false);
         }
-
+        // Date of birth is a required field, check that it is present
         if (dob.isEmpty()) {
             lbl_registerDobError.setVisible(true);
             isValid = false;
@@ -958,6 +961,7 @@ public class WebsiteUI extends javax.swing.JFrame {
     }
 
     private void btn_RegisterSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterSubmitActionPerformed
+        // Get the inputted data from the form
         String firstName = txt_registerFirstName.getText();
         String surname = txt_registerLastName.getText();
         String username = txt_registerUsername.getText();
@@ -966,10 +970,12 @@ public class WebsiteUI extends javax.swing.JFrame {
         String dob = txt_registerDob.getText().replace("/", "-");
         SystemRole newSysRole = new SystemRole(TypeEnums.UserType.USER);
 
+        // Validate the user input
         boolean isValid = checkUsersRegistrationInput(firstName, surname,
                 username, email, password, newSysRole, dob);
 
         if (isValid) {
+
             try {
                 TravelSystem.getInstance()
                         .registerUser(null, firstName, surname, username, email, null, password, newSysRole, dob);
