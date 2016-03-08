@@ -81,7 +81,7 @@ public class TravelSystem implements SetOfUsersInterface {
 
         Ticket ticket = new Ticket(systemTickets.getNextId(), TypeEnums.TicketType.TRAIN, systemJourneys.firstElement(), true, 1, true);
         systemTickets.add(ticket);
-        Ticket ticket2 = new Ticket(systemTickets.getNextId(), TypeEnums.TicketType.TRAIN, systemJourneys.firstElement(), true, 2, true);
+        Ticket ticket2 = new Ticket(systemTickets.getNextId(), TypeEnums.TicketType.TRAIN, systemJourneys.firstElement(), true, 1, true);
         systemTickets.add(ticket2);
     }
 
@@ -304,6 +304,28 @@ public class TravelSystem implements SetOfUsersInterface {
 
     public SetOfJourneys getJourneys() {
         return systemJourneys;
+    }
+
+    public int[] ratio(int a, int b) {
+        final int gcd = gcd(a, b);
+        int[] ratio = new int[2];
+
+        if (a > 0) {
+            ratio[0] = a / gcd;
+        }
+        if (b > 0) {
+            ratio[1] = b / gcd;
+        }
+
+        return ratio;
+    }
+
+    public int gcd(int p, int q) {
+        if (q == 0) {
+            return p;
+        } else {
+            return gcd(q, p % q);
+        }
     }
 
     public SetOfZones getZones() {

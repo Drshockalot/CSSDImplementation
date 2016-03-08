@@ -2410,14 +2410,14 @@ public class AdminUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Start Zone", "End Zone", "Off Peak", "On Peak", "Todays Passes Issued", "Todays Journeys Off-Peak", "Todays Journeys On-Peak", "Todays Revenue"
+                "Start Zone", "End Zone", "Off Peak", "On Peak", "Journeys Off-Peak", "Journeys On-Peak", "Revenue"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2892,12 +2892,67 @@ public class AdminUI extends javax.swing.JFrame {
             populateJourneyTable();
             populateZoneTable();
             populateStationTable();
+            populateAdminStatistics();
             TypeEnums.UserType[] userTypes = TravelSystem.getInstance().getSystemRoles();
             cmd_adminUserAddEditUserRole.setModel(new DefaultComboBoxModel(userTypes));
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    public void populateAdminStatistics() {
+        setOnPeakOffPeakRatioLabel();
+        setTotalJourneysLabel();
+        setPaperTicketTravelCardRatioLabel();
+        setTodaysRevenueLabel();
+        try {
+            TravelSystem.getInstance().getTickets().getMostPopularZone();
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setTodaysRevenueLabel() {
+        try {
+            float revenue = TravelSystem.getInstance().getTickets().calculateTodaysRevenue();
+            lbl_adminOverviewTodayRev.setText("£" + revenue);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setPaperTicketTravelCardRatioLabel() {
+        try {
+            int paperTickets = TravelSystem.getInstance().getTickets().getNumberOfPaperTicketsForToday();
+            int travelCardTickets = TravelSystem.getInstance().getTickets().getNumberOfTravelCardTicketsForToday();
+            int[] ratio = TravelSystem.getInstance().ratio(paperTickets, travelCardTickets);
+            lbl_adminOverviewPaperTCRatio.setText(ratio[0] + " : " + ratio[1]);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setTotalJourneysLabel() {
+        try {
+            int offPeakJourneyCount = TravelSystem.getInstance().getTickets().getOffPeakTicketsForToday();
+            int onPeakJourneyCount = TravelSystem.getInstance().getTickets().getOnPeakTicketsForToday();
+            int totalJourneys = offPeakJourneyCount + onPeakJourneyCount;
+            lbl_adminOverviewJourneyMade.setText(String.valueOf(totalJourneys));
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setOnPeakOffPeakRatioLabel() {
+        try {
+            int offPeakJourneyCount = TravelSystem.getInstance().getTickets().getOffPeakTicketsForToday();
+            int onPeakJourneyCount = TravelSystem.getInstance().getTickets().getOnPeakTicketsForToday();
+            int[] ratio = TravelSystem.getInstance().ratio(offPeakJourneyCount, onPeakJourneyCount);
+            lbl_adminOverviewPeakJourney.setText(ratio[0] + " : " + ratio[1]);
+        } catch (Throwable ex) {
+            Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void populateUserTable() throws Throwable {
 
@@ -2933,7 +2988,7 @@ public class AdminUI extends javax.swing.JFrame {
                 journey.getOffPeakPrice(), journey.getOnPeakPrice(),
                 offPeakJourneys,
                 onPeakJourneys,
-                calculateRevenueForJourneyToday(onPeakJourneys, offPeakJourneys, journey.getOnPeakPrice(), journey.getOffPeakPrice())});
+                calculateRevenueForJourney(onPeakJourneys, offPeakJourneys, journey.getOnPeakPrice(), journey.getOffPeakPrice())});
         }
     }
 
@@ -2952,14 +3007,14 @@ public class AdminUI extends javax.swing.JFrame {
                     journey.getOffPeakPrice(), journey.getOnPeakPrice(),
                     offPeakJourneys,
                     onPeakJourneys,
-                    calculateRevenueForJourneyToday(onPeakJourneys, offPeakJourneys, journey.getOnPeakPrice(), journey.getOffPeakPrice())});
+                    calculateRevenueForJourney(onPeakJourneys, offPeakJourneys, journey.getOnPeakPrice(), journey.getOffPeakPrice())});
             } catch (Throwable ex) {
                 Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
-    private float calculateRevenueForJourneyToday(int peakJourneys, int offPeakJourneys, float onPeakPrice, float offPeakPrice) {
+    private float calculateRevenueForJourney(int peakJourneys, int offPeakJourneys, float onPeakPrice, float offPeakPrice) {
         float revenue = 0.00f;
 
         revenue += peakJourneys * onPeakPrice;

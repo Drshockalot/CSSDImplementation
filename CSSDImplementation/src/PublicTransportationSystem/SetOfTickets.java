@@ -12,9 +12,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,6 +41,74 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         }
 
         return todaysTotal;
+    }
+
+    private float calculateDiscountToSubtract(int userId, float price) {
+        try {
+            User user = TravelSystem.getInstance().getUsers().getUserById(userId);
+            TravelCard tc = TravelSystem.getInstance().getTravelCards().getTravelCardById(user.getTravelCardId());
+            return (price / 100) * tc.getDiscount();
+        } catch (Throwable ex) {
+            Logger.getLogger(SetOfTickets.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0.00f;
+    }
+
+    public float calculateTodaysRevenue() {
+        float revenue = 0.00f;
+
+        for (int i = 0; i < super.size(); i++) {
+            if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                if (!super.get(i).getIsPaid()) {
+                    if (super.get(i).isPeakTicket()) {
+                        if (super.get(i).getUserId() != 0) {
+                            revenue += super.get(i).getJourney().getOnPeakPrice() - calculateDiscountToSubtract(
+                                    super.get(i).getUserId(), super.get(i).getJourney().getOnPeakPrice());
+                        } else {
+                            revenue += super.get(i).getJourney().getOnPeakPrice();
+                        }
+                    } else if (super.get(i).getUserId() != 0) {
+                        revenue += super.get(i).getJourney().getOffPeakPrice() - calculateDiscountToSubtract(
+                                super.get(i).getUserId(), super.get(i).getJourney().getOffPeakPrice());
+                    } else {
+                        revenue += super.get(i).getJourney().getOffPeakPrice();
+                    }
+                }
+            }
+        }
+
+        return revenue;
+    }
+
+    public ArrayList<MostPopularZone> getMostPopularZone() {
+        ArrayList<MostPopularZone> popularZones = new ArrayList();
+        try {
+            SetOfZones zones = TravelSystem.getInstance().getZones();
+
+            for (Zone zone : zones) {
+                MostPopularZone popularZone = new MostPopularZone(zone, 0);
+                popularZones.add(popularZone);
+            }
+
+            for (int i = 0; i < super.size(); i++) {
+                if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                    for (MostPopularZone popularZone : popularZones) {
+                        if (super.get(i).getJourney().getStartZone().getId() == popularZone.getZone().getId()) {
+                            popularZone.incrementTravelCount();
+                        }
+                        if (super.get(i).getJourney().getEndZone().getId() == popularZone.getZone().getId()) {
+                            popularZone.incrementTravelCount();
+                        }
+                    }
+                }
+            }
+
+        } catch (Throwable ex) {
+            Logger.getLogger(SetOfTickets.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return popularZones;
     }
 
     public Ticket getTicketById(int ticketId) {
@@ -92,16 +163,42 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         return unusedTickets;
     }
 
+    public int getOffPeakTicketsForToday() {
+        int count = 0;
+
+        for (int i = 0; i < super.size(); i++) {
+            if (!super.get(i).isPeakTicket()) {
+                if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
+    public int getOnPeakTicketsForToday() {
+        int count = 0;
+
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).isPeakTicket()) {
+                if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
     public int getOffPeakTicketsForJourney(Journey journey) {
         int count = 0;
 
         for (int i = 0; i < super.size(); i++) {
-            if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
-                if (!super.get(i).isPeakTicket()) {
-                    if (super.get(i).getJourney().getStartZone().getId() == journey.getStartZone().getId()) {
-                        if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
-                            count++;
-                        }
+            if (!super.get(i).isPeakTicket()) {
+                if (super.get(i).getJourney().getStartZone().getId() == journey.getStartZone().getId()) {
+                    if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
+                        count++;
                     }
                 }
             }
@@ -114,12 +211,10 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         int count = 0;
 
         for (int i = 0; i < super.size(); i++) {
-            if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
-                if (super.get(i).isPeakTicket()) {
-                    if (super.get(i).getJourney().getStartZone().getId() == journey.getStartZone().getId()) {
-                        if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
-                            count++;
-                        }
+            if (super.get(i).isPeakTicket()) {
+                if (super.get(i).getJourney().getStartZone().getId() == journey.getStartZone().getId()) {
+                    if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
+                        count++;
                     }
                 }
             }
@@ -136,7 +231,9 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
                 if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
                     if (super.get(i).getPurchasedTime().after(startDateTime)) {
                         if (super.get(i).getPurchasedTime().before(endDateTime)) {
-                            journeys.add(super.get(i).getJourney());
+                            if (!journeys.contains(super.get(i).getJourney())) {
+                                journeys.add(super.get(i).getJourney());
+                            }
                         }
                     }
                 }
@@ -144,6 +241,34 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         }
 
         return journeys;
+    }
+
+    public int getNumberOfPaperTicketsForToday() {
+        int paperTicketCount = 0;
+
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getUserId() == 0) {
+                if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                    paperTicketCount++;
+                }
+            }
+        }
+
+        return paperTicketCount;
+    }
+
+    public int getNumberOfTravelCardTicketsForToday() {
+        int count = 0;
+
+        for (int i = 0; i < super.size(); i++) {
+            if (super.get(i).getUserId() != 0) {
+                if (getDateFormatted(super.get(i).getPurchasedTime()).trim().equals(getDateFormatted(new Date()))) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
     }
 
     private String getDateFormatted(Date date) {
