@@ -47,7 +47,9 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
         try {
             User user = TravelSystem.getInstance().getUsers().getUserById(userId);
             TravelCard tc = TravelSystem.getInstance().getTravelCards().getTravelCardById(user.getTravelCardId());
-            return (price / 100) * tc.getDiscount();
+            if (tc != null) {
+                return (price / 100) * tc.getDiscount();
+            }
         } catch (Throwable ex) {
             Logger.getLogger(SetOfTickets.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -243,7 +245,15 @@ public class SetOfTickets extends Vector<Ticket> implements Serializable {
                 if (super.get(i).getJourney().getEndZone().getId() == journey.getEndZone().getId()) {
                     if (super.get(i).getPurchasedTime().after(startDateTime)) {
                         if (super.get(i).getPurchasedTime().before(endDateTime)) {
-                            if (!journeys.contains(super.get(i).getJourney())) {
+                            if (journeys.size() > 0) {
+                                for (Journey existingJourney : journeys) {
+                                    if (existingJourney.getStartZone().getId() != super.get(i).getJourney().getStartZone().getId()) {
+                                        if (existingJourney.getEndZone().getId() != super.get(i).getJourney().getEndZone().getId()) {
+                                            journeys.add(super.get(i).getJourney());
+                                        }
+                                    }
+                                }
+                            } else {
                                 journeys.add(super.get(i).getJourney());
                             }
                         }

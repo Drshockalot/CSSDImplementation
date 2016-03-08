@@ -2922,7 +2922,7 @@ public class AdminUI extends javax.swing.JFrame {
     private void setTodaysRevenueLabel() {
         try {
             float revenue = TravelSystem.getInstance().getTickets().calculateTodaysRevenue();
-            lbl_adminOverviewTodayRev.setText("£" + revenue);
+            lbl_adminOverviewTodayRev.setText("£" + TravelSystem.getInstance().convertToTwoDecimalPlace(revenue));
         } catch (Throwable ex) {
             Logger.getLogger(AdminUI.class.getName()).log(Level.SEVERE, null, ex);
         }
