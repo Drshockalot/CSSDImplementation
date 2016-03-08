@@ -36,6 +36,7 @@ public class Journey implements Serializable {
     }
 
     public float getPriceBasedOnPeak(boolean peak) {
+        // Get the correct price depending on the state of peak
         if (peak) {
             return getOnPeakPrice();
         }

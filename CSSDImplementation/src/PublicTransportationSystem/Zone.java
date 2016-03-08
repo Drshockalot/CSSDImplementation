@@ -38,11 +38,13 @@ public class Zone implements Serializable {
     }
 
     public boolean isPeak() {
+        // Construct times for comparison
         Date t = new Date();
         Calendar peakFloor = Calendar.getInstance();
         Calendar peakCeiling = Calendar.getInstance();
         Calendar now = Calendar.getInstance();
 
+        // Determine whether current time is within the boundaries of peak
         now.setTime(t);
         peakFloor.setTime(t);
         peakCeiling.setTime(t);
