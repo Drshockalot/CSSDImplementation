@@ -44,16 +44,32 @@ public class StationSystem implements Serializable {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public TypeEnums.StationType getType() {
         return this.stationType;
+    }
+
+    public void setType(TypeEnums.StationType type) {
+        this.stationType = type;
     }
 
     public String getLocation() {
         return this.location;
     }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public GPSCoordinates getGPSPos() {
         return this.gps;
+    }
+
+    public void setGPSPos(GPSCoordinates gps) {
+        this.gps = gps;
     }
 
     public SetOfGateways getStationGateways() {
@@ -82,4 +98,5 @@ public class StationSystem implements Serializable {
         return (peakFloor.get(Calendar.HOUR) <= now.get(Calendar.HOUR) && peakFloor.get(Calendar.MINUTE) <= now.get(Calendar.MINUTE)
                 && peakCeiling.get(Calendar.HOUR) >= now.get(Calendar.HOUR) && peakCeiling.get(Calendar.MINUTE) >= now.get(Calendar.MINUTE));
     }
+
 }

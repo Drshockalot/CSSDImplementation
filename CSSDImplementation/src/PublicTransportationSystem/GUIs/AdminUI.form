@@ -2723,6 +2723,11 @@
                               <Component id="lbl_adminOverviewUsername" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanel1" max="32767" attributes="0"/>
+                              <Component id="jPanel2" pref="417" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Component id="pnl_adminOverviewContainer" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="26" max="32767" attributes="0"/>
                       </Group>
@@ -2801,7 +2806,6 @@
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JPanel" name="pnl_adminOverviewPeakJourneyRatio">
-
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
