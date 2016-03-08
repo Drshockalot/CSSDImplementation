@@ -1211,7 +1211,14 @@ public class WebsiteUI extends javax.swing.JFrame {
         try {
             // Create a new ticket, set it as not used
             newTicket = new Ticket(TravelSystem.getInstance().getTickets()
-                    .getNextId(), ticketType, journey, journey.getStartZone().isPeak(), user.getId(), false);
+                    .getNextId(), ticketType,
+                    system.getJourneys().getJourney(
+                            (Zone) this.cmb_websiteFromZoneList.getSelectedItem(),
+                            (Zone) this.cmb_websiteToZoneList.getSelectedItem()),
+                    system.getJourneys().getJourney(
+                            (Zone) this.cmb_websiteFromZoneList.getSelectedItem(),
+                            (Zone) this.cmb_websiteToZoneList.getSelectedItem()).getStartZone().isPeak(),
+                    user.getId(), false);
         } catch (Throwable ex) {
             Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
         }
