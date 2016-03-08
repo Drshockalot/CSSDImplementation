@@ -39,6 +39,8 @@ public class User {
 
         boolean peak = station_system.isPeak();
 
+        // Perform a few sets of Gateway scans to ensure that
+        // some tickets exist
         gateway.PerformScanIn(travel_card);
         gateway.PerformScanOut(travel_card);
 
@@ -48,6 +50,8 @@ public class User {
         gateway.PerformScanIn(travel_card);
         gateway.PerformScanOut(travel_card);
 
+        // Manually calculate costs for tickets for use in
+        // later unit test
         SetOfTickets ticketList = sysList.getTicketsForUserOnDay(travel_card.getUser().getId(), new Date());
         PaymentManager pMgr = new PaymentManager();
         for (Ticket ticket : ticketList) {
@@ -91,6 +95,8 @@ public class User {
 
         SetOfTickets userTickets = tickets.getTicketsForUserOnDay(user.getId(), new Date());
 
+        // Ensure that all of the tickets gathered by the above
+        // method do match the specified date
         userTickets.stream().forEach((ticket) -> {
             assertTrue(DateManipulationUtil.isOnSameDay(ticket.getPurchasedTime(), new Date()));
         });
@@ -104,6 +110,7 @@ public class User {
         PublicTransportationSystem.TravelSystem travel_system = PublicTransportationSystem.TravelSystem.getInstance();
         SetOfUsers users = travel_system.getUsers();
 
+        // Set up appropriate test data
         String test_email = "test@test.com";
         String test_username = "JoBa";
         int test_id = 3;
@@ -112,6 +119,8 @@ public class User {
         PublicTransportationSystem.User username_user = users.getUserByUsername(test_username);
         PublicTransportationSystem.User id_user = users.getUserById(test_id);
 
+        // Ensure that all of the search methods for User
+        // return the correct user
         assertTrue(email_user.getEmail().equals(test_email));
         assertTrue(username_user.getUsername().equals(test_username));
         assertTrue(id_user.getId() == test_id);
@@ -128,10 +137,15 @@ public class User {
         PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(1);
         PublicTransportationSystem.User user = travel_card.getUser();
 
+        // Get all Tickets for specified User today
         SetOfTickets userTickets = tickets.getTicketsForUserOnDay(user.getId(), new Date());
 
+        // Use automatic calculation method for calculating
+        // today's total for User Tickets
         float auto_todays_total = userTickets.calculateTodaysTotal(travel_card.getDiscount(), user, new Date());
 
+        // Ensure that this amount equals the amount calculated
+        // in the class setup
         assertTrue(manual_todays_total == auto_todays_total);
     }
 }

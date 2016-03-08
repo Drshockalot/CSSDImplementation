@@ -14,6 +14,7 @@ import java.util.Date;
  */
 public class DateManipulationUtil {
 
+    // Generate duplicate of Expiry Date for Travel Card
     public static Date generateTestExpiryDateFromCreationDate(Date creationDate, int futureDays) {
         Calendar expiry = Calendar.getInstance();
         expiry.setTime(creationDate);
@@ -21,6 +22,7 @@ public class DateManipulationUtil {
         return expiry.getTime();
     }
 
+    // Check if Ticket was created on specified Date
     public static boolean isOnSameDay(Date ticketDate, Date desiredDate) {
         Calendar cal1 = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
