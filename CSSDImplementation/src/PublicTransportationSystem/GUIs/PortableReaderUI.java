@@ -108,11 +108,12 @@ public class PortableReaderUI extends javax.swing.JFrame {
         loginPanel = new javax.swing.JPanel();
         loginUsernameTxt = new javax.swing.JTextField();
         loginPanelButton = new javax.swing.JButton();
-        loginHeaderLabel = new javax.swing.JLabel();
         loginUsernameLabel = new javax.swing.JLabel();
         loginPasswordLabel = new javax.swing.JLabel();
         loginErrorLabel = new javax.swing.JLabel();
         loginPasswordTxt = new javax.swing.JPasswordField();
+        pnl_portableReaderPassTitle2 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
 
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -551,21 +552,39 @@ public class PortableReaderUI extends javax.swing.JFrame {
             }
         });
 
-        loginHeaderLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        loginHeaderLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        loginHeaderLabel.setText("Log In");
+        loginUsernameLabel.setText("Username:");
 
-        loginUsernameLabel.setText("Username");
-
-        loginPasswordLabel.setText("Password");
+        loginPasswordLabel.setText("Password:");
 
         loginErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        pnl_portableReaderPassTitle2.setBackground(new java.awt.Color(192, 221, 253));
+
+        jLabel20.setBackground(new java.awt.Color(192, 221, 253));
+        jLabel20.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menu.png"))); // NOI18N
+        jLabel20.setText("                  Login");
+
+        javax.swing.GroupLayout pnl_portableReaderPassTitle2Layout = new javax.swing.GroupLayout(pnl_portableReaderPassTitle2);
+        pnl_portableReaderPassTitle2.setLayout(pnl_portableReaderPassTitle2Layout);
+        pnl_portableReaderPassTitle2Layout.setHorizontalGroup(
+            pnl_portableReaderPassTitle2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_portableReaderPassTitle2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_portableReaderPassTitle2Layout.setVerticalGroup(
+            pnl_portableReaderPassTitle2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_portableReaderPassTitle2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(loginHeaderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginPanelLayout.createSequentialGroup()
@@ -580,13 +599,13 @@ public class PortableReaderUI extends javax.swing.JFrame {
                         .addComponent(loginPanelButton)))
                 .addContainerGap(116, Short.MAX_VALUE))
             .addComponent(loginErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_portableReaderPassTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(loginHeaderLabel)
-                .addGap(86, 86, 86)
+                .addComponent(pnl_portableReaderPassTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(158, 158, 158)
                 .addComponent(loginUsernameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginUsernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -598,7 +617,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 .addComponent(loginPanelButton)
                 .addGap(56, 56, 56)
                 .addComponent(loginErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(loginPanel);
@@ -1012,12 +1031,12 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel loginErrorLabel;
-    private javax.swing.JLabel loginHeaderLabel;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JButton loginPanelButton;
     private javax.swing.JLabel loginPasswordLabel;
@@ -1040,6 +1059,7 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JLabel paymentUserName;
     private javax.swing.JPanel pnl_portableReaderPassTitle;
     private javax.swing.JPanel pnl_portableReaderPassTitle1;
+    private javax.swing.JPanel pnl_portableReaderPassTitle2;
     private javax.swing.JPanel pnl_portableReaderScanTitle;
     private javax.swing.JPanel pnl_portableReaderScanTitle2;
     private javax.swing.JButton scanCardBusButton;
