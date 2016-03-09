@@ -33,6 +33,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * GUI for manipulating data inside system and statistical feedback
  *
  * @author jonathondickson
  */
@@ -40,6 +41,8 @@ public class AdminUI extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminUI, takes login username from website login
+     *
+     * @param username
      */
     public AdminUI(String username) {
         initComponents();

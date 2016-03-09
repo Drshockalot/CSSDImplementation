@@ -8,6 +8,8 @@ package PublicTransportationSystem;
 import java.io.Serializable;
 
 /**
+ * Class used to identify user type, contains boolean functions to check user
+ * type values
  *
  * @author JoBa
  */

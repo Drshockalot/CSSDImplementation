@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * Contains info specific to ticket, including userid (where null if paper
+ * ticket), ticket type and state of ticket. Class includes standard
+ * getters/setters
  *
  * @author JoBa
  */

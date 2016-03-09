@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * Contains information for user
  *
  * @author JoBa
  */

@@ -10,6 +10,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * Holds information about individual Stations. Including
+ * zones,gateways,locations,etc. Contains method (isPeak()) used to determine
+ * whether a ticket should be charged at on/off peak pricing.
  *
  * @author JoBa
  */

@@ -8,6 +8,7 @@ package PublicTransportationSystem;
 import java.io.Serializable;
 
 /**
+ * Contains start/end zone, and pricing for off/on peak
  *
  * @author JoBa
  */

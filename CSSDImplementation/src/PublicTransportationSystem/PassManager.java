@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 /**
+ * Used to generated different pass types for Travel Card
  *
  * @author Drshockalotz
  */

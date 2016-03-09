@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 /**
+ * Contains functions for calculating journey prices, and refunding
  *
  * @author Drshockalotz
  */

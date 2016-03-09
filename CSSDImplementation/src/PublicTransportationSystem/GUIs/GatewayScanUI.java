@@ -18,6 +18,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * GUI to show simulation of users access/leaving system, and how they're
+ * handled
  *
  * @author Drshockalotz
  */
@@ -28,6 +30,8 @@ public class GatewayScanUI extends javax.swing.JFrame {
 
     /**
      * Creates new form GatewayScanUI
+     *
+     * @throws java.lang.Throwable
      */
     public GatewayScanUI() throws Throwable {
         // Set up a global instance of system for later use

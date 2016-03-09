@@ -8,6 +8,7 @@ package PublicTransportationSystem;
 import java.io.Serializable;
 
 /**
+ * Serves as coordinates for StationSystems
  *
  * @author Drshockalotz
  */

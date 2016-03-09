@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.Vector;
 
 /**
+ * Contains user of travel card. Holds information to be used when scanning
+ * in/out of stations
  *
  * @author JoBa
  */

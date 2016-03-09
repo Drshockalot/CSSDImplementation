@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Vector;
 
 /**
+ * Container class for Gateways. Not a TravelSystem list, local instances held
+ * in StationSystem
  *
  * @author JoBa
  */

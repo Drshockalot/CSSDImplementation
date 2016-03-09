@@ -25,6 +25,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * GUI to mock what a user (none-admin) could see when accessing the system from
+ * a website
  *
  * @author jonathondickson
  */

@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 /**
+ * Holds an instance of scanner. Has method to read user travel cards
  *
  * @author JoBa
  */

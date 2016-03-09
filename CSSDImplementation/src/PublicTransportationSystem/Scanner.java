@@ -8,6 +8,7 @@ package PublicTransportationSystem;
 import java.io.Serializable;
 
 /**
+ * Contains methods to read travel cards and Tickets
  *
  * @author JoBa
  */

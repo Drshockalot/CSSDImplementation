@@ -6,6 +6,7 @@
 package PublicTransportationSystem;
 
 /**
+ * System permissions, contains permission id and name/description
  *
  * @author JoBa
  */
@@ -14,9 +15,9 @@ public class Permission {
     int permissionId;
     String name;
 
-    public Permission(String name) {
+    public Permission(String name, int newPermissionId) {
         this.name = name;
-        this.permissionId = 1; // This needs changing to get latest++
+        this.permissionId = newPermissionId;
     }
 
     public int getId() {

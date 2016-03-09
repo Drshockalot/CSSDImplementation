@@ -10,6 +10,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * Contains information on passes, including current departure/arrival zone,
+ * type and expiry date
  *
  * @author JoBa
  */

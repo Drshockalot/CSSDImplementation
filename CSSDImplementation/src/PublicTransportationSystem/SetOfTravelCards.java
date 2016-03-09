@@ -14,8 +14,10 @@ import java.io.Serializable;
 import java.util.Vector;
 
 /**
+ * Container class for Travel Cards. Are accessible via TravelSystem. Standard
+ * searching functions and getters/setters
  *
- * @author SackFat
+ * @author Jonathon Dickson
  */
 public class SetOfTravelCards extends Vector<TravelCard> implements Serializable {
 

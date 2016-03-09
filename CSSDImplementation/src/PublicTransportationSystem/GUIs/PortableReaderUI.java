@@ -22,6 +22,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
+ * GUI to show simulation of ticket inspector interacting with users inside of
+ * system
  *
  * @author JackMcGlone
  */

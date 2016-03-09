@@ -10,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Class specifically made to handle transactions of tickets. Will notify system
+ * when a user has gone over daily cap, so they're no longer charged
  *
  * @author JoBa
  */

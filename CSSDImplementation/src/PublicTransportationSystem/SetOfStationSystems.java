@@ -14,6 +14,8 @@ import java.io.Serializable;
 import java.util.Vector;
 
 /**
+ * Container class for StationSystems. Accessible via TravelSystem. Allows
+ * access to required StationSystem
  *
  * @author DrShockalotz
  */

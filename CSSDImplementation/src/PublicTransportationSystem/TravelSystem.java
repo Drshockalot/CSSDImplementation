@@ -5,7 +5,6 @@
  */
 package PublicTransportationSystem;
 
-import Interfaces.SetOfUsersInterface;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,10 +14,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Acts as Database Mock for entire system. Used as an access point for most
+ * Collection classes. Also used as access point for saving/loading data.
  *
  * @author JoBa
  */
-public class TravelSystem implements SetOfUsersInterface {
+public class TravelSystem {
 
     private SetOfUsers systemUsers = new SetOfUsers();
     private SetOfTravelCards systemTravelCards = new SetOfTravelCards();

@@ -8,6 +8,7 @@ package PublicTransportationSystem;
 import java.io.Serializable;
 
 /**
+ * Class to check state of gates within stations
  *
  * @author JoBa
  */

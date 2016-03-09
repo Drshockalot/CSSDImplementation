@@ -14,6 +14,8 @@ import java.io.Serializable;
 import java.util.Vector;
 
 /**
+ * Container class for Journeys, accessible via TravelSystem. Contains methods
+ * for searching through journeys, and standard getters/setters
  *
  * @author JoBa
  */

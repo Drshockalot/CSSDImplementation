@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * Contains information for travel zones
  *
  * @author JoBa
  */

@@ -8,6 +8,7 @@ package PublicTransportationSystem;
 import java.util.Vector;
 
 /**
+ * Container class for permissions
  *
  * @author JoBa
  */

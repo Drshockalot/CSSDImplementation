@@ -20,6 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Container class for tickets. Contains functions to calculate statistics, and
+ * return specific tickets according to circumstances
  *
  * @author JoBa
  */

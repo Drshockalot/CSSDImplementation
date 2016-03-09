@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
+ * GUI providing quick access to main areas of application
  *
  * @author jonathondickson
  */

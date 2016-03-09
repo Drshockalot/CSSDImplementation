@@ -10,8 +10,10 @@ import java.util.Date;
 import java.util.Vector;
 
 /**
+ * Members contained in SetOfGateways, Contains scan in/out, and used to access
+ * gate controller
  *
- * @author DrPoopAlotz
+ * @author DrShockAlotz
  */
 public class Gateway implements Serializable {
 
@@ -168,8 +170,8 @@ public class Gateway implements Serializable {
         if (currentTicket == null) {
             this.reject();
             return false;
-        } else {
-            // Check that the ticket arrival matches the actual arrival
+        } else // Check that the ticket arrival matches the actual arrival
+        {
             if (zone.getId() == currentTicket.getJourney().getEndZone().getId()) {
                 // Flag the ticket as used and allow them through the gate
                 currentTicket.setUsed();

@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * Class made to format dates in a user friendly manner
  *
  * @author JackMcGlone
  */

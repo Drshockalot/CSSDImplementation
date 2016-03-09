@@ -14,6 +14,8 @@ import java.io.Serializable;
 import java.util.Vector;
 
 /**
+ * Container class for Zones. Accessible via TravelSystem. Standard searching
+ * functions and getters/setters
  *
  * @author jonathondickson
  */
