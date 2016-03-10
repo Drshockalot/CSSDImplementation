@@ -17,6 +17,7 @@ import PublicTransportationSystem.TravelSystem;
 import PublicTransportationSystem.TypeEnums;
 import PublicTransportationSystem.User;
 import PublicTransportationSystem.Zone;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -70,6 +71,9 @@ public class PortableReaderUI extends javax.swing.JFrame {
         scanPanelTravelCardLabel = new javax.swing.JLabel();
         pnl_portableReaderScanTitle = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
+        scanValidTicketButton = new javax.swing.JButton();
+        validTicketText = new javax.swing.JLabel();
+        scanInvalidTicketButton = new javax.swing.JButton();
         validPassPanel = new javax.swing.JPanel();
         passUserImage = new javax.swing.JPanel();
         validPassUserImagelabel = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Images/user_image.png")));
@@ -167,6 +171,23 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        scanValidTicketButton.setText("Scan Valid Ticket");
+        scanValidTicketButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanValidTicketButtonActionPerformed(evt);
+            }
+        });
+
+        validTicketText.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        validTicketText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        scanInvalidTicketButton.setText("Scan Invalid Ticket");
+        scanInvalidTicketButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scanInvalidTicketButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout scanPanelLayout = new javax.swing.GroupLayout(scanPanel);
         scanPanel.setLayout(scanPanelLayout);
         scanPanelLayout.setHorizontalGroup(
@@ -179,10 +200,13 @@ public class PortableReaderUI extends javax.swing.JFrame {
                     .addComponent(travelCardsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(scanPanelLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(scanCardTrainButton))))
+                        .addGroup(scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(scanCardBusButton, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                            .addComponent(scanCardTrainButton)
+                            .addComponent(scanValidTicketButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(scanInvalidTicketButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(114, Short.MAX_VALUE))
+            .addComponent(validTicketText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         scanPanelLayout.setVerticalGroup(
             scanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +220,13 @@ public class PortableReaderUI extends javax.swing.JFrame {
                 .addComponent(scanCardTrainButton)
                 .addGap(18, 18, 18)
                 .addComponent(scanCardBusButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(scanValidTicketButton)
+                .addGap(18, 18, 18)
+                .addComponent(scanInvalidTicketButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(validTicketText, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
         );
 
         jLayeredPane1.add(scanPanel);
@@ -782,6 +812,44 @@ public class PortableReaderUI extends javax.swing.JFrame {
         login();
     }//GEN-LAST:event_loginPanelButtonActionPerformed
 
+    private void scanValidTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanValidTicketButtonActionPerformed
+        Ticket ticket = null;
+        try {
+            // Scan a valid ticket
+            ticket = this.portableReader.readTicket(this.system.getTickets().getTicketById(1));
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Display a message to the user, stating the validity of the ticket
+        if (ticket != null) {
+            this.validTicketText.setText("Valid Ticket");
+            this.validTicketText.setForeground(Color.GREEN);
+        } else {
+            this.validTicketText.setText("Invalid Ticket");
+            this.validTicketText.setForeground(Color.RED);
+        }
+    }//GEN-LAST:event_scanValidTicketButtonActionPerformed
+
+    private void scanInvalidTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanInvalidTicketButtonActionPerformed
+        Ticket ticket = null;
+        try {
+            // Scan an invalid ticket
+            ticket = this.portableReader.readTicket(this.system.getTickets().getTicketById(9999));
+        } catch (Throwable ex) {
+            Logger.getLogger(PortableReaderUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Display a message to the user, stating the validity of the ticket
+        if (ticket != null) {
+            this.validTicketText.setText("Valid Ticket");
+            this.validTicketText.setForeground(Color.GREEN);
+        } else {
+            this.validTicketText.setText("Invalid Ticket");
+            this.validTicketText.setForeground(Color.RED);
+        }
+    }//GEN-LAST:event_scanInvalidTicketButtonActionPerformed
+
     private void throwLoginError(String error) {
         // Generic error message display for the login interface
         loginErrorLabel.setText(error);
@@ -1064,11 +1132,14 @@ public class PortableReaderUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_portableReaderScanTitle2;
     private javax.swing.JButton scanCardBusButton;
     private javax.swing.JButton scanCardTrainButton;
+    private javax.swing.JButton scanInvalidTicketButton;
     private javax.swing.JPanel scanPanel;
     private javax.swing.JLabel scanPanelTravelCardLabel;
+    private javax.swing.JButton scanValidTicketButton;
     private javax.swing.JComboBox toZone;
     private javax.swing.JComboBox travelCardsComboBox;
     private javax.swing.JPanel validPassPanel;
     private javax.swing.JLabel validPassUserImagelabel;
+    private javax.swing.JLabel validTicketText;
     // End of variables declaration//GEN-END:variables
 }

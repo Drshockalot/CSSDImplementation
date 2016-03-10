@@ -20,4 +20,15 @@ public class PortableReader {
         // Get the travel card from the system and return it
         return TravelSystem.getInstance().getTravelCards().getTravelCardById(cardID);
     }
+
+    public Ticket readTicket(Ticket ticket) throws Throwable {
+        if (ticket != null) {
+            // Simulate the reading of a travel card
+            int ticketId = scanner.readTicket(ticket);
+            // Get the travel card from the system and return it
+            return TravelSystem.getInstance().getTickets().getTicketById(ticketId);
+        } else {
+            return null;
+        }
+    }
 }
