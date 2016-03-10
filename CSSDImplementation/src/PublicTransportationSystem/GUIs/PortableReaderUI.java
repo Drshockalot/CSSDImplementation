@@ -717,6 +717,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
                         // Check the journey, approve/reject depending on result
                         this.payForTicketPanel.setVisible(true);
                     }
+                    default:
+                        this.payForTicketPanel.setVisible(true);
                 }
             } else if ("TRAIN".equals(travelType)) {
                 // Or on a train
@@ -731,6 +733,8 @@ public class PortableReaderUI extends javax.swing.JFrame {
                         // Check the journey, approve/reject depending on result
                         this.payForTicketPanel.setVisible(true);
                     }
+                    default:
+                        this.payForTicketPanel.setVisible(true);
                 }
             }
         } else {
