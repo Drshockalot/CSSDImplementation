@@ -115,7 +115,7 @@ public class Gateway {
         PublicTransportationSystem.SetOfTravelCards travel_cards = travel_system.getTravelCards();
         PublicTransportationSystem.TravelCard travel_card = travel_cards.getTravelCardById(2);
         travel_card.setPass(null);
-        travel_card.addFunds(0.50f);
+        travel_card.addFunds(-8.50f);
 
         // Ensure that they are scanned in
         gateway.PerformScanIn(travel_card);
@@ -130,6 +130,7 @@ public class Gateway {
         float current_balance = travel_card.getBalance();
 
         // However, their current balance should fall below 0
+        System.out.println(current_balance);
         assertTrue(current_balance < 0);
 
     }
