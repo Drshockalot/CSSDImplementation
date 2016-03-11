@@ -130,7 +130,6 @@ public class Gateway {
         float current_balance = travel_card.getBalance();
 
         // However, their current balance should fall below 0
-        System.out.println(current_balance);
         assertTrue(current_balance < 0);
 
     }
