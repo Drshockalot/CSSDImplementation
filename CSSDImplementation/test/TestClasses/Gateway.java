@@ -5,7 +5,9 @@
  */
 package TestClasses;
 
-import PublicTransportationSystem.*;
+import PublicTransportationSystem.Pass;
+import PublicTransportationSystem.SetOfGateways;
+import PublicTransportationSystem.TypeEnums;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -147,7 +149,7 @@ public class Gateway {
 
         // Ensure Travel Card Object has a valid pass
         travel_card.setPass(new Pass(TypeEnums.PassType.TRAINDAY));
-
+        travel_card.addFunds(10.00f);
         float balance_before_journey = travel_card.getBalance();
 
         // Perform Journey with Travel Card
