@@ -214,13 +214,15 @@ public class TravelSystem {
     /**
      * Registers a user
      *
-     * @param id
-     * @param forename
-     * @param surname
-     * @param username
-     * @param email
-     * @param password
-     * @param newSysRole
+     * @param id ID of the User to be created
+     * @param forename Forename of User
+     * @param surname Surname of User
+     * @param username Username of User
+     * @param email Email of User
+     * @param travelCardId TravelCard ID of User
+     * @param password Password of User
+     * @param newSysRole SystemRole of User
+     * @param dob Date of Birth of User
      */
     public void registerUser(Integer id, String forename, String surname, String username, String email, Integer travelCardId, String password, SystemRole newSysRole, String dob) {
         // if no id is passed through, get next id
@@ -274,14 +276,14 @@ public class TravelSystem {
     /**
      * Create and add station system to station system collection
      *
-     * @param name
-     * @param stationType
-     * @param location
-     * @param gps
-     * @param zone
-     * @param scanners
-     * @param peak
-     * @return station system
+     * @param name Name of StationSystem
+     * @param stationType StationType of StationSystem
+     * @param location Location of StationSystem
+     * @param gps GPS Coordinates of StationSystem
+     * @param zone Zone that the StationSystem is located in
+     * @param scanners SetOfGateways for the StationSystem
+     * @param peak The current state of peak for the StationSystem
+     * @return station system Returns the StationSystem just created
      */
     public StationSystem registerStationSystem(String name, TypeEnums.StationType stationType, String location, GPSCoordinates gps, Zone zone, SetOfGateways scanners, boolean peak) {
         StationSystem newStationSystem = new StationSystem(systemStationSystems.getNextId(), name, stationType, location, gps, zone, scanners);

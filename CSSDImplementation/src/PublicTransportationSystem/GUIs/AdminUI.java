@@ -42,7 +42,7 @@ public class AdminUI extends javax.swing.JFrame {
     /**
      * Creates new form AdminUI, takes login username from website login
      *
-     * @param username
+     * @param username Username of user that has logged in
      */
     public AdminUI(String username) {
         initComponents();

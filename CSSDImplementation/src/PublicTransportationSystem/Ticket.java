@@ -30,12 +30,12 @@ public class Ticket implements Serializable {
 
     /**
      *
-     * @param ticketID
-     * @param ticketTypeEnum
-     * @param journey
-     * @param peak
-     * @param userId
-     * @param used
+     * @param ticketID ID of the Ticket
+     * @param ticketTypeEnum Ticket Type BUS/TRAIN
+     * @param journey Journey of the Ticket
+     * @param peak Is the Ticket in peak time
+     * @param userId User ID that the Ticket belongs to
+     * @param used Has the Ticket been used
      */
     public Ticket(int ticketID, TypeEnums.TicketType ticketTypeEnum, Journey journey, boolean peak, int userId, boolean used) {
         this.ticketID = ticketID;

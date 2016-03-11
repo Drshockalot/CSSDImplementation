@@ -31,7 +31,7 @@ public class GatewayScanUI extends javax.swing.JFrame {
     /**
      * Creates new form GatewayScanUI
      *
-     * @throws java.lang.Throwable
+     * @throws java.lang.Throwable For the use of TravelSystem
      */
     public GatewayScanUI() throws Throwable {
         // Set up a global instance of system for later use
